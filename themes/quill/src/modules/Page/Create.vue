@@ -41,6 +41,12 @@
 
             <!-- button -->
             <v-btn class="secondary" type="submit">{{ __('Create') }}</v-btn>
+
+            <!-- ck -->
+            <h1>Balloon editor</h1>
+            <div id="editor">
+                <p>This is some sample content.</p>
+            </div>
           </v-form>
         </v-flex>
       </v-layout>
@@ -70,6 +76,14 @@ export default {
   },
 
   methods: {
+    ckEditor () {
+      BalloonEditor
+      .create( document.querySelector( '#editor' ) )
+      .catch( error => {
+          console.error( error, 'test' );
+      } );
+    },
+
     beforeFormSubmit () {
       this.$validator.reset()
       this.$validator.validateAll()

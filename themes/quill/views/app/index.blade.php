@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.7.94/css/materialdesignicons.min.css">
   <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700,800,900|Roboto:300,400,500,600,700,800,900|Material+Icons">
   <link rel="stylesheet" href="{{ theme('dist/css/app.css') }}">
+  <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/balloon/ckeditor.js"></script>
 </head>
 <body>
 

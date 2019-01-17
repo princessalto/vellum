@@ -60,6 +60,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   $_veeValidate: {
@@ -77,6 +83,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    ckEditor: function ckEditor() {
+      BalloonEditor.create(document.querySelector('#editor')).catch(function (error) {
+        console.error(error, 'test');
+      });
+    },
     beforeFormSubmit: function beforeFormSubmit() {
       var _this = this;
 
@@ -218,7 +229,13 @@ var render = function() {
                         "v-btn",
                         { staticClass: "secondary", attrs: { type: "submit" } },
                         [_vm._v(_vm._s(_vm.__("Create")))]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("h1", [_vm._v("Balloon editor")]),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "editor" } }, [
+                        _c("p", [_vm._v("This is some sample content.")])
+                      ])
                     ],
                     1
                   )
