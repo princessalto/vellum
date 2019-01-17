@@ -35,6 +35,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -98,11 +100,6 @@ var render = function() {
                             domProps: { innerHTML: _vm._s(_vm.item.title) }
                           }),
                           _vm._v(" "),
-                          _c("h1", {
-                            staticClass: "title font-weight-bold",
-                            domProps: { innerHTML: _vm._s(_vm.item.author) }
-                          }),
-                          _vm._v(" "),
                           _c(
                             "v-list",
                             { attrs: { dense: "" } },
@@ -135,7 +132,13 @@ var render = function() {
                           )
                         ],
                         1
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("v-card-text", [
+                        _c("p", {
+                          domProps: { innerHTML: _vm._s(_vm.item.body) }
+                        })
+                      ])
                     ],
                     1
                   )

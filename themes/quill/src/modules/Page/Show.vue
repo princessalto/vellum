@@ -6,7 +6,6 @@
           <v-card>
             <v-card-text>
               <h1 class="title font-weight-bold" v-html="item.title"></h1>
-              <h1 class="title font-weight-bold" v-html="item.author"></h1>
               <v-list dense>
                 <v-list-tile>
                   <v-list-tile-content>
@@ -15,6 +14,9 @@
                   </v-list-tile-content>
                 </v-list-tile>
               </v-list>
+            </v-card-text>
+            <v-card-text>
+              <p v-html="item.body"></p>
             </v-card-text>
           </v-card>
         </v-flex>
