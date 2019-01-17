@@ -119,13 +119,13 @@ var render = function() {
                                     [
                                       _c("v-list-tile-title", {
                                         domProps: {
-                                          innerHTML: _vm._s(_vm.item.title)
+                                          innerHTML: _vm._s(_vm.item.author)
                                         }
                                       }),
                                       _vm._v(" "),
                                       _c("v-list-tile-sub-title", {
                                         domProps: {
-                                          innerHTML: _vm._s(_vm.item.title)
+                                          innerHTML: _vm._s(_vm.item.created)
                                         }
                                       })
                                     ],
