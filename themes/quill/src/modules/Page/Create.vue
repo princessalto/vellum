@@ -75,6 +75,10 @@ export default {
     }
   },
 
+  mounted () {
+    this.ckEditor()
+  },
+
   methods: {
     ckEditor () {
       BalloonEditor

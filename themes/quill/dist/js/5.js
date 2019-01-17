@@ -82,6 +82,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  mounted: function mounted() {
+    this.ckEditor();
+  },
   methods: {
     ckEditor: function ckEditor() {
       BalloonEditor.create(document.querySelector('#editor')).catch(function (error) {
