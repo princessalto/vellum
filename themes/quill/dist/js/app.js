@@ -2700,16 +2700,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -27351,7 +27341,7 @@ var render = function() {
     "v-toolbar",
     {
       staticClass: "toolbarMenu sticky px-4",
-      attrs: { color: "primary", flat: "" },
+      attrs: { flat: "" },
       model: {
         value: _vm.dataset.model,
         callback: function($$v) {
@@ -27370,7 +27360,6 @@ var render = function() {
                 "append-icon": "search",
                 clearable: "",
                 "clear-icon": "cancel",
-                dark: "",
                 flat: "",
                 "full-width": "",
                 "hide-details": "",
@@ -27390,7 +27379,7 @@ var render = function() {
           ]
         : [
             _c("v-toolbar-title", {
-              staticClass: "white--text subheading",
+              staticClass: "subheading",
               domProps: { innerHTML: _vm._s(_vm.trans(_vm.dataset.title)) }
             }),
             _vm._v(" "),
@@ -27402,10 +27391,7 @@ var render = function() {
               [
                 _c(
                   "v-btn",
-                  {
-                    attrs: { slot: "activator", icon: "", dark: "" },
-                    slot: "activator"
-                  },
+                  { attrs: { slot: "activator", icon: "" }, slot: "activator" },
                   [
                     _c("v-icon", { attrs: { small: "" } }, [
                       _vm._v("mdi-checkbox-multiple-marked-circle-outline")
@@ -27425,10 +27411,7 @@ var render = function() {
               [
                 _c(
                   "v-btn",
-                  {
-                    attrs: { slot: "activator", icon: "", dark: "" },
-                    slot: "activator"
-                  },
+                  { attrs: { slot: "activator", icon: "" }, slot: "activator" },
                   [
                     _c("v-icon", {
                       attrs: { small: "" },
@@ -27455,10 +27438,7 @@ var render = function() {
               [
                 _c(
                   "v-btn",
-                  {
-                    attrs: { slot: "activator", icon: "", dark: "" },
-                    slot: "activator"
-                  },
+                  { attrs: { slot: "activator", icon: "" }, slot: "activator" },
                   [
                     _c("v-icon", { attrs: { small: "" } }, [
                       _vm._v("mdi-filter-outline")
@@ -27483,11 +27463,7 @@ var render = function() {
                             _c(
                               "v-btn",
                               {
-                                attrs: {
-                                  slot: "activator",
-                                  icon: "",
-                                  dark: ""
-                                },
+                                attrs: { slot: "activator", icon: "" },
                                 on: { click: _vm.toggleView },
                                 slot: "activator"
                               },
@@ -27514,11 +27490,7 @@ var render = function() {
                             _c(
                               "v-btn",
                               {
-                                attrs: {
-                                  slot: "activator",
-                                  icon: "",
-                                  dark: ""
-                                },
+                                attrs: { slot: "activator", icon: "" },
                                 on: { click: _vm.toggleView },
                                 slot: "activator"
                               },
@@ -27550,8 +27522,7 @@ var render = function() {
                     attrs: {
                       slot: "activator",
                       to: _vm.dataset.archivedBtn,
-                      icon: "",
-                      dark: ""
+                      icon: ""
                     },
                     slot: "activator"
                   },
@@ -27578,7 +27549,7 @@ var render = function() {
                 _c(
                   "v-btn",
                   {
-                    attrs: { slot: "activator", icon: "", dark: "" },
+                    attrs: { slot: "activator", icon: "" },
                     on: {
                       click: function($event) {
                         _vm.dataset.searchField = !_vm.dataset.searchButton
@@ -27603,7 +27574,7 @@ var render = function() {
                 _c(
                   "v-btn",
                   {
-                    attrs: { slot: "activator", icon: "", dark: "" },
+                    attrs: { slot: "activator", icon: "" },
                     on: {
                       click: function($event) {
                         _vm.dataset.searchField = !_vm.dataset.searchField
@@ -27629,11 +27600,14 @@ var render = function() {
           attrs: {
             to: _vm.dataset.createBtn,
             color: "secondary",
-            dark: "",
             depressed: ""
           }
         },
-        [_vm._v("\n    " + _vm._s(_vm.__("Create")) + "\n  ")]
+        [
+          _c("v-icon", { attrs: { left: "" } }, [_vm._v("mdi-plus")]),
+          _vm._v("\n    " + _vm._s(_vm.__("Create")) + "\n  ")
+        ],
+        1
       )
     ],
     2

@@ -1,7 +1,6 @@
 <template>
   <v-toolbar
     class="toolbarMenu sticky px-4"
-    color="primary"
     flat
     v-model="dataset.model"
     >
@@ -16,7 +15,6 @@
         class="mr-2"
         clearable
         clear-icon="cancel"
-        dark
         flat
         full-width
         hide-details
@@ -33,7 +31,7 @@
     <!-- hide searchField -->
     <template v-else>
       <v-toolbar-title
-        class="white--text subheading"
+        class="subheading"
         v-html="trans(dataset.title)"
         >
       </v-toolbar-title>
@@ -45,7 +43,6 @@
         >
         <v-btn
           icon
-          dark
           slot="activator"
           >
           <v-icon small>mdi-checkbox-multiple-marked-circle-outline</v-icon>
@@ -59,7 +56,6 @@
         >
         <v-btn
           icon
-          dark
           slot="activator"
           >
           <v-icon small v-html="dataset.sort ? 'mdi-sort-ascending' : 'mdi-sort-descending'"></v-icon>
@@ -73,7 +69,6 @@
         >
         <v-btn
           icon
-          dark
           slot="activator"
           >
           <v-icon small>mdi-filter-outline</v-icon>
@@ -91,7 +86,6 @@
             <v-btn
               @click="toggleView"
               icon
-              dark
               slot="activator"
               >
               <v-icon small>mdi-grid-large</v-icon>
@@ -106,7 +100,6 @@
             >
             <v-btn
               icon
-              dark
               slot="activator"
               @click="toggleView"
               >
@@ -124,7 +117,6 @@
         <v-btn
           :to="dataset.archivedBtn"
           icon
-          dark
           slot="activator"
           >
           <v-icon small>mdi-package-variant</v-icon>
@@ -141,7 +133,6 @@
       <v-tooltip bottom>
         <v-btn
           icon
-          dark
           slot="activator"
           @click="dataset.searchField = !dataset.searchButton"
           >
@@ -155,7 +146,6 @@
       <v-tooltip bottom>
         <v-btn
           icon
-          dark
           slot="activator"
           @click="dataset.searchField = !dataset.searchField"
           >
@@ -176,9 +166,9 @@
     <v-btn
       :to="dataset.createBtn"
       color="secondary"
-      dark
       depressed
       >
+      <v-icon left>mdi-plus</v-icon>
       {{ __('Create') }}
     </v-btn>
   </v-toolbar>
