@@ -1,0 +1,12 @@
+import './avatar/avatar-preview.js';
+import './datatables/datatables.js';
+import './dragdrop/dragdrop.js';
+// import './dynamic-data/dynamic-data.js';
+import './file/file.js';
+import './modal/modal.js';
+import './reveal/reveal.js';
+import './search/search.js';
+import './settings/settings.js';
+import './sidebar/sidebar.js';
+import './sticky/sticky.js';
+import './treeview/treeview.js';

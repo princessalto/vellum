@@ -1,0 +1,6 @@
+{
+  "require": {
+    "laravolt/avatar": "dev-master",
+    "tymon/jwt-auth": "^0.5.12"
+  }
+}
