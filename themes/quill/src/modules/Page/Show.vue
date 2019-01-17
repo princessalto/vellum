@@ -8,9 +8,12 @@
               <h1 class="title font-weight-bold" v-html="item.title"></h1>
               <v-list dense>
                 <v-list-tile>
+                  <v-list-tile-avatar>
+                    <img src="">
+                  </v-list-tile-avatar>
                   <v-list-tile-content>
-                    <v-list-tile-title v-html="item.author"></v-list-tile-title>
-                    <v-list-tile-sub-title v-html="item.created"></v-list-tile-sub-title>
+                    <v-list-tile-title v-html="item.title"></v-list-tile-title>
+                    <v-list-tile-sub-title v-html="item.title"></v-list-tile-sub-title>
                   </v-list-tile-content>
                 </v-list-tile>
               </v-list>

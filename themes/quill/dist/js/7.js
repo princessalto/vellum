@@ -37,6 +37,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -107,18 +110,22 @@ var render = function() {
                               _c(
                                 "v-list-tile",
                                 [
+                                  _c("v-list-tile-avatar", [
+                                    _c("img", { attrs: { src: "" } })
+                                  ]),
+                                  _vm._v(" "),
                                   _c(
                                     "v-list-tile-content",
                                     [
                                       _c("v-list-tile-title", {
                                         domProps: {
-                                          innerHTML: _vm._s(_vm.item.author)
+                                          innerHTML: _vm._s(_vm.item.title)
                                         }
                                       }),
                                       _vm._v(" "),
                                       _c("v-list-tile-sub-title", {
                                         domProps: {
-                                          innerHTML: _vm._s(_vm.item.created)
+                                          innerHTML: _vm._s(_vm.item.title)
                                         }
                                       })
                                     ],
