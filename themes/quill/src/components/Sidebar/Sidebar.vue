@@ -4,7 +4,6 @@
     :floating="sidebar.floating"
     :mini-variant.sync="sidebar.mini"
     :dark="sidebar.dark"
-    class="sidebar"
     app
     fixed
     v-model="sidebarmodel"
@@ -112,6 +111,7 @@ export default {
   computed: {
     ...mapGetters({
       sidebar: 'sidebar/sidebar',
+      app: 'app/app',
       // menus: 'sidebar/menus',
     }),
 
@@ -139,6 +139,7 @@ export default {
     ...mapActions({
       toggle: 'sidebar/toggle',
       clip: 'sidebar/clip',
+      update: 'app/update',
     }),
 
     sidebarSetDefaultStateOnMounted(value) {

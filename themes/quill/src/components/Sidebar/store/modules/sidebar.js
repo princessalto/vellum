@@ -1,4 +1,5 @@
 // import menus from '@/components/Sidebar/config/sidebar';
+import app from '@/config/app'
 
 export const state = () => ({
   sidebar: {
@@ -31,6 +32,10 @@ export const mutations = {
     state.sidebar.clipped = payload.clipped
   },
 
+  'UPDATE' (state, payload) {
+    state.sidebar = Object.assign({}, state.sidebar, payload)
+  },
+
   'UPDATE_SIDEBAR' (state, payload) {
     state.sidebar = Object.assign({}, state.sidebar, payload)
   },
@@ -48,7 +53,7 @@ export const actions = {
   },
 
   update: ({ commit }, payload) => {
-    commit('UPDATE_SIDEBAR', payload)
+    commit('UPDATE', payload)
   },
 }
 
