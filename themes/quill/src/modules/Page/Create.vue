@@ -9,44 +9,46 @@
             @submit.prevent="storePage"
             >
             <v-text-field
-               :data-vv-as="trans('Title')"
-                :error-messages="errors.collect('title')"
-                v-validate="'required'"
-                outline
-                autofocus
-                label="Title"
-                name="title"
-                v-model="dataset.title"
+             :data-vv-as="trans('Title')"
+              :error-messages="errors.collect('title')"
+              v-validate="'required'"
+              box
+              autofocus
+              label="Title"
+              name="title"
+              v-model="dataset.title"
             ></v-text-field>
 
             <v-text-field
-               :data-vv-as="trans('Code')"
-                :error-messages="errors.collect('code')"
-                v-validate="'required'"
-                outline
-                autofocus
-                label="Code"
-                name="code"
-                v-model="dataset.code"
+             :data-vv-as="trans('Code')"
+              :error-messages="errors.collect('code')"
+              v-validate="'required'"
+              box
+              autofocus
+              label="Code"
+              name="code"
+              v-model="dataset.code"
             ></v-text-field>
 
-            <v-text-field
+            <v-textarea
               :data-vv-as="trans('Body')"
-              outline
+              box
               autofocus
               label="Body"
               name="body"
               v-model="dataset.body"
-            ></v-text-field>
+            ></v-textarea>
+
+            <!-- ck -->
+            <div
+              :data-vv-as="trans('Body')"
+              v-model="dataset.body"
+              id="editor"
+              >
+            </div>
 
             <!-- button -->
             <v-btn class="secondary" type="submit">{{ __('Create') }}</v-btn>
-
-            <!-- ck -->
-            <h1>Balloon editor</h1>
-            <div id="editor">
-                <p>This is some sample content.</p>
-            </div>
           </v-form>
         </v-flex>
       </v-layout>
@@ -81,10 +83,10 @@ export default {
 
   methods: {
     ckEditor () {
-      BalloonEditor
+      ClassicEditor
       .create( document.querySelector( '#editor' ) )
       .catch( error => {
-          console.error( error, 'test' );
+        console.error( error );
       } );
     },
 

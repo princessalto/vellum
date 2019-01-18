@@ -66,6 +66,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   $_veeValidate: {
@@ -87,8 +89,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     ckEditor: function ckEditor() {
-      BalloonEditor.create(document.querySelector('#editor')).catch(function (error) {
-        console.error(error, 'test');
+      ClassicEditor.create(document.querySelector('#editor')).catch(function (error) {
+        console.error(error);
       });
     },
     beforeFormSubmit: function beforeFormSubmit() {
@@ -171,7 +173,7 @@ var render = function() {
                         attrs: {
                           "data-vv-as": _vm.trans("Title"),
                           "error-messages": _vm.errors.collect("title"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "Title",
                           name: "title"
@@ -197,7 +199,7 @@ var render = function() {
                         attrs: {
                           "data-vv-as": _vm.trans("Code"),
                           "error-messages": _vm.errors.collect("code"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "Code",
                           name: "code"
@@ -211,13 +213,27 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("v-text-field", {
+                      _c("v-textarea", {
                         attrs: {
                           "data-vv-as": _vm.trans("Body"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "Body",
                           name: "body"
+                        },
+                        model: {
+                          value: _vm.dataset.body,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dataset, "body", $$v)
+                          },
+                          expression: "dataset.body"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", {
+                        attrs: {
+                          "data-vv-as": _vm.trans("Body"),
+                          id: "editor"
                         },
                         model: {
                           value: _vm.dataset.body,
@@ -232,13 +248,7 @@ var render = function() {
                         "v-btn",
                         { staticClass: "secondary", attrs: { type: "submit" } },
                         [_vm._v(_vm._s(_vm.__("Create")))]
-                      ),
-                      _vm._v(" "),
-                      _c("h1", [_vm._v("Balloon editor")]),
-                      _vm._v(" "),
-                      _c("div", { attrs: { id: "editor" } }, [
-                        _c("p", [_vm._v("This is some sample content.")])
-                      ])
+                      )
                     ],
                     1
                   )
