@@ -2292,6 +2292,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -26830,7 +26834,7 @@ var render = function() {
         clipped: _vm.sidebar.clipped,
         floating: _vm.sidebar.floating,
         "mini-variant": _vm.sidebar.mini,
-        dark: _vm.sidebar.dark,
+        dark: _vm.sidebar.light,
         app: "",
         fixed: ""
       },
@@ -26880,25 +26884,31 @@ var render = function() {
                       })
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-action",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { icon: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.update({ dark: !_vm.app.dark })
+                            }
+                          }
+                        },
+                        [_c("v-icon", [_vm._v("mdi-theme-light-dark")])],
+                        1
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
               )
             ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { icon: "" },
-              on: {
-                click: function($event) {
-                  _vm.update({ dark: !_vm.app.dark })
-                }
-              }
-            },
-            [_c("v-icon", [_vm._v("mdi-theme-light-dark")])],
             1
           )
         ],
@@ -27674,7 +27684,7 @@ var render = function() {
                 [
                   _c(
                     "v-avatar",
-                    { attrs: { size: "40px" } },
+                    { attrs: { size: "30px" } },
                     [_c("v-icon", [_vm._v("mdi-account-circle")])],
                     1
                   )
@@ -67653,6 +67663,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./Appearance/config/sidebar.js": "./src/modules/Appearance/config/sidebar.js",
 	"./Dashboard/config/sidebar.js": "./src/modules/Dashboard/config/sidebar.js",
 	"./Page/config/sidebar.js": "./src/modules/Page/config/sidebar.js",
 	"./User/config/sidebar.js": "./src/modules/User/config/sidebar.js",
@@ -67690,6 +67701,7 @@ webpackContext.id = "./src/modules sync recursive config\\/sidebar\\.js$";
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./Appearance/routes/admin.js": "./src/modules/Appearance/routes/admin.js",
 	"./Dashboard/routes/admin.js": "./src/modules/Dashboard/routes/admin.js",
 	"./Page/routes/admin.js": "./src/modules/Page/routes/admin.js",
 	"./User/routes/admin.js": "./src/modules/User/routes/admin.js",
@@ -67769,6 +67781,77 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = "./src/modules sync recursive routes\\/web\\.js$";
+
+/***/ }),
+
+/***/ "./src/modules/Appearance/config/sidebar.js":
+/*!**************************************************!*\
+  !*** ./src/modules/Appearance/config/sidebar.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ([{
+  code: 'appearance',
+  name: 'appearance',
+  meta: {
+    title: 'Appearance',
+    icon: 'mdi-note-plus-outline',
+    authenticatable: true,
+    sort: 5
+  },
+  children: [// Admin Appearance
+  {
+    code: 'appearance.index',
+    name: 'appearance.index',
+    meta: {
+      title: 'All Appearances',
+      icon: 'mdi-home',
+      authenticatable: true,
+      sort: 5
+    }
+  }]
+}]);
+
+/***/ }),
+
+/***/ "./src/modules/Appearance/routes/admin.js":
+/*!************************************************!*\
+  !*** ./src/modules/Appearance/routes/admin.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ([{
+  path: '/admin/appearance',
+  component: function component() {
+    return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! @/App.vue */ "./src/App.vue"));
+  },
+  meta: {
+    title: 'Pages',
+    sort: 6,
+    authenticatable: true,
+    icon: 'mdi-book-multiple-variant'
+  },
+  children: [{
+    path: '',
+    props: true,
+    name: 'appearance.index',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/Appearance/Index.vue"));
+    },
+    meta: {
+      title: 'All Pages',
+      sort: 6,
+      authenticatable: true,
+      icon: 'mdi-book-multiple-variant'
+    }
+  }]
+}]);
 
 /***/ }),
 
@@ -68000,18 +68083,7 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       icon: 'mdi-delete-outline'
     }
-  }, // {
-  //   path: ':code',
-  //   props: true,
-  //   name: 'pages.show',
-  //   component: () => import('../Show.vue'),
-  //   meta: {
-  //     title: 'Show Page',
-  //     authenticatable: true,
-  //     icon: 'mdi-delete-outline'
-  //   }
-  // },
-  {
+  }, {
     path: ':code',
     props: true,
     name: 'pages.show',
@@ -68027,7 +68099,7 @@ __webpack_require__.r(__webpack_exports__);
       icon: 'mdi-book-multiple-variant'
     }
   }, {
-    path: 'edit',
+    path: ':code/edit',
     props: true,
     name: 'pages.edit',
     component: function component() {
@@ -68035,7 +68107,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     meta: {
       title: 'Edit Page',
-      authenticatable: true,
+      sort: 1,
+      external: true,
+      excludeFromRoot: true,
+      authenticatable: false,
       icon: 'mdi-delete-outline'
     }
   }, {

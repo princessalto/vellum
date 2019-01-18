@@ -22,8 +22,8 @@
     <v-spacer></v-spacer>
 
     <v-menu offset-y left bottom nudge-bottom="12px" nudge-width="200px" min-width="200px">
-      <v-btn slot="activator" large flat icon ripple >
-        <v-avatar size="40px">
+      <v-btn slot="activator" large flat icon ripple>
+        <v-avatar size="30px">
           <!-- <img :src="user.photo" :alt="user.displayname"> -->
           <v-icon>mdi-account-circle</v-icon>
         </v-avatar>

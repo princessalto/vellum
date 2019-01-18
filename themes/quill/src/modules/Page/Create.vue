@@ -5,7 +5,7 @@
         <v-form
           method="POST"
           action="/api/v1/pages/store"
-          @submit.prevent="storePage"
+          @submit.prevent="storeData"
           >
           <v-text-field
            :data-vv-as="trans('Title')"
@@ -15,7 +15,7 @@
             autofocus
             label="Title"
             name="title"
-            v-model="dataset.title"
+            v-model="resource.title"
           ></v-text-field>
 
           <v-text-field
@@ -26,7 +26,7 @@
             autofocus
             label="Code"
             name="code"
-            v-model="dataset.code"
+            v-model="resource.code"
           ></v-text-field>
 
           <v-textarea
@@ -35,7 +35,7 @@
             autofocus
             label="Body"
             name="body"
-            v-model="dataset.body"
+            v-model="resource.body"
           ></v-textarea>
 
           <!-- ck -->
@@ -44,7 +44,7 @@
             autofocus
             id="editor"
             name="body"
-            v-model="dataset.body"
+            v-model="resource.body"
             >
           </div>
 
@@ -60,16 +60,18 @@
 import store from '@/store'
 
 export default {
+  store,
+  name: 'Create',
+
   $_veeValidate: {
     validator: 'new'
   },
 
-  store,
-  name: 'Create',
+
 
   data () {
     return {
-      dataset: {
+      resource: {
         title: '',
         code: '',
         body: '',
@@ -95,16 +97,17 @@ export default {
       this.$validator.validateAll()
         .then(ok => {
           if (ok) {
-            this.storePage()
+            this.storeData()
           }
         })
     },
 
-    storePage () {
-      axios.post('/api/v1/pages/store', this.dataset).then((response) => {
-        console.log(this.dataset, 'data')
-        this.$router.push({name: 'pages'})
-      })
+    storeData () {
+      axios.post('/api/v1/pages/store', this.resource)
+        .then((response) => {
+          console.log(this.resource, 'data')
+          this.$router.push({name: 'pages'})
+        })
     },
   },
 }

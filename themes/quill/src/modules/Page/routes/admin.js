@@ -33,17 +33,6 @@ export default [
 
         }
       },
-      // {
-      //   path: ':code',
-      //   props: true,
-      //   name: 'pages.show',
-      //   component: () => import('../Show.vue'),
-      //   meta: {
-      //     title: 'Show Page',
-      //     authenticatable: true,
-      //     icon: 'mdi-delete-outline'
-      //   }
-      // },
       {
         path: ':code',
         props: true,
@@ -59,13 +48,16 @@ export default [
         },
       },
       {
-        path: 'edit',
+        path: ':code/edit',
         props: true,
         name: 'pages.edit',
         component: () => import('../Edit.vue'),
         meta: {
           title: 'Edit Page',
-          authenticatable: true,
+          sort: 1,
+          external: true,
+          excludeFromRoot: true,
+          authenticatable: false,
           icon: 'mdi-delete-outline'
 
         }

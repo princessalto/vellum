@@ -7,10 +7,10 @@
           <v-flex xs12>
             <v-card flat class="mb-3">
               <v-data-table
-                v-model="resource.selected"
-                :headers="resource.headers"
-                :items="resource.items"
-                :pagination.sync="resource.pagination"
+                v-model="resources.selected"
+                :headers="resources.headers"
+                :items="resources.items"
+                :pagination.sync="resources.pagination"
                 select-all
                 item-key="title"
                 class="elevation-1"
@@ -132,9 +132,10 @@ export default {
   },
 
   mounted () {
-    axios.get('/api/v1/pages/all').then(response => {
-      this.resource.items = response.data.data
-    })
+    axios.get('/api/v1/pages/all')
+      .then(response => {
+        this.resources.items = response.data.data
+      })
   },
 
   data () {
@@ -157,7 +158,7 @@ export default {
           name: 'pages.archived',
         },
       },
-      resource: {
+      resources: {
         items: [],
         data: null,
         pagination: {

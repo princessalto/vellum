@@ -3,7 +3,7 @@
     :clipped="sidebar.clipped"
     :floating="sidebar.floating"
     :mini-variant.sync="sidebar.mini"
-    :dark="sidebar.dark"
+    :dark="sidebar.light"
     app
     fixed
     v-model="sidebarmodel"
@@ -19,9 +19,13 @@
             <v-list-tile-title><strong v-html="sidebar.title"></strong></v-list-tile-title>
             <v-list-tile-sub-title class="caption" v-html="sidebar.tagline"></v-list-tile-sub-title>
           </v-list-tile-content>
+          <v-list-tile-action>
+            <v-btn icon @click="update({dark: !app.dark})">
+              <v-icon>mdi-theme-light-dark</v-icon>
+            </v-btn>
+          </v-list-tile-action>
         </v-list-tile>
       </v-list>
-      <v-btn icon @click="update({dark: !app.dark})"><v-icon>mdi-theme-light-dark</v-icon></v-btn>
     </v-toolbar>
     <!-- Brand -->
 

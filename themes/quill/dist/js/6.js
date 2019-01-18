@@ -9,14 +9,100 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./src/store/index.js");
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Edit'
+  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+  name: 'Edit',
+  $_veeValidate: {
+    validator: 'new'
+  },
+  data: function data() {
+    return {
+      resource: {}
+    };
+  },
+  methods: {
+    beforeFormSubmit: function beforeFormSubmit() {
+      var _this = this;
+
+      this.$validator.reset();
+      this.$validator.validateAll().then(function (ok) {
+        if (ok) {
+          _this.updateData();
+        }
+      });
+    },
+    updateData: function updateData() {
+      var _this2 = this;
+
+      axios.post('/api/v1/pages', this.resource + '/update').then(function (response) {
+        console.log(_this2.resource, 'data');
+
+        _this2.$router.push({
+          name: 'pages'
+        });
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -36,7 +122,108 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n  test\n")])
+  return _c(
+    "v-container",
+    { attrs: { fluid: "", "grid-list-lg": "" } },
+    [
+      _c(
+        "v-layout",
+        { attrs: { row: "", wrap: "" } },
+        [
+          _c(
+            "v-flex",
+            { attrs: { sm6: "", xs12: "" } },
+            [
+              _c(
+                "v-form",
+                {
+                  attrs: { method: "POST", action: "/api/v1/pages/update" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updateData($event)
+                    }
+                  }
+                },
+                [
+                  _c("v-text-field", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      }
+                    ],
+                    attrs: {
+                      "data-vv-as": _vm.trans("Title"),
+                      "error-messages": _vm.errors.collect("title"),
+                      box: "",
+                      autofocus: "",
+                      label: "Title",
+                      name: "title",
+                      value: _vm.resource.title
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      }
+                    ],
+                    attrs: {
+                      "data-vv-as": _vm.trans("Code"),
+                      "error-messages": _vm.errors.collect("code"),
+                      box: "",
+                      autofocus: "",
+                      label: "Code",
+                      name: "code",
+                      value: _vm.resource.code
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-textarea", {
+                    attrs: {
+                      "data-vv-as": _vm.trans("Body"),
+                      box: "",
+                      autofocus: "",
+                      label: "Body",
+                      name: "body",
+                      value: _vm.resource.body
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", {
+                    attrs: {
+                      "data-vv-as": _vm.trans("Body"),
+                      autofocus: "",
+                      id: "editor",
+                      name: "body",
+                      value: _vm.resource.body
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { staticClass: "secondary", attrs: { type: "submit" } },
+                    [_vm._v(_vm._s(_vm.__("Create")))]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

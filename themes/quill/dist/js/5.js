@@ -70,14 +70,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+  name: 'Create',
   $_veeValidate: {
     validator: 'new'
   },
-  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
-  name: 'Create',
   data: function data() {
     return {
-      dataset: {
+      resource: {
         title: '',
         code: '',
         body: ''
@@ -99,15 +99,15 @@ __webpack_require__.r(__webpack_exports__);
       this.$validator.reset();
       this.$validator.validateAll().then(function (ok) {
         if (ok) {
-          _this.storePage();
+          _this.storeData();
         }
       });
     },
-    storePage: function storePage() {
+    storeData: function storeData() {
       var _this2 = this;
 
-      axios.post('/api/v1/pages/store', this.dataset).then(function (response) {
-        console.log(_this2.dataset, 'data');
+      axios.post('/api/v1/pages/store', this.resource).then(function (response) {
+        console.log(_this2.resource, 'data');
 
         _this2.$router.push({
           name: 'pages'
@@ -153,7 +153,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.storePage($event)
+                      return _vm.storeData($event)
                     }
                   }
                 },
@@ -176,11 +176,11 @@ var render = function() {
                       name: "title"
                     },
                     model: {
-                      value: _vm.dataset.title,
+                      value: _vm.resource.title,
                       callback: function($$v) {
-                        _vm.$set(_vm.dataset, "title", $$v)
+                        _vm.$set(_vm.resource, "title", $$v)
                       },
-                      expression: "dataset.title"
+                      expression: "resource.title"
                     }
                   }),
                   _vm._v(" "),
@@ -202,11 +202,11 @@ var render = function() {
                       name: "code"
                     },
                     model: {
-                      value: _vm.dataset.code,
+                      value: _vm.resource.code,
                       callback: function($$v) {
-                        _vm.$set(_vm.dataset, "code", $$v)
+                        _vm.$set(_vm.resource, "code", $$v)
                       },
-                      expression: "dataset.code"
+                      expression: "resource.code"
                     }
                   }),
                   _vm._v(" "),
@@ -219,11 +219,11 @@ var render = function() {
                       name: "body"
                     },
                     model: {
-                      value: _vm.dataset.body,
+                      value: _vm.resource.body,
                       callback: function($$v) {
-                        _vm.$set(_vm.dataset, "body", $$v)
+                        _vm.$set(_vm.resource, "body", $$v)
                       },
-                      expression: "dataset.body"
+                      expression: "resource.body"
                     }
                   }),
                   _vm._v(" "),
@@ -235,11 +235,11 @@ var render = function() {
                       name: "body"
                     },
                     model: {
-                      value: _vm.dataset.body,
+                      value: _vm.resource.body,
                       callback: function($$v) {
-                        _vm.$set(_vm.dataset, "body", $$v)
+                        _vm.$set(_vm.resource, "body", $$v)
                       },
-                      expression: "dataset.body"
+                      expression: "resource.body"
                     }
                   }),
                   _vm._v(" "),

@@ -144,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/v1/pages/all').then(function (response) {
-      _this.resource.items = response.data.data;
+      _this.resources.items = response.data.data;
     });
   },
   data: function data() {
@@ -167,7 +167,7 @@ __webpack_require__.r(__webpack_exports__);
           name: 'pages.archived'
         }
       },
-      resource: {
+      resources: {
         items: [],
         data: null,
         pagination: {
@@ -341,15 +341,15 @@ var render = function() {
                             _c("v-data-table", {
                               staticClass: "elevation-1",
                               attrs: {
-                                headers: _vm.resource.headers,
-                                items: _vm.resource.items,
-                                pagination: _vm.resource.pagination,
+                                headers: _vm.resources.headers,
+                                items: _vm.resources.items,
+                                pagination: _vm.resources.pagination,
                                 "select-all": "",
                                 "item-key": "title"
                               },
                               on: {
                                 "update:pagination": function($event) {
-                                  _vm.$set(_vm.resource, "pagination", $event)
+                                  _vm.$set(_vm.resources, "pagination", $event)
                                 }
                               },
                               scopedSlots: _vm._u([
@@ -639,11 +639,11 @@ var render = function() {
                                 }
                               ]),
                               model: {
-                                value: _vm.resource.selected,
+                                value: _vm.resources.selected,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.resource, "selected", $$v)
+                                  _vm.$set(_vm.resources, "selected", $$v)
                                 },
-                                expression: "resource.selected"
+                                expression: "resources.selected"
                               }
                             })
                           ],
