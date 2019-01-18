@@ -32,48 +32,6 @@
   border: none;
   margin: auto 1em;
 }
-aside::-webkit-scrollbar,
-div:not(.application--wrap)::-webkit-scrollbar {
-  background: transparent;
-  overflow: visible;
-  width: 7px;
-}
-aside::-webkit-scrollbar-thumb,
-div:not(.application--wrap)::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.2);
-  border: solid #fff;
-}
-aside::-webkit-scrollbar-thumb:hover,
-div:not(.application--wrap)::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.8);
-}
-aside::-webkit-scrollbar-thumb:horizontal,
-div:not(.application--wrap)::-webkit-scrollbar-thumb:horizontal {
-  border-width: 0;
-  min-width: 40px;
-}
-aside::-webkit-scrollbar-thumb:vertical,
-div:not(.application--wrap)::-webkit-scrollbar-thumb:vertical {
-  border-width: 0;
-  min-height: 40px;
-}
-aside::-webkit-scrollbar-track-piece,
-div:not(.application--wrap)::-webkit-scrollbar-track-piece {
-  background-color: transparent;
-}
-aside::-webkit-scrollbar-corner,
-div:not(.application--wrap)::-webkit-scrollbar-corner {
-  background: transparent;
-}
-aside::-webkit-scrollbar-thumb,
-div:not(.application--wrap)::-webkit-scrollbar-thumb {
-  background-color: #adadad;
-  -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1), inset 0 -1px 0 rgba(0,0,0,0.07);
-}
-aside::-webkit-scrollbar-thumb:hover,
-div:not(.application--wrap)::-webkit-scrollbar-thumb:hover {
-  background-color: #999;
-}
 .ov-auto {
   overflow: auto;
   position: relative;
@@ -727,48 +685,6 @@ p {
   width: 1px;
   border: none;
   margin: auto 1em;
-}
-aside::-webkit-scrollbar,
-div:not(.application--wrap)::-webkit-scrollbar {
-  background: transparent;
-  overflow: visible;
-  width: 7px;
-}
-aside::-webkit-scrollbar-thumb,
-div:not(.application--wrap)::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.2);
-  border: solid #fff;
-}
-aside::-webkit-scrollbar-thumb:hover,
-div:not(.application--wrap)::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.8);
-}
-aside::-webkit-scrollbar-thumb:horizontal,
-div:not(.application--wrap)::-webkit-scrollbar-thumb:horizontal {
-  border-width: 0;
-  min-width: 40px;
-}
-aside::-webkit-scrollbar-thumb:vertical,
-div:not(.application--wrap)::-webkit-scrollbar-thumb:vertical {
-  border-width: 0;
-  min-height: 40px;
-}
-aside::-webkit-scrollbar-track-piece,
-div:not(.application--wrap)::-webkit-scrollbar-track-piece {
-  background-color: transparent;
-}
-aside::-webkit-scrollbar-corner,
-div:not(.application--wrap)::-webkit-scrollbar-corner {
-  background: transparent;
-}
-aside::-webkit-scrollbar-thumb,
-div:not(.application--wrap)::-webkit-scrollbar-thumb {
-  background-color: #adadad;
-  -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1), inset 0 -1px 0 rgba(0,0,0,0.07);
-}
-aside::-webkit-scrollbar-thumb:hover,
-div:not(.application--wrap)::-webkit-scrollbar-thumb:hover {
-  background-color: #999;
 }
 .ov-auto {
   overflow: auto;
@@ -11285,6 +11201,22 @@ html {
 /*background: linear-gradient(45deg, #e56590 0%, #ffb88c 100%);*/
 /*background: linear-gradient(45deg, #3e75c8 0%, #4ccbab 100%);*/
   background: linear-gradient(45deg, #686af3 0%, #e56e37 100%);
+}
+::-webkit-scrollbar {
+  width: 11px !important;
+  height: 11px !important;
+}
+::-webkit-scrollbar-track {
+  background: #f2f2f2 !important;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(96,125,139,0.4) !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(96,125,139,0.7) !important;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(96,125,139,0.2) !important;
 }
 .v-toolbar__content {
   padding: 16px;

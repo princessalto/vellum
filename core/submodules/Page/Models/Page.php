@@ -10,6 +10,7 @@ use Page\Support\Relations\BelongsToPage;
 use Page\Support\Relations\PageHasManyPages;
 use Pluma\Models\Model;
 use Pluma\Support\Database\Scopes\CodeOrFailScope;
+use Pluma\Support\Mutators\BaseMutator;
 use User\Support\Traits\BelongsToUser;
 
 class Page extends Model
@@ -21,6 +22,7 @@ class Page extends Model
         PageHasManyPages,
         PageAccessor,
         CodeOrFailScope,
+        BaseMutator,
         SoftDeletes;
 
     /**

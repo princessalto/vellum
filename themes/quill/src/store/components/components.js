@@ -1,4 +1,4 @@
-// import { app } from './app'
+import { app } from '../app'
 // import { authentication } from './authentication'
 import { breadcrumbs } from '@/components/Breadcrumbs/store/modules/breadcrumbs'
 // import { dialogbox } from '@/components/Dialog/store/modules/dialogbox'
@@ -10,7 +10,7 @@ import { toolbar } from '@/components/Toolbar/store/modules/toolbar'
 // import { mainmenu } from '@/components/Navigation/store/modules/mainmenu'
 
 export const modules = {
-  // app,
+  app,
   // authentication,
   breadcrumbs,
   // dialogbox,

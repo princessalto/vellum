@@ -40,10 +40,10 @@
 
         <template v-else-if="parent.children">
           <v-list-group :key="i" no-action v-model="parent.active">
-            <v-icon slot="appendIcon" small>mdi mdi-chevron-down</v-icon>
+            <v-icon slot="appendIcon" small>keyboard_arrow_down</v-icon>
             <v-list-tile ripple slot="activator" v-model="parent.active">
               <v-list-tile-action>
-                <v-icon>{{ parent.meta.icon }}</v-icon>
+                <v-icon class="subheading">{{ parent.meta.icon }}</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>{{ __(parent.meta.title) }}</v-list-tile-title>
@@ -99,9 +99,9 @@
 </template>
 
 <script>
-import store from '@/store';
-import { mapGetters, mapActions } from 'vuex';
-import menus from '@/components/Sidebar/config/sidebar';
+import store from '@/store'
+import menus from '@/config/sidebar'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   store,
@@ -112,25 +112,19 @@ export default {
     ...mapGetters({
       sidebar: 'sidebar/sidebar',
       app: 'app/app',
-      // menus: 'sidebar/menus',
     }),
 
     menus: function () {
-      const page = this.$route;
-
-      menus.map(function (menu) {
-        menu.meta.active = page.name === 'course';
-      });
-
-      return menus;
+      // return this.sidebar.menus
+      return menus
     },
 
     sidebarmodel: {
       set (value) {
-        this.toggle({ model: value });
+        this.toggle({ model: value })
       },
       get () {
-        return this.sidebar.model;
+        return this.sidebar.model
       },
     },
   },
@@ -141,22 +135,10 @@ export default {
       clip: 'sidebar/clip',
       update: 'app/update',
     }),
-
-    sidebarSetDefaultStateOnMounted(value) {
-      switch (this.$root.$vuetify.breakpoint.name) {
-        case 'xs':
-        case 'sm':
-          return this.toggle({ model: false });
-        case 'lg':
-        default:
-          this.toggle({ model: value });
-          break;
-      }
-    },
   },
 
   mounted () {
-    this.sidebarSetDefaultStateOnMounted();
-  },
+    //
+  }
 }
 </script>

@@ -11,6 +11,20 @@
   <link rel="stylesheet" href="{{ theme('dist/css/app.css') }}">
   <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
 
+  {{-- styles that doesn't work on stylus --}}
+  <style>
+    .text--ellipsis {
+      display: -webkit-box;
+      line-height: 1.4;
+      -webkit-line-clamp: 3;
+              line-clamp: 3;
+      -webkit-box-orient: vertical;
+              box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+
 </head>
 <body>
 

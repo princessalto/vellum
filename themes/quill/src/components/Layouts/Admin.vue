@@ -1,5 +1,5 @@
 <template>
-  <v-app v-cloak toolbar footer>
+  <v-app v-cloak toolbar footer :dark="app.dark">
   <!-- :dark="app.dark" -->
     <!-- Sidebar -->
     <sidebar></sidebar>

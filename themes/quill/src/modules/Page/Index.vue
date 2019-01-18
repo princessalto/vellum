@@ -121,7 +121,6 @@
 
 <script>
 import store from '@/store'
-// import axios from 'axios'
 import EmptyState from './partials/EmptyState'
 
 export default {

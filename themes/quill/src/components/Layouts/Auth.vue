@@ -24,7 +24,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      // app: 'app/app',
+      app: 'app/app',
     }),
   },
 }

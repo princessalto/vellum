@@ -96,14 +96,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Login',
   data: function data() {
     return {
+      showPassword: false,
       email: "",
-      password: ""
+      password: "",
+      rules: {}
     };
   },
   methods: {
@@ -279,8 +284,16 @@ var render = function() {
                               label: "Password",
                               box: "",
                               id: "password",
-                              required: "",
-                              type: "password"
+                              type: "password",
+                              "append-icon": _vm.showPassword
+                                ? "visibility_off"
+                                : "visibility",
+                              type: _vm.showPassword ? "text" : "password"
+                            },
+                            on: {
+                              "click:append": function($event) {
+                                _vm.showPassword = !_vm.showPassword
+                              }
                             },
                             model: {
                               value: _vm.password,

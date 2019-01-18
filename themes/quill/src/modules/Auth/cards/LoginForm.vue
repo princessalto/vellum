@@ -26,14 +26,17 @@
                 v-model="email"
                 >
               </v-text-field>
+
               <v-text-field
                 autofocus
                 label="Password"
                 box
                 id="password"
-                required
                 type="password"
                 v-model="password"
+                :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+                :type="showPassword ? 'text' : 'password'"
+                @click:append="showPassword = !showPassword"
                 >
               </v-text-field>
 
@@ -61,8 +64,11 @@ export default {
 
   data() {
     return {
+      showPassword: false,
       email : "",
       password : "",
+      rules: {
+    }
     }
   },
 

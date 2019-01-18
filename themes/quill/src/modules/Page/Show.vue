@@ -39,9 +39,9 @@ export default {
   mounted () {
     /*eslint-disable*/
     axios.get('/api/v1/pages/' + this.$route.params.code).then(response => {
-        // console.log(response, 'data')
-        this.item = response.data
-      })
+      // console.log(response, 'data')
+      this.item = response.data
+    })
   },
 
   data () {

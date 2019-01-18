@@ -135,122 +135,118 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-container",
+    { attrs: { fluid: "", "grid-list-lg": "" } },
     [
       _c(
-        "v-container",
-        { attrs: { fluid: "", "grid-list-lg": "" } },
+        "v-layout",
+        { attrs: { row: "", wrap: "" } },
         [
           _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            "v-flex",
+            { attrs: { sm6: "", xs12: "" } },
             [
               _c(
-                "v-flex",
-                { attrs: { sm6: "", xs12: "" } },
+                "v-form",
+                {
+                  attrs: { method: "POST", action: "/api/v1/pages/store" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.storePage($event)
+                    }
+                  }
+                },
                 [
-                  _c(
-                    "v-form",
-                    {
-                      attrs: { method: "POST", action: "/api/v1/pages/store" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.storePage($event)
-                        }
+                  _c("v-text-field", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
                       }
-                    },
-                    [
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("Title"),
-                          "error-messages": _vm.errors.collect("title"),
-                          box: "",
-                          autofocus: "",
-                          label: "Title",
-                          name: "title"
-                        },
-                        model: {
-                          value: _vm.dataset.title,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "title", $$v)
-                          },
-                          expression: "dataset.title"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("Code"),
-                          "error-messages": _vm.errors.collect("code"),
-                          box: "",
-                          autofocus: "",
-                          label: "Code",
-                          name: "code"
-                        },
-                        model: {
-                          value: _vm.dataset.code,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "code", $$v)
-                          },
-                          expression: "dataset.code"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-textarea", {
-                        attrs: {
-                          "data-vv-as": _vm.trans("Body"),
-                          box: "",
-                          autofocus: "",
-                          label: "Body",
-                          name: "body"
-                        },
-                        model: {
-                          value: _vm.dataset.body,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "body", $$v)
-                          },
-                          expression: "dataset.body"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        attrs: {
-                          "data-vv-as": _vm.trans("Body"),
-                          id: "editor"
-                        },
-                        model: {
-                          value: _vm.dataset.body,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "body", $$v)
-                          },
-                          expression: "dataset.body"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        { staticClass: "secondary", attrs: { type: "submit" } },
-                        [_vm._v(_vm._s(_vm.__("Create")))]
-                      )
                     ],
-                    1
+                    attrs: {
+                      "data-vv-as": _vm.trans("Title"),
+                      "error-messages": _vm.errors.collect("title"),
+                      box: "",
+                      autofocus: "",
+                      label: "Title",
+                      name: "title"
+                    },
+                    model: {
+                      value: _vm.dataset.title,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dataset, "title", $$v)
+                      },
+                      expression: "dataset.title"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      }
+                    ],
+                    attrs: {
+                      "data-vv-as": _vm.trans("Code"),
+                      "error-messages": _vm.errors.collect("code"),
+                      box: "",
+                      autofocus: "",
+                      label: "Code",
+                      name: "code"
+                    },
+                    model: {
+                      value: _vm.dataset.code,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dataset, "code", $$v)
+                      },
+                      expression: "dataset.code"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-textarea", {
+                    attrs: {
+                      "data-vv-as": _vm.trans("Body"),
+                      box: "",
+                      autofocus: "",
+                      label: "Body",
+                      name: "body"
+                    },
+                    model: {
+                      value: _vm.dataset.body,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dataset, "body", $$v)
+                      },
+                      expression: "dataset.body"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", {
+                    attrs: {
+                      "data-vv-as": _vm.trans("Body"),
+                      autofocus: "",
+                      id: "editor",
+                      name: "body"
+                    },
+                    model: {
+                      value: _vm.dataset.body,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dataset, "body", $$v)
+                      },
+                      expression: "dataset.body"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { staticClass: "secondary", attrs: { type: "submit" } },
+                    [_vm._v(_vm._s(_vm.__("Create")))]
                   )
                 ],
                 1

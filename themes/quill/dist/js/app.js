@@ -2140,7 +2140,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({// app: 'app/app',
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
+    app: 'app/app'
   }))
 });
 
@@ -2185,8 +2186,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./src/store/index.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _components_Sidebar_config_sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Sidebar/config/sidebar */ "./src/components/Sidebar/config/sidebar.js");
+/* harmony import */ var _config_sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/config/sidebar */ "./src/config/sidebar.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2297,19 +2298,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Sidebar',
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
     sidebar: 'sidebar/sidebar',
-    app: 'app/app' // menus: 'sidebar/menus',
-
+    app: 'app/app'
   }), {
     menus: function menus() {
-      var page = this.$route;
-
-      _components_Sidebar_config_sidebar__WEBPACK_IMPORTED_MODULE_2__["default"].map(function (menu) {
-        menu.meta.active = page.name === 'course';
-      });
-
-      return _components_Sidebar_config_sidebar__WEBPACK_IMPORTED_MODULE_2__["default"];
+      // return this.sidebar.menus
+      return _config_sidebar__WEBPACK_IMPORTED_MODULE_1__["default"];
     },
     sidebarmodel: {
       set: function set(value) {
@@ -2322,30 +2317,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     }
   }),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])({
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])({
     toggle: 'sidebar/toggle',
     clip: 'sidebar/clip',
     update: 'app/update'
-  }), {
-    sidebarSetDefaultStateOnMounted: function sidebarSetDefaultStateOnMounted(value) {
-      switch (this.$root.$vuetify.breakpoint.name) {
-        case 'xs':
-        case 'sm':
-          return this.toggle({
-            model: false
-          });
-
-        case 'lg':
-        default:
-          this.toggle({
-            model: value
-          });
-          break;
-      }
-    }
-  }),
-  mounted: function mounted() {
-    this.sidebarSetDefaultStateOnMounted();
+  })),
+  mounted: function mounted() {//
   }
 });
 
@@ -26719,7 +26696,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-app",
-    { attrs: { toolbar: "", footer: "" } },
+    { attrs: { toolbar: "", footer: "", dark: _vm.app.dark } },
     [
       _c("sidebar"),
       _vm._v(" "),
@@ -26964,7 +26941,7 @@ var render = function() {
                                 attrs: { slot: "appendIcon", small: "" },
                                 slot: "appendIcon"
                               },
-                              [_vm._v("mdi mdi-chevron-down")]
+                              [_vm._v("keyboard_arrow_down")]
                             ),
                             _vm._v(" "),
                             _c(
@@ -26984,9 +26961,11 @@ var render = function() {
                                 _c(
                                   "v-list-tile-action",
                                   [
-                                    _c("v-icon", [
-                                      _vm._v(_vm._s(parent.meta.icon))
-                                    ])
+                                    _c(
+                                      "v-icon",
+                                      { staticClass: "subheading" },
+                                      [_vm._v(_vm._s(parent.meta.icon))]
+                                    )
                                   ],
                                   1
                                 ),
@@ -67137,31 +67116,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/components/Sidebar/config/sidebar.js":
-/*!**************************************************!*\
-  !*** ./src/components/Sidebar/config/sidebar.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var routes = [];
-
-var requireSidebar = __webpack_require__("./src/modules sync recursive config\\/sidebar\\.js$");
-
-requireSidebar.keys().forEach(function (route) {
-  var routeConfig = requireSidebar(route);
-  routeConfig.default.forEach(function (route) {
-    routes.push(route);
-  });
-});
-/* harmony default export */ __webpack_exports__["default"] = (routes.sort(function (a, b) {
-  return a.meta.sort - b.meta.sort;
-}));
-
-/***/ }),
-
 /***/ "./src/components/Sidebar/store/modules/sidebar.js":
 /*!*********************************************************!*\
   !*** ./src/components/Sidebar/store/modules/sidebar.js ***!
@@ -67177,20 +67131,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sidebar", function() { return sidebar; });
 /* harmony import */ var _config_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/config/app */ "./src/config/app.js");
-// import menus from '@/components/Sidebar/config/sidebar';
+/* harmony import */ var _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/mixins/localstorage */ "./src/mixins/localstorage.js");
+
 
 var state = function state() {
   return {
     sidebar: {
-      model: window.localStorage.getItem('sidebar.model') === 'true',
-      dark: window.localStorage.getItem('sidebar.dark', 'true') === 'true',
-      clipped: window.localStorage.getItem('sidebar.clipped') === 'true',
-      floating: window.localStorage.getItem('sidebar.floating') === 'true',
-      mini: window.localStorage.getItem('sidebar.mini') === 'true',
+      model: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.model') === 'true',
+      dark: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.dark', 'true') === 'true',
+      clipped: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.clipped') === 'true',
+      floating: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.floating') === 'true',
+      mini: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.mini') === 'true',
       title: _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].title,
       logo: _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].logo,
-      tagline: _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].tagline,
-      menus: [] // menus,
+      tagline: _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].tagline // menus: menus.children,
 
     }
   };
@@ -67198,9 +67152,6 @@ var state = function state() {
 var getters = {
   sidebar: function sidebar(state) {
     return state.sidebar;
-  },
-  menus: function menus(state) {
-    return state.sidebar.menus;
   }
 };
 var mutations = {
@@ -67212,20 +67163,21 @@ var mutations = {
   },
   'UPDATE': function UPDATE(state, payload) {
     state.sidebar = Object.assign({}, state.sidebar, payload);
-  },
-  'UPDATE_SIDEBAR': function UPDATE_SIDEBAR(state, payload) {
-    state.sidebar = Object.assign({}, state.sidebar, payload);
   }
 };
 var actions = {
   toggle: function toggle(_ref, payload) {
     var commit = _ref.commit;
-    window.localStorage.setItem('sidebar.model', payload.model);
+    _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage({
+      'sidebar.model': payload.model
+    });
     commit('TOGGLE', payload);
   },
   clip: function clip(_ref2, payload) {
     var commit = _ref2.commit;
-    window.localStorage.setItem('sidebar.clipped', payload.clipped);
+    _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage({
+      'sidebar.clipped': payload.clipped
+    });
     commit('CLIP', payload);
   },
   update: function update(_ref3, payload) {
@@ -67637,6 +67589,62 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/config/sidebar.js":
+/*!*******************************!*\
+  !*** ./src/config/sidebar.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var routes = [];
+
+var requireSidebar = __webpack_require__("./src/modules sync recursive config\\/sidebar\\.js$");
+
+requireSidebar.keys().forEach(function (route) {
+  var routeConfig = requireSidebar(route);
+  routeConfig.default.forEach(function (route) {
+    routes.push(route);
+  });
+});
+/* harmony default export */ __webpack_exports__["default"] = (routes.sort(function (a, b) {
+  return a.meta.sort - b.meta.sort;
+}));
+
+/***/ }),
+
+/***/ "./src/mixins/localstorage.js":
+/*!************************************!*\
+  !*** ./src/mixins/localstorage.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'localstorage',
+  methods: {
+    localstorage: function localstorage(key, value) {
+      // Check if `key` is object,
+      // then store the object on localstorage
+      if (_typeof(key) === 'object') {
+        return Object.keys(key).forEach(function (k) {
+          return window.localStorage.setItem(k, key[k]);
+        }); // else retrieve,
+        // if non retrieve, will default to `value`
+      } else {
+        return window.localStorage.getItem(key) !== null ? window.localStorage.getItem(key) : value;
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./src/modules sync recursive config\\/sidebar\\.js$":
 /*!***********************************************!*\
   !*** ./src/modules sync config\/sidebar\.js$ ***!
@@ -67865,7 +67873,7 @@ __webpack_require__.r(__webpack_exports__);
   path: '/admin/dashboard',
   name: 'dashboard.index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../Dashboard.vue */ "./src/modules/Dashboard/Dashboard.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(16), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../Dashboard.vue */ "./src/modules/Dashboard/Dashboard.vue"));
   },
   meta: {
     title: 'Dashboard',
@@ -68600,6 +68608,68 @@ requireRoute.keys().forEach(function (route) {
 
 /***/ }),
 
+/***/ "./src/store/app.js":
+/*!**************************!*\
+  !*** ./src/store/app.js ***!
+  \**************************/
+/*! exports provided: state, getters, mutations, actions, app */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "state", function() { return state; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getters", function() { return getters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutations", function() { return mutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "app", function() { return app; });
+/* harmony import */ var _config_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/config/app */ "./src/config/app.js");
+/* harmony import */ var _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/mixins/localstorage */ "./src/mixins/localstorage.js");
+
+
+var state = function state() {
+  return {
+    app: {
+      meta: _config_app__WEBPACK_IMPORTED_MODULE_0__["default"],
+      dark: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('app.dark', _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].dark) || _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].dark
+    }
+  };
+};
+var getters = {
+  app: function app(state) {
+    return state.app;
+  }
+};
+var mutations = {
+  'TOGGLE_DARK_THEME': function TOGGLE_DARK_THEME(state, payload) {
+    state.app.dark = payload.dark;
+  },
+  'UPDATE': function UPDATE(state, payload) {
+    state.app = Object.assign({}, state.app, payload);
+  }
+};
+var actions = {
+  theme: function theme(_ref, payload) {
+    var commit = _ref.commit;
+    _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage({
+      'app.dark': payload.dark
+    });
+    commit('TOGGLE_DARK_THEME', payload);
+  },
+  update: function update(_ref2, payload) {
+    var commit = _ref2.commit;
+    commit('UPDATE', payload);
+  }
+};
+var app = {
+  namespaced: true,
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+};
+
+/***/ }),
+
 /***/ "./src/store/components/components.js":
 /*!********************************************!*\
   !*** ./src/store/components/components.js ***!
@@ -68610,12 +68680,13 @@ requireRoute.keys().forEach(function (route) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modules", function() { return modules; });
-/* harmony import */ var _components_Breadcrumbs_store_modules_breadcrumbs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/Breadcrumbs/store/modules/breadcrumbs */ "./src/components/Breadcrumbs/store/modules/breadcrumbs.js");
-/* harmony import */ var _components_Sidebar_store_modules_sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/Sidebar/store/modules/sidebar */ "./src/components/Sidebar/store/modules/sidebar.js");
-/* harmony import */ var _components_Utilitybar_store_modules_utilitybar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Utilitybar/store/modules/utilitybar */ "./src/components/Utilitybar/store/modules/utilitybar.js");
-/* harmony import */ var _components_Toolbar_store_modules_toolbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Toolbar/store/modules/toolbar */ "./src/components/Toolbar/store/modules/toolbar.js");
-// import { app } from './app'
-// import { authentication } from './authentication'
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./src/store/app.js");
+/* harmony import */ var _components_Breadcrumbs_store_modules_breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/Breadcrumbs/store/modules/breadcrumbs */ "./src/components/Breadcrumbs/store/modules/breadcrumbs.js");
+/* harmony import */ var _components_Sidebar_store_modules_sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Sidebar/store/modules/sidebar */ "./src/components/Sidebar/store/modules/sidebar.js");
+/* harmony import */ var _components_Utilitybar_store_modules_utilitybar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Utilitybar/store/modules/utilitybar */ "./src/components/Utilitybar/store/modules/utilitybar.js");
+/* harmony import */ var _components_Toolbar_store_modules_toolbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/Toolbar/store/modules/toolbar */ "./src/components/Toolbar/store/modules/toolbar.js");
+ // import { authentication } from './authentication'
+
  // import { dialogbox } from '@/components/Dialog/store/modules/dialogbox'
 // import { progressbar } from '@/components/Progressbar/store/modules/progressbar'
 
@@ -68625,13 +68696,13 @@ __webpack_require__.r(__webpack_exports__);
 // import { mainmenu } from '@/components/Navigation/store/modules/mainmenu'
 
 var modules = {
-  // app,
+  app: _app__WEBPACK_IMPORTED_MODULE_0__["app"],
   // authentication,
-  breadcrumbs: _components_Breadcrumbs_store_modules_breadcrumbs__WEBPACK_IMPORTED_MODULE_0__["breadcrumbs"],
+  breadcrumbs: _components_Breadcrumbs_store_modules_breadcrumbs__WEBPACK_IMPORTED_MODULE_1__["breadcrumbs"],
   // dialogbox,
-  sidebar: _components_Sidebar_store_modules_sidebar__WEBPACK_IMPORTED_MODULE_1__["sidebar"],
-  toolbar: _components_Toolbar_store_modules_toolbar__WEBPACK_IMPORTED_MODULE_3__["toolbar"],
-  utilitybar: _components_Utilitybar_store_modules_utilitybar__WEBPACK_IMPORTED_MODULE_2__["utilitybar"] // footer,
+  sidebar: _components_Sidebar_store_modules_sidebar__WEBPACK_IMPORTED_MODULE_2__["sidebar"],
+  toolbar: _components_Toolbar_store_modules_toolbar__WEBPACK_IMPORTED_MODULE_4__["toolbar"],
+  utilitybar: _components_Utilitybar_store_modules_utilitybar__WEBPACK_IMPORTED_MODULE_3__["utilitybar"] // footer,
   // mainmenu,
   // progressbar,
 

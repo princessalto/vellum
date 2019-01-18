@@ -1,26 +1,24 @@
-// import menus from '@/components/Sidebar/config/sidebar';
 import app from '@/config/app'
+import VM from '@/mixins/localstorage'
 
 export const state = () => ({
   sidebar: {
-    model: window.localStorage.getItem('sidebar.model') === 'true',
-    dark: window.localStorage.getItem('sidebar.dark', 'true') === 'true',
+    model: VM.methods.localstorage('sidebar.model') === 'true',
+    dark: VM.methods.localstorage('sidebar.dark', 'true') === 'true',
 
-    clipped: window.localStorage.getItem('sidebar.clipped') === 'true',
-    floating: window.localStorage.getItem('sidebar.floating') === 'true',
-    mini: window.localStorage.getItem('sidebar.mini') === 'true',
+    clipped: VM.methods.localstorage('sidebar.clipped') === 'true',
+    floating: VM.methods.localstorage('sidebar.floating') === 'true',
+    mini: VM.methods.localstorage('sidebar.mini') === 'true',
 
     title: app.title,
     logo: app.logo,
     tagline: app.tagline,
-
-    menus: [], // menus,
+    // menus: menus.children,
   },
 })
 
 export const getters = {
   sidebar: state => state.sidebar,
-  menus: state => state.sidebar.menus,
 }
 
 export const mutations = {
@@ -35,24 +33,20 @@ export const mutations = {
   'UPDATE' (state, payload) {
     state.sidebar = Object.assign({}, state.sidebar, payload)
   },
-
-  'UPDATE_SIDEBAR' (state, payload) {
-    state.sidebar = Object.assign({}, state.sidebar, payload)
-  },
 }
 
 export const actions = {
-  toggle: ({ commit }, payload) => {
-    window.localStorage.setItem('sidebar.model', payload.model)
+  toggle: ({commit}, payload) => {
+    VM.methods.localstorage({'sidebar.model': payload.model})
     commit('TOGGLE', payload)
   },
 
-  clip: ({ commit }, payload) => {
-    window.localStorage.setItem('sidebar.clipped', payload.clipped)
+  clip: ({commit}, payload) => {
+    VM.methods.localstorage({'sidebar.clipped': payload.clipped})
     commit('CLIP', payload)
   },
 
-  update: ({ commit }, payload) => {
+  update: ({commit}, payload) => {
     commit('UPDATE', payload)
   },
 }
