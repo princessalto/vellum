@@ -6,18 +6,18 @@ export default [
       title: 'Appearance',
       icon: 'mdi-note-plus-outline',
       authenticatable: true,
-      sort: 5,
+      sort: 500,
     },
     children: [
       // Admin Appearance
       {
-        code: 'appearance.index',
-        name: 'appearance.index',
+        code: 'appearance.menus',
+        name: 'appearance.menus',
         meta: {
-          title: 'All Appearances',
+          title: 'Menus',
           icon: 'mdi-home',
           authenticatable: true,
-          sort: 5,
+          sort: 501,
         },
       },
     ],

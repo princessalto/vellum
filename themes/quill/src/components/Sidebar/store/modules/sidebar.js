@@ -4,7 +4,7 @@ import VM from '@/mixins/localstorage'
 export const state = () => ({
   sidebar: {
     model: VM.methods.localstorage('sidebar.model') === 'true',
-    dark: VM.methods.localstorage('sidebar.dark', 'true') === 'true',
+    dark: VM.methods.localstorage('app.dark', 'true') === 'true',
 
     clipped: VM.methods.localstorage('sidebar.clipped') === 'true',
     floating: VM.methods.localstorage('sidebar.floating') === 'true',
@@ -47,6 +47,7 @@ export const actions = {
   },
 
   update: ({commit}, payload) => {
+    VM.methods.localstorage({'sidebar.dark': payload.dark})
     commit('UPDATE', payload)
   },
 }

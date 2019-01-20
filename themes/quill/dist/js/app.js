@@ -67148,7 +67148,7 @@ var state = function state() {
   return {
     sidebar: {
       model: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.model') === 'true',
-      dark: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.dark', 'true') === 'true',
+      dark: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('app.dark', 'true') === 'true',
       clipped: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.clipped') === 'true',
       floating: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.floating') === 'true',
       mini: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('sidebar.mini') === 'true',
@@ -67192,6 +67192,9 @@ var actions = {
   },
   update: function update(_ref3, payload) {
     var commit = _ref3.commit;
+    _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage({
+      'sidebar.dark': payload.dark
+    });
     commit('UPDATE', payload);
   }
 };
@@ -67800,17 +67803,17 @@ __webpack_require__.r(__webpack_exports__);
     title: 'Appearance',
     icon: 'mdi-note-plus-outline',
     authenticatable: true,
-    sort: 5
+    sort: 500
   },
   children: [// Admin Appearance
   {
-    code: 'appearance.index',
-    name: 'appearance.index',
+    code: 'appearance.menus',
+    name: 'appearance.menus',
     meta: {
-      title: 'All Appearances',
+      title: 'Menus',
       icon: 'mdi-home',
       authenticatable: true,
-      sort: 5
+      sort: 501
     }
   }]
 }]);
@@ -67832,20 +67835,20 @@ __webpack_require__.r(__webpack_exports__);
     return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! @/App.vue */ "./src/App.vue"));
   },
   meta: {
-    title: 'Pages',
+    title: 'Appearance',
     sort: 6,
     authenticatable: true,
     icon: 'mdi-book-multiple-variant'
   },
   children: [{
-    path: '',
+    path: 'menus',
     props: true,
-    name: 'appearance.index',
+    name: 'appearance.menus',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/Appearance/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Index.vue */ "./src/modules/Appearance/submodules/Menu/Index.vue"));
     },
     meta: {
-      title: 'All Pages',
+      title: 'Menus',
       sort: 6,
       authenticatable: true,
       icon: 'mdi-book-multiple-variant'
@@ -68705,7 +68708,7 @@ var state = function state() {
   return {
     app: {
       meta: _config_app__WEBPACK_IMPORTED_MODULE_0__["default"],
-      dark: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('app.dark', _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].dark) || _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].dark
+      dark: _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage('app.dark', 'true') === 'true' || _config_app__WEBPACK_IMPORTED_MODULE_0__["default"].dark
     }
   };
 };
@@ -68732,6 +68735,9 @@ var actions = {
   },
   update: function update(_ref2, payload) {
     var commit = _ref2.commit;
+    _mixins_localstorage__WEBPACK_IMPORTED_MODULE_1__["default"].methods.localstorage({
+      'app.dark': payload.dark
+    });
     commit('UPDATE', payload);
   }
 };
@@ -68931,8 +68937,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/princess/Projects/vellum/themes/quill/src/app.js */"./src/app.js");
-module.exports = __webpack_require__(/*! /home/princess/Projects/vellum/themes/quill/src/stylus/main.styl */"./src/stylus/main.styl");
+__webpack_require__(/*! /home/princessalto/Projects/vellum/themes/quill/src/app.js */"./src/app.js");
+module.exports = __webpack_require__(/*! /home/princessalto/Projects/vellum/themes/quill/src/stylus/main.styl */"./src/stylus/main.styl");
 
 
 /***/ })

@@ -4,7 +4,7 @@ import VM from '@/mixins/localstorage'
 export const state = () => ({
   app: {
     meta: config,
-    dark: VM.methods.localstorage('app.dark', config.dark) || config.dark,
+    dark: VM.methods.localstorage('app.dark', 'true') === 'true' || config.dark,
   },
 })
 
@@ -29,6 +29,7 @@ export const actions = {
   },
 
   update: ({commit}, payload) => {
+    VM.methods.localstorage({'app.dark': payload.dark})
     commit('UPDATE', payload)
   },
 }

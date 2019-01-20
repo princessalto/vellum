@@ -56,6 +56,31 @@
             </template>
           </carousel>
         </v-card>
+
+        <v-snackbar
+          :color="app.dark ? 'white' : 'dark'"
+          :timeout="course.snackbarTimeout"
+          bottom
+          right
+          v-model="course.snackbar"
+          >
+          <span
+            class="subheading"
+            :class="app.dark ? 'black--text' : 'white--text'"
+            >
+            {{ trans('You have already finished this part of the lesson') }}
+          </span>
+          <v-btn
+            @click="course.snackbar = false"
+            icon
+            >
+            <v-icon
+              :class="app.dark ? 'black--text' : 'white--text'"
+              >
+              close
+            </v-icon>
+          </v-btn>
+        </v-snackbar>
       </v-flex>
     </v-layout>
   </v-container>
@@ -98,6 +123,10 @@ export default {
 
    data () {
     return {
+      course: {
+        snackbar: true,
+        snackbarTimeout: 0,
+      },
       carousel: {
         items: [
           {

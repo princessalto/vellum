@@ -23,5 +23,5 @@ Route::middleware(['breadcrumbs:\Page\Models\Page'])->group(function () {
     Route::softDeletes('pages', 'PageController');
 
     # Main resource
-    // Route::resource('pages', 'PageController');
+    Route::resource('pages', 'PageController');
 });

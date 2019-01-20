@@ -162,6 +162,8 @@ class ModuleServiceProvider extends ServiceProvider
     {
         $basename = basename($module);
 
+        $theme = get_active_theme();
+
         // If module is disabled, skip.
         // TODO: check in database.
         if (in_array($basename, config('modules.disabled'))) {
@@ -190,6 +192,17 @@ class ModuleServiceProvider extends ServiceProvider
             ], function () use ($module) {
                 include_file("$module/routes", "api.php");
             });
+        }
+
+        /**
+         * Before loading the admin and web routes:
+         *
+         * If theme is single page application,
+         * do not load admin and web modules.
+         *
+         */
+        if (isset($theme->all->spa)) {
+            return;
         }
 
         // Admin routes

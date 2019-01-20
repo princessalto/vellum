@@ -3,19 +3,19 @@ export default [
     path: '/admin/appearance',
     component: () => import('@/App.vue'),
     meta: {
-      title: 'Pages',
+      title: 'Appearance',
       sort: 6,
       authenticatable: true,
       icon: 'mdi-book-multiple-variant',
     },
     children: [
       {
-        path: '',
+        path: 'menus',
         props: true,
-        name: 'appearance.index',
-        component: () => import('../Index.vue'),
+        name: 'appearance.menus',
+        component: () => import('../submodules/Menu/Index.vue'),
         meta: {
-          title: 'All Pages',
+          title: 'Menus',
           sort: 6,
           authenticatable: true,
           icon: 'mdi-book-multiple-variant',

@@ -78,6 +78,7 @@ if (! function_exists('get_themes')) {
             $themes[$code]->colors = $json->colors ?? [];
             $themes[$code]->active = settings('active_theme', 'default') === $code;
             $themes[$code]->variant = settings('active_theme_variant', 'light');
+            $themes[$code]->all = $json;
         }
 
         $themes['active'] = isset($themes[settings('active_theme', 'default')])

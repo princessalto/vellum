@@ -84,6 +84,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -107,6 +132,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   })),
   data: function data() {
     return {
+      course: {
+        snackbar: true,
+        snackbarTimeout: 0
+      },
       carousel: {
         items: [{
           thumbnail: '//cdn.dribbble.com/users/2559/screenshots/3145041/illushome_1x.png',
@@ -376,6 +405,66 @@ var render = function() {
                       })
                     ],
                     2
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-snackbar",
+                {
+                  attrs: {
+                    color: _vm.app.dark ? "white" : "dark",
+                    timeout: _vm.course.snackbarTimeout,
+                    bottom: "",
+                    right: ""
+                  },
+                  model: {
+                    value: _vm.course.snackbar,
+                    callback: function($$v) {
+                      _vm.$set(_vm.course, "snackbar", $$v)
+                    },
+                    expression: "course.snackbar"
+                  }
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "subheading",
+                      class: _vm.app.dark ? "black--text" : "white--text"
+                    },
+                    [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(
+                            _vm.trans(
+                              "You have already finished this part of the lesson"
+                            )
+                          ) +
+                          "\n        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { icon: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.course.snackbar = false
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "v-icon",
+                        { class: _vm.app.dark ? "black--text" : "white--text" },
+                        [_vm._v("\n            close\n          ")]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
