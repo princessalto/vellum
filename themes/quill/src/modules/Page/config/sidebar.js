@@ -4,7 +4,7 @@ export default [
     name: 'pages',
     meta: {
       title: 'Page',
-      icon: 'mdi-note-plus-outline',
+      icon: 'mdi-note-text',
       authenticatable: true,
       sort: 5,
     },

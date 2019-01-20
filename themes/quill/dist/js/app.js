@@ -67801,11 +67801,11 @@ __webpack_require__.r(__webpack_exports__);
   name: 'appearance',
   meta: {
     title: 'Appearance',
-    icon: 'mdi-note-plus-outline',
+    icon: 'color_lens',
     authenticatable: true,
     sort: 500
   },
-  children: [// Admin Appearance
+  children: [// Menu Appearance
   {
     code: 'appearance.menus',
     name: 'appearance.menus',
@@ -67845,7 +67845,22 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'appearance.menus',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Index.vue */ "./src/modules/Appearance/submodules/Menu/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Index.vue */ "./src/modules/Appearance/submodules/Menu/Index.vue"));
+    },
+    meta: {
+      title: 'Menus',
+      sort: 6,
+      external: true,
+      excludeFromRoot: true,
+      authenticatable: true,
+      icon: 'mdi-book-multiple-variant'
+    }
+  }, {
+    path: 'edit',
+    props: true,
+    name: 'appearance.edit',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Edit.vue */ "./src/modules/Appearance/submodules/Menu/Edit.vue"));
     },
     meta: {
       title: 'Menus',
@@ -67886,7 +67901,7 @@ __webpack_require__.r(__webpack_exports__);
     path: '/login',
     name: 'login.show',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../Signin.vue */ "./src/modules/Auth/Signin.vue"));
+      return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../Signin.vue */ "./src/modules/Auth/Signin.vue"));
     },
     meta: {
       title: 'Sign In',
@@ -67959,7 +67974,7 @@ __webpack_require__.r(__webpack_exports__);
   path: '/admin/dashboard',
   name: 'dashboard.index',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(16), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../Dashboard.vue */ "./src/modules/Dashboard/Dashboard.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(17), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ../Dashboard.vue */ "./src/modules/Dashboard/Dashboard.vue"));
   },
   meta: {
     title: 'Dashboard',
@@ -67994,7 +68009,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'pages',
   meta: {
     title: 'Page',
-    icon: 'mdi-note-plus-outline',
+    icon: 'mdi-note-text',
     authenticatable: true,
     sort: 5
   },
@@ -68066,7 +68081,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'pages.index',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/Page/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/Page/Index.vue"));
     },
     meta: {
       title: 'All Pages',
@@ -68079,7 +68094,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'pages.create',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../Create.vue */ "./src/modules/Page/Create.vue"));
+      return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../Create.vue */ "./src/modules/Page/Create.vue"));
     },
     meta: {
       title: 'Create Page',
@@ -68091,7 +68106,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'pages.show',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../Show.vue */ "./src/modules/Page/Show.vue"));
+      return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../Show.vue */ "./src/modules/Page/Show.vue"));
     },
     meta: {
       title: 'Show Page',
@@ -68106,7 +68121,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'pages.edit',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../Edit.vue */ "./src/modules/Page/Edit.vue"));
+      return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../Edit.vue */ "./src/modules/Page/Edit.vue"));
     },
     meta: {
       title: 'Edit Page',
@@ -68121,7 +68136,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'pages.archived',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../Archived.vue */ "./src/modules/Page/Archived.vue"));
+      return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../Archived.vue */ "./src/modules/Page/Archived.vue"));
     },
     meta: {
       title: 'Archived Page',
@@ -68147,7 +68162,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'users',
   meta: {
     title: 'User',
-    icon: 'mdi-home',
+    icon: 'mdi-account-settings',
     authenticatable: true,
     sort: 5
   },
@@ -68201,7 +68216,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'users.index',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/User/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/User/Index.vue"));
     },
     meta: {
       title: 'All Users',
@@ -68214,7 +68229,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'users.create',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../Create.vue */ "./src/modules/User/Create.vue"));
+      return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../Create.vue */ "./src/modules/User/Create.vue"));
     },
     meta: {
       title: 'Create User',
@@ -68226,7 +68241,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'users.show',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../Show.vue */ "./src/modules/User/Show.vue"));
+      return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ../Show.vue */ "./src/modules/User/Show.vue"));
     },
     meta: {
       title: 'Show User',
@@ -68238,7 +68253,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'users.edit',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../Edit.vue */ "./src/modules/User/Edit.vue"));
+      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../Edit.vue */ "./src/modules/User/Edit.vue"));
     },
     meta: {
       title: 'Edit User',
@@ -68250,7 +68265,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'users.archived',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../Archived.vue */ "./src/modules/User/Archived.vue"));
+      return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../Archived.vue */ "./src/modules/User/Archived.vue"));
     },
     meta: {
       title: 'Archived User',
@@ -68348,7 +68363,7 @@ __webpack_require__.r(__webpack_exports__);
     path: '/',
     name: 'courses.index',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/Yggdrasil/Course/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/Yggdrasil/Course/Index.vue"));
     },
     meta: {
       title: 'Courses',
@@ -68361,7 +68376,7 @@ __webpack_require__.r(__webpack_exports__);
     path: '/admin/courses/create',
     name: 'courses.create',
     component: function component() {
-      return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ../Create.vue */ "./src/modules/Yggdrasil/Course/Create.vue"));
+      return Promise.all(/*! import() */[__webpack_require__.e(16), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ../Create.vue */ "./src/modules/Yggdrasil/Course/Create.vue"));
     },
     meta: {
       title: 'New Courses',
@@ -68373,7 +68388,7 @@ __webpack_require__.r(__webpack_exports__);
     path: '/admin/courses/archived',
     name: 'courses.archived',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../Trashed.vue */ "./src/modules/Yggdrasil/Course/Trashed.vue"));
+      return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ../Trashed.vue */ "./src/modules/Yggdrasil/Course/Trashed.vue"));
     },
     meta: {
       title: 'Archived Courses',

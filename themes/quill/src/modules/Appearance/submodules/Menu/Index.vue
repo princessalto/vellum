@@ -2,15 +2,19 @@
   <v-container fluid grid-list-lg>
     <v-layout row wrap>
       <template
-        v-for="(item, i) in resource.items"
+        v-for="(item, i) in resources.items"
         >
-        <v-flex  :key= "i" md4 sm6 xs12>
-          <v-card hover>
+        <v-flex :key= "i" md4 sm6 xs12>
+          <v-card
+            hover
+            to=""
+            >
             <v-list two-line>
               <v-list-tile>
                 <v-list-tile-action>
                   <v-list-tile-avatar dark :color="item.iconBackground">
                     <v-icon
+                      size="18"
                       :color="item.iconColor"
                       v-html="item.icon"
                       >
@@ -20,10 +24,10 @@
                 <v-list-tile-content>
                   <v-list-tile-title
                     class="font-weight-bold"
-                    v-html="item.title"
+                    v-html="item.name"
                     >
                   </v-list-tile-title>
-                  <v-list-tile-sub-title v-html="item.subTitle">
+                  <v-list-tile-sub-title v-html="item.description">
                   </v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
@@ -33,7 +37,9 @@
                 {{ __('Application link') }}
               </small>
               <v-spacer></v-spacer>
-              <v-icon color="grey--text text--lighten-3">mdi-call-made</v-icon>
+              <v-icon color="grey--text text--lighten-3">
+                mdi-call-made
+              </v-icon>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -49,26 +55,19 @@ export default {
   store,
   name: 'Index',
 
+  mounted () {
+    axios.get('/api/v1/menus/all')
+      .then(response => {
+        this.resources.items = response.data
+        // console.log(response)
+      })
+  },
+
   data () {
     return {
-      resource: {
-        items: [
-          {
-            iconBackground: 'blue lighten-5',
-            iconColor: 'blue',
-            icon: 'mdi-menu',
-            title: 'Main Menu',
-            subTitle: 'The main menu of the site.'
-          },
-          {
-            iconBackground: 'purple lighten-5',
-            iconColor: 'purple',
-            icon: 'public',
-            title: 'Social Menu',
-            subTitle: 'Social menus are usually located on the footer or at the end of blog postsSocial menus are usually located on the footer or at the end of blog posts'
-          }
-        ]
-      }
+      resources: {
+        items: []
+      },
     }
   }
 }

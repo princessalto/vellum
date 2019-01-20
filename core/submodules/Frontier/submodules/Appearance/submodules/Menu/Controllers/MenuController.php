@@ -12,7 +12,8 @@ use Page\Models\Page;
 
 class MenuController extends AdminController
 {
-    use Resources\MenuResourceAdminTrait;
+    use Resources\MenuResourceAdminTrait,
+        Resources\MenuResourceApiTrait;
 
     /**
      * Inject the resource model to the repository instance.

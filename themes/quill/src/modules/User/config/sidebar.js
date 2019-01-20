@@ -4,7 +4,7 @@ export default [
     name: 'users',
     meta: {
       title: 'User',
-      icon: 'mdi-home',
+      icon: 'mdi-account-settings',
       authenticatable: true,
       sort: 5,
     },

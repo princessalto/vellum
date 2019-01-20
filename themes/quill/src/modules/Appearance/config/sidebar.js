@@ -4,12 +4,12 @@ export default [
     name: 'appearance',
     meta: {
       title: 'Appearance',
-      icon: 'mdi-note-plus-outline',
+      icon: 'color_lens',
       authenticatable: true,
       sort: 500,
     },
     children: [
-      // Admin Appearance
+      // Menu Appearance
       {
         code: 'appearance.menus',
         name: 'appearance.menus',
