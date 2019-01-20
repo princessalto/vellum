@@ -62,12 +62,12 @@
                     flat
                     max-width="400"
                     >
-                    <!-- <v-card-text>
+                    <v-card-text>
                       <h3 class="title mb-3">
                         {{ selected.title }}
                       </h3>
                       <p class="mb-3">{{ selected.body }}</p>
-                    </v-card-text> -->
+                    </v-card-text>
                     <v-card flat class="card--emptystate mb-3 text-xs-center grey lighten-4">
                       <v-card-text>
                         <h3 class="subheading font-weight-normal grey--text">{{ __('Upload Interactive Content') }}</h3>
@@ -127,24 +127,6 @@ export default {
 
   data () {
     return {
-      courses: {
-        items: [
-          [
-            {
-            "userId": 1,
-            "id": 1,
-            "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-            "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-            },
-            {
-            "userId": 1,
-            "id": 2,
-            "title": "qui est esse",
-            "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-            },
-          ]
-        ]
-      },
       active: [],
       avatar: null,
       open: ['Chapter 1'],
@@ -180,7 +162,7 @@ export default {
       // you've made optimizations! :)
       // await pause(400)
 
-      return fetch(this.courses.items)
+      return fetch('https://jsonplaceholder.typicode.com/posts')
         .then(res => res.json())
         .then(json => (item.children.push(...json)))
         .catch(err => console.warn(err))
