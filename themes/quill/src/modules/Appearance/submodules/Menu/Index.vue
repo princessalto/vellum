@@ -7,7 +7,13 @@
         <v-flex :key= "i" md4 sm6 xs12>
           <v-card
             hover
-            to=""
+            :to="{
+              name: 'menus.edit',
+              params: {
+                location: item.location,
+                meta: { item: item }
+              },
+            }"
             >
             <v-list two-line>
               <v-list-tile>

@@ -89,7 +89,10 @@ export default {
       axios.post('/api/v1/pages', this.resource + '/update')
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.push({name: 'pages'})
+          this.$router.push(
+            { name: 'pages.edit' },
+            { params: { code: code }}
+          )
         })
     },
   },

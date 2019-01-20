@@ -152,6 +152,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: 'Create',
   data: function data() {
     return {
+      courses: {
+        items: [[{
+          "userId": 1,
+          "id": 1,
+          "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+          "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        }, {
+          "userId": 1,
+          "id": 2,
+          "title": "qui est esse",
+          "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+        }]]
+      },
       active: [],
       avatar: null,
       open: ['Chapter 1'],
@@ -185,7 +198,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                return _context.abrupt("return", fetch('https://jsonplaceholder.typicode.com/posts').then(function (res) {
+                return _context.abrupt("return", fetch(this.courses.items).then(function (res) {
                   return res.json();
                 }).then(function (json) {
                   var _item$children;

@@ -98,7 +98,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this2.resource, 'data');
 
         _this2.$router.push({
-          name: 'pages'
+          name: 'pages.edit'
+        }, {
+          params: {
+            code: code
+          }
         });
       });
     }

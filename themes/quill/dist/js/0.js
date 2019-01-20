@@ -60,6 +60,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -113,7 +119,18 @@ var render = function() {
                 [
                   _c(
                     "v-card",
-                    { attrs: { hover: "", to: "" } },
+                    {
+                      attrs: {
+                        hover: "",
+                        to: {
+                          name: "menus.edit",
+                          params: {
+                            location: item.location,
+                            meta: { item: item }
+                          }
+                        }
+                      }
+                    },
                     [
                       _c(
                         "v-list",
