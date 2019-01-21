@@ -39,11 +39,15 @@
                         <span v-html="trans(props.item.title)"></span>
                       </v-tooltip>
                     </td> -->
-                    <td v-html="props.item.fullname"></td>
+                    <td>
+                      <v-avatar size="30" class="mx-3">
+                        <img :src="props.item.photo" alt="">
+                      </v-avatar>
+                      <span v-html="props.item.fullname"></span>
+                    </td>
                     <td v-html="props.item.email"></td>
-                    <td v-html="props.item.role"></td>
+                    <td v-html="props.item.displayrole"></td>
                     <td v-html="props.item.created"></td>
-                    <td v-html="props.item.modified"></td>
                     <td class="layout mx-0 justify-center">
                       <v-tooltip bottom>
                         <v-btn
@@ -171,7 +175,6 @@ export default {
           { text: 'Email', align: 'left', value: 'user_id' },
           { text: 'Role', align: 'left', value: 'category_at' },
           { text: 'Created', align: 'left', value: 'created_at' },
-          { text: 'Modified', align: 'left', value: 'updated_at' },
           { text: 'Actions', align: 'center', sortable: false },
         ],
       },

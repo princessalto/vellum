@@ -133,6 +133,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
  // import axios from 'axios'
 
 
@@ -195,10 +199,6 @@ __webpack_require__.r(__webpack_exports__);
           text: 'Created',
           align: 'left',
           value: 'created_at'
-        }, {
-          text: 'Modified',
-          align: 'left',
-          value: 'updated_at'
         }, {
           text: 'Actions',
           align: 'center',
@@ -406,13 +406,35 @@ var render = function() {
                                             }
                                           }),
                                           _vm._v(" "),
-                                          _c("td", {
-                                            domProps: {
-                                              innerHTML: _vm._s(
-                                                props.item.fullname
-                                              )
-                                            }
-                                          }),
+                                          _c(
+                                            "td",
+                                            [
+                                              _c(
+                                                "v-avatar",
+                                                {
+                                                  staticClass: "mx-3",
+                                                  attrs: { size: "30" }
+                                                },
+                                                [
+                                                  _c("img", {
+                                                    attrs: {
+                                                      src: props.item.photo,
+                                                      alt: ""
+                                                    }
+                                                  })
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("span", {
+                                                domProps: {
+                                                  innerHTML: _vm._s(
+                                                    props.item.fullname
+                                                  )
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
                                           _vm._v(" "),
                                           _c("td", {
                                             domProps: {
@@ -424,14 +446,8 @@ var render = function() {
                                           _vm._v(" "),
                                           _c("td", {
                                             domProps: {
-                                              innerHTML: _vm._s(props.item.role)
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("td", {
-                                            domProps: {
                                               innerHTML: _vm._s(
-                                                props.item.created
+                                                props.item.displayrole
                                               )
                                             }
                                           }),
@@ -439,7 +455,7 @@ var render = function() {
                                           _c("td", {
                                             domProps: {
                                               innerHTML: _vm._s(
-                                                props.item.modified
+                                                props.item.created
                                               )
                                             }
                                           }),

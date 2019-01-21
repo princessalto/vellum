@@ -83,6 +83,10 @@ trait UserResourceApiTrait
 
         $users = $take ? $resources->paginate($take) : $resources->paginate(User::count());
 
+        $users->each(function ($item) {
+            return $item->append(['displayrole', 'created', 'modified']);
+        });
+
         return UserResource::collection($users);
     }
 
