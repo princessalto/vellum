@@ -55,7 +55,6 @@
           <a role="button" href="{{ route('documentations.themes', $resource->code) }}#top" class="btn btn-link btn-sm"><i class="mdi mdi-image-search">&nbsp;</i>{{ __('Details...') }}</a>
         </div>
       </div>
-
     </div>
   </div>
 </div>

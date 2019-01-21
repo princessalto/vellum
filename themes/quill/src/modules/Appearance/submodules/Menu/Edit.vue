@@ -22,7 +22,13 @@
       <v-flex sm8 xs12>
         <v-card>
           <v-card-text>
+            <v-list dense>
+              <v-list-tile>
+                <v-list-tile-title>
 
+                </v-list-tile-title>
+              </v-list-tile>
+            </v-list>
           </v-card-text>
         </v-card>
       </v-flex>

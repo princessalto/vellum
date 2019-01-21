@@ -15,11 +15,22 @@ export default [
         name: 'appearance.menus',
         meta: {
           title: 'Menus',
-          icon: 'mdi-home',
+          icon: 'home',
           authenticatable: true,
           sort: 501,
         },
       },
+      // Theme Appearance
+      {
+        code: 'appearance.themes',
+        name: 'appearance.themes',
+        meta: {
+          title: 'Themes',
+          icon: 'mdi-palette',
+          authenticatable: true,
+          sort: 502,
+        }
+      }
     ],
   }
 ]

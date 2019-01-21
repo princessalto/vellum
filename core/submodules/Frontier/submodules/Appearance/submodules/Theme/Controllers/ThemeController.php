@@ -12,7 +12,8 @@ use Theme\Requests\ThemeRequest;
 
 class ThemeController extends AdminController
 {
-    use Resources\ThemeResourceAdminTrait;
+    use Resources\ThemeResourceAdminTrait,
+        Resources\ThemeResourceApiTrait;
 
     /**
      * Store a newly created resource in storage.

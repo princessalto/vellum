@@ -12,7 +12,7 @@
           @foreach ($resources as $resource)
             @include('Theme::widgets.themecard', compact('resource'))
           @endforeach
-
+          {{-- {{ dd(\Theme\Models\Theme::themes()) }} --}}
         </div>
       </div>
     </div>

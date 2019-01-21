@@ -9,6 +9,7 @@ export default [
       icon: 'mdi-book-multiple-variant',
     },
     children: [
+      //Menus
       {
         path: 'menus',
         props: true,
@@ -35,6 +36,13 @@ export default [
           icon: 'mdi-book-multiple-variant',
         },
       },
+      // Themes
+      {
+        path: 'themes',
+        props: true,
+        name: 'appearance.themes',
+        component: () => import('../submodules/Theme/Index.vue')
+      }
     ],
   }
 ]
