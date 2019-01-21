@@ -3,25 +3,34 @@
     <template v-if="dataset.loaded">
       <toolbar-menu :items="toolbar"></toolbar-menu>
       <v-container fluid grid-list-lg>
-        <v-layout row column>
+        <v-layout row wrap>
           <v-flex xs12>
             <v-card flat class="mb-3">
               <v-data-table
-                v-model="resources.selected"
                 :headers="resources.headers"
                 :items="resources.items"
                 :pagination.sync="resources.pagination"
-                select-all
-                item-key="title"
                 class="elevation-1"
+                item-key="title"
+                select-all
+                v-model="resources.selected"
                 >
-                <template slot="headerCell" slot-scope="props">
+                <template
+                  slot="headerCell"
+                  slot-scope="props"
+                  >
                   <span>
                     {{ trans(props.header.text) }}
                   </span>
                 </template>
-                <template slot="items" slot-scope="props">
-                  <tr :active="props.selected" @click="props.selected = !props.selected">
+                <template
+                  slot="items"
+                  slot-scope="props"
+                  >
+                  <tr
+                    :active="props.selected"
+                    @click="props.selected = !props.selected"
+                    >
                     <td>
                       <v-checkbox
                         :input-value="props.selected"
@@ -41,8 +50,8 @@
                     </td>
                     <td v-html="props.item.code"></td>
                     <td v-html="props.item.author"></td>
-                    <td v-html="props.item.created_at"></td>
-                    <td v-html="props.item.updated_at"></td>
+                    <td v-html="props.item.created"></td>
+                    <td v-html="props.item.modified"></td>
                     <td class="layout mx-0 justify-center">
                       <v-tooltip bottom>
                         <v-btn
@@ -104,6 +113,10 @@
                 </template>
               </v-data-table>
             </v-card>
+
+            <!-- <v-card clas="mb-3">
+              <data-table :items="resources"></data-table>
+            </v-card> -->
           </v-flex>
         </v-layout>
       </v-container>
@@ -131,13 +144,6 @@ export default {
     EmptyState
   },
 
-  mounted () {
-    axios.get('/api/v1/pages/all')
-      .then(response => {
-        this.resources.items = response.data.data
-      })
-  },
-
   data () {
     return {
       dataset: {
@@ -149,7 +155,8 @@ export default {
         },
       },
       toolbar: {
-        title: 'All Announcements',
+        title: 'All Pages',
+        color: '',
         listGridView: false,
         createBtn: {
           name: 'pages.create',
@@ -175,6 +182,14 @@ export default {
         ],
       },
     }
+  },
+
+  mounted () {
+    axios.get('/api/v1/pages/all')
+      .then(response => {
+        this.resources.items = response.data.data
+        console.log(response)
+      })
   },
 }
 </script>

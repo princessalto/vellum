@@ -6,6 +6,7 @@ import { breadcrumbs } from '@/components/Breadcrumbs/store/modules/breadcrumbs'
 import { sidebar } from '@/components/Sidebar/store/modules/sidebar'
 import { utilitybar } from '@/components/Utilitybar/store/modules/utilitybar'
 import { toolbar } from '@/components/Toolbar/store/modules/toolbar'
+import { datatable } from '@/components/DataTable/store/modules/datatable'
 // import { footer } from '@/components/Footer/store/modules/footer'
 // import { mainmenu } from '@/components/Navigation/store/modules/mainmenu'
 
@@ -17,6 +18,7 @@ export const modules = {
   sidebar,
   toolbar,
   utilitybar,
+  datatable,
   // footer,
   // mainmenu,
   // progressbar,

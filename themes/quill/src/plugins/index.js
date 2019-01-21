@@ -2,6 +2,7 @@ import './vue/vue.js';
 import './vuetify/vuetify.js';
 import './mdi/fonts.js';
 import './axios/axios.js';
+// import './ckeditor/ckeditor.js';
 
 // const plugins = [];
 // const requirePlugin = require.context(

@@ -8,7 +8,7 @@
           @submit.prevent="updateData"
           >
           <v-text-field
-           :data-vv-as="trans('Title')"
+            :data-vv-as="trans('Title')"
             :error-messages="errors.collect('title')"
             v-validate="'required'"
             box
@@ -38,16 +38,6 @@
             :value="resource.body"
           ></v-textarea>
 
-          <!-- ck -->
-          <div
-            :data-vv-as="trans('Body')"
-            autofocus
-            id="editor"
-            name="body"
-            :value="resource.body"
-            >
-          </div>
-
           <!-- button -->
           <v-btn class="secondary" type="submit">{{ __('Create') }}</v-btn>
         </v-form>
@@ -70,7 +60,10 @@ export default {
 
   data () {
     return {
-      resource: {}
+      resource: {
+        title: this.title,
+        code: this.code
+      }
     }
   },
 
@@ -86,13 +79,10 @@ export default {
     },
 
     updateData () {
-      axios.post('/api/v1/pages', this.resource + '/update')
-        .then((response) => {
-          console.log(this.resource, 'data')
-          this.$router.push(
-            { name: 'pages.edit' },
-            { params: { code: code }}
-          )
+      axios.get('/api/v1/pages/update' + this.resource)
+        .then(response => {
+          this.resource = response.data.data
+          console.log(response, 'data')
         })
     },
   },

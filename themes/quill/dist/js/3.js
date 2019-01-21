@@ -13,6 +13,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_nestable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-nestable */ "./node_modules/vue-nestable/dist/vue-nestable.js");
+/* harmony import */ var vue_nestable__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_nestable__WEBPACK_IMPORTED_MODULE_3__);
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -109,6 +111,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -125,13 +156,90 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: 'Dashboard',
   components: {
     Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Carousel"],
-    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Slide"]
+    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Slide"],
+    VueNestable: vue_nestable__WEBPACK_IMPORTED_MODULE_3__["VueNestable"],
+    VueNestableHandle: vue_nestable__WEBPACK_IMPORTED_MODULE_3__["VueNestableHandle"]
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
     app: 'app/app'
   })),
   data: function data() {
     return {
+      test: {
+        timestamp: false,
+        slug: false,
+        author: false,
+        created: false,
+        modified: false,
+        selected: [],
+        bulkDestroy: false,
+        selectAll: true,
+        search: '',
+        cardLink: '/admin/courses/show',
+        chip: true,
+        hover: true,
+        lg3: false,
+        showMimetype: false,
+        showToolbar: false,
+        headers: [{
+          text: 'ID',
+          value: 'id'
+        }, {
+          text: 'Featured',
+          value: 'thumbnail'
+        }, {
+          text: 'Title',
+          value: 'title'
+        }, {
+          text: 'Category',
+          value: 'category'
+        }, {
+          text: 'Part',
+          value: 'part'
+        }, {
+          text: 'Status',
+          value: 'status'
+        }, {
+          text: 'Actions',
+          value: 'actions',
+          sortable: false,
+          align: 'center'
+        }],
+        items: [{
+          id: '1',
+          title: 'Develop Personal Effectiveness at Operations Level',
+          thumbnail: '//preview.ibb.co/cMCYYz/card_Media.png',
+          category: 'DPE OPS',
+          timestamp: '2 hours ago',
+          description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+          part: '6',
+          status: 'enrolled'
+        }, {
+          id: '2',
+          title: 'Solve Problems and Make Decisions at Supervisory Level',
+          thumbnail: '//cdn.dribbble.com/users/904433/screenshots/2994633/animation_fin.gif',
+          category: 'DPE OPS',
+          timestamp: '2 hours ago',
+          description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+          part: '6'
+        }, {
+          id: '3',
+          title: 'Communicate and Relate Effectively at the Workplace at Operations Level',
+          thumbnail: '//i.pinimg.com/564x/74/2b/8e/742b8e6e87ef56e698b9c8bc4e930dae.jpg',
+          category: 'DPE OPS',
+          timestamp: '2 hours ago',
+          description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+          part: '6'
+        }, {
+          id: '4',
+          title: 'Develop Personal Effectiveness at Supervisory Level',
+          thumbnail: '//cdn.dribbble.com/users/2559/screenshots/3145041/illushome_1x.png',
+          category: 'DPE OPS',
+          timestamp: '2 hours ago',
+          description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+          part: '6'
+        }]
+      },
       course: {
         snackbar: true,
         snackbarTimeout: 0
@@ -156,7 +264,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           link: 'https://www.medium.com/',
           category: 'PSDM SUP'
         }]
-      }
+      },
+      nestableItems: [{
+        id: 0,
+        text: 'Andy'
+      }, {
+        id: 1,
+        text: 'Harry',
+        children: [{
+          id: 2,
+          text: 'David'
+        }]
+      }, {
+        id: 3,
+        text: 'Lisa'
+      }]
     };
   }
 });
@@ -241,7 +363,7 @@ var render = function() {
             [
               _c(
                 "v-card",
-                { attrs: { hover: "" } },
+                { staticClass: "mb-3", attrs: { hover: "" } },
                 [
                   _c(
                     "carousel",
@@ -281,7 +403,7 @@ var render = function() {
                                         "p",
                                         {
                                           staticClass:
-                                            "body-2 mb-2 primary--text"
+                                            "caption mb-2 primary--text"
                                         },
                                         [
                                           _c("strong", {
@@ -300,7 +422,7 @@ var render = function() {
                                         [
                                           _c("h3", {
                                             staticClass:
-                                              "title mb-2 title__text--ellipsis",
+                                              "subheading font-weight-bold mb-2 title__text--ellipsis",
                                             attrs: { slot: "activator" },
                                             domProps: {
                                               innerHTML: _vm._s(
@@ -411,58 +533,74 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "v-snackbar",
-                {
-                  attrs: {
-                    color: _vm.app.dark ? "white" : "dark",
-                    timeout: _vm.course.snackbarTimeout,
-                    bottom: "",
-                    right: ""
-                  },
-                  model: {
-                    value: _vm.course.snackbar,
-                    callback: function($$v) {
-                      _vm.$set(_vm.course, "snackbar", $$v)
-                    },
-                    expression: "course.snackbar"
-                  }
-                },
+                "v-card",
+                { staticClass: "mb-3" },
                 [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "subheading",
-                      class: _vm.app.dark ? "black--text" : "white--text"
-                    },
-                    [
-                      _vm._v(
-                        "\n          " +
-                          _vm._s(
-                            _vm.trans(
-                              "You have already finished this part of the lesson"
-                            )
-                          ) +
-                          "\n        "
-                      )
-                    ]
-                  ),
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(_vm.__("Draggable Items")) +
+                        "\n        "
+                    )
+                  ]),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      attrs: { icon: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.course.snackbar = false
-                        }
-                      }
-                    },
+                    "v-card-text",
                     [
-                      _c(
-                        "v-icon",
-                        { class: _vm.app.dark ? "black--text" : "white--text" },
-                        [_vm._v("\n            close\n          ")]
-                      )
+                      _c("vue-nestable", {
+                        scopedSlots: _vm._u([
+                          {
+                            key: "default",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return _c(
+                                "vue-nestable-handle",
+                                { attrs: { item: item } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    {
+                                      staticClass: "mb-3",
+                                      attrs: { hover: "" }
+                                    },
+                                    [
+                                      _c(
+                                        "v-list",
+                                        { attrs: { dense: "" } },
+                                        [
+                                          _c(
+                                            "v-list-tile",
+                                            [
+                                              _c("v-list-tile-title", [
+                                                _vm._v(
+                                                  "\n                      " +
+                                                    _vm._s(item.text) +
+                                                    "\n                    "
+                                                )
+                                              ])
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            }
+                          }
+                        ]),
+                        model: {
+                          value: _vm.nestableItems,
+                          callback: function($$v) {
+                            _vm.nestableItems = $$v
+                          },
+                          expression: "nestableItems"
+                        }
+                      })
                     ],
                     1
                   )
@@ -470,6 +608,13 @@ var render = function() {
                 1
               )
             ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { md4: "", xs12: "" } },
+            [_c("data-table", { attrs: { items: _vm.test } })],
             1
           )
         ],

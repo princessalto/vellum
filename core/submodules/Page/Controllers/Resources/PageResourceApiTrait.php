@@ -62,7 +62,7 @@ trait PageResourceApiTrait
         $pages = $take ? $resources->paginate($take) : $resources->paginate(Page::count());
 
         $pages->each(function ($item) {
-            return $item->append(['author']);
+            return $item->append(['author', 'created', 'modified']);
         });
 
         return response()->json($pages);

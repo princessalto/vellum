@@ -4,6 +4,8 @@ export const state = () => ({
     title: '',
     search: '',
     searchField: false,
+    filter: false,
+    sort: false,
     searchButton: true,
     listGridView: true,
     toggleview: true,

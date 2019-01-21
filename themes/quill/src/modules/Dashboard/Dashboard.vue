@@ -2,7 +2,7 @@
   <v-container fluid grid-list-lg>
     <v-layout row wrap>
       <v-flex md4 sm6 xs12>
-        <v-card hover>
+        <v-card hover class="mb-3">
           <carousel
             :autoplayTimeout="1000"
             :paginationActiveColor="app.dark ? '#38a3ee' : '#0c5689'"
@@ -22,13 +22,13 @@
                   </v-img>
                   <v-card-text>
                     <p
-                      class="body-2 mb-2 primary--text">
+                      class="caption mb-2 primary--text">
                       <strong v-html="trans(item.category)"></strong>
                     </p>
                     <v-tooltip bottom>
                       <h3
                         slot="activator"
-                        class="title mb-2 title__text--ellipsis"
+                        class="subheading font-weight-bold mb-2 title__text--ellipsis"
                         v-html="trans(item.title)"
                         >
                       </h3>
@@ -57,7 +57,31 @@
           </carousel>
         </v-card>
 
-        <v-snackbar
+        <v-card class="mb-3">
+          <v-card-title>
+            {{ __('Draggable Items') }}
+          </v-card-title>
+          <v-card-text>
+            <vue-nestable v-model="nestableItems">
+              <vue-nestable-handle
+                slot-scope="{ item }"
+                :item="item">
+                <!-- {{ item.text }} -->
+                <v-card hover class="mb-3">
+                  <v-list dense>
+                    <v-list-tile>
+                      <v-list-tile-title>
+                        {{ item.text }}
+                      </v-list-tile-title>
+                    </v-list-tile>
+                  </v-list>
+                </v-card>
+              </vue-nestable-handle>
+            </vue-nestable>
+          </v-card-text>
+        </v-card>
+
+        <!-- <v-snackbar
           :color="app.dark ? 'white' : 'dark'"
           :timeout="course.snackbarTimeout"
           bottom
@@ -80,7 +104,11 @@
               close
             </v-icon>
           </v-btn>
-        </v-snackbar>
+        </v-snackbar> -->
+      </v-flex>
+
+      <v-flex md4 xs12>
+        <data-table :items="test"></data-table>
       </v-flex>
     </v-layout>
   </v-container>
@@ -94,6 +122,7 @@
   import store from '@/store'
   import { mapGetters } from 'vuex'
   import { Carousel, Slide } from 'vue-carousel'
+  import { VueNestable, VueNestableHandle } from 'vue-nestable'
 
 export default {
   // mounted() {
@@ -112,7 +141,9 @@ export default {
 
   components: {
     Carousel,
-    Slide
+    Slide,
+    VueNestable,
+    VueNestableHandle
   },
 
   computed: {
@@ -121,8 +152,78 @@ export default {
     }),
   },
 
-   data () {
+  data () {
     return {
+      test: {
+        timestamp: false,
+        slug: false,
+        author: false,
+        created: false,
+        modified: false,
+        selected: [],
+        bulkDestroy: false,
+        selectAll: true,
+        search: '',
+        cardLink: '/admin/courses/show',
+        chip: true,
+        hover: true,
+        lg3: false,
+        showMimetype: false,
+        showToolbar: false,
+        headers: [
+          { text: 'ID', value: 'id' },
+          { text: 'Featured', value: 'thumbnail' },
+          { text: 'Title', value: 'title' },
+          { text: 'Category', value: 'category' },
+          { text: 'Part', value: 'part' },
+          { text: 'Status', value: 'status' },
+          {
+            text: 'Actions',
+            value: 'actions',
+            sortable: false,
+            align: 'center'
+          },
+        ],
+        items: [
+          {
+            id: '1',
+            title: 'Develop Personal Effectiveness at Operations Level',
+            thumbnail: '//preview.ibb.co/cMCYYz/card_Media.png',
+            category: 'DPE OPS',
+            timestamp: '2 hours ago',
+            description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+            part: '6',
+            status: 'enrolled'
+          },
+          {
+            id: '2',
+            title: 'Solve Problems and Make Decisions at Supervisory Level',
+            thumbnail: '//cdn.dribbble.com/users/904433/screenshots/2994633/animation_fin.gif',
+            category: 'DPE OPS',
+            timestamp: '2 hours ago',
+            description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+            part: '6',
+          },
+          {
+            id: '3',
+            title: 'Communicate and Relate Effectively at the Workplace at Operations Level',
+            thumbnail: '//i.pinimg.com/564x/74/2b/8e/742b8e6e87ef56e698b9c8bc4e930dae.jpg',
+            category: 'DPE OPS',
+            timestamp: '2 hours ago',
+            description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+            part: '6',
+          },
+          {
+            id: '4',
+            title: 'Develop Personal Effectiveness at Supervisory Level',
+            thumbnail: '//cdn.dribbble.com/users/2559/screenshots/3145041/illushome_1x.png',
+            category: 'DPE OPS',
+            timestamp: '2 hours ago',
+            description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+            part: '6',
+          },
+        ]
+      },
       course: {
         snackbar: true,
         snackbarTimeout: 0,
@@ -151,7 +252,27 @@ export default {
             category: 'PSDM SUP'
           }
         ]
-      }
+      },
+      nestableItems: [
+        {
+          id: 0,
+          text: 'Andy'
+        },
+        {
+          id: 1,
+          text: 'Harry',
+          children: [
+            {
+              id: 2,
+              text: 'David'
+            }
+          ]
+        },
+        {
+          id: 3,
+          text: 'Lisa'
+        }
+      ]
     }
   }
 }

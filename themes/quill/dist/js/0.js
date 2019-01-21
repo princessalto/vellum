@@ -132,6 +132,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -139,13 +152,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Index',
   components: {
     EmptyState: _partials_EmptyState__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get('/api/v1/pages/all').then(function (response) {
-      _this.resources.items = response.data.data;
-    });
   },
   data: function data() {
     return {
@@ -158,7 +164,8 @@ __webpack_require__.r(__webpack_exports__);
         }
       },
       toolbar: {
-        title: 'All Announcements',
+        title: 'All Pages',
+        color: '',
         listGridView: false,
         createBtn: {
           name: 'pages.create'
@@ -204,6 +211,14 @@ __webpack_require__.r(__webpack_exports__);
         }]
       }
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/v1/pages/all').then(function (response) {
+      _this.resources.items = response.data.data;
+      console.log(response);
+    });
   }
 });
 
@@ -328,7 +343,7 @@ var render = function() {
               [
                 _c(
                   "v-layout",
-                  { attrs: { row: "", column: "" } },
+                  { attrs: { row: "", wrap: "" } },
                   [
                     _c(
                       "v-flex",
@@ -344,8 +359,8 @@ var render = function() {
                                 headers: _vm.resources.headers,
                                 items: _vm.resources.items,
                                 pagination: _vm.resources.pagination,
-                                "select-all": "",
-                                "item-key": "title"
+                                "item-key": "title",
+                                "select-all": ""
                               },
                               on: {
                                 "update:pagination": function($event) {
@@ -463,7 +478,7 @@ var render = function() {
                                           _c("td", {
                                             domProps: {
                                               innerHTML: _vm._s(
-                                                props.item.created_at
+                                                props.item.created
                                               )
                                             }
                                           }),
@@ -471,7 +486,7 @@ var render = function() {
                                           _c("td", {
                                             domProps: {
                                               innerHTML: _vm._s(
-                                                props.item.updated_at
+                                                props.item.modified
                                               )
                                             }
                                           }),

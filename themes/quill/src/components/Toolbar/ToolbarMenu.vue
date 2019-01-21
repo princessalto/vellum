@@ -1,7 +1,8 @@
-<template>
+<template :dark="$store.getters['app/app'].dark">
   <v-toolbar
     class="toolbarMenu sticky px-4"
     flat
+    :color="dataset.color"
     v-model="dataset.model"
     >
 
@@ -21,6 +22,7 @@
         label="Search"
         single-line
         solo
+        dark
         solo-inverted
         v-model="dataset.search"
         >
@@ -51,30 +53,34 @@
       </v-tooltip>
 
       <!-- sort -->
-      <v-tooltip
-        bottom
-        >
-        <v-btn
-          icon
-          slot="activator"
+      <template v-if="dataset.sort">
+        <v-tooltip
+          bottom
           >
-          <v-icon small v-html="dataset.sort ? 'mdi-sort-ascending' : 'mdi-sort-descending'"></v-icon>
-        </v-btn>
-        <span>{{ trans('Sort') }}</span>
-      </v-tooltip>
+          <v-btn
+            icon
+            slot="activator"
+            >
+            <v-icon small v-html="dataset.sort ? 'mdi-sort-ascending' : 'mdi-sort-descending'"></v-icon>
+          </v-btn>
+          <span>{{ trans('Sort') }}</span>
+        </v-tooltip>
+      </template>
 
       <!-- filter -->
-      <v-tooltip
-        bottom
-        >
-        <v-btn
-          icon
-          slot="activator"
+      <template v-if="dataset.filter">
+        <v-tooltip
+          bottom
           >
-          <v-icon small>mdi-filter-outline</v-icon>
-        </v-btn>
-        <span>Filter</span>
-      </v-tooltip>
+          <v-btn
+            icon
+            slot="activator"
+            >
+            <v-icon small>mdi-filter-outline</v-icon>
+          </v-btn>
+          <span>Filter</span>
+        </v-tooltip>
+      </template>
 
       <!-- list and grid view -->
       <template v-if="dataset.listGridView">
@@ -213,7 +219,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      toolbar: 'toolbar/toolbar'
+      toolbar: 'toolbar/toolbar',
+      app: 'app/app'
     })
   }
 }

@@ -8,9 +8,9 @@
           <v-card
             hover
             :to="{
-              name: 'menus.edit',
+              name: 'appearance.edit',
               params: {
-                location: item.location,
+                code: item.code,
                 meta: { item: item }
               },
             }"
@@ -65,7 +65,6 @@ export default {
     axios.get('/api/v1/menus/all')
       .then(response => {
         this.resources.items = response.data
-        // console.log(response)
       })
   },
 
