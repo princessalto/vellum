@@ -5,21 +5,21 @@
         <v-flex xs12>
           <v-card>
             <v-card-text>
-              <h1 class="title font-weight-bold" v-html="item.title"></h1>
+              <h1 class="title font-weight-bold" v-html="resource.title"></h1>
               <v-list dense>
                 <v-list-tile>
                   <v-list-tile-avatar>
                     <img src="">
                   </v-list-tile-avatar>
                   <v-list-tile-content>
-                    <v-list-tile-title v-html="item.author"></v-list-tile-title>
-                    <v-list-tile-sub-title v-html="item.created"></v-list-tile-sub-title>
+                    <v-list-tile-title v-html="resource.author"></v-list-tile-title>
+                    <v-list-tile-sub-title v-html="resource.created"></v-list-tile-sub-title>
                   </v-list-tile-content>
                 </v-list-tile>
               </v-list>
             </v-card-text>
             <v-card-text>
-              <p v-html="item.body"></p>
+              <p v-html="resource.body"></p>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -41,14 +41,13 @@ export default {
     axios
       .get('/api/v1/pages/' + this.$route.params.code)
       .then(response => {
-      // console.log(response, 'data')
-      this.item = response.data
+      this.resource = response.data
     })
   },
 
   data () {
     return {
-      item: {}
+      resource: {}
     }
   },
 }

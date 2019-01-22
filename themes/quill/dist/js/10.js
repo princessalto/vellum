@@ -49,13 +49,12 @@ __webpack_require__.r(__webpack_exports__);
 
     /*eslint-disable*/
     axios.get('/api/v1/pages/' + this.$route.params.code).then(function (response) {
-      // console.log(response, 'data')
-      _this.item = response.data;
+      _this.resource = response.data;
     });
   },
   data: function data() {
     return {
-      item: {}
+      resource: {}
     };
   }
 });
@@ -100,7 +99,7 @@ var render = function() {
                         [
                           _c("h1", {
                             staticClass: "title font-weight-bold",
-                            domProps: { innerHTML: _vm._s(_vm.item.title) }
+                            domProps: { innerHTML: _vm._s(_vm.resource.title) }
                           }),
                           _vm._v(" "),
                           _c(
@@ -119,13 +118,15 @@ var render = function() {
                                     [
                                       _c("v-list-tile-title", {
                                         domProps: {
-                                          innerHTML: _vm._s(_vm.item.author)
+                                          innerHTML: _vm._s(_vm.resource.author)
                                         }
                                       }),
                                       _vm._v(" "),
                                       _c("v-list-tile-sub-title", {
                                         domProps: {
-                                          innerHTML: _vm._s(_vm.item.created)
+                                          innerHTML: _vm._s(
+                                            _vm.resource.created
+                                          )
                                         }
                                       })
                                     ],
@@ -143,7 +144,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("v-card-text", [
                         _c("p", {
-                          domProps: { innerHTML: _vm._s(_vm.item.body) }
+                          domProps: { innerHTML: _vm._s(_vm.resource.body) }
                         })
                       ])
                     ],
