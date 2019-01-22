@@ -34,7 +34,7 @@
                 </v-btn>
               </template>
               <template v-else>
-                <form
+                <v-form
                   @submit.prevent="saveTheme"
                   action="/api/v1/settings/store"
                   method="POST"
@@ -47,7 +47,7 @@
                     >
                     {{ __('Activate') }}
                   </v-btn>
-                </form>
+                </v-form>
               </template>
               <v-spacer></v-spacer>
               <v-btn flat href="">

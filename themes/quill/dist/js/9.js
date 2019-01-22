@@ -58,6 +58,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -67,29 +75,36 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      resource: {
-        title: this.title,
-        code: this.code
-      }
+      resource: {}
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/v1/pages/' + this.$route.params.id + '/edit').then(function (response) {
+      _this.resource = response.data;
+    });
   },
   methods: {
     beforeFormSubmit: function beforeFormSubmit() {
-      var _this = this;
+      var _this2 = this;
 
       this.$validator.reset();
       this.$validator.validateAll().then(function (ok) {
         if (ok) {
-          _this.updateData();
+          _this2.updateData();
         }
       });
     },
     updateData: function updateData() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get('/api/v1/pages/update' + this.resource).then(function (response) {
-        _this2.resource = response.data.data;
-        console.log(response, 'data');
+      axios.post('/api/v1/pages/' + this.$route.params.id + '/update').then(function (response) {
+        _this3.$router.push({
+          name: 'pages.update'
+        });
+
+        console.log(response, 'Response');
       });
     }
   }
@@ -127,7 +142,7 @@ var render = function() {
               _c(
                 "v-form",
                 {
-                  attrs: { method: "POST", action: "/api/v1/pages/update" },
+                  attrs: { action: "/api/v1/pages/update", method: "POST" },
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
@@ -136,6 +151,17 @@ var render = function() {
                   }
                 },
                 [
+                  _c("input", {
+                    attrs: {
+                      disabled: "",
+                      id: "id",
+                      name: "id",
+                      required: "",
+                      type: "hidden"
+                    },
+                    domProps: { value: _vm.resource.id }
+                  }),
+                  _vm._v(" "),
                   _c("v-text-field", {
                     directives: [
                       {
@@ -151,8 +177,14 @@ var render = function() {
                       box: "",
                       autofocus: "",
                       label: "Title",
-                      name: "title",
-                      value: _vm.resource.title
+                      name: "title"
+                    },
+                    model: {
+                      value: _vm.resource.title,
+                      callback: function($$v) {
+                        _vm.$set(_vm.resource, "title", $$v)
+                      },
+                      expression: "resource.title"
                     }
                   }),
                   _vm._v(" "),
@@ -171,8 +203,14 @@ var render = function() {
                       box: "",
                       autofocus: "",
                       label: "Code",
-                      name: "code",
-                      value: _vm.resource.code
+                      name: "code"
+                    },
+                    model: {
+                      value: _vm.resource.code,
+                      callback: function($$v) {
+                        _vm.$set(_vm.resource, "code", $$v)
+                      },
+                      expression: "resource.code"
                     }
                   }),
                   _vm._v(" "),
@@ -182,8 +220,14 @@ var render = function() {
                       box: "",
                       autofocus: "",
                       label: "Body",
-                      name: "body",
-                      value: _vm.resource.body
+                      name: "body"
+                    },
+                    model: {
+                      value: _vm.resource.body,
+                      callback: function($$v) {
+                        _vm.$set(_vm.resource, "body", $$v)
+                      },
+                      expression: "resource.body"
                     }
                   }),
                   _vm._v(" "),

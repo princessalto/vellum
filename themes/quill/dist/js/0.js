@@ -564,8 +564,7 @@ var render = function() {
                                                         to: {
                                                           name: "pages.edit",
                                                           params: {
-                                                            code:
-                                                              props.item.code,
+                                                            id: props.item.id,
                                                             meta: {
                                                               item: props.item
                                                             }

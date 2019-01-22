@@ -48,7 +48,7 @@ export default [
         },
       },
       {
-        path: ':code/edit',
+        path: ':id/edit',
         props: true,
         name: 'pages.edit',
         component: () => import('../Edit.vue'),

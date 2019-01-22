@@ -13,9 +13,9 @@
       <v-layout row wrap>
         <v-flex md9 xs12>
           <v-form
-            method="POST"
-            action="/api/v1/pages/store"
             @submit.prevent="storeData"
+            action="/api/v1/pages/store"
+            method="POST"
             >
             <v-text-field
              :data-vv-as="trans('Title')"
@@ -88,8 +88,6 @@ export default {
     validator: 'new'
   },
 
-
-
   data () {
     return {
       resource: {
@@ -127,7 +125,7 @@ export default {
       axios.post('/api/v1/pages/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.push({name: 'pages'})
+          this.$router.push({name: 'pages.store'})
         })
     },
   },

@@ -68821,7 +68821,7 @@ __webpack_require__.r(__webpack_exports__);
       icon: 'mdi-book-multiple-variant'
     }
   }, {
-    path: ':code/edit',
+    path: ':id/edit',
     props: true,
     name: 'pages.edit',
     component: function component() {
@@ -68880,6 +68880,16 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       sort: 501
     }
+  }, // Branding Settings
+  {
+    code: 'settings.branding',
+    name: 'settings.branding',
+    meta: {
+      title: 'Branding',
+      icon: 'home',
+      authenticatable: true,
+      sort: 501
+    }
   }]
 }]);
 
@@ -68914,7 +68924,21 @@ __webpack_require__.r(__webpack_exports__);
       return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ../Preferences.vue */ "./src/modules/Settings/Preferences.vue"));
     },
     meta: {
-      title: 'Menus',
+      title: 'Preferences',
+      sort: 6,
+      authenticatable: true,
+      icon: 'mdi-book-multiple-variant'
+    }
+  }, // Branding
+  {
+    path: 'branding',
+    props: true,
+    name: 'settings.branding',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ../Branding.vue */ "./src/modules/Settings/Branding.vue"));
+    },
+    meta: {
+      title: 'Branding',
       sort: 6,
       authenticatable: true,
       icon: 'mdi-book-multiple-variant'

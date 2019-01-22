@@ -238,7 +238,7 @@ var render = function() {
                               ]
                             : [
                                 _c(
-                                  "form",
+                                  "v-form",
                                   {
                                     attrs: {
                                       action: "/api/v1/settings/store",

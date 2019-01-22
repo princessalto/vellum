@@ -3,10 +3,18 @@
     <v-layout row wrap>
       <v-flex sm6 xs12>
         <v-form
-          method="POST"
-          action="/api/v1/pages/update"
           @submit.prevent="updateData"
+          action="/api/v1/pages/update"
+          method="POST"
           >
+          <input
+            :value="resource.id"
+            disabled
+            id="id"
+            name="id"
+            required
+            type="hidden"
+            >
           <v-text-field
             :data-vv-as="trans('Title')"
             :error-messages="errors.collect('title')"
@@ -15,7 +23,7 @@
             autofocus
             label="Title"
             name="title"
-            :value="resource.title"
+            v-model="resource.title"
           ></v-text-field>
 
           <v-text-field
@@ -26,7 +34,7 @@
             autofocus
             label="Code"
             name="code"
-            :value="resource.code"
+            v-model="resource.code"
           ></v-text-field>
 
           <v-textarea
@@ -35,7 +43,7 @@
             autofocus
             label="Body"
             name="body"
-            :value="resource.body"
+            v-model="resource.body"
           ></v-textarea>
 
           <!-- button -->
@@ -60,11 +68,16 @@ export default {
 
   data () {
     return {
-      resource: {
-        title: this.title,
-        code: this.code
-      }
+      resource: {}
     }
+  },
+
+  created() {
+    axios
+      .get('/api/v1/pages/' + this.$route.params.id + '/edit')
+      .then((response) => {
+        this.resource = response.data
+      })
   },
 
   methods: {
@@ -79,10 +92,11 @@ export default {
     },
 
     updateData () {
-      axios.get('/api/v1/pages/update' + this.resource)
-        .then(response => {
-          this.resource = response.data.data
-          console.log(response, 'data')
+      axios
+        .post('/api/v1/pages/' + this.$route.params.id + '/update')
+        .then((response) => {
+          this.$router.push({name: 'pages.update'});
+          console.log(response, 'Response')
         })
     },
   },

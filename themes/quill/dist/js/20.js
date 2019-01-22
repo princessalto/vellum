@@ -14,12 +14,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Preferences',
   data: function data() {
-    return {};
+    return {
+      resource: {}
+    };
+  },
+  methods: {
+    savePreference: function savePreference() {
+      var _this = this;
+
+      axios.post('/api/v1/settings/store', this.resource).then(function (response) {
+        console.log(_this.resource, 'data');
+
+        _this.$router.push({
+          name: 'settings.store'
+        });
+      });
+    }
   }
 });
 
@@ -40,7 +102,126 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "section",
+    [
+      _c(
+        "v-container",
+        { attrs: { "grid-list-lg": "", fluid: "" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { lg6: "", md8: "", xs12: "" } },
+                [
+                  _c(
+                    "v-form",
+                    {
+                      attrs: {
+                        action: "/api/v1/settings/store",
+                        method: "POST"
+                      },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.savePreference($event)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "v-card",
+                        [
+                          _c(
+                            "v-card-title",
+                            { staticClass: "subheading font-weight-bold" },
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.__("Preferences")) +
+                                  "\n            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Global Date Format",
+                                  value: _vm.resource.date_format,
+                                  box: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Items per Page",
+                                  value: _vm.resource.items_per_page,
+                                  box: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-checkbox", {
+                                attrs: {
+                                  label:
+                                    "Center the main content when possible."
+                                },
+                                model: {
+                                  value: _vm.resource.center_main_content,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.resource,
+                                      "center_main_content",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "resource.center_main_content"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: {
+                                    color: "secondary",
+                                    depressed: "",
+                                    type: "submit"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Save")) +
+                                      "\n              "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
