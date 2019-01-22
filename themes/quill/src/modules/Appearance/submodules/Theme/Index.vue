@@ -13,7 +13,7 @@
               class=""
               height="300"
               :src="item.thumbnail"
-              gradient="to top right, rgba(100,115,201,.65), rgba(25,32,72,.7)"
+              gradient="to top right, rgba(100,115,201,.45), rgba(25,32,72,.3)"
               >
               <v-container fluid fill-height>
                 <v-layout row wrap justify-center align-start>
@@ -29,7 +29,7 @@
             </v-img>
             <v-card-actions class="pa-3">
               <template v-if="item.active">
-                <v-btn depressed disabled color="secondary">
+                <v-btn flat disabled color="secondary">
                   {{ __('Currently Active') }}
                 </v-btn>
               </template>
@@ -40,7 +40,13 @@
                   method="POST"
                   >
                   <input type="hidden" name="active_theme" :value="item.code">
-                  <v-btn color="secondary" depressed type="submit">{{ __('Activate') }}</v-btn>
+                  <v-btn
+                    color="secondary"
+                    flat
+                    type="submit"
+                    >
+                    {{ __('Activate') }}
+                  </v-btn>
                 </form>
               </template>
               <v-spacer></v-spacer>
@@ -67,7 +73,6 @@ export default {
       .get('/api/v1/themes/all')
       .then(response => {
         this.resources.items = response.data
-        // console.log('Response', response.data)
       })
   },
 

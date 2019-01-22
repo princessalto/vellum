@@ -67,6 +67,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -75,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/v1/themes/all').then(function (response) {
-      _this.resources.items = response.data; // console.log('Response', response.data)
+      _this.resources.items = response.data;
     });
   },
   methods: {
@@ -142,7 +148,7 @@ var render = function() {
                             height: "300",
                             src: item.thumbnail,
                             gradient:
-                              "to top right, rgba(100,115,201,.65), rgba(25,32,72,.7)"
+                              "to top right, rgba(100,115,201,.45), rgba(25,32,72,.3)"
                           }
                         },
                         [
@@ -216,7 +222,7 @@ var render = function() {
                                   "v-btn",
                                   {
                                     attrs: {
-                                      depressed: "",
+                                      flat: "",
                                       disabled: "",
                                       color: "secondary"
                                     }
@@ -259,11 +265,17 @@ var render = function() {
                                       {
                                         attrs: {
                                           color: "secondary",
-                                          depressed: "",
+                                          flat: "",
                                           type: "submit"
                                         }
                                       },
-                                      [_vm._v(_vm._s(_vm.__("Activate")))]
+                                      [
+                                        _vm._v(
+                                          "\n                  " +
+                                            _vm._s(_vm.__("Activate")) +
+                                            "\n                "
+                                        )
+                                      ]
                                     )
                                   ],
                                   1

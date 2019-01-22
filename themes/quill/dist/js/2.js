@@ -99,13 +99,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Login',
   data: function data() {
     return {
-      showPassword: false,
+      showPassword: true,
       email: "",
       password: "",
       rules: {}
@@ -253,7 +254,11 @@ var render = function() {
                     [
                       _c(
                         "v-card-text",
-                        [_c("v-avatar", { attrs: { size: "80" } })],
+                        [
+                          _c("v-avatar", { attrs: { size: "80" } }, [
+                            _c("img", { attrs: { src: _vm.app.meta.logo } })
+                          ])
+                        ],
                         1
                       ),
                       _vm._v(" "),
@@ -279,16 +284,17 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("v-text-field", {
+                            staticClass: "input-group--focused",
                             attrs: {
-                              autofocus: "",
-                              label: "Password",
-                              box: "",
-                              id: "password",
-                              type: "password",
                               "append-icon": _vm.showPassword
                                 ? "visibility_off"
                                 : "visibility",
-                              type: _vm.showPassword ? "text" : "password"
+                              type: _vm.showPassword ? "text" : "password",
+                              autofocus: "",
+                              box: "",
+                              id: "password",
+                              label: "Password",
+                              type: "password"
                             },
                             on: {
                               "click:append": function($event) {

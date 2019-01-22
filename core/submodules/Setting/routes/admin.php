@@ -43,7 +43,6 @@ Route::middleware(['breadcrumbs:\Setting\Models\Setting'])->prefix('settings')->
         Route::get('social', 'SettingController@getSocialForm')->name('settings.social');
     });
 
-
     // Theming
     // Route::get('theming', 'ThemingSettingController@index')->name('settings.theming');
     // Route::post('theming', 'ThemingSettingController@store')->name('settings.theming.store');

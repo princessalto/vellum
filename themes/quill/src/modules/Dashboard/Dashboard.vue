@@ -57,30 +57,6 @@
           </carousel>
         </v-card>
 
-        <v-card class="mb-3">
-          <v-card-title>
-            {{ __('Draggable Items') }}
-          </v-card-title>
-          <v-card-text>
-            <vue-nestable v-model="nestableItems">
-              <vue-nestable-handle
-                slot-scope="{ item }"
-                :item="item">
-                <!-- {{ item.text }} -->
-                <v-card hover class="mb-3">
-                  <v-list dense>
-                    <v-list-tile>
-                      <v-list-tile-title>
-                        {{ item.text }}
-                      </v-list-tile-title>
-                    </v-list-tile>
-                  </v-list>
-                </v-card>
-              </vue-nestable-handle>
-            </vue-nestable>
-          </v-card-text>
-        </v-card>
-
         <!-- <v-snackbar
           :color="app.dark ? 'white' : 'dark'"
           :timeout="course.snackbarTimeout"
@@ -108,7 +84,31 @@
       </v-flex>
 
       <v-flex md4 xs12>
-        <data-table :items="test"></data-table>
+        <!-- <data-table :items="test"></data-table> -->
+
+        <v-card class="mb-3">
+          <v-card-title>
+            {{ __('Sample Draggable Items') }}
+          </v-card-title>
+          <v-card-text>
+            <vue-nestable v-model="nestableItems">
+              <vue-nestable-handle
+                slot-scope="{ item }"
+                :item="item">
+                <!-- {{ item.text }} -->
+                <v-card hover class="mb-3">
+                  <v-list dense>
+                    <v-list-tile>
+                      <v-list-tile-title>
+                        {{ item.text }}
+                      </v-list-tile-title>
+                    </v-list-tile>
+                  </v-list>
+                </v-card>
+              </vue-nestable-handle>
+            </vue-nestable>
+          </v-card-text>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
@@ -256,21 +256,21 @@ export default {
       nestableItems: [
         {
           id: 0,
-          text: 'Andy'
+          text: 'Chapter 1'
         },
         {
           id: 1,
-          text: 'Harry',
+          text: 'Chapter 2',
           children: [
             {
               id: 2,
-              text: 'David'
+              text: 'Part 1'
             }
           ]
         },
         {
           id: 3,
-          text: 'Lisa'
+          text: 'Chapter 3'
         }
       ]
     }

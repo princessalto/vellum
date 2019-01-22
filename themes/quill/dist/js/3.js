@@ -267,17 +267,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       nestableItems: [{
         id: 0,
-        text: 'Andy'
+        text: 'Chapter 1'
       }, {
         id: 1,
-        text: 'Harry',
+        text: 'Chapter 2',
         children: [{
           id: 2,
-          text: 'David'
+          text: 'Part 1'
         }]
       }, {
         id: 3,
-        text: 'Lisa'
+        text: 'Chapter 3'
       }]
     };
   }
@@ -530,8 +530,15 @@ var render = function() {
                   )
                 ],
                 1
-              ),
-              _vm._v(" "),
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { md4: "", xs12: "" } },
+            [
               _c(
                 "v-card",
                 { staticClass: "mb-3" },
@@ -539,7 +546,7 @@ var render = function() {
                   _c("v-card-title", [
                     _vm._v(
                       "\n          " +
-                        _vm._s(_vm.__("Draggable Items")) +
+                        _vm._s(_vm.__("Sample Draggable Items")) +
                         "\n        "
                     )
                   ]),
@@ -608,13 +615,6 @@ var render = function() {
                 1
               )
             ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { md4: "", xs12: "" } },
-            [_c("data-table", { attrs: { items: _vm.test } })],
             1
           )
         ],

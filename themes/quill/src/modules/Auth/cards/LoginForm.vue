@@ -10,9 +10,9 @@
             <v-card-text>
               <v-avatar
                 size="80">
-                <!-- <img
+                <img
                   :src="app.meta.logo"
-                  > -->
+                  >
               </v-avatar>
             </v-card-text>
             <v-card-text>
@@ -28,15 +28,16 @@
               </v-text-field>
 
               <v-text-field
-                autofocus
-                label="Password"
-                box
-                id="password"
-                type="password"
-                v-model="password"
                 :append-icon="showPassword ? 'visibility_off' : 'visibility'"
                 :type="showPassword ? 'text' : 'password'"
                 @click:append="showPassword = !showPassword"
+                autofocus
+                box
+                class="input-group--focused"
+                id="password"
+                label="Password"
+                type="password"
+                v-model="password"
                 >
               </v-text-field>
 
@@ -64,7 +65,7 @@ export default {
 
   data() {
     return {
-      showPassword: false,
+      showPassword: true,
       email : "",
       password : "",
       rules: {

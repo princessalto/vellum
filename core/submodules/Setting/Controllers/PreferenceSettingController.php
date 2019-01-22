@@ -5,7 +5,7 @@ namespace Setting\Controllers;
 use Blacksmith\Support\Facades\Blacksmith;
 use Illuminate\Http\Request;
 use Setting\Controllers\SettingController;
-use Setting\Models\Setting;
+use Setting\Models\Settinghttp://localhost:3000/admin/settings/preferences;
 use Setting\Requests\SettingRequest;
 
 class PreferenceSettingController extends SettingController

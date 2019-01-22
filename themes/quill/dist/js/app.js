@@ -68352,6 +68352,7 @@ var map = {
 	"./Appearance/config/sidebar.js": "./src/modules/Appearance/config/sidebar.js",
 	"./Dashboard/config/sidebar.js": "./src/modules/Dashboard/config/sidebar.js",
 	"./Page/config/sidebar.js": "./src/modules/Page/config/sidebar.js",
+	"./Settings/config/sidebar.js": "./src/modules/Settings/config/sidebar.js",
 	"./User/config/sidebar.js": "./src/modules/User/config/sidebar.js",
 	"./Yggdrasil/Course/config/sidebar.js": "./src/modules/Yggdrasil/Course/config/sidebar.js"
 };
@@ -68390,6 +68391,7 @@ var map = {
 	"./Appearance/routes/admin.js": "./src/modules/Appearance/routes/admin.js",
 	"./Dashboard/routes/admin.js": "./src/modules/Dashboard/routes/admin.js",
 	"./Page/routes/admin.js": "./src/modules/Page/routes/admin.js",
+	"./Settings/routes/admin.js": "./src/modules/Settings/routes/admin.js",
 	"./User/routes/admin.js": "./src/modules/User/routes/admin.js",
 	"./Yggdrasil/Course/routes/admin.js": "./src/modules/Yggdrasil/Course/routes/admin.js"
 };
@@ -68844,6 +68846,78 @@ __webpack_require__.r(__webpack_exports__);
       title: 'Archived Page',
       authenticatable: true,
       icon: 'mdi-delete-outline'
+    }
+  }]
+}]);
+
+/***/ }),
+
+/***/ "./src/modules/Settings/config/sidebar.js":
+/*!************************************************!*\
+  !*** ./src/modules/Settings/config/sidebar.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ([{
+  code: 'settings',
+  name: 'settings',
+  meta: {
+    title: 'Settings',
+    icon: 'mdi-tune',
+    authenticatable: true,
+    sort: 500
+  },
+  children: [// Preferences Settings
+  {
+    code: 'settings.preferences',
+    name: 'settings.preferences',
+    meta: {
+      title: 'Preferences',
+      icon: 'home',
+      authenticatable: true,
+      sort: 501
+    }
+  }]
+}]);
+
+/***/ }),
+
+/***/ "./src/modules/Settings/routes/admin.js":
+/*!**********************************************!*\
+  !*** ./src/modules/Settings/routes/admin.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ([{
+  path: '/admin/settings',
+  component: function component() {
+    return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! @/App.vue */ "./src/App.vue"));
+  },
+  meta: {
+    title: 'Settings',
+    sort: 6,
+    authenticatable: true,
+    icon: 'mdi-book-multiple-variant'
+  },
+  children: [// Preferences
+  {
+    path: 'preferences',
+    props: true,
+    name: 'settings.preferences',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ../Preferences.vue */ "./src/modules/Settings/Preferences.vue"));
+    },
+    meta: {
+      title: 'Menus',
+      sort: 6,
+      authenticatable: true,
+      icon: 'mdi-book-multiple-variant'
     }
   }]
 }]);
