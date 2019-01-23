@@ -1,13 +1,13 @@
 <template>
   <section>
     <v-form
-      @submit.prevent="updateData"
-      action="/api/v1/pages/update"
       method="POST"
+      :action="'/api/v1/pages/update/' + this.$route.params.id"
+      @submit.prevent="updateData"
       >
       <v-toolbar flat class="sticky emphasis--medium">
         <v-toolbar-title>
-          {{ __('Create Page') }}
+          {{ __('Edit Page') }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn
@@ -26,7 +26,7 @@
               disabled
               name="id"
               type="hidden"
-              :value="resource.id"
+              v-model="resource.id"
               >
             <v-text-field
               :data-vv-as="trans('Title')"
@@ -36,19 +36,17 @@
               autofocus
               label="Title"
               name="title"
-              :value="resource.title"
               v-model="resource.title"
             ></v-text-field>
 
             <v-text-field
               :data-vv-as="trans('Code')"
-              :error-messages="errors.collect('title')"
+              :error-messages="errors.collect('code')"
               v-validate="'required'"
               box
               autofocus
               label="Code"
               name="code"
-              :value="resource.code"
               v-model="resource.code"
               >
             </v-text-field>
@@ -59,7 +57,6 @@
               autofocus
               label="Body"
               name="body"
-              :value="resource.body"
               v-model="resource.body"
             ></v-textarea>
           </v-flex>
@@ -82,11 +79,7 @@ export default {
 
   data () {
     return {
-      resource: {
-        title: this.title,
-        code: this.code,
-        body: this.body
-      }
+      resource: {}
     }
   },
 
@@ -111,10 +104,10 @@ export default {
 
     updateData () {
       axios
-        .post('/api/v1/pages/update/' + this.$route.params.id)
+        .post('/api/v1/pages/update/' + this.$route.params.id, this.resource)
         .then((response) => {
-          console.log(response, 'updateData');
-          this.$router.push({name: 'pages'});
+          // console.log(this.resource, 'updateData');
+          this.$router.push({name: 'pages.edit'});
         })
     },
   },

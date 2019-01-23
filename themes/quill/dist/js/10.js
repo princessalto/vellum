@@ -110,7 +110,9 @@ var render = function() {
                                 "v-list-tile",
                                 [
                                   _c("v-list-tile-avatar", [
-                                    _c("img", { attrs: { src: "" } })
+                                    _c("img", {
+                                      attrs: { src: _vm.resource.thumbnail }
+                                    })
                                   ]),
                                   _vm._v(" "),
                                   _c(

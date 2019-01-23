@@ -9,7 +9,7 @@
               <v-list dense>
                 <v-list-tile>
                   <v-list-tile-avatar>
-                    <img src="">
+                    <img :src="resource.thumbnail">
                   </v-list-tile-avatar>
                   <v-list-tile-content>
                     <v-list-tile-title v-html="resource.author"></v-list-tile-title>

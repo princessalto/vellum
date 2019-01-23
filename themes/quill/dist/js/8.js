@@ -76,19 +76,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -128,11 +115,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post('/api/v1/pages/store', this.resource).then(function (response) {
-        console.log(_this2.resource, 'data');
-
+        // console.log(this.resource, 'data')
         _this2.$router.push({
-          name: 'pages.store'
-        });
+          name: 'pages.create'
+        }); //push to Create.vue view
+
       });
     }
   }
@@ -159,47 +146,47 @@ var render = function() {
     "section",
     [
       _c(
-        "v-toolbar",
-        { staticClass: "sticky", attrs: { flat: "" } },
+        "v-form",
+        {
+          attrs: { action: "/api/v1/pages/store", method: "POST" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.storeData($event)
+            }
+          }
+        },
         [
           _c(
-            "v-toolbar-title",
-            { staticClass: "subheading font-weight-bold" },
-            [_vm._v("\n      " + _vm._s(_vm.__("Create")) + "\n    ")]
-          ),
-          _vm._v(" "),
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c("v-btn", { attrs: { color: "secondary" } }, [
-            _vm._v("\n      " + _vm._s(_vm.__("Save")) + "\n    ")
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-container",
-        { attrs: { fluid: "", "grid-list-lg": "" } },
-        [
-          _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            "v-toolbar",
+            { staticClass: "sticky", attrs: { flat: "" } },
             [
               _c(
-                "v-flex",
-                { attrs: { md9: "", xs12: "" } },
+                "v-toolbar-title",
+                { staticClass: "subheading font-weight-bold" },
+                [_vm._v("\n        " + _vm._s(_vm.__("Create")) + "\n      ")]
+              ),
+              _vm._v(" "),
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-btn", { attrs: { color: "secondary", type: "submit" } }, [
+                _vm._v("\n        " + _vm._s(_vm.__("Save")) + "\n      ")
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            { attrs: { fluid: "", "grid-list-lg": "" } },
+            [
+              _c(
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
                 [
                   _c(
-                    "v-form",
-                    {
-                      attrs: { action: "/api/v1/pages/store", method: "POST" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.storeData($event)
-                        }
-                      }
-                    },
+                    "v-flex",
+                    { attrs: { md9: "", xs12: "" } },
                     [
                       _c("v-text-field", {
                         directives: [
@@ -211,7 +198,7 @@ var render = function() {
                           }
                         ],
                         attrs: {
-                          "data-vv-as": _vm.trans("Title"),
+                          "data-vv-as": _vm.trans("TItle"),
                           "error-messages": _vm.errors.collect("title"),
                           box: "",
                           autofocus: "",
@@ -284,24 +271,11 @@ var render = function() {
                           },
                           expression: "resource.body"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        { staticClass: "secondary", attrs: { type: "submit" } },
-                        [_vm._v(_vm._s(_vm.__("Create")))]
-                      )
+                      })
                     ],
                     1
                   )
                 ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { md3: "", xs12: "" } },
-                [_c("v-card", [_c("v-card-text", [_c("v-list")], 1)], 1)],
                 1
               )
             ],

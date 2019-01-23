@@ -78,9 +78,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -90,11 +87,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      resource: {
-        title: this.title,
-        code: this.code,
-        body: this.body
-      }
+      resource: {}
     };
   },
   created: function created() {
@@ -118,11 +111,10 @@ __webpack_require__.r(__webpack_exports__);
     updateData: function updateData() {
       var _this3 = this;
 
-      axios.post('/api/v1/pages/update/' + this.$route.params.id).then(function (response) {
-        console.log(response, 'updateData');
-
+      axios.post('/api/v1/pages/update/' + this.$route.params.id, this.resource).then(function (response) {
+        // console.log(this.resource, 'updateData');
         _this3.$router.push({
-          name: 'pages'
+          name: 'pages.edit'
         });
       });
     }
@@ -152,7 +144,10 @@ var render = function() {
       _c(
         "v-form",
         {
-          attrs: { action: "/api/v1/pages/update", method: "POST" },
+          attrs: {
+            method: "POST",
+            action: "/api/v1/pages/update/" + this.$route.params.id
+          },
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -166,9 +161,7 @@ var render = function() {
             { staticClass: "sticky emphasis--medium", attrs: { flat: "" } },
             [
               _c("v-toolbar-title", [
-                _vm._v(
-                  "\n        " + _vm._s(_vm.__("Create Page")) + "\n      "
-                )
+                _vm._v("\n        " + _vm._s(_vm.__("Edit Page")) + "\n      ")
               ]),
               _vm._v(" "),
               _c("v-spacer"),
@@ -197,8 +190,24 @@ var render = function() {
                     { attrs: { md6: "", xs12: "" } },
                     [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.resource.id,
+                            expression: "resource.id"
+                          }
+                        ],
                         attrs: { disabled: "", name: "id", type: "hidden" },
-                        domProps: { value: _vm.resource.id }
+                        domProps: { value: _vm.resource.id },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.resource, "id", $event.target.value)
+                          }
+                        }
                       }),
                       _vm._v(" "),
                       _c("v-text-field", {
@@ -216,8 +225,7 @@ var render = function() {
                           box: "",
                           autofocus: "",
                           label: "Title",
-                          name: "title",
-                          value: _vm.resource.title
+                          name: "title"
                         },
                         model: {
                           value: _vm.resource.title,
@@ -239,12 +247,11 @@ var render = function() {
                         ],
                         attrs: {
                           "data-vv-as": _vm.trans("Code"),
-                          "error-messages": _vm.errors.collect("title"),
+                          "error-messages": _vm.errors.collect("code"),
                           box: "",
                           autofocus: "",
                           label: "Code",
-                          name: "code",
-                          value: _vm.resource.code
+                          name: "code"
                         },
                         model: {
                           value: _vm.resource.code,
@@ -261,8 +268,7 @@ var render = function() {
                           box: "",
                           autofocus: "",
                           label: "Body",
-                          name: "body",
-                          value: _vm.resource.body
+                          name: "body"
                         },
                         model: {
                           value: _vm.resource.body,

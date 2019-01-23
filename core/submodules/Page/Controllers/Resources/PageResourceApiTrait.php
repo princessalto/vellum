@@ -21,8 +21,8 @@ trait PageResourceApiTrait
     {
         $page = Page::findOrFail($id);
 
-        // $this->authorize('update', $page);
-        return response()->json($page->id);
+        $this->authorize('update', $page);
+        return response()->json($page);
     }
 
     /**
@@ -144,11 +144,11 @@ trait PageResourceApiTrait
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Role\Requests\RoleRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function putUpdate(PageRequest $request, $id)
+    public function putUpdate(Request $request, $id)
     {
         $page = Page::findOrFail($id);
         $page->title = $request->input('title');
@@ -156,8 +156,8 @@ trait PageResourceApiTrait
         $page->feature = $request->input('feature');
         $page->body = $request->input('body');
         $page->delta = $request->input('delta');
-        $page->template = $request->input('template');
-        $page->user()->associate(User::find($request->input('user_id')));
+        $page->template = $request->input('attributes')['template'] ?? 'generic';
+        $page->user()->associate(User::find($request->input('user_id') ?? user()->id));
         $page->save();
 
         return response()->json($page->id);
