@@ -76,6 +76,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -85,13 +108,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      resource: {}
+      resource: {
+        lockSlug: false,
+        viewSlug: false
+      }
     };
   },
   mounted: function mounted() {
     this.ckEditor();
   },
   methods: {
+    slugify: function slugify($value) {
+      if (!this.resource.lockSlug) {
+        if (typeof $value === 'undefined') {
+          this.resource.item.slug = this.$options.filters.slugify(this.resource.item.title);
+        } else {
+          this.resource.item.slug = this.$options.filters.slugify($value);
+        }
+      }
+    },
     ckEditor: function ckEditor() {
       ClassicEditor.create(document.querySelector('#editor')).catch(function (error) {
         console.error(error);
@@ -201,6 +236,12 @@ var render = function() {
                           label: "Title",
                           name: "title"
                         },
+                        on: {
+                          input: _vm.slugify,
+                          "click:append": function($event) {
+                            _vm.resource.viewSlug = !_vm.resource.viewSlug
+                          }
+                        },
                         model: {
                           value: _vm.resource.title,
                           callback: function($$v) {
@@ -209,6 +250,65 @@ var render = function() {
                           expression: "resource.title"
                         }
                       }),
+                      _vm._v(" "),
+                      _c(
+                        "v-slide-y-transition",
+                        { attrs: { mode: "out-in" } },
+                        [
+                          _vm.resource.viewSlug
+                            ? _c("v-text-field", {
+                                directives: [
+                                  { name: "focus", rawName: "v-focus" },
+                                  {
+                                    name: "validate",
+                                    rawName: "v-validate",
+                                    value: "required",
+                                    expression: "'required'"
+                                  }
+                                ],
+                                staticClass: "mb-2",
+                                attrs: {
+                                  "append-icon": _vm.resource.lockSlug
+                                    ? "lock"
+                                    : "lock_open",
+                                  "error-messages": _vm.errors.collect("slug"),
+                                  hint: _vm.trans(
+                                    "Locking this field will prevent the title field from overriding this current value"
+                                  ),
+                                  label: _vm.trans("Slug"),
+                                  placeholder: _vm.trans(
+                                    "app://your-custom-url-here"
+                                  ),
+                                  readonly: _vm.resource.lockSlug,
+                                  outline: "",
+                                  name: "slug",
+                                  "persistent-hint": ""
+                                },
+                                on: {
+                                  blur: function($event) {
+                                    _vm.resource.lockSlug = true
+                                  },
+                                  "click:append": function($event) {
+                                    _vm.resource.lockSlug = !_vm.resource
+                                      .lockSlug
+                                  }
+                                },
+                                model: {
+                                  value: _vm.resource.item.slug,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.resource.item,
+                                      "slug",
+                                      typeof $$v === "string" ? $$v.trim() : $$v
+                                    )
+                                  },
+                                  expression: "resource.item.slug"
+                                }
+                              })
+                            : _vm._e()
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c("v-text-field", {
                         directives: [
@@ -226,6 +326,11 @@ var render = function() {
                           autofocus: "",
                           label: "Code",
                           name: "code"
+                        },
+                        on: {
+                          "click:append": function() {
+                            _vm.resource.lockSlug = !_vm.resource.lockSlug
+                          }
                         },
                         model: {
                           value: _vm.resource.code,

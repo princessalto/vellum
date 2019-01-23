@@ -34,6 +34,8 @@ class Page extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['author', 'created'];
+
     protected $searchables = [
         'title',
         'code',
