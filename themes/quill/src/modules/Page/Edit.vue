@@ -26,7 +26,7 @@
               disabled
               name="id"
               type="hidden"
-              v-model="resource.id"
+              :value="resource.id"
               >
             <v-text-field
               :data-vv-as="trans('Title')"
@@ -36,6 +36,7 @@
               autofocus
               label="Title"
               name="title"
+              :value="resource.title"
               v-model="resource.title"
             ></v-text-field>
 
@@ -47,6 +48,7 @@
               autofocus
               label="Code"
               name="code"
+              :value="resource.code"
               v-model="resource.code"
               >
             </v-text-field>
@@ -57,6 +59,7 @@
               autofocus
               label="Body"
               name="body"
+              :value="resource.body"
               v-model="resource.body"
             ></v-textarea>
           </v-flex>
@@ -77,20 +80,21 @@ export default {
     validator: 'new'
   },
 
-
   data () {
     return {
-      resource: {}
+      resource: {
+        title: this.title,
+        code: this.code,
+        body: this.body
+      }
     }
   },
 
   created() {
-    // console.log(this.$route.params)
     axios
-      .get('/api/v1/pages/edit', { id: this.$route.params.id })
+      .get(`/api/v1/pages/edit/${this.$route.params.id}`)
       .then((response) => {
         this.resource = response.data
-        // console.log(response)
       })
   },
 
@@ -107,10 +111,10 @@ export default {
 
     updateData () {
       axios
-        .post('/api/v1/pages/' + this.$route.params.id + '/update')
+        .post('/api/v1/pages/update/' + this.$route.params.id)
         .then((response) => {
-          this.$router.push({name: 'pages.update'});
-          console.log(params)
+          console.log(response, 'updateData');
+          this.$router.push({name: 'pages'});
         })
     },
   },

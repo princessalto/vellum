@@ -38,6 +38,25 @@
             <v-card-text>
               <v-flex>
                 <v-layout row wrap justify-center align-center>
+                  <h5>{{ __('Main Menu') }}</h5>
+                  <v-spacer></v-spacer>
+                  <v-icon>mdi-drag-vertical</v-icon>
+                </v-layout>
+              </v-flex>
+            </v-card-text>
+          </v-card>
+          <div class="px-3">
+            <p class="caption grey--text">
+              {{ __('Monthly arvice') }}
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <v-card hover class="mb-3">
+            <v-card-text>
+              <v-flex>
+                <v-layout row wrap justify-center align-center>
                   <h5>{{ __('Calendar') }}</h5>
                   <v-spacer></v-spacer>
                   <v-icon>mdi-drag-vertical</v-icon>

@@ -122,7 +122,8 @@ export default {
     },
 
     storeData () {
-      axios.post('/api/v1/pages/store', this.resource)
+      axios
+        .post('/api/v1/pages/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
           this.$router.push({name: 'pages.store'})

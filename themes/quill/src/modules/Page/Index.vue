@@ -186,7 +186,8 @@ export default {
   },
 
   mounted () {
-    axios.get('/api/v1/pages/all')
+    axios
+      .get('/api/v1/pages/all')
       .then(response => {
         this.resources.items = response.data.data
         console.log(response)

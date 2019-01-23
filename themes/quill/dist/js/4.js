@@ -76,6 +76,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -190,6 +209,61 @@ var render = function() {
                         _vm._s(
                           _vm.__("Monthly archive of your site's posts.")
                         ) +
+                        "\n          "
+                    )
+                  ])
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c(
+                  "v-card",
+                  { staticClass: "mb-3", attrs: { hover: "" } },
+                  [
+                    _c(
+                      "v-card-text",
+                      [
+                        _c(
+                          "v-flex",
+                          [
+                            _c(
+                              "v-layout",
+                              {
+                                attrs: {
+                                  row: "",
+                                  wrap: "",
+                                  "justify-center": "",
+                                  "align-center": ""
+                                }
+                              },
+                              [
+                                _c("h5", [_vm._v(_vm._s(_vm.__("Main Menu")))]),
+                                _vm._v(" "),
+                                _c("v-spacer"),
+                                _vm._v(" "),
+                                _c("v-icon", [_vm._v("mdi-drag-vertical")])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "px-3" }, [
+                  _c("p", { staticClass: "caption grey--text" }, [
+                    _vm._v(
+                      "\n            " +
+                        _vm._s(_vm.__("Monthly arvice")) +
                         "\n          "
                     )
                   ])

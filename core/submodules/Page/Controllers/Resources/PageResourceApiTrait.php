@@ -19,14 +19,9 @@ trait PageResourceApiTrait
      */
     public function getEdit(Request $request, $id)
     {
-        $resource = Page::findOrFail($id);
+        $page = Page::findOrFail($id);
 
-        $this->authorize('update', $resource);
-        // $templates = Template::getTemplatesFromFiles();
-        // $categories = Category::type('pages')->select(['name', 'icon', 'id'])->get();
-        // $catalogues = Catalogue::mediabox();
-
-        // return view('Page::pages.edit')->with(compact('resource'));
+        // $this->authorize('update', $page);
         return response()->json($page->id);
     }
 
