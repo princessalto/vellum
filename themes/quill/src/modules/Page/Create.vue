@@ -18,7 +18,7 @@
         <v-layout row wrap>
           <v-flex md9 xs12>
             <v-text-field
-              :data-vv-as="trans('TItle')"
+              :data-vv-as="trans('Title')"
               :error-messages="errors.collect('title')"
               v-validate="'required'"
               box
@@ -77,11 +77,7 @@ export default {
 
   data () {
     return {
-      resource: {
-        title: '',
-        code: '',
-        body: '',
-      },
+      resource: {},
     }
   },
 

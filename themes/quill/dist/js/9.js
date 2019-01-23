@@ -116,6 +116,8 @@ __webpack_require__.r(__webpack_exports__);
         _this3.$router.push({
           name: 'pages.edit'
         });
+
+        alert(_this3.resource, 'Data Updated');
       });
     }
   }
@@ -144,10 +146,7 @@ var render = function() {
       _c(
         "v-form",
         {
-          attrs: {
-            method: "POST",
-            action: "/api/v1/pages/update/" + this.$route.params.id
-          },
+          attrs: { method: "POST", action: "/api/v1/pages/update" },
           on: {
             submit: function($event) {
               $event.preventDefault()

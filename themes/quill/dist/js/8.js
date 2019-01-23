@@ -85,11 +85,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      resource: {
-        title: '',
-        code: '',
-        body: ''
-      }
+      resource: {}
     };
   },
   mounted: function mounted() {
@@ -198,7 +194,7 @@ var render = function() {
                           }
                         ],
                         attrs: {
-                          "data-vv-as": _vm.trans("TItle"),
+                          "data-vv-as": _vm.trans("Title"),
                           "error-messages": _vm.errors.collect("title"),
                           box: "",
                           autofocus: "",

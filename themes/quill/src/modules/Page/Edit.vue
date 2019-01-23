@@ -2,7 +2,7 @@
   <section>
     <v-form
       method="POST"
-      :action="'/api/v1/pages/update/' + this.$route.params.id"
+      action="/api/v1/pages/update"
       @submit.prevent="updateData"
       >
       <v-toolbar flat class="sticky emphasis--medium">
@@ -108,6 +108,7 @@ export default {
         .then((response) => {
           // console.log(this.resource, 'updateData');
           this.$router.push({name: 'pages.edit'});
+          alert(this.resource, 'Data Updated');
         })
     },
   },
