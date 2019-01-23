@@ -69756,8 +69756,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/princessalto/Projects/vellum/themes/quill/src/app.js */"./src/app.js");
-module.exports = __webpack_require__(/*! /home/princessalto/Projects/vellum/themes/quill/src/stylus/main.styl */"./src/stylus/main.styl");
+__webpack_require__(/*! /home/princess/Projects/vellum/themes/quill/src/app.js */"./src/app.js");
+module.exports = __webpack_require__(/*! /home/princess/Projects/vellum/themes/quill/src/stylus/main.styl */"./src/stylus/main.styl");
 
 
 /***/ })

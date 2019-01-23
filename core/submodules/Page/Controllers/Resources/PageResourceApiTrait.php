@@ -9,6 +9,27 @@ use User\Models\User;
 
 trait PageResourceApiTrait
 {
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @param  int  $id
+     * @return Illuminate\Http\Response
+     */
+    public function getEdit(Request $request, $id)
+    {
+        $resource = Page::findOrFail($id);
+
+        $this->authorize('update', $resource);
+        // $templates = Template::getTemplatesFromFiles();
+        // $categories = Category::type('pages')->select(['name', 'icon', 'id'])->get();
+        // $catalogues = Catalogue::mediabox();
+
+        // return view('Page::pages.edit')->with(compact('resource'));
+        return response()->json($page->id);
+    }
+
     /**
      * Retrieve the resource with the parameters.
      *
@@ -17,14 +38,35 @@ trait PageResourceApiTrait
      */
     public function postFind(Request $request)
     {
-        // dd($parameters);
-        $parameters = $request->get('search') !== 'null' && $request->get('search')
+        $searches = $request->get('search') !== 'null' && $request->get('search')
                         ? $request->get('search')
                         : $request->all();
 
-        $page = Page::search($parameters)->first();
+        $onlyTrashed = $request->get('only_trashed') !== 'null' && $request->get('only_trashed')
+                        ? $request->get('only_trashed')
+                        : false;
 
-        return response()->json($page);
+        $order = $request->get('descending') === 'true' && $request->get('descending') !== 'null'
+                        ? 'DESC'
+                        : 'ASC';
+
+        $sort = $request->get('sort') && $request->get('sort') !== 'null'
+                        ? $request->get('sort')
+                        : 'id';
+
+        $take = $request->get('take') && $request->get('take') > 0
+                        ? $request->get('take')
+                        : 0;
+
+        $resources = Page::search($searches)->orderBy($sort, $order);
+
+        if ($onlyTrashed) {
+            $resources->onlyTrashed();
+        }
+
+        $pages = $resources->paginate($take);
+
+        return response()->json($pages);
     }
 
     /**
@@ -111,7 +153,7 @@ trait PageResourceApiTrait
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function putUpdate(Request $request, $id)
+    public function putUpdate(PageRequest $request, $id)
     {
         $page = Page::findOrFail($id);
         $page->title = $request->input('title');
@@ -139,6 +181,8 @@ trait PageResourceApiTrait
 
         return response()->json($success);
     }
+
+
 
     /**
      * Restore the specified resource from storage.

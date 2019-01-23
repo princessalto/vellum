@@ -73,6 +73,7 @@ export default {
       .get('/api/v1/themes/all')
       .then(response => {
         this.resources.items = response.data
+
       })
   },
 

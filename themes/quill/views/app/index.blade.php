@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{ theme('dist/css/app.css') }}">
   <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
 
-  {{-- styles that doesn't work on stylus --}}
+  {{-- css that doesn't work on styl file --}}
   <style>
     .text--ellipsis {
       display: -webkit-box;

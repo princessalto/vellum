@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[23],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Appearance/submodules/Menu/Edit.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
@@ -10,24 +10,8 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./src/store/index.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var vue_nestable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-nestable */ "./node_modules/vue-nestable/dist/vue-nestable.js");
+/* harmony import */ var vue_nestable__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_nestable__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -77,12 +61,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Edit',
+  components: {
+    VueNestable: vue_nestable__WEBPACK_IMPORTED_MODULE_1__["VueNestable"],
+    VueNestableHandle: vue_nestable__WEBPACK_IMPORTED_MODULE_1__["VueNestableHandle"]
+  },
   data: function data() {
     return {
-      resource: {}
+      resource: {},
+      nestableItems: [{
+        id: 0,
+        text: 'Chapter 1'
+      }, {
+        id: 1,
+        text: 'Chapter 2',
+        children: [{
+          id: 2,
+          text: 'Part 1'
+        }]
+      }, {
+        id: 3,
+        text: 'Chapter 3'
+      }]
     };
   }
 });
@@ -108,161 +111,142 @@ var render = function() {
     "v-container",
     { attrs: { fluid: "", "grid-list-lg": "" } },
     [
-      _c("div", { staticClass: "mb-4" }, [
-        _c("h1", { staticClass: "title font-weight-bold" }, [
-          _vm._v(_vm._s(_vm.__("Edit Main Menu")))
-        ])
-      ]),
-      _vm._v(" "),
       _c(
         "v-layout",
         { attrs: { row: "", wrap: "" } },
         [
-          _c("v-flex", { attrs: { sm4: "", xs12: "" } }, [
-            _c("div", { staticClass: "mb-4" }, [
-              _c("h4", { staticClass: "mb-2" }, [
-                _vm._v(
-                  "\n          " +
-                    _vm._s(_vm.__("Menus Toolbox")) +
-                    "\n        "
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "caption" }, [
-                _vm._v(
-                  "\n          " +
-                    _vm._s(
-                      _vm.__(
-                        "To activate a widget, drag it to a sidebar and click on it."
-                      )
-                    ) +
-                    "\n        "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              [
-                _c(
-                  "v-card",
-                  { staticClass: "mb-3", attrs: { hover: "" } },
-                  [
-                    _c(
-                      "v-card-text",
-                      [
-                        _c(
-                          "v-flex",
-                          [
-                            _c(
-                              "v-layout",
-                              {
-                                attrs: {
-                                  row: "",
-                                  wrap: "",
-                                  "justify-center": "",
-                                  "align-center": ""
-                                }
-                              },
-                              [
-                                _c("h5", [_vm._v(_vm._s(_vm.__("Archive")))]),
-                                _vm._v(" "),
-                                _c("v-spacer"),
-                                _vm._v(" "),
-                                _c("v-icon", [_vm._v("mdi-drag-vertical")])
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "px-3" }, [
-                  _c("p", { staticClass: "caption grey--text" }, [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(
-                          _vm.__("Monthly archive of your site's posts.")
-                        ) +
-                        "\n          "
-                    )
-                  ])
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              [
-                _c(
-                  "v-card",
-                  { staticClass: "mb-3", attrs: { hover: "" } },
-                  [
-                    _c(
-                      "v-card-text",
-                      [
-                        _c(
-                          "v-flex",
-                          [
-                            _c(
-                              "v-layout",
-                              {
-                                attrs: {
-                                  row: "",
-                                  wrap: "",
-                                  "justify-center": "",
-                                  "align-center": ""
-                                }
-                              },
-                              [
-                                _c("h5", [_vm._v(_vm._s(_vm.__("Calendar")))]),
-                                _vm._v(" "),
-                                _c("v-spacer"),
-                                _vm._v(" "),
-                                _c("v-icon", [_vm._v("mdi-drag-vertical")])
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "px-3" }, [
-                  _c("p", { staticClass: "caption grey--text" }, [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(
-                          _vm.__("Monthly calendar of your site's posts.")
-                        ) +
-                        "\n          "
-                    )
-                  ])
-                ])
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
           _c(
             "v-flex",
-            { attrs: { sm7: "", xs12: "", "offset-sm1": "" } },
+            { attrs: { sm4: "", xs12: "" } },
             [
               _c(
                 "v-card",
-                { attrs: { flat: "" } },
+                [
+                  _c(
+                    "v-card-title",
+                    { staticClass: "title font-weight-bold" },
+                    [
+                      _vm._v(
+                        "\n          " + _vm._s(_vm.__("Site")) + "\n        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-expansion-panel",
+                        {
+                          staticClass: "transparent",
+                          attrs: { flat: "", focusable: "", dense: "" }
+                        },
+                        [
+                          _c(
+                            "v-expansion-panel-content",
+                            { staticClass: "transparent" },
+                            [
+                              _c(
+                                "div",
+                                { attrs: { slot: "header" }, slot: "header" },
+                                [_vm._v("Item")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-card",
+                                [
+                                  _c(
+                                    "v-card-text",
+                                    [
+                                      _c("vue-nestable", {
+                                        scopedSlots: _vm._u([
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var item = ref.item
+                                              return _c(
+                                                "vue-nestable-handle",
+                                                { attrs: { item: item } },
+                                                [
+                                                  _c(
+                                                    "v-card",
+                                                    {
+                                                      staticClass: "mb-3",
+                                                      attrs: { hover: "" }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-list",
+                                                        {
+                                                          attrs: { dense: "" }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-list-tile",
+                                                            [
+                                                              _c(
+                                                                "v-list-tile-title",
+                                                                [
+                                                                  _vm._v(
+                                                                    "\n                              " +
+                                                                      _vm._s(
+                                                                        item.text
+                                                                      ) +
+                                                                      "\n                            "
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            }
+                                          }
+                                        ]),
+                                        model: {
+                                          value: _vm.nestableItems,
+                                          callback: function($$v) {
+                                            _vm.nestableItems = $$v
+                                          },
+                                          expression: "nestableItems"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { sm8: "", xs12: "" } },
+            [
+              _c(
+                "v-card",
                 [
                   _c("v-card-text", [
                     _vm._v(

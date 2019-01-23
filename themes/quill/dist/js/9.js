@@ -66,6 +66,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -82,11 +94,10 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // console.log(this.$route.params)
-    axios.post('/api/v1/pages/find', {
+    axios.get('/api/v1/pages/edit', {
       id: this.$route.params.id
     }).then(function (response) {
-      _this.resource = response.data;
-      console.log(response);
+      _this.resource = response.data; // console.log(response)
     });
   },
   methods: {
@@ -108,7 +119,7 @@ __webpack_require__.r(__webpack_exports__);
           name: 'pages.update'
         });
 
-        console.log(response, 'Response');
+        console.log(params);
       });
     }
   }
@@ -132,113 +143,146 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
-    { attrs: { fluid: "", "grid-list-lg": "" } },
+    "section",
     [
       _c(
-        "v-layout",
-        { attrs: { row: "", wrap: "" } },
+        "v-form",
+        {
+          attrs: { action: "/api/v1/pages/update", method: "POST" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.updateData($event)
+            }
+          }
+        },
         [
           _c(
-            "v-flex",
-            { attrs: { sm6: "", xs12: "" } },
+            "v-toolbar",
+            { staticClass: "sticky emphasis--medium", attrs: { flat: "" } },
+            [
+              _c("v-toolbar-title", [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.__("Create Page")) + "\n      "
+                )
+              ]),
+              _vm._v(" "),
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { type: "submit", depressed: "", color: "secondary" }
+                },
+                [_vm._v("\n        " + _vm._s(_vm.__("Save")) + "\n      ")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            { attrs: { fluid: "", "grid-list-lg": "" } },
             [
               _c(
-                "v-form",
-                {
-                  attrs: { action: "/api/v1/pages/update", method: "POST" },
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.updateData($event)
-                    }
-                  }
-                },
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
                 [
-                  _c("input", {
-                    attrs: {
-                      disabled: "",
-                      id: "id",
-                      name: "id",
-                      required: "",
-                      type: "hidden"
-                    },
-                    domProps: { value: _vm.resource.id }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required",
-                        expression: "'required'"
-                      }
-                    ],
-                    attrs: {
-                      "data-vv-as": _vm.trans("Title"),
-                      "error-messages": _vm.errors.collect("title"),
-                      box: "",
-                      autofocus: "",
-                      label: "Title",
-                      name: "title"
-                    },
-                    model: {
-                      value: _vm.resource.title,
-                      callback: function($$v) {
-                        _vm.$set(_vm.resource, "title", $$v)
-                      },
-                      expression: "resource.title"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required",
-                        expression: "'required'"
-                      }
-                    ],
-                    attrs: {
-                      "data-vv-as": _vm.trans("Code"),
-                      "error-messages": _vm.errors.collect("code"),
-                      box: "",
-                      autofocus: "",
-                      label: "Code",
-                      name: "code"
-                    },
-                    model: {
-                      value: _vm.resource.code,
-                      callback: function($$v) {
-                        _vm.$set(_vm.resource, "code", $$v)
-                      },
-                      expression: "resource.code"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-textarea", {
-                    attrs: {
-                      "data-vv-as": _vm.trans("Body"),
-                      box: "",
-                      autofocus: "",
-                      label: "Body",
-                      name: "body"
-                    },
-                    model: {
-                      value: _vm.resource.body,
-                      callback: function($$v) {
-                        _vm.$set(_vm.resource, "body", $$v)
-                      },
-                      expression: "resource.body"
-                    }
-                  }),
-                  _vm._v(" "),
                   _c(
-                    "v-btn",
-                    { staticClass: "secondary", attrs: { type: "submit" } },
-                    [_vm._v(_vm._s(_vm.__("Create")))]
+                    "v-flex",
+                    { attrs: { md6: "", xs12: "" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.resource.id,
+                            expression: "resource.id"
+                          }
+                        ],
+                        attrs: { disabled: "", name: "id", type: "hidden" },
+                        domProps: { value: _vm.resource.id },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.resource, "id", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          }
+                        ],
+                        attrs: {
+                          "data-vv-as": _vm.trans("Title"),
+                          "error-messages": _vm.errors.collect("title"),
+                          box: "",
+                          autofocus: "",
+                          label: "Title",
+                          name: "title"
+                        },
+                        model: {
+                          value: _vm.resource.title,
+                          callback: function($$v) {
+                            _vm.$set(_vm.resource, "title", $$v)
+                          },
+                          expression: "resource.title"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          }
+                        ],
+                        attrs: {
+                          "data-vv-as": _vm.trans("Code"),
+                          "error-messages": _vm.errors.collect("title"),
+                          box: "",
+                          autofocus: "",
+                          label: "Code",
+                          name: "code"
+                        },
+                        model: {
+                          value: _vm.resource.code,
+                          callback: function($$v) {
+                            _vm.$set(_vm.resource, "code", $$v)
+                          },
+                          expression: "resource.code"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-textarea", {
+                        attrs: {
+                          "data-vv-as": _vm.trans("Body"),
+                          box: "",
+                          autofocus: "",
+                          label: "Body",
+                          name: "body"
+                        },
+                        model: {
+                          value: _vm.resource.body,
+                          callback: function($$v) {
+                            _vm.$set(_vm.resource, "body", $$v)
+                          },
+                          expression: "resource.body"
+                        }
+                      })
+                    ],
+                    1
                   )
                 ],
                 1

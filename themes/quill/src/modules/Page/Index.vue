@@ -167,6 +167,7 @@ export default {
       },
       resources: {
         items: [],
+        selected: [],
         data: null,
         pagination: {
           sortBy: 'title'

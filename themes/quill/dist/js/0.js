@@ -176,6 +176,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       resources: {
         items: [],
+        selected: [],
         data: null,
         pagination: {
           sortBy: 'title'
