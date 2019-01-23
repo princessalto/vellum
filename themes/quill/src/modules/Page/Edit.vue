@@ -73,10 +73,12 @@ export default {
   },
 
   created() {
+    // console.log(this.$route.params)
     axios
-      .get('/api/v1/pages/' + this.$route.params.id + '/edit')
+      .post('/api/v1/pages/find', {id: this.$route.params.id})
       .then((response) => {
         this.resource = response.data
+        console.log(response)
       })
   },
 

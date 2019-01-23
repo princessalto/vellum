@@ -81,8 +81,12 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/api/v1/pages/' + this.$route.params.id + '/edit').then(function (response) {
+    // console.log(this.$route.params)
+    axios.post('/api/v1/pages/find', {
+      id: this.$route.params.id
+    }).then(function (response) {
       _this.resource = response.data;
+      console.log(response);
     });
   },
   methods: {

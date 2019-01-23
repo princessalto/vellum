@@ -17,6 +17,7 @@ trait PageResourceApiTrait
      */
     public function postFind(Request $request)
     {
+        // dd($parameters);
         $parameters = $request->get('search') !== 'null' && $request->get('search')
                         ? $request->get('search')
                         : $request->all();
