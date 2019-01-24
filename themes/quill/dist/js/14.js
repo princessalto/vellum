@@ -155,6 +155,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -313,6 +322,23 @@ var render = function() {
                                   _c(
                                     "v-card-text",
                                     [
+                                      _c(
+                                        "h4",
+                                        {
+                                          staticClass:
+                                            "mb-3 grey--text text-uppercase"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                    " +
+                                              _vm._s(
+                                                _vm.__("Account Details")
+                                              ) +
+                                              "\n                  "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
                                       _c(
                                         "v-layout",
                                         { attrs: { row: "", wrap: "" } },
@@ -625,8 +651,8 @@ var render = function() {
                                                   autofocus: "",
                                                   box: "",
                                                   label: "Retype Password",
-                                                  name: "password",
-                                                  type: "password"
+                                                  type: "password",
+                                                  name: "password_confirmation"
                                                 },
                                                 model: {
                                                   value: _vm.resource.password,
@@ -646,6 +672,25 @@ var render = function() {
                                           )
                                         ],
                                         1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "h4",
+                                        {
+                                          staticClass:
+                                            "mb-3 grey--text text-uppercase"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                    " +
+                                              _vm._s(
+                                                _vm.__(
+                                                  "Other Background Details"
+                                                )
+                                              ) +
+                                              "\n                  "
+                                          )
+                                        ]
                                       )
                                     ],
                                     1
@@ -663,13 +708,30 @@ var render = function() {
                             [
                               _c(
                                 "v-card",
-                                { attrs: { flat: "" } },
+                                {
+                                  staticClass: "text-xs-center",
+                                  attrs: { flat: "" }
+                                },
                                 [
-                                  _c("v-card-text", [
-                                    _vm._v(
-                                      "\n                  lorem ipsum dolor\n                "
-                                    )
-                                  ])
+                                  _c(
+                                    "v-card-text",
+                                    [
+                                      _c(
+                                        "v-avatar",
+                                        { attrs: { size: "180" } },
+                                        [
+                                          _c("img", {
+                                            attrs: {
+                                              src:
+                                                "https://vuetifyjs.com/apple-touch-icon-180x180.png",
+                                              alt: ""
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               )

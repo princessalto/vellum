@@ -111,7 +111,7 @@ var render = function() {
                                 [
                                   _c("v-list-tile-avatar", [
                                     _c("img", {
-                                      attrs: { src: _vm.resource.thumbnail }
+                                      attrs: { src: _vm.resource.useravatar }
                                     })
                                   ]),
                                   _vm._v(" "),

@@ -25,6 +25,9 @@
               <v-flex md9 xs12>
                 <v-card flat>
                   <v-card-text>
+                    <h4 class="mb-3 grey--text text-uppercase">
+                      {{ __('Account Details') }}
+                    </h4>
                     <v-layout row wrap>
                       <v-flex md4 sm4 xs12>
                         <v-text-field
@@ -36,7 +39,7 @@
                           name="firstname"
                           v-model="resource.firstname"
                           v-validate="'required'"
-                        ></v-text-field>
+                          ></v-text-field>
                       </v-flex>
                       <v-flex md4 sm4 xs12>
                         <v-text-field
@@ -48,7 +51,7 @@
                           name="middlename"
                           v-model="resource.middlename"
                           v-validate="'required'"
-                        ></v-text-field>
+                          ></v-text-field>
                       </v-flex>
                       <v-flex md4 sm4 xs12>
                         <v-text-field
@@ -116,22 +119,28 @@
                           autofocus
                           box
                           label="Retype Password"
-                          name="password"
                           type="password"
+                          name="password_confirmation"
                           v-model="resource.password"
                           v-validate="'required'"
                           >
                         </v-text-field>
                       </v-flex>
                     </v-layout>
+
+                    <h4 class="mb-3 grey--text text-uppercase">
+                      {{ __('Other Background Details') }}
+                    </h4>
                   </v-card-text>
                 </v-card>
               </v-flex>
 
               <v-flex md3 xs12>
-                <v-card flat>
+                <v-card flat class="text-xs-center">
                   <v-card-text>
-                    lorem ipsum dolor
+                    <v-avatar size="180">
+                      <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="">
+                    </v-avatar>
                   </v-card-text>
                 </v-card>
               </v-flex>

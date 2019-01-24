@@ -145,6 +145,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -178,6 +195,7 @@ __webpack_require__.r(__webpack_exports__);
         items: [],
         selected: [],
         data: null,
+        showBulk: false,
         pagination: {
           sortBy: 'title'
         },
@@ -220,6 +238,19 @@ __webpack_require__.r(__webpack_exports__);
       _this.resources.items = response.data.data;
       console.log(response);
     });
+  },
+  methods: {
+    toggleAll: function toggleAll() {
+      if (this.resources.selected.length) this.resources.selected = [];else this.resources.selected = this.items.slice();
+    },
+    changeSort: function changeSort(column) {
+      if (this.resources.pagination.sortBy === column) {
+        this.resources.pagination.descending = !this.resources.pagination.descending;
+      } else {
+        this.resources.pagination.sortBy = column;
+        this.resources.pagination.descending = false;
+      }
+    }
   }
 });
 
@@ -351,6 +382,42 @@ var render = function() {
                         _c("toolbar-menu", { attrs: { items: _vm.toolbar } }),
                         _vm._v(" "),
                         _c(
+                          "v-toolbar",
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { icon: "" },
+                                nativeOn: {
+                                  click: function($event) {
+                                    _vm.resources.showBulk = !_vm.resources
+                                      .showBulk
+                                  }
+                                },
+                                model: {
+                                  value: _vm.resources.showBulk,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resources, "showBulk", $$v)
+                                  },
+                                  expression: "resources.showBulk"
+                                }
+                              },
+                              [
+                                _c("v-icon", [
+                                  _vm._v(
+                                    "mdi-checkbox-multiple-marked-circle-outline"
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
                           "v-card",
                           { staticClass: "sticky" },
                           [
@@ -370,18 +437,76 @@ var render = function() {
                               },
                               scopedSlots: _vm._u([
                                 {
-                                  key: "headerCell",
+                                  key: "headers",
                                   fn: function(props) {
                                     return [
-                                      _c("span", [
-                                        _vm._v(
-                                          "\n                  " +
-                                            _vm._s(
-                                              _vm.trans(props.header.text)
-                                            ) +
-                                            "\n                "
-                                        )
-                                      ])
+                                      _c(
+                                        "tr",
+                                        [
+                                          _c(
+                                            "th",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "show",
+                                                  rawName: "v-show",
+                                                  value: _vm.resources.showBulk,
+                                                  expression:
+                                                    "resources.showBulk"
+                                                }
+                                              ]
+                                            },
+                                            [
+                                              _c("v-checkbox", {
+                                                attrs: {
+                                                  indeterminate:
+                                                    props.indeterminate,
+                                                  "input-value": props.all,
+                                                  "hide-details": "",
+                                                  primary: ""
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.stopPropagation()
+                                                    return _vm.toggleAll($event)
+                                                  }
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _vm._l(props.headers, function(
+                                            header
+                                          ) {
+                                            return _c(
+                                              "th",
+                                              {
+                                                key: header.text,
+                                                on: {
+                                                  click: function($event) {
+                                                    _vm.changeSort(header.value)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "v-icon",
+                                                  { attrs: { small: "" } },
+                                                  [_vm._v("arrow_upward")]
+                                                ),
+                                                _vm._v(
+                                                  "\n                    " +
+                                                    _vm._s(header.text) +
+                                                    "\n                  "
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
                                     ]
                                   }
                                 },
@@ -402,6 +527,17 @@ var render = function() {
                                         [
                                           _c(
                                             "td",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "show",
+                                                  rawName: "v-show",
+                                                  value: _vm.resources.showBulk,
+                                                  expression:
+                                                    "resources.showBulk"
+                                                }
+                                              ]
+                                            },
                                             [
                                               _c("v-checkbox", {
                                                 attrs: {

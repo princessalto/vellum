@@ -5,6 +5,16 @@
         <v-layout row wrap>
           <v-flex xs12>
             <toolbar-menu :items="toolbar"></toolbar-menu>
+            <v-toolbar>
+              <v-spacer></v-spacer>
+              <v-btn
+                v-model="resources.showBulk"
+                icon
+                @click.native="resources.showBulk = !resources.showBulk"
+                >
+                <v-icon>mdi-checkbox-multiple-marked-circle-outline</v-icon>
+              </v-btn>
+            </v-toolbar>
             <v-card class="sticky">
               <v-data-table
                 :headers="resources.headers"
@@ -15,23 +25,34 @@
                 select-all
                 v-model="resources.selected"
                 >
-                <template
-                  slot="headerCell"
-                  slot-scope="props"
-                  >
-                  <span>
-                    {{ trans(props.header.text) }}
-                  </span>
+                <template slot="headers" slot-scope="props">
+                  <tr>
+                    <th v-show="resources.showBulk">
+                      <v-checkbox
+                        :indeterminate="props.indeterminate"
+                        :input-value="props.all"
+                        @click.stop="toggleAll"
+                        hide-details
+                        primary
+                        >
+                      </v-checkbox>
+                    </th>
+                    <th
+                      v-for="header in props.headers"
+                      :key="header.text"
+                      @click="changeSort(header.value)"
+                      >
+                      <v-icon small>arrow_upward</v-icon>
+                      {{ header.text }}
+                    </th>
+                  </tr>
                 </template>
-                <template
-                  slot="items"
-                  slot-scope="props"
-                  >
+                <template slot="items" slot-scope="props">
                   <tr
                     :active="props.selected"
                     @click="props.selected = !props.selected"
                     >
-                    <td>
+                    <td v-show="resources.showBulk">
                       <v-checkbox
                         :input-value="props.selected"
                         primary
@@ -113,10 +134,6 @@
                 </template>
               </v-data-table>
             </v-card>
-
-            <!-- <v-card clas="mb-3">
-              <data-table :items="resources"></data-table>
-            </v-card> -->
           </v-flex>
         </v-layout>
       </v-container>
@@ -169,6 +186,7 @@ export default {
         items: [],
         selected: [],
         data: null,
+        showBulk: false,
         pagination: {
           sortBy: 'title'
         },
@@ -193,5 +211,21 @@ export default {
         console.log(response)
       })
   },
+
+  methods: {
+    toggleAll () {
+      if (this.resources.selected.length) this.resources.selected = []
+      else this.resources.selected = this.items.slice()
+    },
+
+    changeSort (column) {
+      if (this.resources.pagination.sortBy === column) {
+        this.resources.pagination.descending = !this.resources.pagination.descending
+      } else {
+        this.resources.pagination.sortBy = column
+        this.resources.pagination.descending = false
+      }
+    }
+  }
 }
 </script>
