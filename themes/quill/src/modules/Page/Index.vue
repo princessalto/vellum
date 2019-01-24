@@ -1,11 +1,11 @@
 <template>
   <section>
     <template v-if="dataset.loaded">
-      <toolbar-menu :items="toolbar"></toolbar-menu>
-      <v-container fluid grid-list-lg>
+      <v-container grid-list-lg>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card flat class="mb-3">
+            <toolbar-menu :items="toolbar"></toolbar-menu>
+            <v-card class="sticky">
               <v-data-table
                 :headers="resources.headers"
                 :items="resources.items"

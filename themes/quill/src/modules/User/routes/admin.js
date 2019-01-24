@@ -27,7 +27,7 @@ export default [
         name: 'users.create',
         component: () => import('../Create.vue'),
         meta: {
-          title: 'Create User',
+          title: 'Add User',
           authenticatable: true,
           icon: 'mdi-delete-outline'
 

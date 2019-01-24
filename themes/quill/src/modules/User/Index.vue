@@ -43,6 +43,8 @@
                       <v-avatar size="30" class="mx-3">
                         <img :src="props.item.photo" alt="">
                       </v-avatar>
+                    </td>
+                    <td>
                       <span v-html="props.item.fullname"></span>
                     </td>
                     <td v-html="props.item.email"></td>
@@ -137,7 +139,7 @@ export default {
     EmptyState
   },
 
-  created () {
+  mounted () {
     axios.get('/api/v1/users/all').then(response => {
       this.resource.items = response.data.data
     })
@@ -156,9 +158,9 @@ export default {
       toolbar: {
         title: 'All Users',
         listGridView: false,
-        // createBtn: {
-        //   name: 'users.create',
-        // },
+        createBtn: {
+          name: 'users.create',
+        },
         archivedBtn: {
           name: 'users.archived',
         },
@@ -171,10 +173,11 @@ export default {
         },
         headers: [
           { text: 'ID', align: 'left', value: 'id' },
+          { text: 'Avatar', align: 'left', value: 'thumbnail' },
           { text: 'Full Name', align: 'left', value: 'title' },
           { text: 'Email', align: 'left', value: 'user_id' },
           { text: 'Role', align: 'left', value: 'category_at' },
-          { text: 'Created', align: 'left', value: 'created_at' },
+          { text: 'Create', align: 'left', value: 'created_at' },
           { text: 'Actions', align: 'center', sortable: false },
         ],
       },

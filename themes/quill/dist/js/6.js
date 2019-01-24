@@ -73,11 +73,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Index',
-  mounted: function mounted() {
+  data: function data() {
+    return {
+      resources: {
+        items: []
+      },
+      resource: {}
+    };
+  },
+  created: function created() {
     var _this = this;
 
     axios.get('/api/v1/themes/all').then(function (response) {
@@ -88,21 +101,14 @@ __webpack_require__.r(__webpack_exports__);
     saveTheme: function saveTheme() {
       var _this2 = this;
 
-      axios.post('/api/v1/settings/store', this.resources).then(function (response) {
+      axios.post('/api/v1/settings/store', this.resource).then(function (response) {
         _this2.$router.push({
-          name: 'settings'
+          name: 'appearance.themes'
         });
 
-        console.log(_this2.resources.items, 'data');
+        console.log(_this2.resource.active);
       });
     }
-  },
-  data: function data() {
-    return {
-      resources: {
-        items: []
-      }
-    };
   }
 });
 
@@ -131,7 +137,7 @@ var render = function() {
         "v-layout",
         { attrs: { row: "", wrap: "" } },
         [
-          _vm._l(_vm.resources.items, function(item, i) {
+          _vm._l(_vm.resources.items, function(resource, i) {
             return [
               _c(
                 "v-flex",
@@ -139,14 +145,14 @@ var render = function() {
                 [
                   _c(
                     "v-card",
-                    { attrs: { id: item.code } },
+                    { attrs: { id: resource.code } },
                     [
                       _c(
                         "v-img",
                         {
                           attrs: {
                             height: "300",
-                            src: item.thumbnail,
+                            src: resource.thumbnail,
                             gradient:
                               "to top right, rgba(100,115,201,.45), rgba(25,32,72,.3)"
                           }
@@ -174,7 +180,7 @@ var render = function() {
                                       _c("h3", {
                                         staticClass: "mb-2",
                                         domProps: {
-                                          innerHTML: _vm._s(item.name)
+                                          innerHTML: _vm._s(resource.name)
                                         }
                                       }),
                                       _vm._v(" "),
@@ -189,7 +195,7 @@ var render = function() {
                                             _vm._v(
                                               _vm._s(_vm.__("Theme by: ")) +
                                                 " " +
-                                                _vm._s(item.author.name)
+                                                _vm._s(resource.author.name)
                                             )
                                           ])
                                         ]
@@ -197,7 +203,9 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("p", {
                                         domProps: {
-                                          innerHTML: _vm._s(item.description)
+                                          innerHTML: _vm._s(
+                                            resource.description
+                                          )
                                         }
                                       })
                                     ]
@@ -216,7 +224,7 @@ var render = function() {
                         "v-card-actions",
                         { staticClass: "pa-3" },
                         [
-                          item.active
+                          resource.active
                             ? [
                                 _c(
                                   "v-btn",
@@ -253,11 +261,32 @@ var render = function() {
                                   },
                                   [
                                     _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: resource.code,
+                                          expression: "resource.code"
+                                        }
+                                      ],
+                                      key: "active_theme",
                                       attrs: {
                                         type: "hidden",
                                         name: "active_theme"
                                       },
-                                      domProps: { value: item.code }
+                                      domProps: { value: resource.code },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            resource,
+                                            "code",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
                                     }),
                                     _vm._v(" "),
                                     _c(
@@ -284,7 +313,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("v-spacer"),
                           _vm._v(" "),
-                          _c("v-btn", { attrs: { flat: "", href: "" } }, [
+                          _c("v-btn", { attrs: { flat: "" } }, [
                             _vm._v(
                               "\n              " +
                                 _vm._s(_vm.__("Details")) +

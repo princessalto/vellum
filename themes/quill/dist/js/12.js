@@ -61,6 +61,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -152,17 +153,31 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Global Date Format",
-                                  value: _vm.resource.date_format,
+                                  label: "Date Format",
+                                  name: "date_format",
                                   box: ""
+                                },
+                                model: {
+                                  value: _vm.resource.date_format,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "date_format", $$v)
+                                  },
+                                  expression: "resource.date_format"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
-                                attrs: {
-                                  label: "Items per Page",
+                                attrs: { label: "Items per Page", box: "" },
+                                model: {
                                   value: _vm.resource.items_per_page,
-                                  box: ""
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.resource,
+                                      "items_per_page",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "resource.items_per_page"
                                 }
                               }),
                               _vm._v(" "),

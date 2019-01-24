@@ -336,11 +336,9 @@ var render = function() {
     [
       _vm.dataset.loaded
         ? [
-            _c("toolbar-menu", { attrs: { items: _vm.toolbar } }),
-            _vm._v(" "),
             _c(
               "v-container",
-              { attrs: { fluid: "", "grid-list-lg": "" } },
+              { attrs: { "grid-list-lg": "" } },
               [
                 _c(
                   "v-layout",
@@ -350,9 +348,11 @@ var render = function() {
                       "v-flex",
                       { attrs: { xs12: "" } },
                       [
+                        _c("toolbar-menu", { attrs: { items: _vm.toolbar } }),
+                        _vm._v(" "),
                         _c(
                           "v-card",
-                          { staticClass: "mb-3", attrs: { flat: "" } },
+                          { staticClass: "sticky" },
                           [
                             _c("v-data-table", {
                               staticClass: "elevation-1",

@@ -20,6 +20,17 @@ export default [
           sort: 5,
         },
       },
+      // Add User
+      {
+        code: 'users.create',
+        name: 'users.create',
+        meta: {
+          title: 'Add Users',
+          icon: 'mdi-home',
+          authenticatable: true,
+          sort: 5,
+        },
+      },
       // Archived
       {
         code: 'users.archived',

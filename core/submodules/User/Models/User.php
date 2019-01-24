@@ -5,6 +5,7 @@ namespace User\Models;
 use Activity\Support\Relations\MorphManyActivities;
 use Frontier\Support\Breadcrumbs\Accessors\Breadcrumable;
 use Frontier\Support\Traits\TypeTrait;
+use Pluma\Support\Auth\Traits\UserMutator;
 use Pluma\Support\Auth\User as Authenticatable;
 use Pluma\Support\Token\Traits\TokenizableTrait;
 use Role\Support\Relations\BelongsToManyRoles;
@@ -28,6 +29,7 @@ class User extends Authenticatable
         TokenizableTrait,
         TypeTrait,
         UserAccessor,
+        UserMutator,
         WhereDetailTrait,
         WhereSettingTrait;
 
@@ -47,6 +49,12 @@ class User extends Authenticatable
         'email',
         'password',
         'type',
+    ];
+
+    protected $appends = [
+        'displayrole',
+        'created',
+        'modified',
     ];
 
     protected $searchables = [

@@ -33,7 +33,7 @@
     <!-- hide searchField -->
     <template v-else>
       <v-toolbar-title
-        class="subheading"
+        class="py-5 headine font-weight-bold"
         v-html="trans(dataset.title)"
         >
       </v-toolbar-title>

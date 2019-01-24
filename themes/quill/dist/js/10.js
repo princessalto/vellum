@@ -98,7 +98,7 @@ var render = function() {
                         "v-card-text",
                         [
                           _c("h1", {
-                            staticClass: "title font-weight-bold",
+                            staticClass: "title font-weight-bold mb-4",
                             domProps: { innerHTML: _vm._s(_vm.resource.title) }
                           }),
                           _vm._v(" "),

@@ -8,22 +8,23 @@
             method="POST"
             @submit.prevent="savePreference"
             >
-            <!-- <input type="hidden" name="user_id" :value="user().getKey()"> -->
+            <!-- <input type="hidden" name="user_id" v-model="user().getKey()"> -->
             <v-card>
               <v-card-title class="subheading font-weight-bold">
                 {{ __('Preferences') }}
               </v-card-title>
               <v-card-text>
                 <v-text-field
-                  label="Global Date Format"
-                  :value="resource.date_format"
+                  label="Date Format"
+                  v-model="resource.date_format"
+                  name="date_format"
                   box
                   >
                 </v-text-field>
 
                 <v-text-field
                   label="Items per Page"
-                  :value="resource.items_per_page"
+                  v-model="resource.items_per_page"
                   box
                   >
                 </v-text-field>
@@ -64,7 +65,8 @@ export default {
 
   methods: {
     savePreference() {
-      axios.post('/api/v1/settings/store', this.resource)
+      axios
+        .post('/api/v1/settings/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
           this.$router.push({name: 'settings.store'})

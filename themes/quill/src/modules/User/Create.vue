@@ -1,18 +1,27 @@
 <template>
-  <div>
-    <v-container fluid grid-list-lg>
-      <v-layout row wrap>
-        <v-flex sm6 xs12>
-          <v-form
-            method="POST"
-            action="/api/v1/users/store"
-            @submit.prevent="storeData"
-            >
+  <section>
+    <v-form
+      @submit.prevent="storeData"
+      action="/api/v1/users/store"
+      method="POST"
+      >
+      <v-container grid-list-lg>
+        <v-toolbar flat class="transparent sticky px-0">
+          <div class="title px-0">
+            {{ __('Add User') }}
+          </div>
+          <v-spacer></v-spacer>
+          <v-btn color="secondary" type="submit">
+            {{ __('Save') }}
+          </v-btn>
+        </v-toolbar>
+        <v-layout row wrap>
+          <v-flex md6 xs12>
             <v-text-field
               :data-vv-as="trans('First Name')"
               :error-messages="errors.collect('firstname')"
               v-validate="'required'"
-              outline
+              box
               autofocus
               label="First Name"
               name="firstname"
@@ -23,7 +32,7 @@
               :data-vv-as="trans('Last Name')"
               :error-messages="errors.collect('lastname')"
               v-validate="'required'"
-              outline
+              box
               autofocus
               label="Last Name"
               name="lastname"
@@ -34,7 +43,7 @@
               :data-vv-as="trans('Username')"
               :error-messages="errors.collect('username')"
               v-validate="'required'"
-              outline
+              box
               autofocus
               label="Username"
               name="username"
@@ -44,7 +53,7 @@
             <v-text-field
               :data-vv-as="trans('Avatar')"
               :error-messages="errors.collect('avatar')"
-              outline
+              box
               autofocus
               label="Avatar"
               name="avatar"
@@ -56,7 +65,7 @@
               :data-vv-as="trans('Email Address')"
               :error-messages="errors.collect('email')"
               v-validate="'required'"
-              outline
+              box
               autofocus
               label="Email Address"
               name="email"
@@ -67,21 +76,18 @@
               :data-vv-as="trans('Password')"
               :error-messages="errors.collect('password')"
               v-validate="'required'"
-              outline
+              box
               autofocus
               label="Password"
               name="password"
               type="password"
               v-model="dataset.password"
             ></v-text-field>
-
-            <!-- button -->
-            <v-btn class="secondary" type="submit">{{ __('Create') }}</v-btn>
-          </v-form>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </div>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-form>
+  </section>
 </template>
 
 <script>

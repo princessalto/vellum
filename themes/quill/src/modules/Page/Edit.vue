@@ -106,9 +106,8 @@ export default {
       axios
         .post('/api/v1/pages/update/' + this.$route.params.id, this.resource)
         .then((response) => {
-          // console.log(this.resource, 'updateData');
           this.$router.push({name: 'pages.edit'});
-          alert(this.resource, 'Data Updated');
+          // alert(this.resource, 'Data Updated');
         })
     },
   },

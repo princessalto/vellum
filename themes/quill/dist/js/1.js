@@ -137,6 +137,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
  // import axios from 'axios'
 
 
@@ -146,7 +148,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     EmptyState: _partials_EmptyState__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
     axios.get('/api/v1/users/all').then(function (response) {
@@ -166,9 +168,9 @@ __webpack_require__.r(__webpack_exports__);
       toolbar: {
         title: 'All Users',
         listGridView: false,
-        // createBtn: {
-        //   name: 'users.create',
-        // },
+        createBtn: {
+          name: 'users.create'
+        },
         archivedBtn: {
           name: 'users.archived'
         }
@@ -184,6 +186,10 @@ __webpack_require__.r(__webpack_exports__);
           align: 'left',
           value: 'id'
         }, {
+          text: 'Avatar',
+          align: 'left',
+          value: 'thumbnail'
+        }, {
           text: 'Full Name',
           align: 'left',
           value: 'title'
@@ -196,7 +202,7 @@ __webpack_require__.r(__webpack_exports__);
           align: 'left',
           value: 'category_at'
         }, {
-          text: 'Created',
+          text: 'Create',
           align: 'left',
           value: 'created_at'
         }, {
@@ -423,18 +429,20 @@ var render = function() {
                                                     }
                                                   })
                                                 ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("span", {
-                                                domProps: {
-                                                  innerHTML: _vm._s(
-                                                    props.item.fullname
-                                                  )
-                                                }
-                                              })
+                                              )
                                             ],
                                             1
                                           ),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c("span", {
+                                              domProps: {
+                                                innerHTML: _vm._s(
+                                                  props.item.fullname
+                                                )
+                                              }
+                                            })
+                                          ]),
                                           _vm._v(" "),
                                           _c("td", {
                                             domProps: {

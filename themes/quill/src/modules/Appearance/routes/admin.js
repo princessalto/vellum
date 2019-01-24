@@ -28,8 +28,8 @@ export default [
         name: 'appearance.edit',
         component: () => import('../submodules/Menu/Edit.vue'),
         meta: {
-          title: 'Menus',
-          sort: 6,
+          title: 'Edit Menus',
+          sort: 7,
           external: true,
           excludeFromRoot: true,
           authenticatable: true,
@@ -41,7 +41,13 @@ export default [
         path: 'themes',
         props: true,
         name: 'appearance.themes',
-        component: () => import('../submodules/Theme/Index.vue')
+        component: () => import('../submodules/Theme/Index.vue'),
+        meta: {
+          title: 'Themes',
+          sort: 6,
+          authenticatable: true,
+          icon: 'mdi-book-multiple-variant',
+        },
       }
     ],
   }

@@ -112,12 +112,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.post('/api/v1/pages/update/' + this.$route.params.id, this.resource).then(function (response) {
-        // console.log(this.resource, 'updateData');
         _this3.$router.push({
           name: 'pages.edit'
-        });
+        }); // alert(this.resource, 'Data Updated');
 
-        alert(_this3.resource, 'Data Updated');
       });
     }
   }

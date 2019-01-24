@@ -14,4 +14,10 @@ class Detail extends Model
     protected $fillable = ['user_id', 'icon', 'key', 'value'];
 
     protected $searchables = ['key', 'value'];
+
+    protected $appends = [
+        'displayrole',
+        'created',
+        'modified',
+    ];
 }

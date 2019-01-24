@@ -5,7 +5,7 @@
         <v-flex xs12>
           <v-card>
             <v-card-text>
-              <h1 class="title font-weight-bold" v-html="resource.title"></h1>
+              <h1 class="title font-weight-bold mb-4" v-html="resource.title"></h1>
               <v-list dense>
                 <v-list-tile>
                   <v-list-tile-avatar>

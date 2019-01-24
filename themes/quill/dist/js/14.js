@@ -96,6 +96,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   $_veeValidate: {
@@ -149,31 +155,56 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "section",
     [
       _c(
-        "v-container",
-        { attrs: { fluid: "", "grid-list-lg": "" } },
+        "v-form",
+        {
+          attrs: { action: "/api/v1/users/store", method: "POST" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.storeData($event)
+            }
+          }
+        },
         [
           _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            "v-container",
+            { attrs: { "grid-list-lg": "" } },
             [
               _c(
-                "v-flex",
-                { attrs: { sm6: "", xs12: "" } },
+                "v-toolbar",
+                { staticClass: "transparent sticky px-0", attrs: { flat: "" } },
+                [
+                  _c("div", { staticClass: "title px-0" }, [
+                    _vm._v(
+                      "\n          " + _vm._s(_vm.__("Add User")) + "\n        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { attrs: { color: "secondary", type: "submit" } },
+                    [
+                      _vm._v(
+                        "\n          " + _vm._s(_vm.__("Save")) + "\n        "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
                 [
                   _c(
-                    "v-form",
-                    {
-                      attrs: { method: "POST", action: "/api/v1/users/store" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.storeData($event)
-                        }
-                      }
-                    },
+                    "v-flex",
+                    { attrs: { md6: "", xs12: "" } },
                     [
                       _c("v-text-field", {
                         directives: [
@@ -187,7 +218,7 @@ var render = function() {
                         attrs: {
                           "data-vv-as": _vm.trans("First Name"),
                           "error-messages": _vm.errors.collect("firstname"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "First Name",
                           name: "firstname"
@@ -213,7 +244,7 @@ var render = function() {
                         attrs: {
                           "data-vv-as": _vm.trans("Last Name"),
                           "error-messages": _vm.errors.collect("lastname"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "Last Name",
                           name: "lastname"
@@ -239,7 +270,7 @@ var render = function() {
                         attrs: {
                           "data-vv-as": _vm.trans("Username"),
                           "error-messages": _vm.errors.collect("username"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "Username",
                           name: "username"
@@ -257,7 +288,7 @@ var render = function() {
                         attrs: {
                           "data-vv-as": _vm.trans("Avatar"),
                           "error-messages": _vm.errors.collect("avatar"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "Avatar",
                           name: "avatar"
@@ -283,7 +314,7 @@ var render = function() {
                         attrs: {
                           "data-vv-as": _vm.trans("Email Address"),
                           "error-messages": _vm.errors.collect("email"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "Email Address",
                           name: "email"
@@ -309,7 +340,7 @@ var render = function() {
                         attrs: {
                           "data-vv-as": _vm.trans("Password"),
                           "error-messages": _vm.errors.collect("password"),
-                          outline: "",
+                          box: "",
                           autofocus: "",
                           label: "Password",
                           name: "password",
@@ -322,13 +353,7 @@ var render = function() {
                           },
                           expression: "dataset.password"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        { staticClass: "secondary", attrs: { type: "submit" } },
-                        [_vm._v(_vm._s(_vm.__("Create")))]
-                      )
+                      })
                     ],
                     1
                   )

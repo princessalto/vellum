@@ -27248,6 +27248,8 @@ var render = function() {
       _c(
         "v-content",
         [
+          _c("breadcrumbs"),
+          _vm._v(" "),
           _c(
             "v-slide-y-reverse-transition",
             { attrs: { mode: "out-in" } },
@@ -27908,7 +27910,7 @@ var render = function() {
           ]
         : [
             _c("v-toolbar-title", {
-              staticClass: "subheading",
+              staticClass: "py-5 headine font-weight-bold",
               domProps: { innerHTML: _vm._s(_vm.trans(_vm.dataset.title)) }
             }),
             _vm._v(" "),
@@ -28195,16 +28197,6 @@ var render = function() {
               click: function($event) {
                 _vm.toggle({ model: !_vm.sidebar.model })
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              placeholder: _vm.trans("Search"),
-              flat: "",
-              "append-icon": "search",
-              solo: "",
-              "hide-details": ""
             }
           }),
           _vm._v(" "),
@@ -68557,8 +68549,8 @@ __webpack_require__.r(__webpack_exports__);
       return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Edit.vue */ "./src/modules/Appearance/submodules/Menu/Edit.vue"));
     },
     meta: {
-      title: 'Menus',
-      sort: 6,
+      title: 'Edit Menus',
+      sort: 7,
       external: true,
       excludeFromRoot: true,
       authenticatable: true,
@@ -68571,6 +68563,12 @@ __webpack_require__.r(__webpack_exports__);
     name: 'appearance.themes',
     component: function component() {
       return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../submodules/Theme/Index.vue */ "./src/modules/Appearance/submodules/Theme/Index.vue"));
+    },
+    meta: {
+      title: 'Themes',
+      sort: 6,
+      authenticatable: true,
+      icon: 'mdi-book-multiple-variant'
     }
   }]
 }]);
@@ -68976,6 +68974,16 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       sort: 5
     }
+  }, // Add User
+  {
+    code: 'users.create',
+    name: 'users.create',
+    meta: {
+      title: 'Add Users',
+      icon: 'mdi-home',
+      authenticatable: true,
+      sort: 5
+    }
   }, // Archived
   {
     code: 'users.archived',
@@ -69032,7 +69040,7 @@ __webpack_require__.r(__webpack_exports__);
       return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../Create.vue */ "./src/modules/User/Create.vue"));
     },
     meta: {
-      title: 'Create User',
+      title: 'Add User',
       authenticatable: true,
       icon: 'mdi-delete-outline'
     }
