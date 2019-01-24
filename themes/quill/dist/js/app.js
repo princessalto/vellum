@@ -27910,7 +27910,7 @@ var render = function() {
           ]
         : [
             _c("v-toolbar-title", {
-              staticClass: "py-5 headine font-weight-bold",
+              staticClass: "py-5 headline font-weight-bold",
               domProps: { innerHTML: _vm._s(_vm.trans(_vm.dataset.title)) }
             }),
             _vm._v(" "),
