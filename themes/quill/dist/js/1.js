@@ -153,6 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/v1/users/all').then(function (response) {
       _this.resource.items = response.data.data;
+      console.log(_this.resource.items);
     });
   },
   data: function data() {

@@ -102,19 +102,92 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+  name: 'Create',
   $_veeValidate: {
     validator: 'new'
   },
-  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
-  name: 'Create',
   data: function data() {
     return {
-      dataset: []
+      resource: {
+        lockSlug: false,
+        viewSlug: false
+      }
     };
   },
+  mounted: function mounted() {
+    this.ckEditor();
+  },
   methods: {
+    slugify: function slugify($value) {
+      if (!this.resource.lockSlug) {
+        if (typeof $value === 'undefined') {
+          this.resource.item.slug = this.$options.filters.slugify(this.resource.item.title);
+        } else {
+          this.resource.item.slug = this.$options.filters.slugify($value);
+        }
+      }
+    },
+    ckEditor: function ckEditor() {
+      ClassicEditor.create(document.querySelector('#editor')).catch(function (error) {
+        console.error(error);
+      });
+    },
     beforeFormSubmit: function beforeFormSubmit() {
       var _this = this;
 
@@ -128,10 +201,11 @@ __webpack_require__.r(__webpack_exports__);
     storeData: function storeData() {
       var _this2 = this;
 
-      axios.post('/api/v1/users/store', this.dataset).then(function (response) {
+      axios.post('/api/v1/users/store', this.resource).then(function (response) {
         _this2.$router.push({
-          name: 'users'
-        });
+          name: 'pages.create'
+        }); //push to Create.vue view
+
       });
     }
   }
@@ -174,25 +248,43 @@ var render = function() {
             { attrs: { "grid-list-lg": "" } },
             [
               _c(
-                "v-toolbar",
-                { staticClass: "transparent sticky px-0", attrs: { flat: "" } },
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
                 [
-                  _c("div", { staticClass: "title px-0" }, [
-                    _vm._v(
-                      "\n          " + _vm._s(_vm.__("Add User")) + "\n        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("v-spacer"),
-                  _vm._v(" "),
                   _c(
-                    "v-btn",
-                    { attrs: { color: "secondary", type: "submit" } },
+                    "v-toolbar",
+                    {
+                      staticClass: "transparent sticky px-0",
+                      attrs: { flat: "" }
+                    },
                     [
-                      _vm._v(
-                        "\n          " + _vm._s(_vm.__("Save")) + "\n        "
+                      _c(
+                        "div",
+                        { staticClass: "headline font-weight-bold px-0" },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.__("Add User")) +
+                              "\n          "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        { attrs: { color: "secondary", type: "submit" } },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.__("Save")) +
+                              "\n          "
+                          )
+                        ]
                       )
-                    ]
+                    ],
+                    1
                   )
                 ],
                 1
@@ -204,156 +296,389 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    { attrs: { md6: "", xs12: "" } },
+                    { attrs: { xs12: "" } },
                     [
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { md9: "", xs12: "" } },
+                            [
+                              _c(
+                                "v-card",
+                                { attrs: { flat: "" } },
+                                [
+                                  _c(
+                                    "v-card-text",
+                                    [
+                                      _c(
+                                        "v-layout",
+                                        { attrs: { row: "", wrap: "" } },
+                                        [
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                md4: "",
+                                                sm4: "",
+                                                xs12: ""
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  "data-vv-as": _vm.trans(
+                                                    "First Name"
+                                                  ),
+                                                  "error-messages": _vm.errors.collect(
+                                                    "firstname"
+                                                  ),
+                                                  autofocus: "",
+                                                  box: "",
+                                                  label: "First Name",
+                                                  name: "firstname"
+                                                },
+                                                model: {
+                                                  value: _vm.resource.firstname,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.resource,
+                                                      "firstname",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "resource.firstname"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                md4: "",
+                                                sm4: "",
+                                                xs12: ""
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  "data-vv-as": _vm.trans(
+                                                    "Middle Name"
+                                                  ),
+                                                  "error-messages": _vm.errors.collect(
+                                                    "middlename"
+                                                  ),
+                                                  autofocus: "",
+                                                  box: "",
+                                                  label: "Middle Name",
+                                                  name: "middlename"
+                                                },
+                                                model: {
+                                                  value:
+                                                    _vm.resource.middlename,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.resource,
+                                                      "middlename",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "resource.middlename"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                md4: "",
+                                                sm4: "",
+                                                xs12: ""
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  "data-vv-as": _vm.trans(
+                                                    "Last Name"
+                                                  ),
+                                                  "error-messages": _vm.errors.collect(
+                                                    "lastname"
+                                                  ),
+                                                  autofocus: "",
+                                                  box: "",
+                                                  label: "Last Name",
+                                                  name: "lastname"
+                                                },
+                                                model: {
+                                                  value: _vm.resource.lastname,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.resource,
+                                                      "lastname",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "resource.lastname"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-layout",
+                                        { attrs: { row: "", wrap: "" } },
+                                        [
+                                          _c(
+                                            "v-flex",
+                                            { attrs: { sm6: "", xs12: "" } },
+                                            [
+                                              _c("v-text-field", {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  "data-vv-as": _vm.trans(
+                                                    "Email Address"
+                                                  ),
+                                                  "error-messages": _vm.errors.collect(
+                                                    "email"
+                                                  ),
+                                                  autofocus: "",
+                                                  box: "",
+                                                  label: "Email Address",
+                                                  name: "email"
+                                                },
+                                                model: {
+                                                  value: _vm.resource.email,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.resource,
+                                                      "email",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression: "resource.email"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            { attrs: { sm6: "", xs12: "" } },
+                                            [
+                                              _c("v-text-field", {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  "data-vv-as": _vm.trans(
+                                                    "Username"
+                                                  ),
+                                                  "error-messages": _vm.errors.collect(
+                                                    "username"
+                                                  ),
+                                                  autofocus: "",
+                                                  box: "",
+                                                  label: "Username",
+                                                  name: "username"
+                                                },
+                                                model: {
+                                                  value: _vm.resource.username,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.resource,
+                                                      "username",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "resource.username"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-layout",
+                                        { attrs: { row: "", wrap: "" } },
+                                        [
+                                          _c(
+                                            "v-flex",
+                                            { attrs: { sm6: "", xs12: "" } },
+                                            [
+                                              _c("v-text-field", {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  "data-vv-as": _vm.trans(
+                                                    "Password"
+                                                  ),
+                                                  "error-messages": _vm.errors.collect(
+                                                    "password"
+                                                  ),
+                                                  autofocus: "",
+                                                  box: "",
+                                                  label: "Password",
+                                                  name: "password",
+                                                  type: "password"
+                                                },
+                                                model: {
+                                                  value: _vm.resource.password,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.resource,
+                                                      "password",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "resource.password"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            { attrs: { sm6: "", xs12: "" } },
+                                            [
+                                              _c("v-text-field", {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  "data-vv-as": _vm.trans(
+                                                    "Retype Password"
+                                                  ),
+                                                  "error-messages": _vm.errors.collect(
+                                                    "password"
+                                                  ),
+                                                  autofocus: "",
+                                                  box: "",
+                                                  label: "Retype Password",
+                                                  name: "password",
+                                                  type: "password"
+                                                },
+                                                model: {
+                                                  value: _vm.resource.password,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.resource,
+                                                      "password",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "resource.password"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md3: "", xs12: "" } },
+                            [
+                              _c(
+                                "v-card",
+                                { attrs: { flat: "" } },
+                                [
+                                  _c("v-card-text", [
+                                    _vm._v(
+                                      "\n                  lorem ipsum dolor\n                "
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
                         ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("First Name"),
-                          "error-messages": _vm.errors.collect("firstname"),
-                          box: "",
-                          autofocus: "",
-                          label: "First Name",
-                          name: "firstname"
-                        },
-                        model: {
-                          value: _vm.dataset.firstname,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "firstname", $$v)
-                          },
-                          expression: "dataset.firstname"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("Last Name"),
-                          "error-messages": _vm.errors.collect("lastname"),
-                          box: "",
-                          autofocus: "",
-                          label: "Last Name",
-                          name: "lastname"
-                        },
-                        model: {
-                          value: _vm.dataset.lastname,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "lastname", $$v)
-                          },
-                          expression: "dataset.lastname"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("Username"),
-                          "error-messages": _vm.errors.collect("username"),
-                          box: "",
-                          autofocus: "",
-                          label: "Username",
-                          name: "username"
-                        },
-                        model: {
-                          value: _vm.dataset.username,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "username", $$v)
-                          },
-                          expression: "dataset.username"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          "data-vv-as": _vm.trans("Avatar"),
-                          "error-messages": _vm.errors.collect("avatar"),
-                          box: "",
-                          autofocus: "",
-                          label: "Avatar",
-                          name: "avatar"
-                        },
-                        model: {
-                          value: _vm.dataset.avatar,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "avatar", $$v)
-                          },
-                          expression: "dataset.avatar"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("Email Address"),
-                          "error-messages": _vm.errors.collect("email"),
-                          box: "",
-                          autofocus: "",
-                          label: "Email Address",
-                          name: "email"
-                        },
-                        model: {
-                          value: _vm.dataset.email,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "email", $$v)
-                          },
-                          expression: "dataset.email"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("Password"),
-                          "error-messages": _vm.errors.collect("password"),
-                          box: "",
-                          autofocus: "",
-                          label: "Password",
-                          name: "password",
-                          type: "password"
-                        },
-                        model: {
-                          value: _vm.dataset.password,
-                          callback: function($$v) {
-                            _vm.$set(_vm.dataset, "password", $$v)
-                          },
-                          expression: "dataset.password"
-                        }
-                      })
+                        1
+                      )
                     ],
                     1
                   )

@@ -142,6 +142,7 @@ export default {
   mounted () {
     axios.get('/api/v1/users/all').then(response => {
       this.resource.items = response.data.data
+      console.log(this.resource.items)
     })
   },
 
