@@ -68812,10 +68812,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     meta: {
       title: 'Show Page',
-      sort: 1,
-      external: true,
-      excludeFromRoot: true,
-      authenticatable: false,
+      authenticatable: true,
       icon: 'mdi-book-multiple-variant'
     }
   }, {
@@ -68830,7 +68827,7 @@ __webpack_require__.r(__webpack_exports__);
       sort: 1,
       external: true,
       excludeFromRoot: true,
-      authenticatable: false,
+      authenticatable: true,
       icon: 'mdi-delete-outline'
     }
   }, {
@@ -69094,55 +69091,61 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ([{
-  code: 'courses',
-  name: 'courses',
-  meta: {
-    title: 'Courses',
-    icon: 'mdi-book-open-page-variant',
-    authenticatable: true,
-    sort: 4
-  },
-  children: [// Admin Courses
-  {
-    code: 'courses.index',
-    name: 'courses.index',
-    meta: {
-      title: 'All Courses',
-      icon: 'mdi-book-open-page-variant',
-      authenticatable: true,
-      sort: 5
-    }
-  }, // Create
-  {
-    code: 'courses.create',
-    name: 'courses.create',
-    meta: {
-      title: 'Create Course',
-      icon: 'mdi-book-plus',
-      authenticatable: true,
-      sort: 6
-    }
-  }, // Divider
-  {
-    code: 'divider:courses/create.trashed',
-    name: 'divider:courses/create.trashed',
-    meta: {
-      divider: true,
-      sort: 7
-    }
-  }, // Archived
-  {
-    code: 'courses.archived',
-    name: 'courses.archived',
-    meta: {
-      title: 'Archived Courses',
-      icon: 'mdi-delete-empty',
-      authenticatable: true,
-      sort: 8
-    }
-  }]
-}]);
+/* harmony default export */ __webpack_exports__["default"] = ([// {
+  //   code: 'courses',
+  //   name: 'courses',
+  //   meta: {
+  //     title: 'Courses',
+  //     icon: 'mdi-book-open-page-variant',
+  //     authenticatable: true,
+  //     sort: 4,
+  //   },
+  //   children: [
+  //     // Admin Courses
+  //     {
+  //       code: 'courses.index',
+  //       name: 'courses.index',
+  //       meta: {
+  //         title: 'All Courses',
+  //         icon: 'mdi-book-open-page-variant',
+  //         authenticatable: true,
+  //         sort: 5,
+  //       },
+  //     },
+  //     // Create
+  //     {
+  //       code: 'courses.create',
+  //       name: 'courses.create',
+  //       meta: {
+  //         title: 'Create Course',
+  //         icon: 'mdi-book-plus',
+  //         authenticatable: true,
+  //         sort: 6,
+  //       },
+  //     },
+  //     // Divider
+  //     {
+  //       code: 'divider:courses/create.trashed',
+  //       name: 'divider:courses/create.trashed',
+  //       meta: {
+  //         divider: true,
+  //         sort: 7,
+  //       },
+  //     },
+  //     // Archived
+  //     {
+  //       code: 'courses.archived',
+  //       name: 'courses.archived',
+  //       meta: {
+  //         title: 'Archived Courses',
+  //         icon: 'mdi-delete-empty',
+  //         authenticatable: true,
+  //         sort: 8,
+  //       },
+  //     },
+  //   ],
+  // }
+]);
 
 /***/ }),
 

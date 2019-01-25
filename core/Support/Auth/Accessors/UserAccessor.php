@@ -39,7 +39,8 @@ trait UserAccessor
             return __('Guest');
         }
 
-        return implode(" / ", $this->rolenames);
+        // return implode(" / ", $this->rolenames);
+        return string ('TEst');
     }
 
     /**

@@ -28,7 +28,6 @@ class User extends Authenticatable
         MorphManyActivities,
         TokenizableTrait,
         TypeTrait,
-        UserAccessor,
         UserMutator,
         WhereDetailTrait,
         WhereSettingTrait;

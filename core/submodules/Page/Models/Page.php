@@ -36,6 +36,7 @@ class Page extends Model
 
     protected $appends = [
         'author',
+        'profile',
         'created',
         'modified',
     ];

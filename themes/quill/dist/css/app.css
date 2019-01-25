@@ -11152,6 +11152,12 @@ table.v-table tfoot tr td {
   border: 1px dashed #d2d2d2 !important;
   box-shadow: none !important;
 }
+.featured-image__card {
+  border-style: dashed !important;
+  box-shadow: none !important;
+  border-color: #d2d2d2 !important;
+  border-width: 1px !important;
+}
 .v-expansion-panel .v-expansion-panel__container .v-expansion-panel__header {
   margin-top: 16px !important;
   margin-bottom: 16px !important;

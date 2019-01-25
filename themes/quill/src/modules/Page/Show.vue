@@ -4,12 +4,17 @@
       <v-layout row wrap>
         <v-flex xs12>
           <v-card>
+            <v-img
+              :src="resource.feature"
+              aspect-ratio="2"
+              >
+            </v-img>
             <v-card-text>
               <h1 class="title font-weight-bold mb-4" v-html="resource.title"></h1>
               <v-list dense>
                 <v-list-tile>
                   <v-list-tile-avatar>
-                    <img :src="resource.useravatar">
+                    <img :src="resource.profile">
                   </v-list-tile-avatar>
                   <v-list-tile-content>
                     <v-list-tile-title v-html="resource.author"></v-list-tile-title>

@@ -40,10 +40,7 @@ export default [
         component: () => import('../Show.vue'),
         meta: {
           title: 'Show Page',
-          sort: 1,
-          external: true,
-          excludeFromRoot: true,
-          authenticatable: false,
+          authenticatable: true,
           icon: 'mdi-book-multiple-variant',
         },
       },
@@ -57,7 +54,7 @@ export default [
           sort: 1,
           external: true,
           excludeFromRoot: true,
-          authenticatable: false,
+          authenticatable: true,
           icon: 'mdi-delete-outline'
 
         }

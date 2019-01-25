@@ -60,6 +60,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -69,15 +71,21 @@ __webpack_require__.r(__webpack_exports__);
       resource: {}
     };
   },
+  created: function created() {// axios
+    //   .get(`/api/v1/pages/edit/${this.$route.params.id}`)
+    //   .then((response) => {
+    //     this.resource = response.data
+    //   })
+  },
   methods: {
     savePreference: function savePreference() {
       var _this = this;
 
-      axios.post('/api/v1/settings/store', this.resource).then(function (response) {
+      axios.post('/api/v1/branding', this.resource).then(function (response) {
         console.log(_this.resource, 'data');
 
         _this.$router.push({
-          name: 'settings.store'
+          name: 'settings.branding'
         });
       });
     }
@@ -119,10 +127,7 @@ var render = function() {
                   _c(
                     "v-form",
                     {
-                      attrs: {
-                        action: "/api/v1/settings/store",
-                        method: "POST"
-                      },
+                      attrs: { action: "/api/v1/branding", method: "POST" },
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
@@ -151,35 +156,43 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
+                                  box: "",
                                   label: "Global Date Format",
+                                  name: "date_format"
+                                },
+                                model: {
                                   value: _vm.resource.date_format,
-                                  box: ""
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "date_format", $$v)
+                                  },
+                                  expression: "resource.date_format"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   label: "Items per Page",
-                                  value: _vm.resource.items_per_page,
+                                  name: "items_per_page",
                                   box: ""
+                                },
+                                model: {
+                                  value: _vm.resource.items_per_page,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.resource,
+                                      "items_per_page",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "resource.items_per_page"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-checkbox", {
                                 attrs: {
                                   label:
-                                    "Center the main content when possible."
-                                },
-                                model: {
-                                  value: _vm.resource.center_main_content,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resource,
-                                      "center_main_content",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "resource.center_main_content"
+                                    "Center the main content when possible.",
+                                  value: _vm.resource.center_main_content
                                 }
                               }),
                               _vm._v(" "),

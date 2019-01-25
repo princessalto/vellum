@@ -10,6 +10,7 @@ Todo:
  ☐ settings
  ☐ branding
  ☐ global data-table component/s
+ ☐ breadcrubms
 
  Main Module:
  ☐ Page
@@ -17,6 +18,7 @@ Todo:
  ☐ Dashboard
  ☐ Appearance
    ☐ Menu
+     ☐ edit menu (drag and drop components)
    ☐ Theme
    ☐ Widget
 
@@ -31,7 +33,13 @@ from Pluma core:
 
 How To/To Do:
 ☐ slugify
+☐ get settings data and update
 ☐ upload vellum on rippl3s
+☐ update slide on s.u
+☐ try log-in quill repository
+☐ path logo to quill
+☐ active button on quill
+
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿

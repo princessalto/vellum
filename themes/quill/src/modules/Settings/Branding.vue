@@ -4,7 +4,7 @@
       <v-layout row wrap>
         <v-flex lg6 md8 xs12>
           <v-form
-            action="/api/v1/settings/store"
+            action="/api/v1/branding"
             method="POST"
             @submit.prevent="savePreference"
             >
@@ -14,22 +14,24 @@
               </v-card-title>
               <v-card-text>
                 <v-text-field
-                  label="Global Date Format"
-                  :value="resource.date_format"
+                  v-model="resource.date_format"
                   box
+                  label="Global Date Format"
+                  name="date_format"
                   >
                 </v-text-field>
 
                 <v-text-field
                   label="Items per Page"
-                  :value="resource.items_per_page"
+                  v-model="resource.items_per_page"
+                  name="items_per_page"
                   box
                   >
                 </v-text-field>
 
                 <v-checkbox
                   label="Center the main content when possible."
-                  v-model="resource.center_main_content"
+                  :value="resource.center_main_content"
                   >
                 </v-checkbox>
                 <v-btn
@@ -61,12 +63,20 @@ export default {
     }
   },
 
+  created() {
+    // axios
+    //   .get(`/api/v1/pages/edit/${this.$route.params.id}`)
+    //   .then((response) => {
+    //     this.resource = response.data
+    //   })
+  },
+
   methods: {
     savePreference() {
-      axios.post('/api/v1/settings/store', this.resource)
+      axios.post('/api/v1/branding', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.push({name: 'settings.store'})
+          this.$router.push({name: 'settings.branding'})
         })
     },
   }

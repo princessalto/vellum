@@ -99,6 +99,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -110,7 +150,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       resource: {
         lockSlug: false,
-        viewSlug: false
+        viewSlug: false,
+        title: '',
+        slug: ''
       }
     };
   },
@@ -121,9 +163,9 @@ __webpack_require__.r(__webpack_exports__);
     slugify: function slugify($value) {
       if (!this.resource.lockSlug) {
         if (typeof $value === 'undefined') {
-          this.resource.item.slug = this.$options.filters.slugify(this.resource.item.title);
+          this.resource.slug = this.$options.filters.slugify(this.resource.title);
         } else {
-          this.resource.item.slug = this.$options.filters.slugify($value);
+          this.resource.slug = this.$options.filters.slugify($value);
         }
       }
     },
@@ -149,7 +191,7 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(this.resource, 'data')
         _this2.$router.push({
           name: 'pages.create'
-        }); //push to Create.vue view
+        }); // push to Create.vue view
 
       });
     }
@@ -219,46 +261,14 @@ var render = function() {
                     "v-flex",
                     { attrs: { md9: "", xs12: "" } },
                     [
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("Title"),
-                          "error-messages": _vm.errors.collect("title"),
-                          box: "",
-                          autofocus: "",
-                          label: "Title",
-                          name: "title"
-                        },
-                        on: {
-                          input: _vm.slugify,
-                          "click:append": function($event) {
-                            _vm.resource.viewSlug = !_vm.resource.viewSlug
-                          }
-                        },
-                        model: {
-                          value: _vm.resource.title,
-                          callback: function($$v) {
-                            _vm.$set(_vm.resource, "title", $$v)
-                          },
-                          expression: "resource.title"
-                        }
-                      }),
-                      _vm._v(" "),
                       _c(
-                        "v-slide-y-transition",
-                        { attrs: { mode: "out-in" } },
+                        "v-card",
                         [
-                          _vm.resource.viewSlug
-                            ? _c("v-text-field", {
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
                                 directives: [
-                                  { name: "focus", rawName: "v-focus" },
                                   {
                                     name: "validate",
                                     rawName: "v-validate",
@@ -266,113 +276,227 @@ var render = function() {
                                     expression: "'required'"
                                   }
                                 ],
-                                staticClass: "mb-2",
                                 attrs: {
-                                  "append-icon": _vm.resource.lockSlug
-                                    ? "lock"
-                                    : "lock_open",
-                                  "error-messages": _vm.errors.collect("slug"),
+                                  "data-vv-as": _vm.trans("Title"),
+                                  "error-messages": _vm.errors.collect("title"),
                                   hint: _vm.trans(
-                                    "Locking this field will prevent the title field from overriding this current value"
+                                    "Tap the icon to edit this page's slug"
                                   ),
-                                  label: _vm.trans("Slug"),
-                                  placeholder: _vm.trans(
-                                    "app://your-custom-url-here"
-                                  ),
-                                  readonly: _vm.resource.lockSlug,
-                                  outline: "",
-                                  name: "slug",
-                                  "persistent-hint": ""
+                                  label: _vm.trans("Title"),
+                                  "append-icon": "mdi-circle-edit-outline",
+                                  name: "title",
+                                  box: "",
+                                  autofocus: ""
                                 },
                                 on: {
-                                  blur: function($event) {
-                                    _vm.resource.lockSlug = true
-                                  },
                                   "click:append": function($event) {
+                                    _vm.resource.viewSlug = !_vm.resource
+                                      .viewSlug
+                                  },
+                                  input: _vm.slugify
+                                },
+                                model: {
+                                  value: _vm.resource.title,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "title", $$v)
+                                  },
+                                  expression: "resource.title"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-slide-y-transition",
+                                { attrs: { mode: "out-in" } },
+                                [
+                                  _vm.resource.viewSlug
+                                    ? _c("v-text-field", {
+                                        directives: [
+                                          {
+                                            name: "validate",
+                                            rawName: "v-validate",
+                                            value: "required",
+                                            expression: "'required'"
+                                          }
+                                        ],
+                                        staticClass: "mb-2",
+                                        attrs: {
+                                          "append-icon": _vm.resource.lockSlug
+                                            ? "lock"
+                                            : "lock_open",
+                                          "error-messages": _vm.errors.collect(
+                                            "slug"
+                                          ),
+                                          hint: _vm.trans(
+                                            "Locking this field will prevent the title field from overriding this current value"
+                                          ),
+                                          label: _vm.trans("Slug"),
+                                          placeholder: _vm.trans(
+                                            "app://your-custom-url-here"
+                                          ),
+                                          readonly: _vm.resource.lockSlug,
+                                          name: "slug",
+                                          box: "",
+                                          "persistent-hint": "",
+                                          autofocus: ""
+                                        },
+                                        on: {
+                                          blur: function($event) {
+                                            _vm.resource.lockSlug = true
+                                          },
+                                          "click:append": function($event) {
+                                            _vm.resource.lockSlug = !_vm
+                                              .resource.lockSlug
+                                          }
+                                        },
+                                        model: {
+                                          value: _vm.resource.slug,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.resource, "slug", $$v)
+                                          },
+                                          expression: "resource.slug"
+                                        }
+                                      })
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                directives: [
+                                  {
+                                    name: "validate",
+                                    rawName: "v-validate",
+                                    value: "required",
+                                    expression: "'required'"
+                                  }
+                                ],
+                                attrs: {
+                                  "error-messages": _vm.errors.collect("code"),
+                                  label: _vm.trans("Code"),
+                                  box: "",
+                                  name: "code"
+                                },
+                                on: {
+                                  "click:append": function() {
                                     _vm.resource.lockSlug = !_vm.resource
                                       .lockSlug
                                   }
                                 },
                                 model: {
-                                  value: _vm.resource.item.slug,
+                                  value: _vm.resource.code,
                                   callback: function($$v) {
                                     _vm.$set(
-                                      _vm.resource.item,
-                                      "slug",
+                                      _vm.resource,
+                                      "code",
                                       typeof $$v === "string" ? $$v.trim() : $$v
                                     )
                                   },
-                                  expression: "resource.item.slug"
+                                  expression: "resource.code"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-textarea", {
+                                attrs: {
+                                  "data-vv-as": _vm.trans("Body"),
+                                  box: "",
+                                  autofocus: "",
+                                  label: "Body",
+                                  name: "body"
+                                },
+                                model: {
+                                  value: _vm.resource.body,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "body", $$v)
+                                  },
+                                  expression: "resource.body"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", {
+                                attrs: {
+                                  "data-vv-as": _vm.trans("Body"),
+                                  autofocus: "",
+                                  id: "editor",
+                                  name: "body"
+                                },
+                                model: {
+                                  value: _vm.resource.body,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "body", $$v)
+                                  },
+                                  expression: "resource.body"
                                 }
                               })
-                            : _vm._e()
+                            ],
+                            1
+                          )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { md3: "", xs12: "" } },
+                    [
+                      _c(
+                        "v-card",
+                        {
+                          staticClass:
+                            "mb-3 pa-4 transparent featured-image__card",
+                          attrs: { hover: "", flat: "", height: "160" }
+                        },
+                        [
+                          _c(
+                            "v-layout",
+                            {
+                              attrs: {
+                                column: "",
+                                "fill-height": "",
+                                "justify-center": "",
+                                "align-center": ""
+                              }
+                            },
+                            [
+                              _c(
+                                "v-icon",
+                                {
+                                  staticClass: "grey--text text--lighten-2",
+                                  attrs: { size: "80" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                mdi-image-filter-center-focus\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "grey--text text--darken-1" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(
+                                        _vm.__("Click to add cover photo")
+                                      ) +
+                                      "\n              "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "file" },
+                            on: { change: _vm.resource.feature }
+                          })
                         ],
-                        attrs: {
-                          "data-vv-as": _vm.trans("Code"),
-                          "error-messages": _vm.errors.collect("code"),
-                          box: "",
-                          autofocus: "",
-                          label: "Code",
-                          name: "code"
-                        },
-                        on: {
-                          "click:append": function() {
-                            _vm.resource.lockSlug = !_vm.resource.lockSlug
-                          }
-                        },
-                        model: {
-                          value: _vm.resource.code,
-                          callback: function($$v) {
-                            _vm.$set(_vm.resource, "code", $$v)
-                          },
-                          expression: "resource.code"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-textarea", {
-                        attrs: {
-                          "data-vv-as": _vm.trans("Body"),
-                          box: "",
-                          autofocus: "",
-                          label: "Body",
-                          name: "body"
-                        },
-                        model: {
-                          value: _vm.resource.body,
-                          callback: function($$v) {
-                            _vm.$set(_vm.resource, "body", $$v)
-                          },
-                          expression: "resource.body"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        attrs: {
-                          "data-vv-as": _vm.trans("Body"),
-                          autofocus: "",
-                          id: "editor",
-                          name: "body"
-                        },
-                        model: {
-                          value: _vm.resource.body,
-                          callback: function($$v) {
-                            _vm.$set(_vm.resource, "body", $$v)
-                          },
-                          expression: "resource.body"
-                        }
-                      })
+                        1
+                      )
                     ],
                     1
                   )
