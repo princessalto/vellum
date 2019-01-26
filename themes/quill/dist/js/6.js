@@ -76,8 +76,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -98,15 +96,15 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    saveTheme: function saveTheme() {
+    saveTheme: function saveTheme(data) {
       var _this2 = this;
 
-      axios.post('/api/v1/settings/store', this.resource).then(function (response) {
-        _this2.$router.push({
-          name: 'appearance.themes'
-        });
-
-        console.log(_this2.resource.active);
+      axios.post('/api/v1/settings/store', data).then(function (response) {
+        if (response.data == 'success') {
+          _this2.$router.go({
+            name: 'appearance.themes'
+          });
+        }
       });
     }
   }
@@ -248,14 +246,13 @@ var render = function() {
                                 _c(
                                   "v-form",
                                   {
-                                    attrs: {
-                                      action: "/api/v1/settings/store",
-                                      method: "POST"
-                                    },
+                                    attrs: { method: "POST" },
                                     on: {
                                       submit: function($event) {
                                         $event.preventDefault()
-                                        return _vm.saveTheme($event)
+                                        _vm.saveTheme({
+                                          active_theme: resource.code
+                                        })
                                       }
                                     }
                                   },
@@ -269,7 +266,6 @@ var render = function() {
                                           expression: "resource.code"
                                         }
                                       ],
-                                      key: "active_theme",
                                       attrs: {
                                         type: "hidden",
                                         name: "active_theme"

@@ -71,16 +71,25 @@ __webpack_require__.r(__webpack_exports__);
       resource: {}
     };
   },
+  created: function created() {
+    var _this = this;
+
+    axios.get("/api/v1/settings/branding").then(function (response) {
+      _this.resource = response.data;
+      console.log(_this.resource);
+    });
+  },
   methods: {
     savePreference: function savePreference() {
-      var _this = this;
+      var _this2 = this;
 
       axios.post('/api/v1/settings/store', this.resource).then(function (response) {
-        console.log(_this.resource, 'data');
+        console.log(_this2.resource, 'data');
 
-        _this.$router.push({
+        _this2.$router.push({
           name: 'settings.store'
-        });
+        }); // console.log(this.resource)
+
       });
     }
   }

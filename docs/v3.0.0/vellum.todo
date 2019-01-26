@@ -33,12 +33,12 @@ from Pluma core:
 
 How To/To Do:
 ☐ slugify
-☐ get settings data and update
+✔ get settings data and update @done (19-01-27 01:09)
 ☐ upload vellum on rippl3s
 ☐ update slide on s.u
 ☐ try log-in quill repository
 ☐ path logo to quill
-☐ active button on quill
+✔ active button on quill @done (19-01-27 01:09)
  ☐ remove utilitybar from fixed / sticky
 
 

@@ -44,4 +44,22 @@ class BrandingSettingController extends AdminController
 
         return back();
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @param  int  $id
+     * @return Illuminate\Http\Response
+     */
+    public function getPreferences(Request $request)
+    {
+        // $setting = Setting::findOrFail($id);
+        $setting = [
+            'date_format' => settings('date_format'),
+            'items_per_page' => settings('items_per_page'),
+        ];
+
+        return response()->json($setting);
+    }
 }

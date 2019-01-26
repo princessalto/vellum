@@ -63,6 +63,15 @@ export default {
     }
   },
 
+  created() {
+    axios
+      .get(`/api/v1/settings/branding`)
+      .then((response) => {
+        this.resource = response.data
+        console.log(this.resource)
+      })
+  },
+
   methods: {
     savePreference() {
       axios
@@ -70,6 +79,7 @@ export default {
         .then((response) => {
           console.log(this.resource, 'data')
           this.$router.push({name: 'settings.store'})
+          // console.log(this.resource)
         })
     },
   }

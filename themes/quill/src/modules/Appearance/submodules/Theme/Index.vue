@@ -35,14 +35,12 @@
               </template>
               <template v-else>
                 <v-form
-                  @submit.prevent="saveTheme"
-                  action="/api/v1/settings/store"
+                  @submit.prevent="saveTheme({active_theme: resource.code})"
                   method="POST"
                   >
                   <input
                     type="hidden"
                     name="active_theme"
-                    key="active_theme"
                     v-model="resource.code"
                     >
                   <v-btn
@@ -91,12 +89,13 @@ export default {
   },
 
   methods: {
-    saveTheme() {
+    saveTheme(data) {
       axios
-        .post('/api/v1/settings/store', this.resource)
+        .post('/api/v1/settings/store', data)
         .then((response) => {
-          this.$router.push({name: 'appearance.themes'})
-          console.log(this.resource.active)
+          if (response.data == 'success') {
+            this.$router.go({name: 'appearance.themes'})
+          }
         })
     }
   },
