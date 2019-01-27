@@ -71,13 +71,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -114,8 +107,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/v1/pages/update/' + this.$route.params.id, this.resource).then(function (response) {
         _this3.$router.push({
           name: 'pages.edit'
-        }); // alert(this.resource, 'Data Updated');
-
+        });
       });
     }
   }
@@ -144,7 +136,7 @@ var render = function() {
       _c(
         "v-form",
         {
-          attrs: { method: "POST", action: "/api/v1/pages/update" },
+          attrs: { method: "POST" },
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -186,27 +178,6 @@ var render = function() {
                     "v-flex",
                     { attrs: { md6: "", xs12: "" } },
                     [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.resource.id,
-                            expression: "resource.id"
-                          }
-                        ],
-                        attrs: { disabled: "", name: "id", type: "hidden" },
-                        domProps: { value: _vm.resource.id },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.resource, "id", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
                       _c("v-text-field", {
                         directives: [
                           {

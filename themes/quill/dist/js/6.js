@@ -76,6 +76,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -135,6 +142,14 @@ var render = function() {
         "v-layout",
         { attrs: { row: "", wrap: "" } },
         [
+          _c("v-flex", { attrs: { xs12: "" } }, [
+            _c("div", { staticClass: "mb-4" }, [
+              _c("h1", { staticClass: "headline font-weight-bold" }, [
+                _vm._v("\n          " + _vm._s(_vm.__("Themes")) + "\n        ")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
           _vm._l(_vm.resources.items, function(resource, i) {
             return [
               _c(

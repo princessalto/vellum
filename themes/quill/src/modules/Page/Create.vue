@@ -2,7 +2,6 @@
   <section>
     <v-form
       @submit.prevent="storeData"
-      action="/api/v1/pages/store"
       method="POST"
       >
       <v-toolbar flat class="sticky">
@@ -106,11 +105,11 @@
                 justify-center
                 align-center
                 >
-                <!-- <student-icon
+                <student-icon
                   width="80"
                   height="80"
                   >
-                </student-icon> -->
+                </student-icon>
                 <v-icon class="grey--text text--lighten-2" size="80">
                   mdi-image-filter-center-focus
                 </v-icon>
@@ -118,7 +117,7 @@
                   {{ __('Click to add cover photo') }}
                 </div>
               </v-layout>
-              <input type="file" v-on:change="resource.feature">
+              <!-- <input type="file" v-on:change="resource.feature"> -->
             </v-card>
           </v-flex>
         </v-layout>

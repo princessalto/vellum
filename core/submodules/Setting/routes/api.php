@@ -14,10 +14,10 @@ Route::group(['prefix' => 'v1'], function () {
 
 
     # Branding
-    Route::post('branding', 'BrandingSettingController@store')->name('settings.branding.store');
-    Route::get('settings/branding', 'BrandingSettingController@getPreferences')->name('settings.branding.getPreferences');
+    Route::get('settings/branding', 'BrandingSettingController@getBranding')->name('settings.branding.getBranding');
 
     # Preferences
+    Route::get('settings/preferences', 'PreferenceSettingController@getPreferences')->name('settings.preferences.getPreferences');
 });
 
 // v2

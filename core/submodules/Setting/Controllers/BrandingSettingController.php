@@ -52,12 +52,16 @@ class BrandingSettingController extends AdminController
      * @param  int  $id
      * @return Illuminate\Http\Response
      */
-    public function getPreferences(Request $request)
+    public function getBranding(Request $request)
     {
         // $setting = Setting::findOrFail($id);
         $setting = [
-            'date_format' => settings('date_format'),
-            'items_per_page' => settings('items_per_page'),
+            'site_title' => settings('site_title'),
+            'site_tagline' => settings('site_tagline'),
+            'site_author' => settings('site_author'),
+            'site_email' => settings('site_email'),
+            'site_year' => settings('site_year'),
+            'site_logo' => settings('site_logo'),
         ];
 
         return response()->json($setting);

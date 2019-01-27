@@ -1,6 +1,13 @@
 <template>
   <v-container fluid grid-list-lg>
     <v-layout row wrap>
+      <v-flex xs12>
+        <div class="mb-4">
+          <h1 class="headline font-weight-bold">
+            {{ __('Themes') }}
+          </h1>
+        </div>
+      </v-flex>
       <template
         v-for="(resource, i) in resources.items"
         >

@@ -1,5 +1,10 @@
 <template>
   <v-container fluid grid-list-lg>
+    <div class="mb-4">
+      <h1 class="headline font-weight-bold">
+        {{ __('Menus') }}
+      </h1>
+    </div>
     <v-layout row wrap>
       <template
         v-for="(item, i) in resources.items"

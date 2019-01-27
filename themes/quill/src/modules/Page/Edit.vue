@@ -2,7 +2,6 @@
   <section>
     <v-form
       method="POST"
-      action="/api/v1/pages/update"
       @submit.prevent="updateData"
       >
       <v-toolbar flat class="sticky emphasis--medium">
@@ -22,12 +21,6 @@
       <v-container fluid grid-list-lg>
         <v-layout row wrap>
           <v-flex md6 xs12>
-            <input
-              disabled
-              name="id"
-              type="hidden"
-              v-model="resource.id"
-              >
             <v-text-field
               :data-vv-as="trans('Title')"
               :error-messages="errors.collect('title')"
@@ -107,7 +100,6 @@ export default {
         .post('/api/v1/pages/update/' + this.$route.params.id, this.resource)
         .then((response) => {
           this.$router.push({name: 'pages.edit'});
-          // alert(this.resource, 'Data Updated');
         })
     },
   },

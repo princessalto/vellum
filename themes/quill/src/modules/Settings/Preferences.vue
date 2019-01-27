@@ -1,31 +1,32 @@
 <template>
   <section>
-    <v-container grid-list-lg fluid>
+    <v-container grid-list-lg>
       <v-layout row wrap>
-        <v-flex lg6 md8 xs12>
+        <v-flex xs12>
+          <div class="mb-4">
+            <h1 class="headline font-weight-bold">
+              {{ __('Preferences') }}
+            </h1>
+          </div>
           <v-form
-            action="/api/v1/settings/store"
+            @submit.prevent="savePreferences"
             method="POST"
-            @submit.prevent="savePreference"
             >
-            <!-- <input type="hidden" name="user_id" v-model="user().getKey()"> -->
             <v-card>
-              <v-card-title class="subheading font-weight-bold">
-                {{ __('Preferences') }}
-              </v-card-title>
               <v-card-text>
                 <v-text-field
-                  label="Date Format"
-                  v-model="resource.date_format"
-                  name="date_format"
                   box
+                  label="Date Format"
+                  name="date_format"
+                  v-model="resource.date_format"
                   >
                 </v-text-field>
 
                 <v-text-field
-                  label="Items per Page"
-                  v-model="resource.items_per_page"
                   box
+                  label="Items per Page"
+                  name="items_per_page"
+                  v-model="resource.items_per_page"
                   >
                 </v-text-field>
 
@@ -65,7 +66,7 @@ export default {
 
   created() {
     axios
-      .get(`/api/v1/settings/branding`)
+      .get('/api/v1/settings/preferences')
       .then((response) => {
         this.resource = response.data
         console.log(this.resource)
@@ -73,13 +74,12 @@ export default {
   },
 
   methods: {
-    savePreference() {
+    savePreferences() {
       axios
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.push({name: 'settings.store'})
-          // console.log(this.resource)
+          this.$router.push({name: 'settings.preferences'})
         })
     },
   }

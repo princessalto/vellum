@@ -62,6 +62,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -71,20 +91,22 @@ __webpack_require__.r(__webpack_exports__);
       resource: {}
     };
   },
-  created: function created() {// axios
-    //   .get(`/api/v1/pages/edit/${this.$route.params.id}`)
-    //   .then((response) => {
-    //     this.resource = response.data
-    //   })
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/v1/settings/branding').then(function (response) {
+      _this.resource = response.data;
+      console.log(_this.resource);
+    });
   },
   methods: {
-    savePreference: function savePreference() {
-      var _this = this;
+    saveBranding: function saveBranding() {
+      var _this2 = this;
 
-      axios.post('/api/v1/branding', this.resource).then(function (response) {
-        console.log(_this.resource, 'data');
+      axios.post('/api/v1/settings/store', this.resource).then(function (response) {
+        console.log(_this2.resource, 'data');
 
-        _this.$router.push({
+        _this2.$router.push({
           name: 'settings.branding'
         });
       });
@@ -114,7 +136,7 @@ var render = function() {
     [
       _c(
         "v-container",
-        { attrs: { "grid-list-lg": "", fluid: "" } },
+        { attrs: { "grid-list-lg": "" } },
         [
           _c(
             "v-layout",
@@ -122,16 +144,26 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { lg6: "", md8: "", xs12: "" } },
+                { attrs: { xs12: "" } },
                 [
+                  _c("div", { staticClass: "mb-4" }, [
+                    _c("h1", { staticClass: "headline font-weight-bold" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.__("Branding")) +
+                          "\n          "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "v-form",
                     {
-                      attrs: { action: "/api/v1/branding", method: "POST" },
+                      attrs: { method: "POST" },
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
-                          return _vm.savePreference($event)
+                          return _vm.saveBranding($event)
                         }
                       }
                     },
@@ -140,59 +172,80 @@ var render = function() {
                         "v-card",
                         [
                           _c(
-                            "v-card-title",
-                            { staticClass: "subheading font-weight-bold" },
-                            [
-                              _vm._v(
-                                "\n              " +
-                                  _vm._s(_vm.__("Branding")) +
-                                  "\n            "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
                             "v-card-text",
                             [
                               _c("v-text-field", {
                                 attrs: {
                                   box: "",
-                                  label: "Global Date Format",
-                                  name: "date_format"
+                                  label: "Site Name",
+                                  name: "site_title"
                                 },
                                 model: {
-                                  value: _vm.resource.date_format,
+                                  value: _vm.resource.site_title,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.resource, "date_format", $$v)
+                                    _vm.$set(_vm.resource, "site_title", $$v)
                                   },
-                                  expression: "resource.date_format"
+                                  expression: "resource.site_title"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Items per Page",
-                                  name: "items_per_page",
-                                  box: ""
+                                  box: "",
+                                  label: "Site Tagline",
+                                  name: "site_tagline"
                                 },
                                 model: {
-                                  value: _vm.resource.items_per_page,
+                                  value: _vm.resource.site_tagline,
                                   callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resource,
-                                      "items_per_page",
-                                      $$v
-                                    )
+                                    _vm.$set(_vm.resource, "site_tagline", $$v)
                                   },
-                                  expression: "resource.items_per_page"
+                                  expression: "resource.site_tagline"
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-checkbox", {
+                              _c("v-text-field", {
                                 attrs: {
-                                  label:
-                                    "Center the main content when possible.",
-                                  value: _vm.resource.center_main_content
+                                  box: "",
+                                  label: "Site Author",
+                                  name: "site_author"
+                                },
+                                model: {
+                                  value: _vm.resource.site_author,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "site_author", $$v)
+                                  },
+                                  expression: "resource.site_author"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  box: "",
+                                  label: "Site Email",
+                                  name: "site_email"
+                                },
+                                model: {
+                                  value: _vm.resource.site_email,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "site_email", $$v)
+                                  },
+                                  expression: "resource.site_email"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  box: "",
+                                  label: "Year Established",
+                                  name: "site_year"
+                                },
+                                model: {
+                                  value: _vm.resource.site_year,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "site_year", $$v)
+                                  },
+                                  expression: "resource.site_year"
                                 }
                               }),
                               _vm._v(" "),

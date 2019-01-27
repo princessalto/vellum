@@ -62,6 +62,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -74,22 +75,21 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get("/api/v1/settings/branding").then(function (response) {
+    axios.get('/api/v1/settings/preferences').then(function (response) {
       _this.resource = response.data;
       console.log(_this.resource);
     });
   },
   methods: {
-    savePreference: function savePreference() {
+    savePreferences: function savePreferences() {
       var _this2 = this;
 
       axios.post('/api/v1/settings/store', this.resource).then(function (response) {
         console.log(_this2.resource, 'data');
 
         _this2.$router.push({
-          name: 'settings.store'
-        }); // console.log(this.resource)
-
+          name: 'settings.preferences'
+        });
       });
     }
   }
@@ -117,7 +117,7 @@ var render = function() {
     [
       _c(
         "v-container",
-        { attrs: { "grid-list-lg": "", fluid: "" } },
+        { attrs: { "grid-list-lg": "" } },
         [
           _c(
             "v-layout",
@@ -125,19 +125,26 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { lg6: "", md8: "", xs12: "" } },
+                { attrs: { xs12: "" } },
                 [
+                  _c("div", { staticClass: "mb-4" }, [
+                    _c("h1", { staticClass: "headline font-weight-bold" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.__("Preferences")) +
+                          "\n          "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "v-form",
                     {
-                      attrs: {
-                        action: "/api/v1/settings/store",
-                        method: "POST"
-                      },
+                      attrs: { method: "POST" },
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
-                          return _vm.savePreference($event)
+                          return _vm.savePreferences($event)
                         }
                       }
                     },
@@ -146,25 +153,13 @@ var render = function() {
                         "v-card",
                         [
                           _c(
-                            "v-card-title",
-                            { staticClass: "subheading font-weight-bold" },
-                            [
-                              _vm._v(
-                                "\n              " +
-                                  _vm._s(_vm.__("Preferences")) +
-                                  "\n            "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
                             "v-card-text",
                             [
                               _c("v-text-field", {
                                 attrs: {
+                                  box: "",
                                   label: "Date Format",
-                                  name: "date_format",
-                                  box: ""
+                                  name: "date_format"
                                 },
                                 model: {
                                   value: _vm.resource.date_format,
@@ -176,7 +171,11 @@ var render = function() {
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
-                                attrs: { label: "Items per Page", box: "" },
+                                attrs: {
+                                  box: "",
+                                  label: "Items per Page",
+                                  name: "items_per_page"
+                                },
                                 model: {
                                   value: _vm.resource.items_per_page,
                                   callback: function($$v) {

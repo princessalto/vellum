@@ -138,7 +138,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -221,7 +220,7 @@ var render = function() {
       _c(
         "v-form",
         {
-          attrs: { action: "/api/v1/pages/store", method: "POST" },
+          attrs: { method: "POST" },
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -460,6 +459,10 @@ var render = function() {
                               }
                             },
                             [
+                              _c("student-icon", {
+                                attrs: { width: "80", height: "80" }
+                              }),
+                              _vm._v(" "),
                               _c(
                                 "v-icon",
                                 {
@@ -488,12 +491,7 @@ var render = function() {
                               )
                             ],
                             1
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            attrs: { type: "file" },
-                            on: { change: _vm.resource.feature }
-                          })
+                          )
                         ],
                         1
                       )
