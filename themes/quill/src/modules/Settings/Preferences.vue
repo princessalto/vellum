@@ -1,31 +1,50 @@
 <template>
   <section>
-    <v-container grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <div class="mb-4">
-            <h1 class="headline font-weight-bold">
+    <v-form
+      @submit.prevent="savePreferences"
+      method="POST"
+      >
+      <v-card
+        flat
+        class="sticky emphasis--bg toolbar-mobile"
+        >
+        <v-container grid-list-lg>
+          <v-layout row wrap justify-space-between>
+            <h1 class="display-1">
               {{ __('Preferences') }}
             </h1>
-          </div>
-          <v-form
-            @submit.prevent="savePreferences"
-            method="POST"
-            >
+            <v-btn class="mx-0" color="secondary" type="submit">
+              {{ __('Save') }}
+            </v-btn>
+          </v-layout>
+        </v-container>
+      </v-card>
+
+      <v-container grid-list-lg>
+        <v-layout row wrap>
+          <v-flex xs12>
             <v-card>
               <v-card-text>
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Date Format') }}
+                </h1>
                 <v-text-field
                   box
-                  label="Date Format"
                   name="date_format"
+                  placeholder="Date Format"
+                  single-line
                   v-model="resource.date_format"
                   >
                 </v-text-field>
 
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Items per Page') }}
+                </h1>
                 <v-text-field
                   box
-                  label="Items per Page"
                   name="items_per_page"
+                  placeholder="Items per Page"
+                  single-line
                   v-model="resource.items_per_page"
                   >
                 </v-text-field>
@@ -44,10 +63,10 @@
                 </v-btn>
               </v-card-text>
             </v-card>
-          </v-form>
-        </v-flex>
-      </v-layout>
-    </v-container>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-form>
   </section>
 </template>
 

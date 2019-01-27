@@ -13,7 +13,7 @@
       <v-list>
         <v-list-tile avatar>
           <v-list-tile-avatar tile>
-            <img :src="sidebar.logo" width="40px">
+            <img :src="app.site_logo" width="40px">
           </v-list-tile-avatar>
           <v-list-tile-content>
             <v-list-tile-title><strong v-html="sidebar.title"></strong></v-list-tile-title>
@@ -142,7 +142,12 @@ export default {
   },
 
   mounted () {
-    //
+    axios
+      .get('/api/v1/settings/branding')
+      .then((response) => {
+        this.update(response.data)
+        console.log(this.app)
+      })
   }
 }
 </script>

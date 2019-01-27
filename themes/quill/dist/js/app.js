@@ -2517,7 +2517,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     clip: 'sidebar/clip',
     update: 'app/update'
   })),
-  mounted: function mounted() {//
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/v1/settings/branding').then(function (response) {
+      _this.update(response.data);
+
+      console.log(_this.app);
+    });
   }
 });
 
@@ -27406,7 +27413,7 @@ var render = function() {
                 [
                   _c("v-list-tile-avatar", { attrs: { tile: "" } }, [
                     _c("img", {
-                      attrs: { src: _vm.sidebar.logo, width: "40px" }
+                      attrs: { src: _vm.app.site_logo, width: "40px" }
                     })
                   ]),
                   _vm._v(" "),
@@ -28186,8 +28193,8 @@ var render = function() {
         {
           attrs: {
             "clipped-left": _vm.sidebar.clipped,
-            app: "",
             flat: "",
+            app: "",
             "scroll-off-screen": ""
           }
         },

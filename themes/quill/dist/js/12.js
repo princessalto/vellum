@@ -63,6 +63,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -116,38 +135,77 @@ var render = function() {
     "section",
     [
       _c(
-        "v-container",
-        { attrs: { "grid-list-lg": "" } },
+        "v-form",
+        {
+          attrs: { method: "POST" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.savePreferences($event)
+            }
+          }
+        },
         [
           _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            "v-card",
+            {
+              staticClass: "sticky emphasis--bg toolbar-mobile",
+              attrs: { flat: "" }
+            },
             [
               _c(
-                "v-flex",
-                { attrs: { xs12: "" } },
+                "v-container",
+                { attrs: { "grid-list-lg": "" } },
                 [
-                  _c("div", { staticClass: "mb-4" }, [
-                    _c("h1", { staticClass: "headline font-weight-bold" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.__("Preferences")) +
-                          "\n          "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
                   _c(
-                    "v-form",
+                    "v-layout",
                     {
-                      attrs: { method: "POST" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.savePreferences($event)
-                        }
-                      }
+                      attrs: { row: "", wrap: "", "justify-space-between": "" }
                     },
+                    [
+                      _c("h1", { staticClass: "display-1" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.__("Preferences")) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-0",
+                          attrs: { color: "secondary", type: "submit" }
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.__("Save")) +
+                              "\n          "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            { attrs: { "grid-list-lg": "" } },
+            [
+              _c(
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
+                [
+                  _c(
+                    "v-flex",
+                    { attrs: { xs12: "" } },
                     [
                       _c(
                         "v-card",
@@ -155,11 +213,24 @@ var render = function() {
                           _c(
                             "v-card-text",
                             [
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Date Format")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   box: "",
-                                  label: "Date Format",
-                                  name: "date_format"
+                                  name: "date_format",
+                                  placeholder: "Date Format",
+                                  "single-line": ""
                                 },
                                 model: {
                                   value: _vm.resource.date_format,
@@ -170,11 +241,24 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Items per Page")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   box: "",
-                                  label: "Items per Page",
-                                  name: "items_per_page"
+                                  name: "items_per_page",
+                                  placeholder: "Items per Page",
+                                  "single-line": ""
                                 },
                                 model: {
                                   value: _vm.resource.items_per_page,

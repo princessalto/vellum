@@ -1,8 +1,8 @@
 <template>
   <v-toolbar
     :clipped-left="sidebar.clipped"
-    app
     flat
+    app
     scroll-off-screen
     v-if="utilitybar.model"
     >

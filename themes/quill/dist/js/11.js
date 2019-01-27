@@ -82,6 +82,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -135,38 +174,77 @@ var render = function() {
     "section",
     [
       _c(
-        "v-container",
-        { attrs: { "grid-list-lg": "" } },
+        "v-form",
+        {
+          attrs: { method: "POST" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.saveBranding($event)
+            }
+          }
+        },
         [
           _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            "v-card",
+            {
+              staticClass: "sticky emphasis--bg toolbar-mobile",
+              attrs: { flat: "" }
+            },
             [
               _c(
-                "v-flex",
-                { attrs: { xs12: "" } },
+                "v-container",
+                { attrs: { "grid-list-lg": "" } },
                 [
-                  _c("div", { staticClass: "mb-4" }, [
-                    _c("h1", { staticClass: "headline font-weight-bold" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.__("Branding")) +
-                          "\n          "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
                   _c(
-                    "v-form",
+                    "v-layout",
                     {
-                      attrs: { method: "POST" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.saveBranding($event)
-                        }
-                      }
+                      attrs: { row: "", wrap: "", "justify-space-between": "" }
                     },
+                    [
+                      _c("h1", { staticClass: "display-1" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.__("Branding")) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-0",
+                          attrs: { color: "secondary", type: "submit" }
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.__("Save")) +
+                              "\n          "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            { attrs: { "grid-list-lg": "" } },
+            [
+              _c(
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
+                [
+                  _c(
+                    "v-flex",
+                    { attrs: { md9: "", xs12: "" } },
                     [
                       _c(
                         "v-card",
@@ -174,11 +252,24 @@ var render = function() {
                           _c(
                             "v-card-text",
                             [
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Site Name")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   box: "",
-                                  label: "Site Name",
-                                  name: "site_title"
+                                  name: "site_title",
+                                  placeholder: "Site Name",
+                                  "single-line": ""
                                 },
                                 model: {
                                   value: _vm.resource.site_title,
@@ -189,11 +280,26 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(
+                                        _vm.__("Site Tagline / Description")
+                                      ) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   box: "",
-                                  label: "Site Tagline",
-                                  name: "site_tagline"
+                                  name: "site_tagline",
+                                  placeholder: "Site Tagline",
+                                  "single-line": ""
                                 },
                                 model: {
                                   value: _vm.resource.site_tagline,
@@ -204,11 +310,24 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Site Author")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   box: "",
-                                  label: "Site Author",
-                                  name: "site_author"
+                                  name: "site_author",
+                                  placeholder: "Site Author",
+                                  "single-line": ""
                                 },
                                 model: {
                                   value: _vm.resource.site_author,
@@ -219,11 +338,24 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Site Email")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   box: "",
-                                  label: "Site Email",
-                                  name: "site_email"
+                                  name: "site_email",
+                                  placeholder: "Site Email",
+                                  "single-line": ""
                                 },
                                 model: {
                                   value: _vm.resource.site_email,
@@ -234,11 +366,24 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Year Established")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   box: "",
-                                  label: "Year Established",
-                                  name: "site_year"
+                                  name: "site_year",
+                                  placeholder: "Year Established",
+                                  "single-line": ""
                                 },
                                 model: {
                                   value: _vm.resource.site_year,
@@ -247,28 +392,42 @@ var render = function() {
                                   },
                                   expression: "resource.site_year"
                                 }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: {
-                                    color: "secondary",
-                                    depressed: "",
-                                    type: "submit"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Save")) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
+                              })
                             ],
                             1
                           )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { md3: "", xs12: "" } },
+                    [
+                      _c(
+                        "v-card",
+                        {
+                          staticClass:
+                            "transparent upload-image emphasis--border",
+                          attrs: { height: "200" }
+                        },
+                        [
+                          _c("v-card-text", [
+                            _c(
+                              "h1",
+                              { staticClass: "body-2 font-weight-bold mb-2" },
+                              [
+                                _vm._v(
+                                  "\n                " +
+                                    _vm._s(_vm.__("Site Logo")) +
+                                    "\n              "
+                                )
+                              ]
+                            )
+                          ])
                         ],
                         1
                       )

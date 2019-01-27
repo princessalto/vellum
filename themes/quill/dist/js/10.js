@@ -44,7 +44,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -99,12 +98,7 @@ var render = function() {
                   _c(
                     "v-card",
                     [
-                      _c("v-img", {
-                        attrs: {
-                          src: _vm.resource.feature,
-                          "aspect-ratio": "2"
-                        }
-                      }),
+                      _c("v-img", { attrs: { src: _vm.resource.feature } }),
                       _vm._v(" "),
                       _c(
                         "v-card-text",

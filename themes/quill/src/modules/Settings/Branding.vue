@@ -1,72 +1,111 @@
 <template>
   <section>
-    <v-container grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <div class="mb-4">
-            <h1 class="headline font-weight-bold">
+    <v-form
+      @submit.prevent="saveBranding"
+      method="POST"
+      >
+      <v-card
+        flat
+        class="sticky emphasis--bg toolbar-mobile"
+        >
+        <v-container grid-list-lg>
+          <v-layout row wrap justify-space-between>
+            <h1 class="display-1">
               {{ __('Branding') }}
             </h1>
-          </div>
-          <v-form
-            @submit.prevent="saveBranding"
-            method="POST"
-            >
+            <v-btn class="mx-0" color="secondary" type="submit">
+              {{ __('Save') }}
+            </v-btn>
+          </v-layout>
+        </v-container>
+      </v-card>
+
+      <v-container grid-list-lg>
+        <v-layout row wrap>
+          <v-flex md9 xs12>
             <v-card>
               <v-card-text>
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Site Name') }}
+                </h1>
                 <v-text-field
                   box
-                  label="Site Name"
                   name="site_title"
+                  placeholder="Site Name"
+                  single-line
                   v-model="resource.site_title"
                   >
                 </v-text-field>
 
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Site Tagline / Description') }}
+                </h1>
                 <v-text-field
                   box
-                  label="Site Tagline"
                   name="site_tagline"
+                  placeholder="Site Tagline"
+                  single-line
                   v-model="resource.site_tagline"
                   >
                 </v-text-field>
 
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Site Author') }}
+                </h1>
                 <v-text-field
                   box
-                  label="Site Author"
                   name="site_author"
+                  placeholder="Site Author"
+                  single-line
                   v-model="resource.site_author"
                   >
                 </v-text-field>
 
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Site Email') }}
+                </h1>
                 <v-text-field
                   box
-                  label="Site Email"
                   name="site_email"
+                  placeholder="Site Email"
+                  single-line
                   v-model="resource.site_email"
                   >
                 </v-text-field>
 
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Year Established') }}
+                </h1>
                 <v-text-field
                   box
-                  label="Year Established"
                   name="site_year"
+                  placeholder="Year Established"
+                  single-line
                   v-model="resource.site_year"
                   >
                 </v-text-field>
-
-                <v-btn
-                  color="secondary"
-                  depressed
-                  type="submit"
-                  >
-                  {{ __('Save') }}
-                </v-btn>
               </v-card-text>
             </v-card>
-          </v-form>
-        </v-flex>
-      </v-layout>
-    </v-container>
+          </v-flex>
+
+          <v-flex md3 xs12>
+            <v-card height="200" class="transparent upload-image emphasis--border">
+              <v-card-text>
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Site Logo') }}
+                </h1>
+                <!-- <v-text-field
+                  type="file"
+                  name="site_logo"
+                  :value="resource.site_logo"
+                  >
+                </v-text-field> -->
+              </v-card-text>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-form>
   </section>
 </template>
 
