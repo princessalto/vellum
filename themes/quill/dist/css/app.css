@@ -11303,3 +11303,6 @@ html {
 .theme--dark .v-breadcrumbs__item {
   color: #38a3ee;
 }
+.td-n {
+  text-decoration: none;
+}

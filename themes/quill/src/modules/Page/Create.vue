@@ -4,31 +4,52 @@
       @submit.prevent="storeData"
       method="POST"
       >
-      <v-toolbar flat class="sticky">
-        <v-toolbar-title class="subheading font-weight-bold">
-          {{ __('Create') }}
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn color="secondary" type="submit">
-          {{ __('Save') }}
-        </v-btn>
-      </v-toolbar>
-      <v-container fluid grid-list-lg>
+      <v-card
+        flat
+        class="sticky emphasis--bg toolbar-mobile"
+        >
+        <v-container grid-list-lg>
+          <v-layout row wrap>
+            <a
+              :to="{name: 'pages.index'}"
+              class="td-n"
+              >
+              <span class="subheading primary--text">
+                <v-icon size="16" class="primary--text">mdi-arrow-left</v-icon>
+                {{ __('All Pages') }}
+              </span>
+            </a>
+          </v-layout>
+          <v-layout row wrap justify-space-between>
+            <h1 class="display-1">
+              {{ __('Create Page') }}
+            </h1>
+            <v-btn class="mx-0" color="secondary" type="submit">
+              {{ __('Save') }}
+            </v-btn>
+          </v-layout>
+        </v-container>
+      </v-card>
+      <v-container grid-list-lg>
         <v-layout row wrap>
           <v-flex md9 xs12>
             <v-card>
               <v-card-text>
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Page Title') }}
+                </h1>
                 <v-text-field
                   :data-vv-as="trans('Title')"
                   :error-messages="errors.collect('title')"
                   :hint="trans('Tap the icon to edit this page\'s slug')"
-                  :label="trans('Title')"
                   @click:append="resource.viewSlug = !resource.viewSlug"
                   @input="slugify"
                   append-icon="mdi-circle-edit-outline"
-                  name="title"
-                  box
                   autofocus
+                  placeholder="e.g. My First Page"
+                  box
+                  name="title"
+                  single-line
                   v-model="resource.title"
                   v-validate="'required'"
                 ></v-text-field>
@@ -42,11 +63,11 @@
                     :readonly="resource.lockSlug"
                     @blur="resource.lockSlug = true"
                     @click:append="resource.lockSlug = !resource.lockSlug"
+                    autofocus
+                    box
                     class="mb-2"
                     name="slug"
-                    box
                     persistent-hint
-                    autofocus
                     v-if="resource.viewSlug"
                     v-model="resource.slug"
                     v-validate="'required'"
@@ -65,59 +86,53 @@
                   v-model="resource.code"
                 ></v-text-field> -->
 
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Page Code') }}
+                </h1>
                 <v-text-field
                   :error-messages="errors.collect('code')"
-                  :label="trans('Code')"
                   @click:append="() => {resource.lockSlug = !resource.lockSlug}"
                   box
                   name="code"
+                  single-line
+                  placeholder="my-first-page"
                   v-model.trim="resource.code"
                   v-validate="'required'"
                 ></v-text-field>
 
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Page Content') }}
+                </h1>
                 <v-textarea
-                  :data-vv-as="trans('Body')"
+                  :data-vv-as="trans('Page Content')"
                   box
                   autofocus
-                  label="Body"
+                  single-line
                   name="body"
+                  row="9"
                   v-model="resource.body"
                 ></v-textarea>
 
                 <!-- ck -->
-                <div
+                <!-- <div
                   :data-vv-as="trans('Body')"
                   autofocus
                   id="editor"
                   name="body"
                   v-model="resource.body"
                   >
-                </div>
+                </div> -->
               </v-card-text>
             </v-card>
           </v-flex>
 
           <v-flex md3 xs12>
-            <v-card hover flat height="160" class="mb-3 pa-4 transparent featured-image__card">
-              <v-layout
-                column
-                fill-height
-                justify-center
-                align-center
-                >
-                <student-icon
-                  width="80"
-                  height="80"
-                  >
-                </student-icon>
-                <v-icon class="grey--text text--lighten-2" size="80">
-                  mdi-image-filter-center-focus
-                </v-icon>
-                <div class="grey--text text--darken-1">
-                  {{ __('Click to add cover photo') }}
-                </div>
-              </v-layout>
-              <!-- <input type="file" v-on:change="resource.feature"> -->
+            <v-card height="200" class="transparent upload-image emphasis--border">
+              <v-card-text>
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Site Logo') }}
+                </h1>
+              </v-card-text>
             </v-card>
           </v-flex>
         </v-layout>

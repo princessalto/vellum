@@ -94,12 +94,6 @@
                 <h1 class="body-2 font-weight-bold mb-2">
                   {{ __('Site Logo') }}
                 </h1>
-                <!-- <v-text-field
-                  type="file"
-                  name="site_logo"
-                  :value="resource.site_logo"
-                  >
-                </v-text-field> -->
               </v-card-text>
             </v-card>
           </v-flex>

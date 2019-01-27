@@ -71,6 +71,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -146,21 +148,49 @@ var render = function() {
         },
         [
           _c(
-            "v-toolbar",
-            { staticClass: "sticky emphasis--medium", attrs: { flat: "" } },
+            "v-card",
+            {
+              staticClass: "sticky emphasis--bg toolbar-mobile",
+              attrs: { flat: "" }
+            },
             [
-              _c("v-toolbar-title", [
-                _vm._v("\n        " + _vm._s(_vm.__("Edit Page")) + "\n      ")
-              ]),
-              _vm._v(" "),
-              _c("v-spacer"),
-              _vm._v(" "),
               _c(
-                "v-btn",
-                {
-                  attrs: { type: "submit", depressed: "", color: "secondary" }
-                },
-                [_vm._v("\n        " + _vm._s(_vm.__("Save")) + "\n      ")]
+                "v-container",
+                { attrs: { "grid-list-lg": "" } },
+                [
+                  _c(
+                    "v-layout",
+                    {
+                      attrs: { row: "", wrap: "", "justify-space-between": "" }
+                    },
+                    [
+                      _c("h1", { staticClass: "display-1" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.__("Edit Page")) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-0",
+                          attrs: { color: "secondary", type: "submit" }
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.__("Save")) +
+                              "\n          "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
               )
             ],
             1
@@ -168,7 +198,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-container",
-            { attrs: { fluid: "", "grid-list-lg": "" } },
+            { attrs: { "grid-list-lg": "" } },
             [
               _c(
                 "v-layout",

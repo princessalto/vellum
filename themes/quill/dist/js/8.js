@@ -138,6 +138,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -230,27 +245,89 @@ var render = function() {
         },
         [
           _c(
-            "v-toolbar",
-            { staticClass: "sticky", attrs: { flat: "" } },
+            "v-card",
+            {
+              staticClass: "sticky emphasis--bg toolbar-mobile",
+              attrs: { flat: "" }
+            },
             [
               _c(
-                "v-toolbar-title",
-                { staticClass: "subheading font-weight-bold" },
-                [_vm._v("\n        " + _vm._s(_vm.__("Create")) + "\n      ")]
-              ),
-              _vm._v(" "),
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c("v-btn", { attrs: { color: "secondary", type: "submit" } }, [
-                _vm._v("\n        " + _vm._s(_vm.__("Save")) + "\n      ")
-              ])
+                "v-container",
+                { attrs: { "grid-list-lg": "" } },
+                [
+                  _c("v-layout", { attrs: { row: "", wrap: "" } }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "td-n",
+                        attrs: { to: { name: "pages.index" } }
+                      },
+                      [
+                        _c(
+                          "span",
+                          { staticClass: "subheading primary--text" },
+                          [
+                            _c(
+                              "v-icon",
+                              {
+                                staticClass: "primary--text",
+                                attrs: { size: "16" }
+                              },
+                              [_vm._v("mdi-arrow-left")]
+                            ),
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(_vm.__("All Pages")) +
+                                "\n            "
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-layout",
+                    {
+                      attrs: { row: "", wrap: "", "justify-space-between": "" }
+                    },
+                    [
+                      _c("h1", { staticClass: "display-1" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.__("Create Page")) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-0",
+                          attrs: { color: "secondary", type: "submit" }
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.__("Save")) +
+                              "\n          "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
           ),
           _vm._v(" "),
           _c(
             "v-container",
-            { attrs: { fluid: "", "grid-list-lg": "" } },
+            { attrs: { "grid-list-lg": "" } },
             [
               _c(
                 "v-layout",
@@ -266,6 +343,18 @@ var render = function() {
                           _c(
                             "v-card-text",
                             [
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Page Title")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 directives: [
                                   {
@@ -281,11 +370,12 @@ var render = function() {
                                   hint: _vm.trans(
                                     "Tap the icon to edit this page's slug"
                                   ),
-                                  label: _vm.trans("Title"),
                                   "append-icon": "mdi-circle-edit-outline",
-                                  name: "title",
+                                  autofocus: "",
+                                  placeholder: "e.g. My First Page",
                                   box: "",
-                                  autofocus: ""
+                                  name: "title",
+                                  "single-line": ""
                                 },
                                 on: {
                                   "click:append": function($event) {
@@ -333,10 +423,10 @@ var render = function() {
                                             "app://your-custom-url-here"
                                           ),
                                           readonly: _vm.resource.lockSlug,
-                                          name: "slug",
+                                          autofocus: "",
                                           box: "",
-                                          "persistent-hint": "",
-                                          autofocus: ""
+                                          name: "slug",
+                                          "persistent-hint": ""
                                         },
                                         on: {
                                           blur: function($event) {
@@ -360,6 +450,18 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Page Code")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 directives: [
                                   {
@@ -371,9 +473,10 @@ var render = function() {
                                 ],
                                 attrs: {
                                   "error-messages": _vm.errors.collect("code"),
-                                  label: _vm.trans("Code"),
                                   box: "",
-                                  name: "code"
+                                  name: "code",
+                                  "single-line": "",
+                                  placeholder: "my-first-page"
                                 },
                                 on: {
                                   "click:append": function() {
@@ -394,29 +497,26 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
+                              _c(
+                                "h1",
+                                { staticClass: "body-2 font-weight-bold mb-2" },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(_vm.__("Page Content")) +
+                                      "\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
                               _c("v-textarea", {
                                 attrs: {
-                                  "data-vv-as": _vm.trans("Body"),
+                                  "data-vv-as": _vm.trans("Page Content"),
                                   box: "",
                                   autofocus: "",
-                                  label: "Body",
-                                  name: "body"
-                                },
-                                model: {
-                                  value: _vm.resource.body,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.resource, "body", $$v)
-                                  },
-                                  expression: "resource.body"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("div", {
-                                attrs: {
-                                  "data-vv-as": _vm.trans("Body"),
-                                  autofocus: "",
-                                  id: "editor",
-                                  name: "body"
+                                  "single-line": "",
+                                  name: "body",
+                                  row: "9"
                                 },
                                 model: {
                                   value: _vm.resource.body,
@@ -444,54 +544,23 @@ var render = function() {
                         "v-card",
                         {
                           staticClass:
-                            "mb-3 pa-4 transparent featured-image__card",
-                          attrs: { hover: "", flat: "", height: "160" }
+                            "transparent upload-image emphasis--border",
+                          attrs: { height: "200" }
                         },
                         [
-                          _c(
-                            "v-layout",
-                            {
-                              attrs: {
-                                column: "",
-                                "fill-height": "",
-                                "justify-center": "",
-                                "align-center": ""
-                              }
-                            },
-                            [
-                              _c("student-icon", {
-                                attrs: { width: "80", height: "80" }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-icon",
-                                {
-                                  staticClass: "grey--text text--lighten-2",
-                                  attrs: { size: "80" }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                mdi-image-filter-center-focus\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "grey--text text--darken-1" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(
-                                        _vm.__("Click to add cover photo")
-                                      ) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
+                          _c("v-card-text", [
+                            _c(
+                              "h1",
+                              { staticClass: "body-2 font-weight-bold mb-2" },
+                              [
+                                _vm._v(
+                                  "\n                " +
+                                    _vm._s(_vm.__("Site Logo")) +
+                                    "\n              "
+                                )
+                              ]
+                            )
+                          ])
                         ],
                         1
                       )

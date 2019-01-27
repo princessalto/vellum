@@ -4,21 +4,23 @@
       method="POST"
       @submit.prevent="updateData"
       >
-      <v-toolbar flat class="sticky emphasis--medium">
-        <v-toolbar-title>
-          {{ __('Edit Page') }}
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn
-          type="submit"
-          depressed
-          color="secondary"
-          >
-          {{ __('Save') }}
-        </v-btn>
-      </v-toolbar>
+      <v-card
+        flat
+        class="sticky emphasis--bg toolbar-mobile"
+        >
+        <v-container grid-list-lg>
+          <v-layout row wrap justify-space-between>
+            <h1 class="display-1">
+              {{ __('Edit Page') }}
+            </h1>
+            <v-btn class="mx-0" color="secondary" type="submit">
+              {{ __('Save') }}
+            </v-btn>
+          </v-layout>
+        </v-container>
+      </v-card>
 
-      <v-container fluid grid-list-lg>
+      <v-container grid-list-lg>
         <v-layout row wrap>
           <v-flex md6 xs12>
             <v-text-field
