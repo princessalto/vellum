@@ -131,7 +131,7 @@ export default {
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.push({name: 'settings.branding'})
+          this.$router.go({name: 'settings.branding'})
         })
     },
   }

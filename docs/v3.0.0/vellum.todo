@@ -33,19 +33,18 @@ from Pluma core:
 
 How To/To Do:
 ☐ slugify
-✔ get settings data and update @done (19-01-27 01:09)
-☐ upload vellum on rippl3s
-☐ update slide on s.u
+☐ CKEditor
 ☐ try log-in quill repository
 ☐ auth on quill
-✔ path logo to quill @done (19-01-28 01:17)
-✔ active button on quill @done (19-01-27 01:09)
-✔ remove utilitybar from fixed / sticky @done (19-01-27 22:22)
 ☐ snackbar after hitting "save" button
 ☐ add shadow on sticky toolbar when scroll
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ path logo to quill @done (19-01-28 01:17)
+ ✔ remove utilitybar from fixed / sticky @done (19-01-27 22:22)
+ ✔ get settings data and update @done (19-01-27 01:09)
+ ✔ active button on quill @done (19-01-27 01:09)
  ✔ append mutators @done (19-01-24 18:39)
  ✔ How to import mutators @done (19-01-23 19:02)
  ✔ how to bypass on settings.store @done (19-01-23 18:21)

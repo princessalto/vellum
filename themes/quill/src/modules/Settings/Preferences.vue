@@ -54,13 +54,6 @@
                   v-model="resource.center_main_content"
                   >
                 </v-checkbox>
-                <v-btn
-                  color="secondary"
-                  depressed
-                  type="submit"
-                  >
-                  {{ __('Save') }}
-                </v-btn>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -98,7 +91,7 @@ export default {
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.push({name: 'settings.preferences'})
+          this.$router.go({name: 'settings.preferences'})
         })
     },
   }

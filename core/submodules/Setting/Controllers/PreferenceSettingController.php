@@ -30,7 +30,6 @@ class PreferenceSettingController extends SettingController
      */
     public function getPreferences(Request $request)
     {
-        // $setting = Setting::findOrFail($id);
         $setting = [
             'date_format' => settings('date_format'),
             'items_per_page' => settings('items_per_page'),

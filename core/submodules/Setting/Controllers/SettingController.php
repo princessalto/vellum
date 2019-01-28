@@ -1,7 +1,6 @@
 <?php
 
 namespace Setting\Controllers;
-
 use Frontier\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Setting\Models\General;

@@ -75,13 +75,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -106,7 +99,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/v1/settings/store', this.resource).then(function (response) {
         console.log(_this2.resource, 'data');
 
-        _this2.$router.push({
+        _this2.$router.go({
           name: 'settings.preferences'
         });
       });
@@ -289,25 +282,7 @@ var render = function() {
                                   },
                                   expression: "resource.center_main_content"
                                 }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: {
-                                    color: "secondary",
-                                    depressed: "",
-                                    type: "submit"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Save")) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
+                              })
                             ],
                             1
                           )

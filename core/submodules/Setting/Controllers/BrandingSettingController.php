@@ -54,7 +54,6 @@ class BrandingSettingController extends AdminController
      */
     public function getBranding(Request $request)
     {
-        // $setting = Setting::findOrFail($id);
         $setting = [
             'site_title' => settings('site_title'),
             'site_tagline' => settings('site_tagline'),

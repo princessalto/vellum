@@ -139,7 +139,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/v1/settings/store', this.resource).then(function (response) {
         console.log(_this2.resource, 'data');
 
-        _this2.$router.push({
+        _this2.$router.go({
           name: 'settings.branding'
         });
       });
