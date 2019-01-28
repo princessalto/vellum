@@ -13,8 +13,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_nestable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-nestable */ "./node_modules/vue-nestable/dist/vue-nestable.js");
-/* harmony import */ var vue_nestable__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_nestable__WEBPACK_IMPORTED_MODULE_3__);
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -111,35 +109,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
@@ -156,9 +125,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: 'Dashboard',
   components: {
     Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Carousel"],
-    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Slide"],
-    VueNestable: vue_nestable__WEBPACK_IMPORTED_MODULE_3__["VueNestable"],
-    VueNestableHandle: vue_nestable__WEBPACK_IMPORTED_MODULE_3__["VueNestableHandle"]
+    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Slide"]
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
     app: 'app/app'
@@ -264,21 +231,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           link: 'https://www.medium.com/',
           category: 'PSDM SUP'
         }]
-      },
-      nestableItems: [{
-        id: 0,
-        text: 'Chapter 1'
-      }, {
-        id: 1,
-        text: 'Chapter 2',
-        children: [{
-          id: 2,
-          text: 'Part 1'
-        }]
-      }, {
-        id: 3,
-        text: 'Chapter 3'
-      }]
+      }
     };
   }
 });
@@ -527,89 +480,6 @@ var render = function() {
                       })
                     ],
                     2
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { md4: "", xs12: "" } },
-            [
-              _c(
-                "v-card",
-                { staticClass: "mb-3" },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(_vm.__("Sample Draggable Items")) +
-                        "\n        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c("vue-nestable", {
-                        scopedSlots: _vm._u([
-                          {
-                            key: "default",
-                            fn: function(ref) {
-                              var item = ref.item
-                              return _c(
-                                "vue-nestable-handle",
-                                { attrs: { item: item } },
-                                [
-                                  _c(
-                                    "v-card",
-                                    {
-                                      staticClass: "mb-3",
-                                      attrs: { hover: "" }
-                                    },
-                                    [
-                                      _c(
-                                        "v-list",
-                                        { attrs: { dense: "" } },
-                                        [
-                                          _c(
-                                            "v-list-tile",
-                                            [
-                                              _c("v-list-tile-title", [
-                                                _vm._v(
-                                                  "\n                      " +
-                                                    _vm._s(item.text) +
-                                                    "\n                    "
-                                                )
-                                              ])
-                                            ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            }
-                          }
-                        ]),
-                        model: {
-                          value: _vm.nestableItems,
-                          callback: function($$v) {
-                            _vm.nestableItems = $$v
-                          },
-                          expression: "nestableItems"
-                        }
-                      })
-                    ],
-                    1
                   )
                 ],
                 1

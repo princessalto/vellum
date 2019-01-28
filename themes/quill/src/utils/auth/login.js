@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 // import { URL_POST_LOGIN } from '@/router/api'
 
 const URL_POST_LOGIN = '/api/v1/login'

@@ -258,10 +258,7 @@ var render = function() {
                   _c("v-layout", { attrs: { row: "", wrap: "" } }, [
                     _c(
                       "a",
-                      {
-                        staticClass: "td-n",
-                        attrs: { to: { name: "pages.index" } }
-                      },
+                      { staticClass: "td-n", attrs: { href: "/admin/pages" } },
                       [
                         _c(
                           "span",

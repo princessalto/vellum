@@ -82,34 +82,6 @@
           </v-btn>
         </v-snackbar> -->
       </v-flex>
-
-      <v-flex md4 xs12>
-        <!-- <data-table :items="test"></data-table> -->
-
-        <v-card class="mb-3">
-          <v-card-title>
-            {{ __('Sample Draggable Items') }}
-          </v-card-title>
-          <v-card-text>
-            <vue-nestable v-model="nestableItems">
-              <vue-nestable-handle
-                slot-scope="{ item }"
-                :item="item">
-                <!-- {{ item.text }} -->
-                <v-card hover class="mb-3">
-                  <v-list dense>
-                    <v-list-tile>
-                      <v-list-tile-title>
-                        {{ item.text }}
-                      </v-list-tile-title>
-                    </v-list-tile>
-                  </v-list>
-                </v-card>
-              </vue-nestable-handle>
-            </vue-nestable>
-          </v-card-text>
-        </v-card>
-      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -122,7 +94,6 @@
   import store from '@/store'
   import { mapGetters } from 'vuex'
   import { Carousel, Slide } from 'vue-carousel'
-  import { VueNestable, VueNestableHandle } from 'vue-nestable'
 
 export default {
   // mounted() {
@@ -142,8 +113,6 @@ export default {
   components: {
     Carousel,
     Slide,
-    VueNestable,
-    VueNestableHandle
   },
 
   computed: {
@@ -253,26 +222,6 @@ export default {
           }
         ]
       },
-      nestableItems: [
-        {
-          id: 0,
-          text: 'Chapter 1'
-        },
-        {
-          id: 1,
-          text: 'Chapter 2',
-          children: [
-            {
-              id: 2,
-              text: 'Part 1'
-            }
-          ]
-        },
-        {
-          id: 3,
-          text: 'Chapter 3'
-        }
-      ]
     }
   }
 }

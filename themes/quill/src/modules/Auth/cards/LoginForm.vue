@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import Cookies from 'js-cookie'
 import user from '@/utils/user/user'
 import store from '@/store'
 import login from '@/utils/auth/login'
