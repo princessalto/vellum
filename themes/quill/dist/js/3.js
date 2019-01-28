@@ -13,8 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_nestable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-nestable */ "./node_modules/vue-nestable/dist/vue-nestable.js");
-/* harmony import */ var vue_nestable__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_nestable__WEBPACK_IMPORTED_MODULE_3__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-nestable'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -157,8 +156,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Carousel"],
     Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Slide"],
-    VueNestable: vue_nestable__WEBPACK_IMPORTED_MODULE_3__["VueNestable"],
-    VueNestableHandle: vue_nestable__WEBPACK_IMPORTED_MODULE_3__["VueNestableHandle"]
+    VueNestable: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-nestable'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    VueNestableHandle: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-nestable'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
     app: 'app/app'
