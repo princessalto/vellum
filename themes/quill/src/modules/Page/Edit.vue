@@ -101,7 +101,7 @@ export default {
       axios
         .post('/api/v1/pages/update/' + this.$route.params.id, this.resource)
         .then((response) => {
-          this.$router.push({name: 'pages.edit'});
+          this.$router.go({name: 'pages.edit'});
         })
     },
   },

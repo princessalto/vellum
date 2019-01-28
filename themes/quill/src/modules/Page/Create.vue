@@ -43,7 +43,6 @@
                   :error-messages="errors.collect('title')"
                   :hint="trans('Tap the icon to edit this page\'s slug')"
                   @click:append="resource.viewSlug = !resource.viewSlug"
-                  @input="slugify"
                   append-icon="mdi-circle-edit-outline"
                   autofocus
                   placeholder="e.g. My First Page"
@@ -201,7 +200,7 @@ export default {
         .post('/api/v1/pages/store', this.resource)
         .then((response) => {
           // console.log(this.resource, 'data')
-          this.$router.push({name: 'pages.create'})
+          this.$router.go({name: 'pages.create'})
           // push to Create.vue view
         })
     },

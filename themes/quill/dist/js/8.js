@@ -152,7 +152,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -203,7 +202,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/api/v1/pages/store', this.resource).then(function (response) {
         // console.log(this.resource, 'data')
-        _this2.$router.push({
+        _this2.$router.go({
           name: 'pages.create'
         }); // push to Create.vue view
 
@@ -378,8 +377,7 @@ var render = function() {
                                   "click:append": function($event) {
                                     _vm.resource.viewSlug = !_vm.resource
                                       .viewSlug
-                                  },
-                                  input: _vm.slugify
+                                  }
                                 },
                                 model: {
                                   value: _vm.resource.title,
