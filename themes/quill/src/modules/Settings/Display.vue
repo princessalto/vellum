@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-form
-      @submit.prevent="savePreferences"
+      @submit.prevent="saveDisplay"
       method="POST"
       >
       <v-card
@@ -11,7 +11,7 @@
         <v-container grid-list-lg>
           <v-layout row wrap justify-space-between>
             <h1 class="display-1">
-              {{ __('Preferences') }}
+              {{ __('Displaying Data') }}
             </h1>
             <v-btn class="mx-0" color="secondary" type="submit">
               {{ __('Save') }}
@@ -25,8 +25,12 @@
           <v-flex xs12>
             <v-card>
               <v-card-text>
+                <div class="mb-3 grey--text text--darken-1 subheading text-uppercase font-weight-bold">
+                  {{ __('Formats') }}
+                </div>
+
                 <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Date Format') }}
+                  {{ __('Global Date Format') }}
                 </h1>
                 <v-text-field
                   box
@@ -48,6 +52,12 @@
                   v-model="resource.items_per_page"
                   >
                 </v-text-field>
+              </v-card-text>
+
+              <v-card-text>
+                <div class="mb-3 grey--text text--darken-1 subheading text-uppercase font-weight-bold">
+                  {{ __('Grid Display') }}
+                </div>
 
                 <v-checkbox
                   label="Center the main content when possible."
@@ -78,7 +88,7 @@ export default {
 
   created() {
     axios
-      .get('/api/v1/settings/preferences')
+      .get('/api/v1/settings/display')
       .then((response) => {
         this.resource = response.data
         console.log(this.resource)
@@ -86,12 +96,12 @@ export default {
   },
 
   methods: {
-    savePreferences() {
+    saveDisplay() {
       axios
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.go({name: 'settings.preferences'})
+          this.$router.go({name: 'settings.display'})
         })
     },
   }

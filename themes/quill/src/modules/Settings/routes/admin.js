@@ -32,8 +32,8 @@ export default [
           title: 'Display',
           sort: 6,
           authenticatable: true,
-          icon: 'mdi-book-multiple-variant'
-        }
+          icon: 'mdi-book-multiple-variant',
+        },
       },
       // Branding
       {

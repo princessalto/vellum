@@ -23,13 +23,13 @@ export default [
       //General
       {
         code: 'settings.general.display',
-        name: 'setttings.general.display',
+        name: 'settings.general.display',
         meta: {
           title: 'General',
           icon: 'home',
           authenticatable: true,
-          sort: 502,
-        }
+          sort: 501,
+        },
       },
       // Branding
       {

@@ -18,6 +18,9 @@ Route::group(['prefix' => 'v1'], function () {
 
     # Preferences
     Route::get('settings/preferences', 'PreferenceSettingController@getPreferences')->name('settings.preferences.getPreferences');
+
+    # General
+    // Route::post('settings/store')
 });
 
 // v2
