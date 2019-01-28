@@ -107,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.post('/api/v1/pages/update/' + this.$route.params.id, this.resource).then(function (response) {
-        _this3.$router.push({
+        _this3.$router.go({
           name: 'pages.edit'
         });
       });

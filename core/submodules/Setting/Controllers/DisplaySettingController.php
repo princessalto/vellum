@@ -34,4 +34,22 @@ class DisplaySettingController extends AdminController
 
         return back();
     }
+
+    **
+     * Show the form for editing the specified resource.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @param  int  $id
+     * @return Illuminate\Http\Response
+     */
+    public function getDisplay(Request $request)
+    {
+        $setting = [
+            'date_format' => settings('date_format'),
+            'items_per_page' => settings('items_per_page'),
+            'center_main_content' => settings('center_main_content'),
+        ];
+
+        return response()->json($setting);
+    }
 }

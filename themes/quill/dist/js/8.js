@@ -203,7 +203,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/api/v1/pages/store', this.resource).then(function (response) {
         // console.log(this.resource, 'data')
-        _this2.$router.push({
+        _this2.$router.go({
           name: 'pages.create'
         }); // push to Create.vue view
 
