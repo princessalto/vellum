@@ -1,108 +1,68 @@
 <template>
-  <v-container grid-list-lg>
-    <v-layout row wrap justify-center align-center fill-height>
-      <v-flex xs12>
-        <v-form
-          method="POST"
-          action="/login"
-          >
-          <v-card class="text-xs-center">
-            <v-card-text>
-              <v-avatar
-                size="80">
-                <img
-                  :src="app.meta.logo"
-                  >
-              </v-avatar>
-            </v-card-text>
-            <v-card-text>
-              <v-text-field
-                autofocus
-                label="Email Address"
-                box
-                id="email"
-                required
-                type="email"
-                v-model="email"
-                >
-              </v-text-field>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card-default">
+                    <div class="card-header">Login</div>
 
-              <v-text-field
-                :append-icon="showPassword ? 'visibility_off' : 'visibility'"
-                :type="showPassword ? 'text' : 'password'"
-                @click:append="showPassword = !showPassword"
-                autofocus
-                box
-                class="input-group--focused"
-                id="password"
-                label="Password"
-                type="password"
-                v-model="password"
-                >
-              </v-text-field>
+                    <div class="card-body">
+                        <form method="POST" action="/login">
+                          <input type="hidden" name="_token" :value="csrfToken">
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
 
-              <v-btn
-                type="submit"
-                color="primary"
-                @click="handleSubmit"
-                >
-                {{ __('Login') }}
-              </v-btn>
-            </v-card-text>
-          </v-card>
-        </v-form>
-      </v-flex>
-    </v-layout>
-  </v-container>
+                                <div class="col-md-6">
+                                    <input id="email" type="text" class="form-control" v-model="username" name="username" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="password" v-model="password" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button @click.prevent="login" type="submit" class="btn btn-primary">
+                                        Login
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+import user from '@/utils/user/user'
 import store from '@/store'
+import login from '@/utils/auth/login'
 
 export default {
   store,
-  name: 'Login',
 
   data() {
     return {
-      showPassword: true,
-      email : "",
-      password : "",
-      rules: {
-    }
+      username: '',
+      password: '',
+      csrfToken: window.$csrfToken,
     }
   },
 
-  methods : {
-    handleSubmit(e){
-      e.preventDefault()
-
-      if (this.password.length > 0) {
-        axios.post('api/v1/login', {
-          username: this.email,
-          password: this.password
-        })
-        .then(response => {
-          localStorage.setItem('user',response.data.user.fullname)
-          localStorage.setItem('jwt',response.data.token)
-
-          if (localStorage.getItem('jwt') != null){
-            this.$router.push({name: 'dashboard.index'})
-          }
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-      }
-    }
-  },
-
-  beforeRouteEnter (to, from, next) {
-    if (localStorage.getItem('jwt')) {
-      return next('board');
-    }
-
-    next();
+  methods: {
+    login: function (e) {
+      const { username, password } = this
+      login({ username, password }).then(() => {
+        this.$router.go('/admin')
+      })
+    },
   }
 }
 </script>

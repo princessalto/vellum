@@ -6,12 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Pluma\Controllers\ApiController;
 use Pluma\Support\Auth\Traits\AuthenticatesUsers;
+use Pluma\Support\Validation\Traits\ValidatesRequests;
+use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use User\Models\User;
 use User\Resources\User as UserResource;
 
 class LoginApiController extends ApiController
 {
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, ValidatesRequests;
+
+    /**
+     * The JWT value of the current user.
+     *
+     * @var string
+     */
+    protected $token;
 
     /**
      * Create a new controller instance.
@@ -21,25 +31,26 @@ class LoginApiController extends ApiController
     public function __construct()
     {
         $this->middleware('auth.guest', ['except' => 'logout']);
+
+        $this->middleware('auth:api', ['except' => ['login', 'authenticate']]);
     }
 
     /**
-     * Authenticate the given resource.
+     * Authenticate the request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return boolean
      */
     public function authenticate(Request $request)
     {
-        $user = User::where('api_token', $request->input('api_token'));
-
-        if (! $user->exists()) {
-            return response()->json(['token' => null, 'user' => null]);
+        try {
+            $token = JWTAuth::parseToken()->authenticate();
+        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+            return $this->sendFailedLoginResponse($request, $e, Response::HTTP_UNAUTHORIZED);
+        } catch (\Exception $e) {
+            return $this->sendFailedLoginResponse($request, $e, Response::HTTP_UNAUTHORIZED);
         }
 
-        $user = $user->first();
-
-        return response()->json(['token' => $user->token, 'user' => new UserResource($user)]);
+        return $this->sendLoginResponseWithToken($request->token);
     }
 
     /**
@@ -53,80 +64,51 @@ class LoginApiController extends ApiController
     }
 
     /**
-     * Handle a login request to the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function login(Request $request)
-    {
-        $this->validateLogin($request);
-
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
-        }
-
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        $this->incrementLoginAttempts($request);
-
-        return $this->sendFailedLoginResponse($request);
-    }
-
-    /**
-     * Send the response after the user was authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    protected function sendLoginResponse(Request $request)
-    {
-        $this->clearLoginAttempts($request);
-
-        $credentials = [
-            'user' => $user = new UserResource($this->guard()->user()),
-            'api_token' => $user->token,
-            'remember_token' => $user->remember_token,
-        ];
-
-        return $this->authenticated($request, $user)
-                ?: response()->json($credentials);
-    }
-
-    /**
      * Attempt to log the user into the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-    protected function attemptLogin(Request $request)
+    protected function login(Request $request)
     {
-        return $this->guard()->attempt(
-            $this->credentials($request),
-            $request->has('remember')
-        );
+        if (! $token = JWTAuth::attempt($this->credentials($request))) {
+            return response()->json([
+                'error' => 'invalid_credentials'
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
+        return $this->sendLoginResponseWithToken($token);
+    }
+
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param string $token
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendLoginResponseWithToken($token)
+    {
+        return response()->json([
+            'token' => $token,
+            'success' => 1,
+            'user' => $user = new UserResource($this->guard()->user()),
+            'token_type' => 'bearer',
+        ]);
     }
 
     /**
      * Get the failed login response instance.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  Exception|mixed $e
+     * @param  int $code
      * @return \Illuminate\Http\Response
      */
-    protected function sendFailedLoginResponse(Request $request)
+    protected function sendFailedLoginResponse(Request $request, $e, $code)
     {
         return response()->json([
-            $this->username() => [Lang::get('auth.failed')]
-        ], 422);
+            'success' => 0,
+            'error' => $e->getMessage(),
+        ], $code);
     }
 }
