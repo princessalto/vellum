@@ -44,6 +44,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -81,7 +97,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "section",
     [
       _c(
         "v-container",
@@ -89,57 +105,78 @@ var render = function() {
         [
           _c(
             "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            {
+              attrs: {
+                row: "",
+                wrap: "",
+                "justify-center": "",
+                "align-center": ""
+              }
+            },
             [
               _c(
                 "v-flex",
-                { attrs: { xs12: "" } },
+                { attrs: { lg8: "", md10: "", xs12: "" } },
                 [
+                  _c(
+                    "v-toolbar",
+                    { staticClass: "transparent", attrs: { flat: "" } },
+                    [
+                      _c("v-toolbar-title", [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.__("Back to Pages")) +
+                            "\n          "
+                        )
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
                   _c(
                     "v-card",
                     [
-                      _c("v-img", { attrs: { src: _vm.resource.feature } }),
+                      _c("v-img", {
+                        attrs: {
+                          src: _vm.resource.feature,
+                          "aspect-ratio": "2.0"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-card-text", [
+                        _c("h1", {
+                          staticClass: "display-1 font-weight-bold",
+                          domProps: { innerHTML: _vm._s(_vm.resource.title) }
+                        })
+                      ]),
                       _vm._v(" "),
                       _c(
-                        "v-card-text",
+                        "v-list",
+                        { staticClass: "mb-4", attrs: { dense: "" } },
                         [
-                          _c("h1", {
-                            staticClass: "title font-weight-bold mb-4",
-                            domProps: { innerHTML: _vm._s(_vm.resource.title) }
-                          }),
-                          _vm._v(" "),
                           _c(
-                            "v-list",
-                            { attrs: { dense: "" } },
+                            "v-list-tile",
                             [
+                              _c("v-list-tile-avatar", [
+                                _c("img", {
+                                  attrs: { src: _vm.resource.profile }
+                                })
+                              ]),
+                              _vm._v(" "),
                               _c(
-                                "v-list-tile",
+                                "v-list-tile-content",
                                 [
-                                  _c("v-list-tile-avatar", [
-                                    _c("img", {
-                                      attrs: { src: _vm.resource.profile }
-                                    })
-                                  ]),
+                                  _c("v-list-tile-title", {
+                                    domProps: {
+                                      innerHTML: _vm._s(_vm.resource.author)
+                                    }
+                                  }),
                                   _vm._v(" "),
-                                  _c(
-                                    "v-list-tile-content",
-                                    [
-                                      _c("v-list-tile-title", {
-                                        domProps: {
-                                          innerHTML: _vm._s(_vm.resource.author)
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("v-list-tile-sub-title", {
-                                        domProps: {
-                                          innerHTML: _vm._s(
-                                            _vm.resource.created
-                                          )
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
+                                  _c("v-list-tile-sub-title", {
+                                    domProps: {
+                                      innerHTML: _vm._s(_vm.resource.created)
+                                    }
+                                  })
                                 ],
                                 1
                               )

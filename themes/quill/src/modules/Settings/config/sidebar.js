@@ -9,7 +9,7 @@ export default [
       sort: 500,
     },
     children: [
-      // Preferences Settings
+      // Preferences
       {
         code: 'settings.preferences',
         name: 'settings.preferences',
@@ -20,7 +20,18 @@ export default [
           sort: 501,
         },
       },
-      // Branding Settings
+      //General
+      {
+        code: 'settings.general.display',
+        name: 'setttings.general.display',
+        meta: {
+          title: 'General',
+          icon: 'home',
+          authenticatable: true,
+          sort: 502,
+        }
+      },
+      // Branding
       {
         code: 'settings.branding',
         name: 'settings.branding',
@@ -28,7 +39,7 @@ export default [
           title: 'Branding',
           icon: 'home',
           authenticatable: true,
-          sort: 501,
+          sort: 503,
         },
       },
     ],

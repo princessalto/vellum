@@ -22,6 +22,19 @@ export default [
           icon: 'mdi-book-multiple-variant',
         },
       },
+      // General
+      {
+        path: 'general/display',
+        props: true,
+        name: 'settings.general.display',
+        component: () => import('../Display.vue'),
+        meta: {
+          title: 'Display',
+          sort: 6,
+          authenticatable: true,
+          icon: 'mdi-book-multiple-variant'
+        }
+      },
       // Branding
       {
         path: 'branding',

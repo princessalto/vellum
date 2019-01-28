@@ -11,7 +11,7 @@
         <v-container grid-list-lg>
           <v-layout row wrap>
             <a
-              href="/admin/pages"
+              :to="{path: '/admin/pages'}"
               class="td-n"
               >
               <span class="subheading primary--text">

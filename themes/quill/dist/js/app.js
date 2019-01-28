@@ -68918,7 +68918,7 @@ __webpack_require__.r(__webpack_exports__);
     authenticatable: true,
     sort: 500
   },
-  children: [// Preferences Settings
+  children: [// Preferences
   {
     code: 'settings.preferences',
     name: 'settings.preferences',
@@ -68928,7 +68928,17 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       sort: 501
     }
-  }, // Branding Settings
+  }, //General
+  {
+    code: 'settings.general.display',
+    name: 'setttings.general.display',
+    meta: {
+      title: 'General',
+      icon: 'home',
+      authenticatable: true,
+      sort: 502
+    }
+  }, // Branding
   {
     code: 'settings.branding',
     name: 'settings.branding',
@@ -68936,7 +68946,7 @@ __webpack_require__.r(__webpack_exports__);
       title: 'Branding',
       icon: 'home',
       authenticatable: true,
-      sort: 501
+      sort: 503
     }
   }]
 }]);
@@ -68973,6 +68983,20 @@ __webpack_require__.r(__webpack_exports__);
     },
     meta: {
       title: 'Preferences',
+      sort: 6,
+      authenticatable: true,
+      icon: 'mdi-book-multiple-variant'
+    }
+  }, // General
+  {
+    path: 'general/display',
+    props: true,
+    name: 'settings.general.display',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 22).then(__webpack_require__.bind(null, /*! ../Display.vue */ "./src/modules/Settings/Display.vue"));
+    },
+    meta: {
+      title: 'Display',
       sort: 6,
       authenticatable: true,
       icon: 'mdi-book-multiple-variant'

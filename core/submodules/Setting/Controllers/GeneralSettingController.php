@@ -43,4 +43,25 @@ class GeneralSettingController extends AdminController
 
         return back();
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @param  int  $id
+     * @return Illuminate\Http\Response
+     */
+    public function getBranding(Request $request)
+    {
+        $setting = [
+            'site_title' => settings('site_title'),
+            'site_tagline' => settings('site_tagline'),
+            'site_author' => settings('site_author'),
+            'site_email' => settings('site_email'),
+            'site_year' => settings('site_year'),
+            'site_logo' => settings('site_logo'),
+        ];
+
+        return response()->json($setting);
+    }
 }
