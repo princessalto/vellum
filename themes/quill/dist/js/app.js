@@ -68940,8 +68940,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, // Branding
   {
-    code: 'settings.branding',
-    name: 'settings.branding',
+    code: 'settings.branding.general',
+    name: 'settings.branding.general',
     meta: {
       title: 'Branding',
       icon: 'home',
@@ -69003,9 +69003,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, // Branding
   {
-    path: 'branding',
+    path: 'branding/general',
     props: true,
-    name: 'settings.branding',
+    name: 'settings.branding.general',
     component: function component() {
       return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../Branding.vue */ "./src/modules/Settings/Branding.vue"));
     },

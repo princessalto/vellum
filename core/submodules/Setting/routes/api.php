@@ -20,7 +20,9 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('settings/preferences', 'PreferenceSettingController@getPreferences')->name('settings.preferences.getPreferences');
 
     # General
-    // Route::post('settings/store')
+
+    # Display
+    Route::get('settings/display', 'DisplaySettingController@getDisplay')->name('settings.display.getDisplay');
 });
 
 // v2

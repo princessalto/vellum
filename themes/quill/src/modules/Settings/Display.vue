@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-form
-      @submit.prevent="savePreferences"
+      @submit.prevent="saveDisplay"
       method="POST"
       >
       <v-card
@@ -78,7 +78,7 @@ export default {
 
   created() {
     axios
-      .get('/api/v1/settings/preferences')
+      .get('/api/v1/settings/display')
       .then((response) => {
         this.resource = response.data
         console.log(this.resource)
@@ -86,12 +86,12 @@ export default {
   },
 
   methods: {
-    savePreferences() {
+    saveDisplay() {
       axios
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.go({name: 'settings.preferences'})
+          this.$router.go({name: 'settings.general.display'})
         })
     },
   }

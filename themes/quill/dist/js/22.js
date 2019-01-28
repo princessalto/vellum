@@ -87,20 +87,20 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/api/v1/settings/preferences').then(function (response) {
+    axios.get('/api/v1/settings/display').then(function (response) {
       _this.resource = response.data;
       console.log(_this.resource);
     });
   },
   methods: {
-    savePreferences: function savePreferences() {
+    saveDisplay: function saveDisplay() {
       var _this2 = this;
 
       axios.post('/api/v1/settings/store', this.resource).then(function (response) {
         console.log(_this2.resource, 'data');
 
         _this2.$router.go({
-          name: 'settings.preferences'
+          name: 'settings.general.display'
         });
       });
     }
@@ -134,7 +134,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.savePreferences($event)
+              return _vm.saveDisplay($event)
             }
           }
         },

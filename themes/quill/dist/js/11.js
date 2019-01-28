@@ -140,7 +140,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this2.resource, 'data');
 
         _this2.$router.go({
-          name: 'settings.branding'
+          name: 'settings.branding.general'
         });
       });
     }
@@ -404,9 +404,8 @@ var render = function() {
                       _c(
                         "v-card",
                         {
-                          staticClass:
-                            "transparent upload-image emphasis--border",
-                          attrs: { height: "200" }
+                          staticClass: "upload-image emphasis--border",
+                          attrs: { height: "300" }
                         },
                         [
                           _c("v-card-text", [

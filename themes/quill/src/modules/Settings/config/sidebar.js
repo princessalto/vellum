@@ -33,8 +33,8 @@ export default [
       },
       // Branding
       {
-        code: 'settings.branding',
-        name: 'settings.branding',
+        code: 'settings.branding.general',
+        name: 'settings.branding.general',
         meta: {
           title: 'Branding',
           icon: 'home',

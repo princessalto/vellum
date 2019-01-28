@@ -35,7 +35,7 @@ class DisplaySettingController extends AdminController
         return back();
     }
 
-    **
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  Illuminate\Http\Request $request

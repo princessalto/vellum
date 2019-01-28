@@ -37,9 +37,9 @@ export default [
       },
       // Branding
       {
-        path: 'branding',
+        path: 'branding/general',
         props: true,
-        name: 'settings.branding',
+        name: 'settings.branding.general',
         component: () => import('../Branding.vue'),
         meta: {
           title: 'Branding',

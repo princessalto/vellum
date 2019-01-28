@@ -89,7 +89,7 @@
           </v-flex>
 
           <v-flex md3 xs12>
-            <v-card height="200" class="transparent upload-image emphasis--border">
+            <v-card height="300" class="upload-image emphasis--border">
               <v-card-text>
                 <h1 class="body-2 font-weight-bold mb-2">
                   {{ __('Site Logo') }}
@@ -131,7 +131,7 @@ export default {
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.go({name: 'settings.branding'})
+          this.$router.go({name: 'settings.branding.general'})
         })
     },
   }
