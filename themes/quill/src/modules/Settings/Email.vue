@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-form
-      @submit.prevent="saveBranding"
+      @submit.prevent="saveEmail"
       method="POST"
       >
       <v-card
@@ -11,7 +11,7 @@
         <v-container grid-list-lg>
           <v-layout row wrap justify-space-between>
             <h1 class="display-1">
-              {{ __('Branding') }}
+              {{ __('Email Options') }}
             </h1>
             <v-btn class="mx-0" color="secondary" type="submit">
               {{ __('Save') }}
@@ -20,87 +20,109 @@
         </v-container>
       </v-card>
 
-      <!-- todo: move to sidebar -->
-      <v-card flat class="transparent">
-        <v-card-text>
-          <a :href="{name: 'branding.email'}">Email</a>
-        </v-card-text>
-      </v-card>
-
       <v-container grid-list-lg>
         <v-layout row wrap>
-          <v-flex md9 xs12>
+          <v-flex xs12>
             <v-card>
               <v-card-text>
+                <h1 class="subheading grey--text text--darken-1 mb-3 text-uppercase">
+                  <strong>{{ __('Sender') }}</strong>
+                </h1>
+
                 <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Site Name') }}
+                  {{ __('From Name') }}
                 </h1>
                 <v-text-field
                   box
-                  name="site_title"
-                  placeholder="Site Name"
+                  name="mail_from_name"
                   single-line
-                  v-model="resource.site_title"
+                  v-model="resource.mail_from_name"
                   >
                 </v-text-field>
 
                 <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Site Tagline / Description') }}
+                  {{ __('From Email Address') }}
                 </h1>
                 <v-text-field
                   box
-                  name="site_tagline"
-                  placeholder="Site Tagline"
+                  name="mail_from_address"
                   single-line
-                  v-model="resource.site_tagline"
-                  >
-                </v-text-field>
-
-                <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Site Author') }}
-                </h1>
-                <v-text-field
-                  box
-                  name="site_author"
-                  placeholder="Site Author"
-                  single-line
-                  v-model="resource.site_author"
-                  >
-                </v-text-field>
-
-                <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Site Email') }}
-                </h1>
-                <v-text-field
-                  box
-                  name="site_email"
-                  placeholder="Site Email"
-                  single-line
-                  v-model="resource.site_email"
-                  >
-                </v-text-field>
-
-                <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Year Established') }}
-                </h1>
-                <v-text-field
-                  box
-                  name="site_year"
-                  placeholder="Year Established"
-                  single-line
-                  v-model="resource.site_year"
+                  v-model="resource.mail_from_address"
                   >
                 </v-text-field>
               </v-card-text>
-            </v-card>
-          </v-flex>
 
-          <v-flex md3 xs12>
-            <v-card height="300" class="upload-image emphasis--border">
               <v-card-text>
-                <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Site Logo') }}
+                <h1 class="subheading grey--text text--darken-1 mb-3 text-uppercase">
+                  <strong>{{ __('Mail Setup') }}</strong>
                 </h1>
+
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Driver') }}
+                </h1>
+                <v-text-field
+                  box
+                  name="mail_driver"
+                  single-line
+                  v-model="resource.mail_driver"
+                  >
+                </v-text-field>
+
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Host') }}
+                </h1>
+                <v-text-field
+                  box
+                  name="mail_host"
+                  single-line
+                  v-model="resource.mail_host"
+                  >
+                </v-text-field>
+
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Port') }}
+                </h1>
+                <v-text-field
+                  box
+                  name="mail_port"
+                  single-line
+                  v-model="resource.mail_port"
+                  >
+                </v-text-field>
+
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Username') }}
+                </h1>
+                <v-text-field
+                  box
+                  name="mail_username"
+                  single-line
+                  v-model="resource.mail_username"
+                  >
+                </v-text-field>
+
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Password') }}
+                </h1>
+                <v-text-field
+                  box
+                  name="mail_password"
+                  single-line
+                  type="password"
+                  v-model="resource.mail_password"
+                  >
+                </v-text-field>
+
+                <h1 class="body-2 font-weight-bold mb-2">
+                  {{ __('Encryption') }}
+                </h1>
+                <v-text-field
+                  box
+                  name="mail_encryption"
+                  single-line
+                  v-model="resource.mail_encryption"
+                  >
+                </v-text-field>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -115,7 +137,7 @@ import store from '@/store'
 
 export default {
   store,
-  name: 'Branding',
+  name: 'Email',
 
   data () {
     return {
@@ -125,7 +147,7 @@ export default {
 
   created() {
     axios
-      .get('/api/v1/settings/branding')
+      .get('/api/v1/settings/email')
       .then((response) => {
         this.resource = response.data
         console.log(this.resource)
@@ -133,12 +155,12 @@ export default {
   },
 
   methods: {
-    saveBranding() {
+    saveEmail() {
       axios
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
           console.log(this.resource, 'data')
-          this.$router.go({name: 'settings.branding.general'})
+          this.$router.go({name: 'settings.email'})
         })
     },
   }

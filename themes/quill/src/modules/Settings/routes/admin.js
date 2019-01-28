@@ -22,7 +22,7 @@ export default [
           icon: 'mdi-book-multiple-variant',
         },
       },
-      // General
+      // General Display
       {
         path: 'general/display',
         props: true,
@@ -35,7 +35,7 @@ export default [
           icon: 'mdi-book-multiple-variant',
         },
       },
-      // Branding
+      // Branding General
       {
         path: 'branding/general',
         props: true,
@@ -43,6 +43,19 @@ export default [
         component: () => import('../Branding.vue'),
         meta: {
           title: 'Branding',
+          sort: 6,
+          authenticatable: true,
+          icon: 'mdi-book-multiple-variant',
+        },
+      },
+      // Branding Email
+      {
+        path: 'branding/email',
+        props: true,
+        name: 'settings.branding.email',
+        component: () => import('../Email.vue'),
+        meta: {
+          title: 'Email',
           sort: 6,
           authenticatable: true,
           icon: 'mdi-book-multiple-variant',

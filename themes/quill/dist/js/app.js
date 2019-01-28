@@ -68987,7 +68987,7 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       icon: 'mdi-book-multiple-variant'
     }
-  }, // General
+  }, // General Display
   {
     path: 'general/display',
     props: true,
@@ -69001,7 +69001,7 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       icon: 'mdi-book-multiple-variant'
     }
-  }, // Branding
+  }, // Branding General
   {
     path: 'branding/general',
     props: true,
@@ -69011,6 +69011,20 @@ __webpack_require__.r(__webpack_exports__);
     },
     meta: {
       title: 'Branding',
+      sort: 6,
+      authenticatable: true,
+      icon: 'mdi-book-multiple-variant'
+    }
+  }, // Branding Email
+  {
+    path: 'branding/email',
+    props: true,
+    name: 'settings.branding.email',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 23).then(__webpack_require__.bind(null, /*! ../Email.vue */ "./src/modules/Settings/Email.vue"));
+    },
+    meta: {
+      title: 'Email',
       sort: 6,
       authenticatable: true,
       icon: 'mdi-book-multiple-variant'

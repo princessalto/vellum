@@ -23,6 +23,9 @@ Route::group(['prefix' => 'v1'], function () {
 
     # Display
     Route::get('settings/display', 'DisplaySettingController@getDisplay')->name('settings.display.getDisplay');
+
+    #Email
+    Route::get('settings/email', 'EmailSettingController@getEmail')->name('settings.email.getEmail');
 });
 
 // v2
