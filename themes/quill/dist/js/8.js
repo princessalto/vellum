@@ -150,9 +150,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -255,37 +252,46 @@ var render = function() {
                 "v-container",
                 { attrs: { "grid-list-lg": "" } },
                 [
-                  _c("v-layout", { attrs: { row: "", wrap: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "td-n",
-                        attrs: { to: { name: "pages.index" } }
-                      },
-                      [
-                        _c(
-                          "span",
-                          { staticClass: "subheading primary--text" },
-                          [
-                            _c(
-                              "v-icon",
-                              {
-                                staticClass: "primary--text",
-                                attrs: { size: "16" }
-                              },
-                              [_vm._v("mdi-arrow-left")]
-                            ),
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(_vm.__("All Pages")) +
-                                "\n            "
-                            )
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  ]),
+                  _c(
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "transparent",
+                          attrs: {
+                            flat: "",
+                            exact: "",
+                            to: { name: "pages.index" }
+                          }
+                        },
+                        [
+                          _c(
+                            "span",
+                            { staticClass: "subheading primary--text" },
+                            [
+                              _c(
+                                "v-icon",
+                                {
+                                  staticClass: "primary--text",
+                                  attrs: { size: "16" }
+                                },
+                                [_vm._v("mdi-arrow-left")]
+                              ),
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.__("All Pages")) +
+                                  "\n            "
+                              )
+                            ],
+                            1
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
                     "v-layout",

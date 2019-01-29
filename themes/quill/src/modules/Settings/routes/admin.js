@@ -61,6 +61,19 @@ export default [
           icon: 'mdi-book-multiple-variant',
         },
       },
+      // System
+      {
+        path: 'system',
+        props: true,
+        name: 'settings.system',
+        component: () => import('../System.vue'),
+        meta: {
+          title: 'System',
+          sort: 6,
+          authenticatable: true,
+          icon: 'mdi-book-multiple-variant',
+        },
+      },
     ],
   }
 ]

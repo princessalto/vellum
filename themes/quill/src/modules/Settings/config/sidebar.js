@@ -42,6 +42,17 @@ export default [
           sort: 501,
         },
       },
+      // System
+      {
+        code: 'settings.system',
+        name: 'settings.system',
+        meta: {
+          title: 'System',
+          icon: 'home',
+          authenticatable: true,
+          sort: 501,
+        },
+      },
     ],
   }
 ]

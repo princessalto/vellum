@@ -10,15 +10,12 @@
         >
         <v-container grid-list-lg>
           <v-layout row wrap>
-            <a
-              :to="{name: 'pages.index'}"
-              class="td-n"
-              >
+            <v-btn flat class="transparent" exact :to="{ name: 'pages.index' }">
               <span class="subheading primary--text">
                 <v-icon size="16" class="primary--text">mdi-arrow-left</v-icon>
                 {{ __('All Pages') }}
               </span>
-            </a>
+            </v-btn>
           </v-layout>
           <v-layout row wrap justify-space-between>
             <h1 class="display-1">

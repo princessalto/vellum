@@ -34,7 +34,7 @@ from Pluma core:
 How To/To Do:
 ☐ slugify
 ☐ CKEditor
-☐ try log-in quill repository
+☐ try log-in quill repository (-has errors)
 ☐ auth on quill
 ☐ snackbar after hitting "save" button
 ☐ add shadow on sticky toolbar when scroll
