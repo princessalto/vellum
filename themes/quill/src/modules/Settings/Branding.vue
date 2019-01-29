@@ -23,7 +23,7 @@
       <!-- todo: move to sidebar -->
       <v-card flat class="transparent">
         <v-card-text>
-          <a :href="{name: 'branding.email'}">Email</a>
+          <v-btn exact :to="{name: 'settings.branding.email'}">Email</v-btn>
         </v-card-text>
       </v-card>
 
@@ -128,7 +128,6 @@ export default {
       .get('/api/v1/settings/branding')
       .then((response) => {
         this.resource = response.data
-        console.log(this.resource)
       })
   },
 
@@ -137,7 +136,6 @@ export default {
       axios
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
-          console.log(this.resource, 'data')
           this.$router.go({name: 'settings.branding.general'})
         })
     },

@@ -46,7 +46,7 @@
             </v-card-text>
 
             <v-card-text>
-              <account></account>
+              <profile></profile>
             </v-card-text>
 
             <v-card-text>
@@ -63,7 +63,7 @@
 import store from '@/store'
 import Application from './widgets/Application.vue'
 import Theme from './widgets/Theme.vue'
-import Account from './widgets/Account.vue'
+import Profile from './widgets/Profile.vue'
 import Server from './widgets/Server.vue'
 
 export default {
@@ -73,7 +73,7 @@ export default {
   components: {
     Application,
     Theme,
-    Account,
+    Profile,
     Server,
   },
 

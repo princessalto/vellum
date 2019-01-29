@@ -20,6 +20,17 @@
         </v-container>
       </v-card>
 
+      <!-- todo: move to sidebar -->
+      <v-card flat class="transparent">
+        <v-card-text>
+          <v-btn exact :to="{name: 'settings.branding.general'}">Branding</v-btn>
+        </v-card-text>
+      </v-card>
+
+      <v-card>
+
+      </v-card>
+
       <v-container grid-list-lg>
         <v-layout row wrap>
           <v-flex xs12>
@@ -150,7 +161,6 @@ export default {
       .get('/api/v1/settings/email')
       .then((response) => {
         this.resource = response.data
-        console.log(this.resource)
       })
   },
 
@@ -159,7 +169,6 @@ export default {
       axios
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
-          console.log(this.resource, 'data')
           this.$router.go({name: 'settings.email'})
         })
     },
