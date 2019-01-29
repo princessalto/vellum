@@ -7,8 +7,12 @@
   <div class="container">
     <div class="row">
       <div class="col-lg">
-        <p class="lead text-muted">{{ __('Listed here are the system specific informations of your application.') }}</p>
-        <p class="text-muted">{{ __('Some are configurable while others are either read-only or editable only on the server.') }}</p>
+        <p class="lead text-muted">
+          {{ __('Listed here are the system specific informations of your application.') }}
+        </p>
+        <p class="text-muted">
+          {{ __('Some are configurable while others are either read-only or editable only on the server.') }}
+        </p>
 
         @include('Theme::partials.debug')
 

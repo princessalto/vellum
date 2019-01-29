@@ -26,6 +26,9 @@ Route::group(['prefix' => 'v1'], function () {
 
     #Email
     Route::get('settings/email', 'EmailSettingController@getEmail')->name('settings.email.getEmail');
+
+    # System
+    Route::get('settings/system', 'SystemSettingController@getSystem')->name('settings.system.getSystem');
 });
 
 // v2

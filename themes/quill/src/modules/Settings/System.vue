@@ -1,60 +1,56 @@
 <template>
   <section>
     <v-container grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12>
+      <v-layout row wrap justify-center align-center>
+        <v-flex md10 xs12>
           <v-card flat class="transparent">
-            <h1 class="display-1 mb-3">
-              {{ __('System Information') }}
-            </h1>
-            <p class="mb-2">
-              {{ __('Listed here are the system specific informations of your application.') }}
-            </p>
-            <p class="mb-2">
-              {{ __('Some are configurable while others are either read-only or editable only on the server.') }}
-            </p>
-            <v-alert
-              :value="true"
-              type="error lighten-1"
-              dismissible
-              transition="slide-y-transition"
-              >
-              {{ __('You are in debug mode.Set environment to `production` and debug to `off` if deployed on a live server.') }}
-            </v-alert>
-          </v-card>
-        </v-flex>
-        <v-flex xs12>
-          <v-card>
             <v-card-text>
-              <h1 class="body-2 font-weight-bold mb-2">
-                {{ __('Date Format') }}
+              <h1 class="display-1 mb-3">
+                {{ __('System Information') }}
               </h1>
-              <v-text-field
-                box
-                name="date_format"
-                placeholder="Date Format"
-                single-line
-                v-model="resource.date_format"
-                >
-              </v-text-field>
+              <p class="mb-2">
+                {{ __('Listed here are the system specific informations of your application.') }}
+              </p>
+              <p class="mb-2">
+                {{ __('Some are configurable while others are either read-only or editable only on the server.') }}
+              </p>
 
-              <h1 class="body-2 font-weight-bold mb-2">
-                {{ __('Items per Page') }}
+              <!-- create api for app/debug -->
+              <div class="py-3">
+                <v-alert
+                  :value="true"
+                  type="error"
+                  class="red lighten-1"
+                  dismissible
+                  transition="slide-y-transition"
+                  >
+                  {{ __('You are in debug mode. Set environment to `production` and debug to `off` if deployed on a live server.') }}
+                </v-alert>
+              </div>
+            </v-card-text>
+          </v-card>
+
+          <v-card flat class="transparent">
+            <v-card-text>
+              <h1 class="title">
+                {{ __('Application Details') }}
               </h1>
-              <v-text-field
-                box
-                name="items_per_page"
-                placeholder="Items per Page"
-                single-line
-                v-model="resource.items_per_page"
-                >
-              </v-text-field>
+            </v-card-text>
 
-              <v-checkbox
-                label="Center the main content when possible."
-                v-model="resource.center_main_content"
-                >
-              </v-checkbox>
+            <v-card-text>
+              <application></application>
+            </v-card-text>
+
+            <v-card-text>
+              <theme></theme>
+            </v-card-text>
+
+            <v-card-text>
+              <account></account>
+            </v-card-text>
+
+            <v-card-text>
+              <server></server>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -65,10 +61,21 @@
 
 <script>
 import store from '@/store'
+import Application from './widgets/Application.vue'
+import Theme from './widgets/Theme.vue'
+import Account from './widgets/Account.vue'
+import Server from './widgets/Server.vue'
 
 export default {
   store,
   name: 'System',
+
+  components: {
+    Application,
+    Theme,
+    Account,
+    Server,
+  },
 
   data () {
     return {
@@ -78,22 +85,11 @@ export default {
 
   created() {
     axios
-      .get('/api/v1/settings/preferences')
+      .get('/api/v1/settings/system')
       .then((response) => {
         this.resource = response.data
         console.log(this.resource)
       })
   },
-
-  methods: {
-    savePreferences() {
-      axios
-        .post('/api/v1/settings/store', this.resource)
-        .then((response) => {
-          console.log(this.resource, 'data')
-          this.$router.go({name: 'settings.preferences'})
-        })
-    },
-  }
 }
 </script>

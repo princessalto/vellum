@@ -34,10 +34,11 @@ from Pluma core:
 How To/To Do:
 ☐ slugify
 ☐ CKEditor
-☐ try log-in quill repository (-has errors)
+☐ try log-in quill repository (-> has errors , use pluma-edge-quill-theme)
 ☐ auth on quill
 ☐ snackbar after hitting "save" button
 ☐ add shadow on sticky toolbar when scroll
+☐ emptystate api
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:

@@ -13,4 +13,9 @@ class Setting extends Model
     protected $fillable = ['key', 'value'];
 
     protected $primaryKey = 'key';
+
+    protected $appends = [
+        'version',
+        'copyright',
+    ];
 }
