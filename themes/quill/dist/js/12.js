@@ -247,7 +247,7 @@ var render = function() {
                         to: { name: "settings.branding.email" }
                       }
                     },
-                    [_vm._v("Email")]
+                    [_vm._v(_vm._s(_vm.__("Email")))]
                   )
                 ],
                 1

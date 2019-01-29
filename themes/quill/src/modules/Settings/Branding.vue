@@ -23,7 +23,7 @@
       <!-- todo: move to sidebar -->
       <v-card flat class="transparent">
         <v-card-text>
-          <v-btn exact :to="{name: 'settings.branding.email'}">Email</v-btn>
+          <v-btn exact :to="{name: 'settings.branding.email'}">{{ __('Email') }}</v-btn>
         </v-card-text>
       </v-card>
 

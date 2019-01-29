@@ -238,6 +238,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -588,7 +596,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-card", [_c("v-card-text", [_c("p", [_vm._v("Server")])])], 1)
+  return _c(
+    "section",
+    [
+      _c("h1", { staticClass: "title" }, [
+        _vm._v("\n    " + _vm._s(_vm.__("Server Information")) + "\n  ")
+      ]),
+      _vm._v(" "),
+      _c("v-card", [_c("v-card-text", [_c("p")])], 1)
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

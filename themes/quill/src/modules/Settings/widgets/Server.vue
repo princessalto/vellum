@@ -1,9 +1,17 @@
 <template>
-  <v-card>
-    <v-card-text>
-      <p>Server</p>
-    </v-card-text>
-  </v-card>
+  <section>
+    <h1 class="title">
+      {{ __('Server Information') }}
+    </h1>
+
+    <v-card>
+      <v-card-text>
+        <p>
+
+        </p>
+      </v-card-text>
+    </v-card>
+    </section>
 </template>
 
 <script>
