@@ -150,12 +150,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Create',
   $_veeValidate: {
     validator: 'new'
+  },
+  computed: {
+    slug: function slug() {
+      var slug = this.sanitizeTitle(this.title);
+      return slug;
+    }
   },
   data: function data() {
     return {
@@ -171,14 +182,25 @@ __webpack_require__.r(__webpack_exports__);
     this.ckEditor();
   },
   methods: {
-    slugify: function slugify($value) {
-      if (!this.resource.lockSlug) {
-        if (typeof $value === 'undefined') {
-          this.resource.slug = this.$options.filters.slugify(this.resource.title);
-        } else {
-          this.resource.slug = this.$options.filters.slugify($value);
-        }
-      }
+    sanitizeTitle: function sanitizeTitle(title) {
+      var slug = ""; // Change to lower case
+
+      var titleLower = title.toLowerCase(); // Letter "e"
+
+      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e'); // Letter "a"
+
+      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a'); // Letter "o"
+
+      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o'); // Letter "u"
+
+      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u'); // Letter "d"
+
+      slug = slug.replace(/đ/gi, 'd'); // Trim the last whitespace
+
+      slug = slug.replace(/\s*$/g, ''); // Change whitespace to "-"
+
+      slug = slug.replace(/\s+/g, '-');
+      return slug;
     },
     ckEditor: function ckEditor() {
       ClassicEditor.create(document.querySelector('#editor')).catch(function (error) {
@@ -361,147 +383,38 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                directives: [
-                                  {
-                                    name: "validate",
-                                    rawName: "v-validate",
-                                    value: "required",
-                                    expression: "'required'"
-                                  }
-                                ],
-                                attrs: {
-                                  "data-vv-as": _vm.trans("Title"),
-                                  "error-messages": _vm.errors.collect("title"),
-                                  hint: _vm.trans(
-                                    "Tap the icon to edit this page's slug"
-                                  ),
-                                  "append-icon": "mdi-circle-edit-outline",
-                                  autofocus: "",
-                                  placeholder: "e.g. My First Page",
-                                  box: "",
-                                  name: "title",
-                                  "single-line": ""
-                                },
-                                on: {
-                                  "click:append": function($event) {
-                                    _vm.resource.viewSlug = !_vm.resource
-                                      .viewSlug
+                              _c("div", { attrs: { id: "post" } }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.title,
+                                      expression: "title"
+                                    }
+                                  ],
+                                  attrs: {
+                                    type: "text",
+                                    id: "title",
+                                    name: "title",
+                                    placeholder: "Enter post title"
                                   },
-                                  input: _vm.slugify
-                                },
-                                model: {
-                                  value: _vm.resource.title,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.resource, "title", $$v)
-                                  },
-                                  expression: "resource.title"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-slide-y-transition",
-                                { attrs: { mode: "out-in" } },
-                                [
-                                  _vm.resource.viewSlug
-                                    ? _c("v-text-field", {
-                                        directives: [
-                                          {
-                                            name: "validate",
-                                            rawName: "v-validate",
-                                            value: "required",
-                                            expression: "'required'"
-                                          }
-                                        ],
-                                        staticClass: "mb-2",
-                                        attrs: {
-                                          "append-icon": _vm.resource.lockSlug
-                                            ? "lock"
-                                            : "lock_open",
-                                          "error-messages": _vm.errors.collect(
-                                            "slug"
-                                          ),
-                                          hint: _vm.trans(
-                                            "Locking this field will prevent the title field from overriding this current value"
-                                          ),
-                                          label: _vm.trans("Slug"),
-                                          placeholder: _vm.trans(
-                                            "app://your-custom-url-here"
-                                          ),
-                                          readonly: _vm.resource.lockSlug,
-                                          autofocus: "",
-                                          box: "",
-                                          name: "slug",
-                                          "persistent-hint": ""
-                                        },
-                                        on: {
-                                          blur: function($event) {
-                                            _vm.resource.lockSlug = true
-                                          },
-                                          "click:append": function($event) {
-                                            _vm.resource.lockSlug = !_vm
-                                              .resource.lockSlug
-                                          }
-                                        },
-                                        model: {
-                                          value: _vm.resource.slug,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.resource, "slug", $$v)
-                                          },
-                                          expression: "resource.slug"
-                                        }
-                                      })
-                                    : _vm._e()
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Page Code")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                directives: [
-                                  {
-                                    name: "validate",
-                                    rawName: "v-validate",
-                                    value: "required",
-                                    expression: "'required'"
+                                  domProps: { value: _vm.title },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.title = $event.target.value
+                                    }
                                   }
-                                ],
-                                attrs: {
-                                  "error-messages": _vm.errors.collect("code"),
-                                  box: "",
-                                  name: "code",
-                                  "single-line": "",
-                                  placeholder: "my-first-page"
-                                },
-                                on: {
-                                  "click:append": function() {
-                                    _vm.resource.lockSlug = !_vm.resource
-                                      .lockSlug
-                                  }
-                                },
-                                model: {
-                                  value: _vm.resource.code,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resource,
-                                      "code",
-                                      typeof $$v === "string" ? $$v.trim() : $$v
-                                    )
-                                  },
-                                  expression: "resource.code"
-                                }
-                              }),
+                                }),
+                                _vm._v(" "),
+                                _c("p", { attrs: { id: "slug" } }, [
+                                  _vm._v("http://tatthien.com/"),
+                                  _c("span", [_vm._v(_vm._s(_vm.slug))])
+                                ])
+                              ]),
                               _vm._v(" "),
                               _c(
                                 "h1",

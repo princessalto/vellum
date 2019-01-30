@@ -4,7 +4,7 @@
       {{ __('Theme') }}
     </h1>
 
-    <v-card :id="resource.code">
+    <!-- <v-card>
       <v-img
         class=""
         height="300"
@@ -22,6 +22,16 @@
             </v-card-text>
           </v-layout>
         </v-container>
+      </v-img>
+    </v-card> -->
+
+    <v-card>
+      <v-img
+        class=""
+        height="300"
+        gradient=""
+        >
+
       </v-img>
     </v-card>
   </section>

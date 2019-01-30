@@ -35,7 +35,7 @@
                 <h1 class="body-2 font-weight-bold mb-2">
                   {{ __('Page Title') }}
                 </h1>
-                <v-text-field
+                <!-- <v-text-field
                   :data-vv-as="trans('Title')"
                   :error-messages="errors.collect('title')"
                   :hint="trans('Tap the icon to edit this page\'s slug')"
@@ -69,7 +69,7 @@
                     v-model="resource.slug"
                     v-validate="'required'"
                   ></v-text-field>
-                </v-slide-y-transition>
+                </v-slide-y-transition> -->
 
                 <!-- <v-text-field
                   :data-vv-as="trans('Code')"
@@ -83,7 +83,7 @@
                   v-model="resource.code"
                 ></v-text-field> -->
 
-                <h1 class="body-2 font-weight-bold mb-2">
+                <!-- <h1 class="body-2 font-weight-bold mb-2">
                   {{ __('Page Code') }}
                 </h1>
                 <v-text-field
@@ -95,7 +95,12 @@
                   placeholder="my-first-page"
                   v-model.trim="resource.code"
                   v-validate="'required'"
-                ></v-text-field>
+                ></v-text-field> -->
+
+                <div id="post">
+                  <input v-model="title" type="text" id="title" name="title" placeholder="Enter post title"/>
+                  <p id="slug">http://tatthien.com/<span>{{ slug }}</span></p>
+                </div>
 
                 <h1 class="body-2 font-weight-bold mb-2">
                   {{ __('Page Content') }}
@@ -149,6 +154,13 @@ export default {
     validator: 'new'
   },
 
+  computed: {
+    slug: function() {
+      var slug = this.sanitizeTitle(this.title);
+      return slug;
+    }
+  },
+
   data () {
     return {
       resource: {
@@ -165,14 +177,26 @@ export default {
   },
 
   methods: {
-    slugify ($value) {
-      if (!this.resource.lockSlug) {
-        if (typeof $value === 'undefined') {
-          this.resource.slug = this.$options.filters.slugify(this.resource.title)
-        } else {
-          this.resource.slug = this.$options.filters.slugify($value)
-        }
-      }
+    sanitizeTitle: function(title) {
+      var slug = "";
+      // Change to lower case
+      var titleLower = title.toLowerCase();
+      // Letter "e"
+      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
+      // Letter "a"
+      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
+      // Letter "o"
+      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
+      // Letter "u"
+      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
+      // Letter "d"
+      slug = slug.replace(/đ/gi, 'd');
+      // Trim the last whitespace
+      slug = slug.replace(/\s*$/g, '');
+      // Change whitespace to "-"
+      slug = slug.replace(/\s+/g, '-');
+
+      return slug;
     },
 
     ckEditor () {

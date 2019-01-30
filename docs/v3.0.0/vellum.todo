@@ -1,54 +1,26 @@
 Todo:
  ☐ Slugify
- ☐ snackbar
+ ☐ Snackbar
  ☐ CKEDitor
  ☐ loginForm UI
  ☐ ./path/app.logo/
- ☐ avatar
- ☐ utilitybar
- ☐ user module
- ☐ settings
- ☐ branding
- ☐ global data-table component/s
+ ☐ Upload Photo
+ ☐ Authentication
+ ☐ path to global data-table component/s
  ☐ breadcrubms
+ ☐ emptystates API
 
- Main Module:
- ☐ Page
- ☐ User
- ☐ Dashboard
- ☐ Appearance
-   ☐ Menu
-     ☐ edit menu (drag and drop components)
-   ☐ Theme
-   ☐ Widget
+Modules:
+Appearance
+  Menus:
+    ☐ Drag & Drop component
+  Widgets:
+    ☐ List of widgets
 
-from Pluma core:
- ☐ settings
- ☐ appearance
- ☐ users
-   ☐ create
-   ☐ show
-   ☐ edit
-   ☐ archived
-
-How To/To Do:
-☐ slugify
-☐ CKEditor
-☐ try log-in quill repository (-> has errors , use pluma-edge-quill-theme)
- ☐ try to clutch
-☐ auth on quill
-☐ snackbar after hitting "save" button
-☐ add shadow on sticky toolbar when scroll
-☐ emptystate api
-
-＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-Archive:
- ✔ path logo to quill @done (19-01-28 01:17)
- ✔ remove utilitybar from fixed / sticky @done (19-01-27 22:22)
- ✔ get settings data and update @done (19-01-27 01:09)
- ✔ active button on quill @done (19-01-27 01:09)
- ✔ append mutators @done (19-01-24 18:39)
- ✔ How to import mutators @done (19-01-23 19:02)
- ✔ how to bypass on settings.store @done (19-01-23 18:21)
- ✔ save when dark theme @done (19-01-21 09:03) @project(Todo)
- ✔ sidebar (dark-light theme) @done (19-01-18 10:59) @project(Todo)
+Settings/System
+  Branding:
+    ☐ upload site_logo
+  System:
+    ☐ Theme
+    ☐ Profile
+    ☐ Server
