@@ -21,7 +21,11 @@
             <h1 class="display-1">
               {{ __('Create Page') }}
             </h1>
-            <v-btn class="mx-0" color="secondary" type="submit">
+            <v-btn
+              class="mx-0"
+              color="secondary"
+              type="submit"
+              >
               {{ __('Save') }}
             </v-btn>
           </v-layout>

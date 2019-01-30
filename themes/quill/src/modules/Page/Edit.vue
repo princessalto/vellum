@@ -56,6 +56,25 @@
               v-model="resource.body"
             ></v-textarea>
           </v-flex>
+
+          <v-flex md3 xs12>
+            <v-card
+              height="200"
+              hover
+              class="transparent upload-image emphasis--border"
+              >
+              <v-layout row wrap justify-center align-center fill-height>
+                <v-card-text class="text-xs-center grey--text">
+                  <v-icon size="50" class="text--lighten-1 grey--text">
+                    mdi-google-photos
+                  </v-icon>
+                  <p>
+                    {{ __('Click to upload photo') }}
+                  </p>
+                </v-card-text>
+              </v-layout>
+            </v-card>
+          </v-flex>
         </v-layout>
       </v-container>
     </v-form>

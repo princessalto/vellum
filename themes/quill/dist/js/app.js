@@ -27255,6 +27255,8 @@ var render = function() {
       _c(
         "v-content",
         [
+          _c("breadcrumbs"),
+          _vm._v(" "),
           _c(
             "v-slide-y-reverse-transition",
             { attrs: { mode: "out-in" } },

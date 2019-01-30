@@ -74,6 +74,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -279,6 +298,69 @@ var render = function() {
                           expression: "resource.body"
                         }
                       })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { md3: "", xs12: "" } },
+                    [
+                      _c(
+                        "v-card",
+                        {
+                          staticClass:
+                            "transparent upload-image emphasis--border",
+                          attrs: { height: "200", hover: "" }
+                        },
+                        [
+                          _c(
+                            "v-layout",
+                            {
+                              attrs: {
+                                row: "",
+                                wrap: "",
+                                "justify-center": "",
+                                "align-center": "",
+                                "fill-height": ""
+                              }
+                            },
+                            [
+                              _c(
+                                "v-card-text",
+                                { staticClass: "text-xs-center grey--text" },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "text--lighten-1 grey--text",
+                                      attrs: { size: "50" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  mdi-google-photos\n                "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                  " +
+                                        _vm._s(
+                                          _vm.__("Click to upload photo")
+                                        ) +
+                                        "\n                "
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
