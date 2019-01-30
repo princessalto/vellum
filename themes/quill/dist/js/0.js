@@ -66,15 +66,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -148,6 +139,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -183,6 +180,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./src/store/index.js");
+//
+//
 //
 //
 //
@@ -285,6 +284,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -348,14 +353,6 @@ var render = function() {
                     { staticClass: "transparent", attrs: { flat: "" } },
                     [
                       _c("v-card-text", [
-                        _c("h1", { staticClass: "display-1 mb-3" }, [
-                          _vm._v(
-                            "\n              " +
-                              _vm._s(_vm.__("System Information")) +
-                              "\n            "
-                          )
-                        ]),
-                        _vm._v(" "),
                         _c("p", { staticClass: "mb-2" }, [
                           _vm._v(
                             "\n              " +
@@ -419,16 +416,6 @@ var render = function() {
                     "v-card",
                     { staticClass: "transparent", attrs: { flat: "" } },
                     [
-                      _c("v-card-text", [
-                        _c("h1", { staticClass: "title" }, [
-                          _vm._v(
-                            "\n              " +
-                              _vm._s(_vm.__("Application Details")) +
-                              "\n            "
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
                       _c("v-card-text", [_c("application")], 1),
                       _vm._v(" "),
                       _c("v-card-text", [_c("theme")], 1),
@@ -475,47 +462,59 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
+    "section",
     [
+      _c("h1", { staticClass: "mb-3" }, [
+        _vm._v("\n    " + _vm._s(_vm.__("Applicatoin Details")) + "\n  ")
+      ]),
+      _vm._v(" "),
       _c(
-        "v-card-text",
+        "v-card",
         [
           _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            "v-card-text",
             [
               _c(
-                "v-flex",
-                { attrs: { sm6: "", xs12: "" } },
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
                 [
-                  _c("v-img", {
-                    attrs: { src: _vm.app.site_logo, "max-width": "180px" }
-                  })
+                  _c(
+                    "v-flex",
+                    { attrs: { sm6: "", xs12: "" } },
+                    [
+                      _c("v-img", {
+                        attrs: { src: _vm.app.site_logo, "max-width": "180px" }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-flex", { attrs: { sm6: "", xs12: "" } }, [
+                    _c("p", [
+                      _c("strong", [_vm._v(_vm._s(_vm.__("Name")) + ": ")]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.resource.site_title))]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.resource.version))])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [_vm._v(_vm._s(_vm.__("Author")) + ": ")]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.resource.site_author))])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [
+                        _vm._v(_vm._s(_vm.__("Copyright")) + ": ")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.resource.APP_NAME))])
+                    ])
+                  ])
                 ],
                 1
-              ),
-              _vm._v(" "),
-              _c("v-flex", { attrs: { sm6: "", xs12: "" } }, [
-                _c("p", [
-                  _c("strong", [_vm._v(_vm._s(_vm.__("Name")) + ": ")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.resource.site_title))]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.resource.version))])
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("strong", [_vm._v(_vm._s(_vm.__("Author")) + ": ")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.resource.site_author))])
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("strong", [_vm._v(_vm._s(_vm.__("Copyright")) + ": ")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.resource.APP_NAME))])
-                ])
-              ])
+              )
             ],
             1
           )
@@ -551,7 +550,9 @@ var render = function() {
   return _c(
     "section",
     [
-      _c("h1", { staticClass: "mb-3" }, [_vm._v(_vm._s(_vm.__("Profile")))]),
+      _c("h1", { staticClass: "mb-3" }, [
+        _vm._v("\n    " + _vm._s(_vm.__("Profile")) + "\n  ")
+      ]),
       _vm._v(" "),
       _c(
         "v-card",
@@ -599,7 +600,7 @@ var render = function() {
   return _c(
     "section",
     [
-      _c("h1", { staticClass: "title" }, [
+      _c("h1", { staticClass: "mb-3" }, [
         _vm._v("\n    " + _vm._s(_vm.__("Server Information")) + "\n  ")
       ]),
       _vm._v(" "),
@@ -630,7 +631,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-card", [_c("v-card-text", [_c("p", [_vm._v("Theme")])])], 1)
+  return _c(
+    "section",
+    [
+      _c("h1", { staticClass: "mb-3" }, [
+        _vm._v("\n    " + _vm._s(_vm.__("Server Information")) + "\n  ")
+      ]),
+      _vm._v(" "),
+      _c("v-card", [_c("v-card-text", [_c("p", [_vm._v("Theme")])])], 1)
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

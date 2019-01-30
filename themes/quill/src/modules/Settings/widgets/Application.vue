@@ -1,28 +1,34 @@
 <template>
-  <v-card>
-    <v-card-text>
-      <v-layout row wrap>
-        <v-flex sm6 xs12>
-          <v-img :src="app.site_logo" max-width="180px"></v-img>
-        </v-flex>
-        <v-flex sm6 xs12>
-          <p>
-            <strong>{{ __('Name') }}: </strong>
-            <span>{{ resource.site_title }}</span>
-            <span>{{ resource.version }}</span>
-          </p>
-          <p>
-            <strong>{{ __('Author') }}: </strong>
-            <span>{{ resource.site_author }}</span>
-          </p>
-          <p>
-            <strong>{{ __('Copyright') }}: </strong>
-            <span>{{ resource.APP_NAME }}</span>
-          </p>
-        </v-flex>
-      </v-layout>
-    </v-card-text>
-  </v-card>
+  <section>
+    <h1 class="mb-3">
+      {{ __('Applicatoin Details') }}
+    </h1>
+
+    <v-card>
+      <v-card-text>
+        <v-layout row wrap>
+          <v-flex sm6 xs12>
+            <v-img :src="app.site_logo" max-width="180px"></v-img>
+          </v-flex>
+          <v-flex sm6 xs12>
+            <p>
+              <strong>{{ __('Name') }}: </strong>
+              <span>{{ resource.site_title }}</span>
+              <span>{{ resource.version }}</span>
+            </p>
+            <p>
+              <strong>{{ __('Author') }}: </strong>
+              <span>{{ resource.site_author }}</span>
+            </p>
+            <p>
+              <strong>{{ __('Copyright') }}: </strong>
+              <span>{{ resource.APP_NAME }}</span>
+            </p>
+          </v-flex>
+        </v-layout>
+      </v-card-text>
+    </v-card>
+  </section>
 </template>
 
 <script>

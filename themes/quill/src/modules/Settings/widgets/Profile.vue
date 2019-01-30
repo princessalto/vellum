@@ -1,6 +1,8 @@
 <template>
   <section>
-    <h1 class="mb-3">{{ __('Profile') }}</h1>
+    <h1 class="mb-3">
+      {{ __('Profile') }}
+    </h1>
 
     <v-card>
       <v-card-text>

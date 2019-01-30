@@ -5,9 +5,6 @@
         <v-flex md10 xs12>
           <v-card flat class="transparent">
             <v-card-text>
-              <h1 class="display-1 mb-3">
-                {{ __('System Information') }}
-              </h1>
               <p class="mb-2">
                 {{ __('Listed here are the system specific informations of your application.') }}
               </p>
@@ -31,12 +28,6 @@
           </v-card>
 
           <v-card flat class="transparent">
-            <v-card-text>
-              <h1 class="title">
-                {{ __('Application Details') }}
-              </h1>
-            </v-card-text>
-
             <v-card-text>
               <application></application>
             </v-card-text>

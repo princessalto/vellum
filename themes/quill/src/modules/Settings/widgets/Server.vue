@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="title">
+    <h1 class="mb-3">
       {{ __('Server Information') }}
     </h1>
 
