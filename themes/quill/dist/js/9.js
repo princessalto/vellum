@@ -155,6 +155,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -164,17 +188,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     slug: function slug() {
-      var slug = this.sanitizeTitle(this.title);
+      var slug = this.sanitizeTitle(this.resource.title);
       return slug;
     }
   },
   data: function data() {
     return {
       resource: {
-        lockSlug: false,
-        viewSlug: false,
-        title: '',
-        slug: ''
+        title: ''
       }
     };
   },
@@ -279,6 +300,12 @@ var render = function() {
                     { attrs: { row: "", wrap: "" } },
                     [
                       _c(
+                        "v-icon",
+                        { staticClass: "primary--text", attrs: { size: "16" } },
+                        [_vm._v("mdi-arrow-left")]
+                      ),
+                      _vm._v(" "),
+                      _c(
                         "v-btn",
                         {
                           staticClass: "transparent",
@@ -293,21 +320,12 @@ var render = function() {
                             "span",
                             { staticClass: "subheading primary--text" },
                             [
-                              _c(
-                                "v-icon",
-                                {
-                                  staticClass: "primary--text",
-                                  attrs: { size: "16" }
-                                },
-                                [_vm._v("mdi-arrow-left")]
-                              ),
                               _vm._v(
                                 "\n              " +
                                   _vm._s(_vm.__("All Pages")) +
                                   "\n            "
                               )
-                            ],
-                            1
+                            ]
                           )
                         ]
                       )
@@ -383,38 +401,35 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
-                              _c("div", { attrs: { id: "post" } }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.title,
-                                      expression: "title"
-                                    }
-                                  ],
-                                  attrs: {
-                                    type: "text",
-                                    id: "title",
-                                    name: "title",
-                                    placeholder: "Enter post title"
+                              _c("v-text-field", {
+                                attrs: {
+                                  "single-line": "",
+                                  type: "text",
+                                  name: "title",
+                                  autofocus: "",
+                                  placeholder: "e.g. My First Page",
+                                  box: ""
+                                },
+                                model: {
+                                  value: _vm.resource.title,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "title", $$v)
                                   },
-                                  domProps: { value: _vm.title },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.title = $event.target.value
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("p", { attrs: { id: "slug" } }, [
-                                  _vm._v("http://tatthien.com/"),
-                                  _c("span", [_vm._v(_vm._s(_vm.slug))])
-                                ])
-                              ]),
+                                  expression: "resource.title"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  value: _vm.slug,
+                                  box: "",
+                                  "single-line": "",
+                                  type: "text",
+                                  name: "code",
+                                  "auto-focus": "",
+                                  placeholder: "e.g. my-first-page"
+                                }
+                              }),
                               _vm._v(" "),
                               _c(
                                 "h1",
@@ -435,6 +450,7 @@ var render = function() {
                                   autofocus: "",
                                   "single-line": "",
                                   name: "body",
+                                  placeholder: "Describe Content",
                                   row: "9"
                                 },
                                 model: {
@@ -444,7 +460,9 @@ var render = function() {
                                   },
                                   expression: "resource.body"
                                 }
-                              })
+                              }),
+                              _vm._v(" "),
+                              _c("v-textarea")
                             ],
                             1
                           )

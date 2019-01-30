@@ -10,9 +10,9 @@
         >
         <v-container grid-list-lg>
           <v-layout row wrap>
+            <v-icon size="16" class="primary--text">mdi-arrow-left</v-icon>
             <v-btn flat class="transparent" exact :to="{ name: 'pages.index' }">
               <span class="subheading primary--text">
-                <v-icon size="16" class="primary--text">mdi-arrow-left</v-icon>
                 {{ __('All Pages') }}
               </span>
             </v-btn>
@@ -97,10 +97,28 @@
                   v-validate="'required'"
                 ></v-text-field> -->
 
-                <div id="post">
-                  <input v-model="title" type="text" id="title" name="title" placeholder="Enter post title"/>
-                  <p id="slug">http://tatthien.com/<span>{{ slug }}</span></p>
-                </div>
+                  <v-text-field
+                    v-model="resource.title"
+                    single-line
+                    type="text"
+                    name="title"
+                    autofocus
+                    placeholder="e.g. My First Page"
+                    box
+                  ></v-text-field>
+
+                  <v-text-field
+                    :value="slug"
+                    box
+                    single-line
+                    type="text"
+                    name="code"
+                    auto-focus
+                    placeholder="e.g. my-first-page"
+                    >
+                  </v-text-field>
+
+                <!-- Forms -->
 
                 <h1 class="body-2 font-weight-bold mb-2">
                   {{ __('Page Content') }}
@@ -111,9 +129,15 @@
                   autofocus
                   single-line
                   name="body"
+                  placeholder="Describe Content"
                   row="9"
                   v-model="resource.body"
                 ></v-textarea>
+
+                <v-textarea
+                  >
+
+                </v-textarea>
 
                 <!-- ck -->
                 <!-- <div
@@ -156,7 +180,7 @@ export default {
 
   computed: {
     slug: function() {
-      var slug = this.sanitizeTitle(this.title);
+      var slug = this.sanitizeTitle(this.resource.title);
       return slug;
     }
   },
@@ -164,10 +188,7 @@ export default {
   data () {
     return {
       resource: {
-        lockSlug: false,
-        viewSlug: false,
         title: '',
-        slug: '',
       },
     }
   },
