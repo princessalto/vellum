@@ -10,26 +10,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./src/store/index.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -180,6 +161,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Create',
@@ -195,6 +177,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       resource: {
+        lockSlug: false,
+        viewSlug: false,
         title: ''
       }
     };
@@ -222,6 +206,15 @@ __webpack_require__.r(__webpack_exports__);
 
       slug = slug.replace(/\s+/g, '-');
       return slug;
+    },
+    slugify: function slugify($value) {
+      if (!this.resource.lockSlug) {
+        if (typeof $value === 'undefined') {
+          this.resource.slug = this.$options.filters.slugify(this.resource.title);
+        } else {
+          this.resource.slug = this.$options.filters.slugify($value);
+        }
+      }
     },
     ckEditor: function ckEditor() {
       ClassicEditor.create(document.querySelector('#editor')).catch(function (error) {
@@ -402,13 +395,33 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("v-text-field", {
+                                directives: [
+                                  {
+                                    name: "validate",
+                                    rawName: "v-validate",
+                                    value: "required",
+                                    expression: "'required'"
+                                  }
+                                ],
                                 attrs: {
-                                  "single-line": "",
-                                  type: "text",
-                                  name: "title",
+                                  "data-vv-as": _vm.trans("Title"),
+                                  "error-messages": _vm.errors.collect("title"),
+                                  hint: _vm.trans(
+                                    "Tap the icon to edit this page's slug"
+                                  ),
+                                  "append-icon": "mdi-circle-edit-outline",
                                   autofocus: "",
                                   placeholder: "e.g. My First Page",
-                                  box: ""
+                                  box: "",
+                                  name: "title",
+                                  "single-line": ""
+                                },
+                                on: {
+                                  "click:append": function($event) {
+                                    _vm.resource.viewSlug = !_vm.resource
+                                      .viewSlug
+                                  },
+                                  input: _vm.slugify
                                 },
                                 model: {
                                   value: _vm.resource.title,
@@ -419,15 +432,98 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
+                              _c(
+                                "v-slide-y-transition",
+                                { attrs: { mode: "out-in" } },
+                                [
+                                  _vm.resource.viewSlug
+                                    ? _c("v-text-field", {
+                                        directives: [
+                                          { name: "focus", rawName: "v-focus" },
+                                          {
+                                            name: "validate",
+                                            rawName: "v-validate",
+                                            value: "required",
+                                            expression: "'required'"
+                                          }
+                                        ],
+                                        staticClass: "mb-2",
+                                        attrs: {
+                                          "append-icon": _vm.resource.lockSlug
+                                            ? "lock"
+                                            : "lock_open",
+                                          "error-messages": _vm.errors.collect(
+                                            "slug"
+                                          ),
+                                          hint: _vm.trans(
+                                            "Locking this field will prevent the title field from overriding this current value"
+                                          ),
+                                          label: _vm.trans("Slug"),
+                                          placeholder: _vm.trans(
+                                            "app://your-custom-url-here"
+                                          ),
+                                          readonly: _vm.resource.lockSlug,
+                                          outline: "",
+                                          name: "slug",
+                                          "persistent-hint": ""
+                                        },
+                                        on: {
+                                          blur: function($event) {
+                                            _vm.resource.lockSlug = true
+                                          },
+                                          "click:append": function($event) {
+                                            _vm.resource.lockSlug = !_vm
+                                              .resource.lockSlug
+                                          }
+                                        },
+                                        model: {
+                                          value: _vm.resource.slug,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.resource,
+                                              "slug",
+                                              typeof $$v === "string"
+                                                ? $$v.trim()
+                                                : $$v
+                                            )
+                                          },
+                                          expression: "resource.slug"
+                                        }
+                                      })
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
                               _c("v-text-field", {
+                                directives: [
+                                  {
+                                    name: "validate",
+                                    rawName: "v-validate",
+                                    value: "required",
+                                    expression: "'required'"
+                                  }
+                                ],
                                 attrs: {
-                                  value: _vm.slug,
+                                  "data-vv-as": _vm.trans("Code"),
+                                  "error-messages": _vm.errors.collect("code"),
                                   box: "",
-                                  "single-line": "",
-                                  type: "text",
-                                  name: "code",
-                                  "auto-focus": "",
-                                  placeholder: "e.g. my-first-page"
+                                  autofocus: "",
+                                  label: "Code",
+                                  name: "code"
+                                },
+                                on: {
+                                  "click:append": function() {
+                                    _vm.resource.lockSlug = !_vm.resource
+                                      .lockSlug
+                                  }
+                                },
+                                model: {
+                                  value: _vm.resource.code,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resource, "code", $$v)
+                                  },
+                                  expression: "resource.code"
                                 }
                               }),
                               _vm._v(" "),
@@ -460,9 +556,7 @@ var render = function() {
                                   },
                                   expression: "resource.body"
                                 }
-                              }),
-                              _vm._v(" "),
-                              _c("v-textarea")
+                              })
                             ],
                             1
                           )
@@ -482,22 +576,49 @@ var render = function() {
                         {
                           staticClass:
                             "transparent upload-image emphasis--border",
-                          attrs: { height: "200" }
+                          attrs: { height: "200", hover: "" }
                         },
                         [
-                          _c("v-card-text", [
-                            _c(
-                              "h1",
-                              { staticClass: "body-2 font-weight-bold mb-2" },
-                              [
-                                _vm._v(
-                                  "\n                " +
-                                    _vm._s(_vm.__("Site Logo")) +
-                                    "\n              "
-                                )
-                              ]
-                            )
-                          ])
+                          _c(
+                            "v-layout",
+                            {
+                              attrs: {
+                                row: "",
+                                wrap: "",
+                                "justify-center": "",
+                                "align-center": "",
+                                "fill-height": ""
+                              }
+                            },
+                            [
+                              _c(
+                                "v-card-text",
+                                { staticClass: "text-xs-center grey--text" },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "text--lighten-1 grey--text",
+                                      attrs: { size: "50" }
+                                    },
+                                    [_vm._v("mdi-google-photos")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                  " +
+                                        _vm._s(
+                                          _vm.__("Click to upload photo")
+                                        ) +
+                                        "\n                "
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
                         ],
                         1
                       )

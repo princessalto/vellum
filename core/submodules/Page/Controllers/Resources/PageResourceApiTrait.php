@@ -72,6 +72,7 @@ trait PageResourceApiTrait
      */
     public function getAll(Request $request)
     {
+        // dd($request->all());
         $onlyTrashed = (bool) $request->get('only_trashed');
 
         $order = $request->get('descending') === 'true'

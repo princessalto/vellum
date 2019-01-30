@@ -22,7 +22,7 @@
 
       <v-container grid-list-lg>
         <v-layout row wrap>
-          <v-flex md6 xs12>
+          <v-flex md8 xs12>
             <v-text-field
               :data-vv-as="trans('Title')"
               :error-messages="errors.collect('title')"
@@ -32,7 +32,8 @@
               label="Title"
               name="title"
               v-model="resource.title"
-            ></v-text-field>
+              >
+            </v-text-field>
 
             <v-text-field
               :data-vv-as="trans('Code')"
@@ -102,6 +103,7 @@ export default {
         .post('/api/v1/pages/update/' + this.$route.params.id, this.resource)
         .then((response) => {
           this.$router.go({name: 'pages.edit'});
+          alert('submitted');
         })
     },
   },

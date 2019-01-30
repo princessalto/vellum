@@ -35,7 +35,7 @@
                 <h1 class="body-2 font-weight-bold mb-2">
                   {{ __('Page Title') }}
                 </h1>
-                <!-- <v-text-field
+                <v-text-field
                   :data-vv-as="trans('Title')"
                   :error-messages="errors.collect('title')"
                   :hint="trans('Tap the icon to edit this page\'s slug')"
@@ -60,18 +60,18 @@
                     :readonly="resource.lockSlug"
                     @blur="resource.lockSlug = true"
                     @click:append="resource.lockSlug = !resource.lockSlug"
-                    autofocus
-                    box
+                    outline
                     class="mb-2"
                     name="slug"
                     persistent-hint
+                    v-focus
                     v-if="resource.viewSlug"
-                    v-model="resource.slug"
+                    v-model.trim="resource.slug"
                     v-validate="'required'"
                   ></v-text-field>
-                </v-slide-y-transition> -->
+                </v-slide-y-transition>
 
-                <!-- <v-text-field
+                <v-text-field
                   :data-vv-as="trans('Code')"
                   :error-messages="errors.collect('code')"
                   v-validate="'required'"
@@ -81,42 +81,30 @@
                   label="Code"
                   name="code"
                   v-model="resource.code"
-                ></v-text-field> -->
+                ></v-text-field>
 
-                <!-- <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Page Code') }}
-                </h1>
-                <v-text-field
-                  :error-messages="errors.collect('code')"
-                  @click:append="() => {resource.lockSlug = !resource.lockSlug}"
-                  box
-                  name="code"
+                <!-- slug not saved to store -->
+                <!-- <v-text-field
+                  v-model="resource.title"
                   single-line
-                  placeholder="my-first-page"
-                  v-model.trim="resource.code"
-                  v-validate="'required'"
-                ></v-text-field> -->
+                  type="text"
+                  name="title"
+                  autofocus
+                  placeholder="e.g. My First Page"
+                  box
+                ></v-text-field>
 
-                  <v-text-field
-                    v-model="resource.title"
-                    single-line
-                    type="text"
-                    name="title"
-                    autofocus
-                    placeholder="e.g. My First Page"
-                    box
-                  ></v-text-field>
-
-                  <v-text-field
-                    :value="slug"
-                    box
-                    single-line
-                    type="text"
-                    name="code"
-                    auto-focus
-                    placeholder="e.g. my-first-page"
-                    >
-                  </v-text-field>
+                <v-text-field
+                  :value="slug"
+                  box
+                  single-line
+                  type="text"
+                  name="code"
+                  auto-focus
+                  placeholder="e.g. my-first-page"
+                  >
+                </v-text-field> -->
+                <!-- slug not saved to store -->
 
                 <!-- Forms -->
 
@@ -133,32 +121,24 @@
                   row="9"
                   v-model="resource.body"
                 ></v-textarea>
-
-                <v-textarea
-                  >
-
-                </v-textarea>
-
-                <!-- ck -->
-                <!-- <div
-                  :data-vv-as="trans('Body')"
-                  autofocus
-                  id="editor"
-                  name="body"
-                  v-model="resource.body"
-                  >
-                </div> -->
               </v-card-text>
             </v-card>
           </v-flex>
 
           <v-flex md3 xs12>
-            <v-card height="200" class="transparent upload-image emphasis--border">
-              <v-card-text>
-                <h1 class="body-2 font-weight-bold mb-2">
-                  {{ __('Site Logo') }}
-                </h1>
-              </v-card-text>
+            <v-card
+              height="200"
+              hover
+              class="transparent upload-image emphasis--border"
+              >
+              <v-layout row wrap justify-center align-center fill-height>
+                <v-card-text class="text-xs-center grey--text">
+                  <v-icon size="50" class="text--lighten-1 grey--text">mdi-google-photos</v-icon>
+                  <p>
+                    {{ __('Click to upload photo') }}
+                  </p>
+                </v-card-text>
+              </v-layout>
             </v-card>
           </v-flex>
         </v-layout>
@@ -169,6 +149,7 @@
 
 <script>
 import store from '@/store'
+import { mapGetters } from 'vuex'
 
 export default {
   store,
@@ -188,6 +169,8 @@ export default {
   data () {
     return {
       resource: {
+        lockSlug: false,
+        viewSlug: false,
         title: '',
       },
     }
@@ -218,6 +201,16 @@ export default {
       slug = slug.replace(/\s+/g, '-');
 
       return slug;
+    },
+
+    slugify ($value) {
+      if (!this.resource.lockSlug) {
+        if (typeof $value === 'undefined') {
+          this.resource.slug = this.$options.filters.slugify(this.resource.title)
+        } else {
+          this.resource.slug = this.$options.filters.slugify($value)
+        }
+      }
     },
 
     ckEditor () {
