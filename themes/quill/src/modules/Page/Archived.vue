@@ -1,14 +1,21 @@
 <template>
-  <div>
-    test
-  </div>
+ <section>
+   test
+ </section>
 </template>
+
 
 <script>
 import store from '@/store'
 
 export default {
   store,
-  name: 'Archived'
+  name: 'Archived',
+
+  data () {
+    return {
+
+    }
+  }
 }
 </script>

@@ -56,8 +56,7 @@ export default [
           excludeFromRoot: true,
           authenticatable: true,
           icon: 'mdi-delete-outline'
-
-        }
+        },
       },
       {
         path: 'archived',

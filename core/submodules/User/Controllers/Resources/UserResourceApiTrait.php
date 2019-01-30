@@ -91,6 +91,22 @@ trait UserResourceApiTrait
     }
 
     /**
+     * Display a listing of the trashed resource.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function archived(Request $request)
+    {
+        $resources = $this->repository
+            ->search($request->all())
+            ->onlyTrashed()
+            ->paginate();
+
+        return response()->json($resources);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \User\Requests\UserRequest $request

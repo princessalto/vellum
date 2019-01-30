@@ -14,7 +14,7 @@
     <!-- Main Content -->
     <v-content>
       <!-- Breadcrumbs -->
-      <breadcrumbs></breadcrumbs>
+      <!-- <breadcrumbs></breadcrumbs> -->
       <!-- Breadcrumbs -->
 
       <!-- Main -->

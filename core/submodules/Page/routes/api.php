@@ -22,6 +22,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('pages/edit/{page}', 'PageController@getEdit')->name('pages.edit');
     Route::post('pages/update/{page}', 'PageController@putUpdate')->name('pages.update');
     Route::delete('pages/{page}/destroy', 'PageController@deleteDestroy')->name('pages.destroy');
+    Route::delete('pages/archived', 'PageResourceApiTrait@archived')->name('pages.archived');
 
     // Attributes
     # Template
