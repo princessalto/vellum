@@ -79,7 +79,6 @@ export default {
       .get('/api/v1/settings/system')
       .then((response) => {
         this.resource = response.data
-        console.log(this.resource)
       })
   },
 }

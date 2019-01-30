@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1 class="mb-3">
-      {{ __('Applicatoin Details') }}
+      {{ __('Application Details') }}
     </h1>
 
     <v-card>
@@ -22,7 +22,14 @@
             </p>
             <p>
               <strong>{{ __('Copyright') }}: </strong>
-              <span>{{ resource.APP_NAME }}</span>
+              <span>{{ resource.site_title }}</span>
+              <span>{{ resource.site_year }}</span>
+              <span>{{ __('by') }}:</span>
+              <span>{{ resource.site_author }}</span>
+            </p>
+            <p>
+              <strong>{{ __('Environment') }}: </strong>
+              <span>{{ app.environment }}</span>
             </p>
           </v-flex>
         </v-layout>
@@ -56,7 +63,7 @@ export default {
       .get('/api/v1/settings/system')
       .then((response) => {
         this.resource = response.data
-        console.log(this.resource)
+        console.log(response)
       })
   },
 }

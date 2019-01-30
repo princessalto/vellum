@@ -1,13 +1,28 @@
 <template>
   <section>
     <h1 class="mb-3">
-      {{ __('Server Information') }}
+      {{ __('Theme') }}
     </h1>
 
-    <v-card>
-      <v-card-text>
-        <p>Theme</p>
-      </v-card-text>
+    <v-card :id="resource.code">
+      <v-img
+        class=""
+        height="300"
+        :src="resource.thumbnail"
+        gradient="to top right, rgba(100,115,201,.45), rgba(25,32,72,.3)"
+        >
+        <v-container fluid fill-height>
+          <v-layout row wrap justify-center align-start>
+            <v-card-text class="white--text">
+              <h3 class="mb-2" v-html="resource.name"></h3>
+              <p class="caption font-weight-bold">
+                <span>{{ __('Theme by: ') }} {{ resource.author.name }}</span>
+              </p>
+              <p v-html="resource.description"></p>
+            </v-card-text>
+          </v-layout>
+        </v-container>
+      </v-img>
     </v-card>
   </section>
 </template>
@@ -27,10 +42,9 @@ export default {
 
   created() {
     axios
-      .get('/api/v1/settings/system')
+      .get('/api/v1/themes/all')
       .then((response) => {
         this.resource = response.data
-        console.log(this.resource)
       })
   },
 }

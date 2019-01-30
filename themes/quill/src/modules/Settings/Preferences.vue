@@ -81,7 +81,6 @@ export default {
       .get('/api/v1/settings/preferences')
       .then((response) => {
         this.resource = response.data
-        console.log(this.resource)
       })
   },
 
@@ -90,7 +89,6 @@ export default {
       axios
         .post('/api/v1/settings/store', this.resource)
         .then((response) => {
-          console.log(this.resource, 'data')
           this.$router.go({name: 'settings.preferences'})
         })
     },

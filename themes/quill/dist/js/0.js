@@ -90,7 +90,6 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/v1/settings/system').then(function (response) {
       _this.resource = response.data;
-      console.log(_this.resource);
     });
   }
 });
@@ -145,6 +144,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -163,7 +169,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     axios.get('/api/v1/settings/system').then(function (response) {
       _this.resource = response.data;
-      console.log(_this.resource);
+      console.log(response);
     });
   }
 });
@@ -212,7 +218,6 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/v1/users/all').then(function (response) {
       _this.resource.items = response.data.data;
-      console.log(_this.resource.items);
     });
   }
 });
@@ -259,7 +264,6 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/v1/settings/system').then(function (response) {
       _this.resource = response.data;
-      console.log(_this.resource);
     });
   }
 });
@@ -290,6 +294,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -302,9 +321,8 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/api/v1/settings/system').then(function (response) {
+    axios.get('/api/v1/themes/all').then(function (response) {
       _this.resource = response.data;
-      console.log(_this.resource);
     });
   }
 });
@@ -465,7 +483,7 @@ var render = function() {
     "section",
     [
       _c("h1", { staticClass: "mb-3" }, [
-        _vm._v("\n    " + _vm._s(_vm.__("Applicatoin Details")) + "\n  ")
+        _vm._v("\n    " + _vm._s(_vm.__("Application Details")) + "\n  ")
       ]),
       _vm._v(" "),
       _c(
@@ -509,7 +527,21 @@ var render = function() {
                         _vm._v(_vm._s(_vm.__("Copyright")) + ": ")
                       ]),
                       _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(_vm.resource.APP_NAME))])
+                      _c("span", [_vm._v(_vm._s(_vm.resource.site_title))]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.resource.site_year))]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.__("by")) + ":")]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.resource.site_author))])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [
+                        _vm._v(_vm._s(_vm.__("Environment")) + ": ")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.app.environment))])
                     ])
                   ])
                 ],
@@ -635,10 +667,73 @@ var render = function() {
     "section",
     [
       _c("h1", { staticClass: "mb-3" }, [
-        _vm._v("\n    " + _vm._s(_vm.__("Server Information")) + "\n  ")
+        _vm._v("\n    " + _vm._s(_vm.__("Theme")) + "\n  ")
       ]),
       _vm._v(" "),
-      _c("v-card", [_c("v-card-text", [_c("p", [_vm._v("Theme")])])], 1)
+      _c(
+        "v-card",
+        { attrs: { id: _vm.resource.code } },
+        [
+          _c(
+            "v-img",
+            {
+              attrs: {
+                height: "300",
+                src: _vm.resource.thumbnail,
+                gradient:
+                  "to top right, rgba(100,115,201,.45), rgba(25,32,72,.3)"
+              }
+            },
+            [
+              _c(
+                "v-container",
+                { attrs: { fluid: "", "fill-height": "" } },
+                [
+                  _c(
+                    "v-layout",
+                    {
+                      attrs: {
+                        row: "",
+                        wrap: "",
+                        "justify-center": "",
+                        "align-start": ""
+                      }
+                    },
+                    [
+                      _c("v-card-text", { staticClass: "white--text" }, [
+                        _c("h3", {
+                          staticClass: "mb-2",
+                          domProps: { innerHTML: _vm._s(_vm.resource.name) }
+                        }),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "caption font-weight-bold" }, [
+                          _c("span", [
+                            _vm._v(
+                              _vm._s(_vm.__("Theme by: ")) +
+                                " " +
+                                _vm._s(_vm.resource.author.name)
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("p", {
+                          domProps: {
+                            innerHTML: _vm._s(_vm.resource.description)
+                          }
+                        })
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )

@@ -89,7 +89,6 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/v1/settings/preferences').then(function (response) {
       _this.resource = response.data;
-      console.log(_this.resource);
     });
   },
   methods: {
@@ -97,8 +96,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post('/api/v1/settings/store', this.resource).then(function (response) {
-        console.log(_this2.resource, 'data');
-
         _this2.$router.go({
           name: 'settings.preferences'
         });
