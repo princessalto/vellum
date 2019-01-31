@@ -680,6 +680,70 @@ var render = function() {
         _vm._v("\n    " + _vm._s(_vm.__("Theme")) + "\n  ")
       ]),
       _vm._v(" "),
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-img",
+            {
+              attrs: {
+                height: "300",
+                src: _vm.resource.thumbnail,
+                gradient:
+                  "to top right, rgba(100,115,201,.45), rgba(25,32,72,.3)"
+              }
+            },
+            [
+              _c(
+                "v-container",
+                { attrs: { fluid: "", "fill-height": "" } },
+                [
+                  _c(
+                    "v-layout",
+                    {
+                      attrs: {
+                        row: "",
+                        wrap: "",
+                        "justify-center": "",
+                        "align-start": ""
+                      }
+                    },
+                    [
+                      _c("v-card-text", { staticClass: "white--text" }, [
+                        _c("h3", {
+                          staticClass: "mb-2",
+                          domProps: { innerHTML: _vm._s(_vm.resource.name) }
+                        }),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "caption font-weight-bold" }, [
+                          _c("span", [
+                            _vm._v(
+                              _vm._s(_vm.__("Theme by")) +
+                                ":  " +
+                                _vm._s(_vm.resource.author.name)
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("p", {
+                          domProps: {
+                            innerHTML: _vm._s(_vm.resource.description)
+                          }
+                        })
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("v-card", [_c("v-img", { attrs: { height: "300", gradient: "" } })], 1)
     ],
     1

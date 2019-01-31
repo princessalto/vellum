@@ -3,6 +3,14 @@
     <v-container grid-list-lg>
       <v-layout row wrap>
         <v-flex xs12>
+          <v-card flat class="transparent">
+            <v-icon size="16" class="primary--text">mdi-arrow-left</v-icon>
+            <v-btn flat class="transparent" exact :to="{ name: 'pages.index' }">
+              <span class="subheading primary--text">
+                {{ __('All Pages') }}
+              </span>
+            </v-btn>
+          </v-card>
           <v-card>
             <v-img
               :src="resource.feature"

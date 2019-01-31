@@ -27840,9 +27840,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("span", [
-            _vm._v(_vm._s(_vm.trans("Go back to All Announcements")))
-          ])
+          _c("span", [_vm._v(_vm._s(_vm.dataset.tooltipName))])
         ],
         1
       )
@@ -68092,6 +68090,7 @@ var state = function state() {
       model: '',
       title: '',
       search: '',
+      tooltipName: '',
       searchField: false,
       filter: false,
       sort: false,
@@ -68586,7 +68585,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'appearance.menus',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Index.vue */ "./src/modules/Appearance/submodules/Menu/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Index.vue */ "./src/modules/Appearance/submodules/Menu/Index.vue"));
     },
     meta: {
       title: 'Menus',
@@ -68599,7 +68598,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'appearance.edit',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Edit.vue */ "./src/modules/Appearance/submodules/Menu/Edit.vue"));
+      return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../submodules/Menu/Edit.vue */ "./src/modules/Appearance/submodules/Menu/Edit.vue"));
     },
     meta: {
       title: 'Edit Menus',
@@ -68615,7 +68614,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'appearance.themes',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../submodules/Theme/Index.vue */ "./src/modules/Appearance/submodules/Theme/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../submodules/Theme/Index.vue */ "./src/modules/Appearance/submodules/Theme/Index.vue"));
     },
     meta: {
       title: 'Themes',
@@ -68656,7 +68655,7 @@ __webpack_require__.r(__webpack_exports__);
     path: '/login',
     name: 'login.show',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../Signin.vue */ "./src/modules/Auth/Signin.vue"));
+      return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../Signin.vue */ "./src/modules/Auth/Signin.vue"));
     },
     meta: {
       title: 'Sign In',
@@ -68729,7 +68728,7 @@ __webpack_require__.r(__webpack_exports__);
   path: '/admin/dashboard',
   name: 'dashboard.index',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(24), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ../Dashboard.vue */ "./src/modules/Dashboard/Dashboard.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(24), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../Dashboard.vue */ "./src/modules/Dashboard/Dashboard.vue"));
   },
   meta: {
     title: 'Dashboard',
@@ -68836,7 +68835,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'pages.index',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/Page/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/Page/Index.vue"));
     },
     meta: {
       title: 'All Pages',
@@ -68856,19 +68855,18 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       icon: 'mdi-delete-outline'
     }
-  }, {
-    path: ':code',
-    props: true,
-    name: 'pages.show',
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../Show.vue */ "./src/modules/Page/Show.vue"));
-    },
-    meta: {
-      title: 'Show Page',
-      authenticatable: true,
-      icon: 'mdi-book-multiple-variant'
-    }
-  }, {
+  }, // {
+  //   path: ':code',
+  //   props: true,
+  //   name: 'pages.show',
+  //   component: () => import('../Show.vue'),
+  //   meta: {
+  //     title: 'Show Page',
+  //     authenticatable: true,
+  //     icon: 'mdi-book-multiple-variant',
+  //   },
+  // },
+  {
     path: ':id/edit',
     props: true,
     name: 'pages.edit',
@@ -68888,7 +68886,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'pages.archived',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../Archived.vue */ "./src/modules/Page/Archived.vue"));
+      return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../Archived.vue */ "./src/modules/Page/Archived.vue"));
     },
     meta: {
       title: 'Archived Page',
@@ -69136,7 +69134,7 @@ __webpack_require__.r(__webpack_exports__);
     props: true,
     name: 'users.index',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/User/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../Index.vue */ "./src/modules/User/Index.vue"));
     },
     meta: {
       title: 'All Users',

@@ -4,7 +4,7 @@
       {{ __('Theme') }}
     </h1>
 
-    <!-- <v-card>
+    <v-card>
       <v-img
         class=""
         height="300"
@@ -16,14 +16,14 @@
             <v-card-text class="white--text">
               <h3 class="mb-2" v-html="resource.name"></h3>
               <p class="caption font-weight-bold">
-                <span>{{ __('Theme by: ') }} {{ resource.author.name }}</span>
+                <span>{{ __('Theme by') }}:  {{ resource.author.name }}</span>
               </p>
               <p v-html="resource.description"></p>
             </v-card-text>
           </v-layout>
         </v-container>
       </v-img>
-    </v-card> -->
+    </v-card>
 
     <v-card>
       <v-img

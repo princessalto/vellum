@@ -99,7 +99,7 @@
         >
         <v-icon small>mdi-home-outline</v-icon>
       </v-btn>
-      <span>{{ trans('Go back to All Announcements') }}</span>
+      <span>{{ dataset.tooltipName }}</span>
     </v-tooltip>
   </v-toolbar>
 </template>

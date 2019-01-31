@@ -3,6 +3,7 @@ export const state = () => ({
     model: '',
     title: '',
     search: '',
+    tooltipName: '',
     searchField: false,
     filter: false,
     sort: false,

@@ -19,7 +19,7 @@ trait PageResourceApiTrait
      */
     public function getEdit(Request $request, $id)
     {
-        $page = Page::findOrFail($id);
+        $page = Page::fintOrFail($id);
 
         $this->authorize('update', $page);
         return response()->json($page);
@@ -113,11 +113,10 @@ trait PageResourceApiTrait
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function archived(Request $request)
+    public function getTrashed(Request $request)
     {
-        $resources = $this->repository
+        $resources = Page::onlyTrashed()
             ->search($request->all())
-            ->onlyTrashed()
             ->paginate();
 
         return response()->json($resources);
