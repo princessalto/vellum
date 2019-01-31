@@ -164,7 +164,7 @@ __webpack_require__.r(__webpack_exports__);
         homeBtn: {
           name: 'pages.index'
         },
-        title: 'All Pages',
+        title: 'Archived Pages',
         color: '',
         listGridView: false,
         createBtn: {

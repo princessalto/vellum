@@ -68855,18 +68855,19 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       icon: 'mdi-delete-outline'
     }
-  }, // {
-  //   path: ':code',
-  //   props: true,
-  //   name: 'pages.show',
-  //   component: () => import('../Show.vue'),
-  //   meta: {
-  //     title: 'Show Page',
-  //     authenticatable: true,
-  //     icon: 'mdi-book-multiple-variant',
-  //   },
-  // },
-  {
+  }, {
+    path: ':code',
+    props: true,
+    name: 'pages.show',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../Show.vue */ "./src/modules/Page/Show.vue"));
+    },
+    meta: {
+      title: 'Show Page',
+      authenticatable: true,
+      icon: 'mdi-book-multiple-variant'
+    }
+  }, {
     path: ':id/edit',
     props: true,
     name: 'pages.edit',

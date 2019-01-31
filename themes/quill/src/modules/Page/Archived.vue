@@ -155,7 +155,7 @@ export default {
         homeBtn: {
           name: 'pages.index',
         },
-        title: 'All Pages',
+        title: 'Archived Pages',
         color: '',
         listGridView: false,
         createBtn: {
