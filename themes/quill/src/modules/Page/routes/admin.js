@@ -33,17 +33,17 @@ export default [
 
         }
       },
-      {
-        path: ':code',
-        props: true,
-        name: 'pages.show',
-        component: () => import('../Show.vue'),
-        meta: {
-          title: 'Show Page',
-          authenticatable: true,
-          icon: 'mdi-book-multiple-variant',
-        },
-      },
+      // {
+      //   path: ':code',
+      //   props: true,
+      //   name: 'pages.show',
+      //   component: () => import('../Show.vue'),
+      //   meta: {
+      //     title: 'Show Page',
+      //     authenticatable: true,
+      //     icon: 'mdi-book-multiple-variant',
+      //   },
+      // },
       {
         path: ':id/edit',
         props: true,

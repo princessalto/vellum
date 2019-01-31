@@ -2651,6 +2651,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -27739,11 +27740,10 @@ var render = function() {
             })
           ]
         : [
-            _c("v-toolbar-title", { staticClass: "primary--text" }, [
-              _c("strong", {
-                domProps: { innerHTML: _vm._s(_vm.trans(_vm.dataset.title)) }
-              })
-            ]),
+            _c("v-toolbar-title", {
+              staticClass: "py-5 headline font-weight-bold",
+              domProps: { innerHTML: _vm._s(_vm.trans(_vm.dataset.title)) }
+            }),
             _vm._v(" "),
             _c("v-spacer"),
             _vm._v(" "),
@@ -68855,19 +68855,18 @@ __webpack_require__.r(__webpack_exports__);
       authenticatable: true,
       icon: 'mdi-delete-outline'
     }
-  }, {
-    path: ':code',
-    props: true,
-    name: 'pages.show',
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../Show.vue */ "./src/modules/Page/Show.vue"));
-    },
-    meta: {
-      title: 'Show Page',
-      authenticatable: true,
-      icon: 'mdi-book-multiple-variant'
-    }
-  }, {
+  }, // {
+  //   path: ':code',
+  //   props: true,
+  //   name: 'pages.show',
+  //   component: () => import('../Show.vue'),
+  //   meta: {
+  //     title: 'Show Page',
+  //     authenticatable: true,
+  //     icon: 'mdi-book-multiple-variant',
+  //   },
+  // },
+  {
     path: ':id/edit',
     props: true,
     name: 'pages.edit',

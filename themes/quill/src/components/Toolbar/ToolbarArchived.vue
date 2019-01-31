@@ -32,9 +32,9 @@
     <!-- hide searchField -->
     <template v-else>
       <v-toolbar-title
-        class="primary--text"
+         class="py-5 headline font-weight-bold"
+         v-html="trans(dataset.title)"
         >
-        <strong v-html="trans(dataset.title)"></strong>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -101,6 +101,7 @@
       </v-btn>
       <span>{{ dataset.tooltipName }}</span>
     </v-tooltip>
+    <!-- hide searchField -->
   </v-toolbar>
 </template>
 
