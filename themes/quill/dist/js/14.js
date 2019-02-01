@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[14],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Settings/Email.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/modules/Settings/Email.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Page/Edit.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/modules/Page/Edit.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -93,72 +93,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
-  name: 'Email',
+  name: 'Edit',
+  $_veeValidate: {
+    validator: 'new'
+  },
   data: function data() {
     return {
       resource: {}
@@ -167,18 +108,30 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/api/v1/settings/email').then(function (response) {
+    axios.get("/api/v1/pages/edit/".concat(this.$route.params.id)).then(function (response) {
       _this.resource = response.data;
     });
   },
   methods: {
-    saveEmail: function saveEmail() {
+    beforeFormSubmit: function beforeFormSubmit() {
       var _this2 = this;
 
-      axios.post('/api/v1/settings/store', this.resource).then(function (response) {
-        _this2.$router.go({
-          name: 'settings.email'
+      this.$validator.reset();
+      this.$validator.validateAll().then(function (ok) {
+        if (ok) {
+          _this2.updateData();
+        }
+      });
+    },
+    updateData: function updateData() {
+      var _this3 = this;
+
+      axios.post('/api/v1/pages/update/' + this.$route.params.id, this.resource).then(function (response) {
+        _this3.$router.go({
+          name: 'pages.edit'
         });
+
+        alert('submitted');
       });
     }
   }
@@ -186,10 +139,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Settings/Email.vue?vue&type=template&id=e304d55e&":
-/*!*****************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/modules/Settings/Email.vue?vue&type=template&id=e304d55e& ***!
-  \*****************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Page/Edit.vue?vue&type=template&id=7d4d7579&":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/modules/Page/Edit.vue?vue&type=template&id=7d4d7579& ***!
+  \************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -211,7 +164,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.saveEmail($event)
+              return _vm.updateData($event)
             }
           }
         },
@@ -236,7 +189,7 @@ var render = function() {
                       _c("h1", { staticClass: "display-1" }, [
                         _vm._v(
                           "\n            " +
-                            _vm._s(_vm.__("Email Options")) +
+                            _vm._s(_vm.__("Edit Page")) +
                             "\n          "
                         )
                       ]),
@@ -266,32 +219,6 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "v-card",
-            { staticClass: "transparent", attrs: { flat: "" } },
-            [
-              _c(
-                "v-card-text",
-                [
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: {
-                        exact: "",
-                        to: { name: "settings.branding.general" }
-                      }
-                    },
-                    [_vm._v("Branding")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-card"),
-          _vm._v(" "),
-          _c(
             "v-container",
             { attrs: { "grid-list-lg": "" } },
             [
@@ -301,274 +228,133 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    { attrs: { xs12: "" } },
+                    { attrs: { md8: "", xs12: "" } },
+                    [
+                      _c("v-text-field", {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          }
+                        ],
+                        attrs: {
+                          "data-vv-as": _vm.trans("Title"),
+                          "error-messages": _vm.errors.collect("title"),
+                          box: "",
+                          autofocus: "",
+                          label: "Title",
+                          name: "title"
+                        },
+                        model: {
+                          value: _vm.resource.title,
+                          callback: function($$v) {
+                            _vm.$set(_vm.resource, "title", $$v)
+                          },
+                          expression: "resource.title"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          }
+                        ],
+                        attrs: {
+                          "data-vv-as": _vm.trans("Code"),
+                          "error-messages": _vm.errors.collect("code"),
+                          box: "",
+                          autofocus: "",
+                          label: "Code",
+                          name: "code"
+                        },
+                        model: {
+                          value: _vm.resource.code,
+                          callback: function($$v) {
+                            _vm.$set(_vm.resource, "code", $$v)
+                          },
+                          expression: "resource.code"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-textarea", {
+                        attrs: {
+                          "data-vv-as": _vm.trans("Body"),
+                          box: "",
+                          autofocus: "",
+                          label: "Body",
+                          name: "body"
+                        },
+                        model: {
+                          value: _vm.resource.body,
+                          callback: function($$v) {
+                            _vm.$set(_vm.resource, "body", $$v)
+                          },
+                          expression: "resource.body"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { md3: "", xs12: "" } },
                     [
                       _c(
                         "v-card",
+                        {
+                          staticClass:
+                            "transparent upload-image emphasis--border",
+                          attrs: { height: "200", hover: "" }
+                        },
                         [
                           _c(
-                            "v-card-text",
+                            "v-layout",
+                            {
+                              attrs: {
+                                row: "",
+                                wrap: "",
+                                "justify-center": "",
+                                "align-center": "",
+                                "fill-height": ""
+                              }
+                            },
                             [
                               _c(
-                                "h1",
-                                {
-                                  staticClass:
-                                    "subheading grey--text text--darken-1 mb-3 text-uppercase"
-                                },
+                                "v-card-text",
+                                { staticClass: "text-xs-center grey--text" },
                                 [
-                                  _c("strong", [
-                                    _vm._v(_vm._s(_vm.__("Sender")))
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "text--lighten-1 grey--text",
+                                      attrs: { size: "50" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  mdi-google-photos\n                "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                  " +
+                                        _vm._s(
+                                          _vm.__("Click to upload photo")
+                                        ) +
+                                        "\n                "
+                                    )
                                   ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("From Name")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  box: "",
-                                  name: "mail_from_name",
-                                  "single-line": ""
-                                },
-                                model: {
-                                  value: _vm.resource.mail_from_name,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resource,
-                                      "mail_from_name",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "resource.mail_from_name"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("From Email Address")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  box: "",
-                                  name: "mail_from_address",
-                                  "single-line": ""
-                                },
-                                model: {
-                                  value: _vm.resource.mail_from_address,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resource,
-                                      "mail_from_address",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "resource.mail_from_address"
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-card-text",
-                            [
-                              _c(
-                                "h1",
-                                {
-                                  staticClass:
-                                    "subheading grey--text text--darken-1 mb-3 text-uppercase"
-                                },
-                                [
-                                  _c("strong", [
-                                    _vm._v(_vm._s(_vm.__("Mail Setup")))
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Driver")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  box: "",
-                                  name: "mail_driver",
-                                  "single-line": ""
-                                },
-                                model: {
-                                  value: _vm.resource.mail_driver,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.resource, "mail_driver", $$v)
-                                  },
-                                  expression: "resource.mail_driver"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Host")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  box: "",
-                                  name: "mail_host",
-                                  "single-line": ""
-                                },
-                                model: {
-                                  value: _vm.resource.mail_host,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.resource, "mail_host", $$v)
-                                  },
-                                  expression: "resource.mail_host"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Port")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  box: "",
-                                  name: "mail_port",
-                                  "single-line": ""
-                                },
-                                model: {
-                                  value: _vm.resource.mail_port,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.resource, "mail_port", $$v)
-                                  },
-                                  expression: "resource.mail_port"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Username")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  box: "",
-                                  name: "mail_username",
-                                  "single-line": ""
-                                },
-                                model: {
-                                  value: _vm.resource.mail_username,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.resource, "mail_username", $$v)
-                                  },
-                                  expression: "resource.mail_username"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Password")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  box: "",
-                                  name: "mail_password",
-                                  "single-line": "",
-                                  type: "password"
-                                },
-                                model: {
-                                  value: _vm.resource.mail_password,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.resource, "mail_password", $$v)
-                                  },
-                                  expression: "resource.mail_password"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "h1",
-                                { staticClass: "body-2 font-weight-bold mb-2" },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.__("Encryption")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  box: "",
-                                  name: "mail_encryption",
-                                  "single-line": ""
-                                },
-                                model: {
-                                  value: _vm.resource.mail_encryption,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resource,
-                                      "mail_encryption",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "resource.mail_encryption"
-                                }
-                              })
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
@@ -598,17 +384,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/modules/Settings/Email.vue":
-/*!****************************************!*\
-  !*** ./src/modules/Settings/Email.vue ***!
-  \****************************************/
+/***/ "./src/modules/Page/Edit.vue":
+/*!***********************************!*\
+  !*** ./src/modules/Page/Edit.vue ***!
+  \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Email_vue_vue_type_template_id_e304d55e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Email.vue?vue&type=template&id=e304d55e& */ "./src/modules/Settings/Email.vue?vue&type=template&id=e304d55e&");
-/* harmony import */ var _Email_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Email.vue?vue&type=script&lang=js& */ "./src/modules/Settings/Email.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Edit_vue_vue_type_template_id_7d4d7579___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=7d4d7579& */ "./src/modules/Page/Edit.vue?vue&type=template&id=7d4d7579&");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./src/modules/Page/Edit.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -618,9 +404,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Email_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Email_vue_vue_type_template_id_e304d55e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Email_vue_vue_type_template_id_e304d55e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Edit_vue_vue_type_template_id_7d4d7579___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Edit_vue_vue_type_template_id_7d4d7579___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -630,38 +416,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "src/modules/Settings/Email.vue"
+component.options.__file = "src/modules/Page/Edit.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./src/modules/Settings/Email.vue?vue&type=script&lang=js&":
-/*!*****************************************************************!*\
-  !*** ./src/modules/Settings/Email.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************/
+/***/ "./src/modules/Page/Edit.vue?vue&type=script&lang=js&":
+/*!************************************************************!*\
+  !*** ./src/modules/Page/Edit.vue?vue&type=script&lang=js& ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Email_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Email.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Settings/Email.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Email_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Page/Edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./src/modules/Settings/Email.vue?vue&type=template&id=e304d55e&":
-/*!***********************************************************************!*\
-  !*** ./src/modules/Settings/Email.vue?vue&type=template&id=e304d55e& ***!
-  \***********************************************************************/
+/***/ "./src/modules/Page/Edit.vue?vue&type=template&id=7d4d7579&":
+/*!******************************************************************!*\
+  !*** ./src/modules/Page/Edit.vue?vue&type=template&id=7d4d7579& ***!
+  \******************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Email_vue_vue_type_template_id_e304d55e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Email.vue?vue&type=template&id=e304d55e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Settings/Email.vue?vue&type=template&id=e304d55e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Email_vue_vue_type_template_id_e304d55e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_7d4d7579___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=template&id=7d4d7579& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/modules/Page/Edit.vue?vue&type=template&id=7d4d7579&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_7d4d7579___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Email_vue_vue_type_template_id_e304d55e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_7d4d7579___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -45,8 +45,8 @@ export default [
 
       // Archived
       {
-        code: 'pages.archived',
-        name: 'pages.archived',
+        code: 'pages.trashed',
+        name: 'pages.trashed',
         meta: {
           title: 'Archived Pages',
           icon: 'mdi-book-plus',

@@ -44,10 +44,12 @@
       <v-tooltip bottom
         >
         <v-btn
+          v-model="dataset.showBulk"
           icon
           slot="activator"
+          @click="clickbulk"
           >
-          <v-icon small>mdi-checkbox-multiple-marked-circle-outline</v-icon>
+          <v-icon>mdi-checkbox-multiple-marked-circle-outline</v-icon>
         </v-btn>
         <span>{{ trans('Bulk Selection') }}</span>
       </v-tooltip>
@@ -116,18 +118,18 @@
         </template>
       </template>
 
-      <!-- archive -->
+      <!-- trashed -->
       <v-tooltip
         bottom
         >
         <v-btn
-          :to="dataset.archivedBtn"
+          :to="dataset.trashedBtn"
           icon
           slot="activator"
           >
           <v-icon small>mdi-package-variant</v-icon>
         </v-btn>
-        <span>{{ trans('Archived List') }}</span>
+        <span>{{ trans('Trashed List') }}</span>
       </v-tooltip>
     </template>
     <!-- hide searchField -->
@@ -206,11 +208,17 @@ export default {
   methods: {
     ...mapActions({
       update: 'toolbar/update',
+      bulk: 'dataset/bulk',
     }),
 
     toggleView () {
       this.update({ toggleview: !this.toolbar.toggleview })
     },
+
+    clickbulk () {
+      this.bulk({ showBulk: !this.dataset.showBulk })
+      console.log('test')
+    }
   },
 
   mounted () {

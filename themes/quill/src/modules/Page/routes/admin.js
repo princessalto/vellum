@@ -33,17 +33,17 @@ export default [
 
         }
       },
-      // {
-      //   path: ':code',
-      //   props: true,
-      //   name: 'pages.show',
-      //   component: () => import('../Show.vue'),
-      //   meta: {
-      //     title: 'Show Page',
-      //     authenticatable: true,
-      //     icon: 'mdi-book-multiple-variant',
-      //   },
-      // },
+      {
+        path: ':code',
+        props: true,
+        name: 'pages.show',
+        component: () => import('../Show.vue'),
+        meta: {
+          title: 'Show Page',
+          authenticatable: true,
+          icon: 'mdi-book-multiple-variant',
+        },
+      },
       {
         path: ':id/edit',
         props: true,
@@ -59,12 +59,12 @@ export default [
         },
       },
       {
-        path: 'archived',
+        path: 'trashed',
         props: true,
-        name: 'pages.archived',
-        component: () => import('../Archived.vue'),
+        name: 'pages.trashed',
+        component: () => import('../Trashed.vue'),
         meta: {
-          title: 'Archived Page',
+          title: 'Trashed Page',
           authenticatable: true,
           icon: 'mdi-delete-outline'
         }

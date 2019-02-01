@@ -10,6 +10,7 @@ export const state = () => ({
     searchButton: true,
     listGridView: true,
     toggleview: true,
+    showBulk: false,
   },
 })
 

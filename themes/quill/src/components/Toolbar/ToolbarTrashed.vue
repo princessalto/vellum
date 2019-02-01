@@ -111,7 +111,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   store,
-  name: 'ToolbarArchived',
+  name: 'ToolbarTrashed',
 
   props: {
     items: {

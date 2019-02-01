@@ -4,7 +4,7 @@
       <v-container grid-list-lg>
         <v-layout row wrap>
           <v-flex xs12>
-            <toolbar-archived :items="toolbar"></toolbar-archived>
+            <toolbar-trashed :items="toolbar"></toolbar-trashed>
             <!-- <v-toolbar>
               <v-spacer></v-spacer>
               <v-btn
@@ -42,6 +42,11 @@
                       v-for="header in props.headers"
                       :key="header.text"
                       @click="changeSort(header.value)"
+                      :class=" [
+                        'column sortable',
+                        resources.pagination.descending ? 'desc' : 'asc',
+                        header.value === resources.pagination.sortBy ? 'active' : ''
+                      ]"
                       >
                       <v-icon small>arrow_upward</v-icon>
                       {{ header.text }}
@@ -135,7 +140,7 @@ import EmptyState from './partials/EmptyState'
 
 export default {
   store,
-  name: 'Archived',
+  name: 'Trashed',
 
   components: {
     EmptyState
@@ -155,7 +160,7 @@ export default {
         homeBtn: {
           name: 'pages.index',
         },
-        title: 'Archived Pages',
+        title: 'Trashed Pages',
         color: '',
         listGridView: false,
         createBtn: {
@@ -186,7 +191,7 @@ export default {
 
   mounted () {
     axios
-      .get('/api/v1/pages/archived')
+      .get('/api/v1/pages/trashed')
       .then(response => {
         this.resources.items = response.data.data
       })

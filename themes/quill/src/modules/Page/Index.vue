@@ -5,16 +5,6 @@
         <v-layout row wrap>
           <v-flex xs12>
             <toolbar-menu :items="toolbar"></toolbar-menu>
-            <!-- <v-toolbar>
-              <v-spacer></v-spacer>
-              <v-btn
-                v-model="resources.showBulk"
-                icon
-                @click.native="resources.showBulk = !resources.showBulk"
-                >
-                <v-icon>mdi-checkbox-multiple-marked-circle-outline</v-icon>
-              </v-btn>
-            </v-toolbar> -->
             <v-card class="sticky">
               <v-data-table
                 :headers="resources.headers"
@@ -40,6 +30,11 @@
                     <th
                       v-for="header in props.headers"
                       :key="header.text"
+                      :class=" [
+                        'column sortable',
+                        resources.pagination.descending ? 'desc' : 'asc',
+                        header.value === resources.pagination.sortBy ? 'active' : ''
+                      ]"
                       @click="changeSort(header.value)"
                       >
                       <v-icon small>arrow_upward</v-icon>
@@ -151,6 +146,7 @@
 
 <script>
 import store from '@/store'
+import { mapGetters } from 'vuex'
 import EmptyState from './partials/EmptyState'
 
 export default {
@@ -160,6 +156,12 @@ export default {
   components: {
     EmptyState
   },
+
+  // computed: {
+  //   ...mapGetters({
+  //     toolbar: 'toolbar/toolbar',
+  //   }),
+  // },
 
   data () {
     return {
@@ -178,15 +180,15 @@ export default {
         createBtn: {
           name: 'pages.create',
         },
-        archivedBtn: {
-          name: 'pages.archived',
+        trashedBtn: {
+          name: 'pages.trashed',
         },
+        showBulk: false,
       },
       resources: {
         items: [],
         selected: [],
         data: null,
-        showBulk: false,
         pagination: {
           sortBy: 'title'
         },
@@ -225,6 +227,11 @@ export default {
         this.resources.pagination.sortBy = column
         this.resources.pagination.descending = false
       }
+    },
+
+    clickbulk () {
+      this.dataset.showBulk = !this.dataset.showBulk
+      console.log('ssds')
     }
   }
 }
