@@ -37,8 +37,8 @@
                       ]"
                       @click="changeSort(header.value)"
                       >
-                      <v-icon small>arrow_upward</v-icon>
                       {{ header.text }}
+                      <v-icon small>arrow_upward</v-icon>
                     </th>
                   </tr>
                 </template>
@@ -64,7 +64,6 @@
                         <span v-html="trans(props.item.title)"></span>
                       </v-tooltip>
                     </td>
-                    <td v-html="props.item.code"></td>
                     <td v-html="props.item.author"></td>
                     <td v-html="props.item.created"></td>
                     <td v-html="props.item.modified"></td>
@@ -112,7 +111,11 @@
                         <span>{{ trans('Edit') }}</span>
                       </v-tooltip>
                       <v-tooltip bottom>
-                        <v-btn slot="activator" icon>
+                        <v-btn
+                          @click.prevent="deleteData(props.item.id)"
+                          slot="activator"
+                          icon
+                          >
                           <v-icon
                             small
                             class="mx-3"
@@ -121,7 +124,7 @@
                           </v-icon>
                         </v-btn>
                         <span>
-                          {{ trans('Move to Archive') }}
+                          {{ trans('Move to Trash') }}
                         </span>
                       </v-tooltip>
                     </td>
@@ -195,7 +198,6 @@ export default {
         headers: [
           { text: 'ID', align: 'left', value: 'id' },
           { text: 'Title', align: 'left', value: 'title' },
-          { text: 'Code', align: 'left', value: 'code' },
           { text: 'Author', align: 'left', value: 'user_id' },
           { text: 'Created', align: 'left', value: 'created_at' },
           { text: 'Modified', align: 'left', value: 'updated_at' },
@@ -210,7 +212,6 @@ export default {
       .get('/api/v1/pages/all')
       .then(response => {
         this.resources.items = response.data.data
-        console.log(response)
       })
   },
 
@@ -229,9 +230,18 @@ export default {
       }
     },
 
+    deleteData(id) {
+      axios
+        .delete(`/api/v1/pages/destroy/${id}`)
+        .then((response) => {
+          // this.resources.items.splice(this.resources.indexOf(id), 1);
+          this.resources.items.splice(id).push(response.data);
+          console.log(response.data);
+        })
+    },
+
     clickbulk () {
       this.dataset.showBulk = !this.dataset.showBulk
-      console.log('ssds')
     }
   }
 }

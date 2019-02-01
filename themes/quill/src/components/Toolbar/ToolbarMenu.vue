@@ -49,7 +49,7 @@
           slot="activator"
           @click="clickbulk"
           >
-          <v-icon>mdi-checkbox-multiple-marked-circle-outline</v-icon>
+          <v-icon small>mdi-checkbox-multiple-marked-circle-outline</v-icon>
         </v-btn>
         <span>{{ trans('Bulk Selection') }}</span>
       </v-tooltip>
@@ -208,7 +208,7 @@ export default {
   methods: {
     ...mapActions({
       update: 'toolbar/update',
-      bulk: 'dataset/bulk',
+      bulk: 'dataset/update',
     }),
 
     toggleView () {
@@ -216,9 +216,9 @@ export default {
     },
 
     clickbulk () {
-      this.bulk({ showBulk: !this.dataset.showBulk })
+      this.update({ showBulk: !this.dataset.showBulk })
       console.log('test')
-    }
+    },
   },
 
   mounted () {

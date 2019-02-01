@@ -29,7 +29,7 @@
                       {{ __('Account Details') }}
                     </h4>
                     <v-layout row wrap>
-                      <v-flex md4 sm4 xs12>
+                      <v-flex md6 sm6 xs12>
                         <v-text-field
                           :data-vv-as="trans('First Name')"
                           :error-messages="errors.collect('firstname')"
@@ -41,19 +41,7 @@
                           v-validate="'required'"
                           ></v-text-field>
                       </v-flex>
-                      <v-flex md4 sm4 xs12>
-                        <v-text-field
-                          :data-vv-as="trans('Middle Name')"
-                          :error-messages="errors.collect('middlename')"
-                          autofocus
-                          box
-                          label="Middle Name"
-                          name="middlename"
-                          v-model="resource.middlename"
-                          v-validate="'required'"
-                          ></v-text-field>
-                      </v-flex>
-                      <v-flex md4 sm4 xs12>
+                      <v-flex md6 sm6 xs12>
                         <v-text-field
                           :data-vv-as="trans('Last Name')"
                           :error-messages="errors.collect('lastname')"
@@ -68,20 +56,21 @@
                     </v-layout>
 
                     <v-layout row wrap>
-                      <v-flex sm6 xs12>
+                      <v-flex xs12>
                         <v-text-field
                           :data-vv-as="trans('Email Address')"
                           :error-messages="errors.collect('email')"
                           autofocus
                           box
                           label="Email Address"
+                          append-icon="email"
                           name="email"
                           v-model="resource.email"
                           v-validate="'required'"
                           >
                         </v-text-field>
                       </v-flex>
-                      <v-flex sm6 xs12>
+                      <v-flex xs12>
                         <v-text-field
                           :data-vv-as="trans('Username')"
                           :error-messages="errors.collect('username')"

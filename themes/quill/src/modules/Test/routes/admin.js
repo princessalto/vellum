@@ -30,26 +30,6 @@ export default [
           icon: 'mdi-book-plus',
         },
       },
-      {
-        path: 'show',
-        name: 'tests.show',
-        component: () => import('../Show.vue'),
-        meta: {
-          title: 'Show Test',
-          authenticatable: true,
-          icon: 'mdi-book-plus',
-        },
-      },
-      {
-        path: 'test',
-        name: 'tests.test',
-        component: () => import('../Test.vue'),
-        meta: {
-          title: 'Show Test',
-          authenticatable: true,
-          icon: 'mdi-book-plus',
-        },
-      },
     ],
   }
 ]

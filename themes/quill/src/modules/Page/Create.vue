@@ -133,7 +133,7 @@
             <v-card
               height="200"
               hover
-              class="transparent upload-image emphasis--border"
+              class="transparent upload-image emphasis--border mb-3"
               >
               <v-layout row wrap justify-center align-center fill-height>
                 <v-card-text class="text-xs-center grey--text">

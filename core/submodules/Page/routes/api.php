@@ -19,13 +19,13 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('pages/search', 'PageController@postFind')->name('pages.search');
     Route::get('pages/{page}', 'PageController@getShow')->name('pages.show');
     Route::get('pages/edit/{page}', 'PageController@getEdit')->name('pages.edit');
+    Route::get('pages/restore/{page}', 'PageController@postRestore')->name('pages.restore');
 
     Route::post('pages/save', 'PageController@postStore')->name('pages.save');
     Route::post('pages/store', 'PageController@postStore')->name('pages.store');
-    Route::post('pages/restore', 'PageController@postRestore')->name('pages.restore');
     Route::post('pages/update/{page}', 'PageController@putUpdate')->name('pages.update');
 
-    Route::delete('pages/{page}/destroy', 'PageController@deleteDestroy')->name('pages.destroy');
+    Route::delete('pages/destroy/{page}', 'PageController@deleteDestroy')->name('pages.destroy');
 
     // Attributes
     # Template

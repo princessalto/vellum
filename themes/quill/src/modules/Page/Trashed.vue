@@ -82,24 +82,18 @@
                     <td class="layout mx-0 justify-center">
                       <v-tooltip bottom>
                         <v-btn
+                          @click.prevent="restoreData(props.item.id)"
                           slot="activator"
                           icon
-                          :to="{
-                            name: 'pages.restore',
-                            params: {
-                              code: props.item.code,
-                              meta: { item: props.item }
-                            },
-                          }"
                           >
                           <v-icon
                             small
                             class="mx-3"
                             >
-                            mdi-open-in-new
+                            restore
                           </v-icon>
                         </v-btn>
-                        <span>{{ trans('View Details') }}</span>
+                        <span>{{ trans('Restore Page') }}</span>
                       </v-tooltip>
                       <v-tooltip bottom>
                         <v-btn slot="activator" icon>
@@ -210,7 +204,16 @@ export default {
         this.resources.pagination.sortBy = column
         this.resources.pagination.descending = false
       }
-    }
+    },
+
+    restoreData(id) {
+      return axios
+        .get(`/api/v1/pages/restore/${id}`)
+        .then((response) => {
+          return response.data
+          console.log('restoreData test');
+        })
+    },
   }
 }
 </script>

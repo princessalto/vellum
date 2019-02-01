@@ -16,7 +16,7 @@
           <!-- iconmenu -->
 
           <!-- dialogbox -->
-          <!-- <v-card flat class="mb-3 text-xs-center">
+         <!--  <v-card flat class="mb-3 text-xs-center">
             <v-card-title
               class="emphasis--medium"
               >
