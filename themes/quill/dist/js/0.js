@@ -169,7 +169,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     axios.get('/api/v1/settings/system').then(function (response) {
       _this.resource = response.data;
-      console.log(response);
     });
   }
 });
@@ -319,12 +318,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'Theme',
   data: function data() {
     return {
+      resources: {
+        items: []
+      },
       resource: {}
     };
   },
@@ -332,7 +368,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/v1/themes/all').then(function (response) {
-      _this.resource = response.data;
+      _this.resources.items = response.data;
     });
   }
 });
@@ -374,7 +410,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { md10: "", xs12: "" } },
+                { attrs: { xs12: "" } },
                 [
                   _c(
                     "v-card",
@@ -681,70 +717,206 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c(
-        "v-card",
+        "v-layout",
+        { attrs: { row: "", wrap: "" } },
         [
-          _c(
-            "v-img",
-            {
-              attrs: {
-                height: "300",
-                src: _vm.resource.thumbnail,
-                gradient:
-                  "to top right, rgba(100,115,201,.45), rgba(25,32,72,.3)"
-              }
-            },
-            [
+          _vm._l(_vm.resources.items, function(resource, i) {
+            return [
               _c(
-                "v-container",
-                { attrs: { fluid: "", "fill-height": "" } },
+                "v-flex",
+                { key: i, attrs: { md4: "", sm6: "", xs12: "" } },
                 [
                   _c(
-                    "v-layout",
-                    {
-                      attrs: {
-                        row: "",
-                        wrap: "",
-                        "justify-center": "",
-                        "align-start": ""
-                      }
-                    },
+                    "v-card",
+                    { attrs: { id: resource.code } },
                     [
-                      _c("v-card-text", { staticClass: "white--text" }, [
-                        _c("h3", {
-                          staticClass: "mb-2",
-                          domProps: { innerHTML: _vm._s(_vm.resource.name) }
-                        }),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "caption font-weight-bold" }, [
-                          _c("span", [
+                      _c(
+                        "v-img",
+                        {
+                          attrs: {
+                            height: "300",
+                            src: resource.thumbnail,
+                            gradient:
+                              "to top right, rgba(100,115,201,.45), rgba(25,32,72,.3)"
+                          }
+                        },
+                        [
+                          _c(
+                            "v-container",
+                            { attrs: { fluid: "", "fill-height": "" } },
+                            [
+                              _c(
+                                "v-layout",
+                                {
+                                  attrs: {
+                                    row: "",
+                                    wrap: "",
+                                    "justify-center": "",
+                                    "align-start": ""
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-card-text",
+                                    { staticClass: "white--text" },
+                                    [
+                                      _c("h3", {
+                                        staticClass: "mb-2",
+                                        domProps: {
+                                          innerHTML: _vm._s(resource.name)
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "caption font-weight-bold"
+                                        },
+                                        [
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(_vm.__("Theme by: ")) +
+                                                " " +
+                                                _vm._s(resource.author.name)
+                                            )
+                                          ])
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("p", {
+                                        domProps: {
+                                          innerHTML: _vm._s(
+                                            resource.description
+                                          )
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        { staticClass: "pa-3" },
+                        [
+                          resource.active
+                            ? [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      flat: "",
+                                      disabled: "",
+                                      color: "secondary"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                " +
+                                        _vm._s(_vm.__("Currently Active")) +
+                                        "\n              "
+                                    )
+                                  ]
+                                )
+                              ]
+                            : [
+                                _c(
+                                  "v-form",
+                                  {
+                                    attrs: { method: "POST" },
+                                    on: {
+                                      submit: function($event) {
+                                        $event.preventDefault()
+                                        _vm.saveTheme({
+                                          active_theme: resource.code
+                                        })
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: resource.code,
+                                          expression: "resource.code"
+                                        }
+                                      ],
+                                      attrs: {
+                                        type: "hidden",
+                                        name: "active_theme"
+                                      },
+                                      domProps: { value: resource.code },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            resource,
+                                            "code",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          color: "secondary",
+                                          flat: "",
+                                          type: "submit"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                  " +
+                                            _vm._s(_vm.__("Activate")) +
+                                            "\n                "
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                          _vm._v(" "),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c("v-btn", { attrs: { flat: "" } }),
+                          _vm._v(" "),
+                          _c("v-btn", { attrs: { flat: "" } }, [
                             _vm._v(
-                              _vm._s(_vm.__("Theme by")) +
-                                ":  " +
-                                _vm._s(_vm.resource.author.name)
+                              "\n              " +
+                                _vm._s(_vm.__("Details")) +
+                                "\n            "
                             )
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("p", {
-                          domProps: {
-                            innerHTML: _vm._s(_vm.resource.description)
-                          }
-                        })
-                      ])
+                        ],
+                        2
+                      )
                     ],
                     1
                   )
                 ],
                 1
               )
-            ],
-            1
-          )
+            ]
+          })
         ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-card", [_c("v-img", { attrs: { height: "300", gradient: "" } })], 1)
+        2
+      )
     ],
     1
   )

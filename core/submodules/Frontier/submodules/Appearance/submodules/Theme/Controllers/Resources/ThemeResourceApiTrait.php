@@ -16,6 +16,6 @@ trait ThemeResourceApiTrait
      */
     public function getAll(Request $request)
     {
-        return response()->json(Theme::files());
+        return response()->json(Theme::theme($theme));
     }
 }

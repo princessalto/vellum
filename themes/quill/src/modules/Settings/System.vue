@@ -2,7 +2,7 @@
   <section>
     <v-container grid-list-lg>
       <v-layout row wrap justify-center align-center>
-        <v-flex md10 xs12>
+        <v-flex xs12>
           <v-card flat class="transparent">
             <v-card-text>
               <p class="mb-2">

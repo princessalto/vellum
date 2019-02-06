@@ -24,4 +24,13 @@ Settings/System
     ☐ Theme
     ☐ Profile
     ☐ Server
-    ☐ Theme blade
+    ☐ Application
+
+SU
+System:
+  Theme
+  Profile
+  Server
+
+Page:
+  CRUD with Axios
