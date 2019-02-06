@@ -58,9 +58,6 @@
               </template>
               <v-spacer></v-spacer>
               <v-btn flat>
-
-              </v-btn>
-              <v-btn flat>
                 {{ __('Details') }}
               </v-btn>
             </v-card-actions>

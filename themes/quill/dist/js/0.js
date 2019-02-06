@@ -349,9 +349,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -893,8 +890,6 @@ var render = function() {
                               ],
                           _vm._v(" "),
                           _c("v-spacer"),
-                          _vm._v(" "),
-                          _c("v-btn", { attrs: { flat: "" } }),
                           _vm._v(" "),
                           _c("v-btn", { attrs: { flat: "" } }, [
                             _vm._v(
