@@ -25,12 +25,3 @@ Settings/System
     ☐ Profile
     ☐ Server
     ☐ Application
-
-SU
-System:
-  Theme
-  Profile
-  Server
-
-Page:
-  CRUD with Axios
