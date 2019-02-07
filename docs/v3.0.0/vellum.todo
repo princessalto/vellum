@@ -18,6 +18,8 @@ Appearance
     ☐ List of widgets
 Pages
     ☐ when re-load page  shows the 'show' page
+    ☐ slugify on backend
+    ☐ can still save even without data
 
 Settings/System
   Branding:
