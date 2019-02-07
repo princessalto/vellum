@@ -225,8 +225,8 @@ export default {
 
     deleteData(id) {
       axios
-        .delete('/api/v1/pages/destroy/' + this.resources.items.id)
-        // .delete(`/api/v1/pages/destroy/${id}`)
+        // .delete('/api/v1/pages/destroy/'   + this.resources.items.id)
+        .delete(`/api/v1/pages/destroy/${id}`)
         .then((response) => {
           this.resources.items.splice(this.resources.items.indexOf(id), 1);
           console.log(this.resources.items);
