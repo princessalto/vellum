@@ -87,7 +87,6 @@
                             mdi-open-in-new
                           </v-icon>
                         </v-btn>
-                        <span>{{ trans('View Details') }}</span>
                       </v-tooltip>
                       <v-tooltip bottom>
                         <v-btn
@@ -160,12 +159,6 @@ export default {
     EmptyState
   },
 
-  // computed: {
-  //   ...mapGetters({
-  //     toolbar: 'toolbar/toolbar',
-  //   }),
-  // },
-
   data () {
     return {
       dataset: {
@@ -232,10 +225,9 @@ export default {
 
     deleteData(id) {
       axios
-        .delete('/api/v1/pages/destroy/' + this.$route.params.id, this.resource)
+        .delete(`/api/v1/pages/destroy/${id}`)
         .then((response) => {
-          // this.resources.items.splice(this.resources.indexOf(id), 1);
-          this.resources.items.splice(id).push(response.data);
+          this.resources.items.splice(this.resources.items.indexOf(id), 1);
           console.log(this.$route.params.id);
         })
     },

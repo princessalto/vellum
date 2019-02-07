@@ -160,7 +160,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -170,11 +169,6 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     EmptyState: _partials_EmptyState__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  // computed: {
-  //   ...mapGetters({
-  //     toolbar: 'toolbar/toolbar',
-  //   }),
-  // },
   data: function data() {
     return {
       dataset: {
@@ -254,9 +248,8 @@ __webpack_require__.r(__webpack_exports__);
     deleteData: function deleteData(id) {
       var _this2 = this;
 
-      axios.delete('/api/v1/pages/destroy/' + this.$route.params.id, this.resource).then(function (response) {
-        // this.resources.items.splice(this.resources.indexOf(id), 1);
-        _this2.resources.items.splice(id).push(response.data);
+      axios.delete("/api/v1/pages/destroy/".concat(id)).then(function (response) {
+        _this2.resources.items.splice(_this2.resources.items.indexOf(id), 1);
 
         console.log(_this2.$route.params.id);
       });
@@ -656,17 +649,7 @@ var render = function() {
                                                       )
                                                     ],
                                                     1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm.trans(
-                                                          "View Details"
-                                                        )
-                                                      )
-                                                    )
-                                                  ])
+                                                  )
                                                 ],
                                                 1
                                               ),
