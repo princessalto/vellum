@@ -5,7 +5,7 @@
         <v-layout row wrap>
           <v-flex xs12>
             <toolbar-trashed :items="toolbar"></toolbar-trashed>
-            <!-- <v-toolbar>
+            <v-toolbar>
               <v-spacer></v-spacer>
               <v-btn
                 v-model="resources.showBulk"
@@ -14,7 +14,7 @@
                 >
                 <v-icon>mdi-checkbox-multiple-marked-circle-outline</v-icon>
               </v-btn>
-            </v-toolbar> -->
+            </v-toolbar>
 
             <v-card class="sticky">
               <v-data-table

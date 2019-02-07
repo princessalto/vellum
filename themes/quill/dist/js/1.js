@@ -254,11 +254,10 @@ __webpack_require__.r(__webpack_exports__);
     deleteData: function deleteData(id) {
       var _this2 = this;
 
-      axios.delete("/api/v1/pages/destroy/".concat(id)).then(function (response) {
+      axios.delete('/api/v1/pages/destroy/' + this.$route.params.id, this.resource).then(function (response) {
         // this.resources.items.splice(this.resources.indexOf(id), 1);
-        _this2.resources.items.splice(id).push(response.data);
+        _this2.resources.items.splice(id).push(response.data); // console.log(this.$route.params.id);
 
-        console.log(response.data);
       });
     },
     clickbulk: function clickbulk() {

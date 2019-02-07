@@ -3,7 +3,6 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue.
  */
-// import '@/stylus/main.styl';
 
 import './bootstrap';
 
@@ -12,7 +11,6 @@ import Vue from 'vue';
 
 import './plugins/vuetify/vuetify.js';
 import './plugins/vue/vue.js';
-import './plugins/mdi/fonts.js';
 import './plugins/axios/axios.js';
 import './plugins/vee-validate/vee-validate.js';
 import '@/plugins';

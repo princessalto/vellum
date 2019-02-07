@@ -60,7 +60,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     /*eslint-disable*/
-    axios.get('/api/v1/pages/' + this.$route.params.code).then(function (response) {
+    axios.get('/api/v1/pages/' + this.$route.params.id).then(function (response) {
       _this.resource = response.data;
     });
   },

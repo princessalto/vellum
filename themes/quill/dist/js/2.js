@@ -369,6 +369,42 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c(
+                          "v-toolbar",
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { icon: "" },
+                                nativeOn: {
+                                  click: function($event) {
+                                    _vm.resources.showBulk = !_vm.resources
+                                      .showBulk
+                                  }
+                                },
+                                model: {
+                                  value: _vm.resources.showBulk,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.resources, "showBulk", $$v)
+                                  },
+                                  expression: "resources.showBulk"
+                                }
+                              },
+                              [
+                                _c("v-icon", [
+                                  _vm._v(
+                                    "mdi-checkbox-multiple-marked-circle-outline"
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
                           "v-card",
                           { staticClass: "sticky" },
                           [

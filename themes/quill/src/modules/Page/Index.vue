@@ -232,11 +232,11 @@ export default {
 
     deleteData(id) {
       axios
-        .delete(`/api/v1/pages/destroy/${id}`)
+        .delete('/api/v1/pages/destroy/' + this.$route.params.id, this.resource)
         .then((response) => {
           // this.resources.items.splice(this.resources.indexOf(id), 1);
           this.resources.items.splice(id).push(response.data);
-          console.log(response.data);
+          // console.log(this.$route.params.id);
         })
     },
 

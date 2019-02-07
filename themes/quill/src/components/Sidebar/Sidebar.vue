@@ -146,7 +146,7 @@ export default {
       .get('/api/v1/settings/branding')
       .then((response) => {
         this.update(response.data)
-        console.log(this.app)
+        // console.log(this.app)
       })
   }
 }

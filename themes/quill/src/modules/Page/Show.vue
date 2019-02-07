@@ -51,7 +51,7 @@ export default {
   mounted () {
     /*eslint-disable*/
     axios
-      .get('/api/v1/pages/' + this.$route.params.code)
+      .get('/api/v1/pages/' + this.$route.params.id)
       .then(response => {
       this.resource = response.data
     })
