@@ -245,14 +245,11 @@ __webpack_require__.r(__webpack_exports__);
         this.resources.pagination.descending = false;
       }
     },
-    deleteData: function deleteData(id) {
+    destroyData: function destroyData(id) {
       var _this2 = this;
 
-      axios // .delete('/api/v1/pages/destroy/'   + this.resources.items.id)
-      .delete("/api/v1/pages/destroy/".concat(id)).then(function (response) {
+      axios.delete("/api/v1/pages/destroy/".concat(id)).then(function (response) {
         _this2.resources.items.splice(_this2.resources.items.indexOf(id), 1);
-
-        console.log(_this2.resources.items);
       });
     },
     clickbulk: function clickbulk() {
@@ -719,7 +716,7 @@ var render = function() {
                                                           $event
                                                         ) {
                                                           $event.preventDefault()
-                                                          _vm.deleteData(
+                                                          _vm.destroyData(
                                                             props.item.id
                                                           )
                                                         }

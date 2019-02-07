@@ -26,6 +26,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('pages/update/{page}', 'PageController@putUpdate')->name('pages.update');
 
     Route::delete('pages/destroy/{page}', 'PageController@deleteDestroy')->name('pages.destroy');
+    Route::delete('pages/delete/{page}', 'PageController@deleteDelete')->name('pages.delete');
 
     // Attributes
     # Template

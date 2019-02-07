@@ -8,13 +8,6 @@
           </h1>
         </div>
       </v-flex>
-      <v-flex md xs12>
-        <v-card>
-          <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque voluptatibus animi, incidunt, eaque architecto dolor iure in quia commodi eligendi consequuntur rerum est voluptatem necessitatibus culpa libero, dolorem voluptates ipsum.
-          </v-card-text>
-        </v-card>
-      </v-flex>
       <template
         v-for="(resource, i) in resources.items"
         >

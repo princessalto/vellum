@@ -111,7 +111,7 @@
                       </v-tooltip>
                       <v-tooltip bottom>
                         <v-btn
-                          @click.prevent="deleteData(props.item.id)"
+                          @click.prevent="destroyData(props.item.id)"
                           slot="activator"
                           icon
                           >
@@ -223,13 +223,11 @@ export default {
       }
     },
 
-    deleteData(id) {
+    destroyData(id) {
       axios
-        // .delete('/api/v1/pages/destroy/'   + this.resources.items.id)
         .delete(`/api/v1/pages/destroy/${id}`)
         .then((response) => {
           this.resources.items.splice(this.resources.items.indexOf(id), 1);
-          console.log(this.resources.items);
         })
     },
 

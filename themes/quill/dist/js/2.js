@@ -141,6 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -231,9 +232,19 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     restoreData: function restoreData(id) {
+      var _this2 = this;
+
       return axios.get("/api/v1/pages/restore/".concat(id)).then(function (response) {
-        return response.data;
-        console.log('restoreData test');
+        _this2.resources.items = response.data;
+      });
+    },
+    deleteData: function deleteData(id) {
+      var _this3 = this;
+
+      axios.delete("/api/v1/pages/delete/".concat(id)).then(function (response) {
+        _this3.resources.items.splice(_this3.resources.items.indexOf(id), 1);
+
+        console.log('deleted');
       });
     }
   }
@@ -705,7 +716,17 @@ var render = function() {
                                                         "v-icon",
                                                         {
                                                           staticClass: "mx-3",
-                                                          attrs: { small: "" }
+                                                          attrs: { small: "" },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              $event.preventDefault()
+                                                              _vm.deleteData(
+                                                                props.item.id
+                                                              )
+                                                            }
+                                                          }
                                                         },
                                                         [
                                                           _vm._v(

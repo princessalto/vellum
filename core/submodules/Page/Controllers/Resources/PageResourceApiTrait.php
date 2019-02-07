@@ -214,7 +214,7 @@ trait PageResourceApiTrait
             }
         }
 
-        return response()->json($success);
+        return response()->json($page);
     }
 
     /**
