@@ -13,6 +13,7 @@
           </v-card>
           <v-card>
             <v-img
+              aspect-ratio="2"
               :src="resource.feature"
               >
             </v-img>
@@ -51,7 +52,7 @@ export default {
   mounted () {
     /*eslint-disable*/
     axios
-      .get('/api/v1/pages/' + this.$route.params.id)
+      .get('/api/v1/pages/' + this.$route.params.code)
       .then(response => {
       this.resource = response.data
     })

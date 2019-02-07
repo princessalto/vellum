@@ -236,7 +236,7 @@ export default {
         .then((response) => {
           // this.resources.items.splice(this.resources.indexOf(id), 1);
           this.resources.items.splice(id).push(response.data);
-          // console.log(this.$route.params.id);
+          console.log(this.$route.params.id);
         })
     },
 

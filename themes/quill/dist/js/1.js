@@ -256,8 +256,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.delete('/api/v1/pages/destroy/' + this.$route.params.id, this.resource).then(function (response) {
         // this.resources.items.splice(this.resources.indexOf(id), 1);
-        _this2.resources.items.splice(id).push(response.data); // console.log(this.$route.params.id);
+        _this2.resources.items.splice(id).push(response.data);
 
+        console.log(_this2.$route.params.id);
       });
     },
     clickbulk: function clickbulk() {

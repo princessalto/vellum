@@ -83,6 +83,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -149,6 +156,25 @@ var render = function() {
               ])
             ])
           ]),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { md: "", xs12: "" } },
+            [
+              _c(
+                "v-card",
+                [
+                  _c("v-card-text", [
+                    _vm._v(
+                      "\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque voluptatibus animi, incidunt, eaque architecto dolor iure in quia commodi eligendi consequuntur rerum est voluptatem necessitatibus culpa libero, dolorem voluptates ipsum.\n        "
+                    )
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _vm._l(_vm.resources.items, function(resource, i) {
             return [

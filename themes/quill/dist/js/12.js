@@ -52,6 +52,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -60,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     /*eslint-disable*/
-    axios.get('/api/v1/pages/' + this.$route.params.id).then(function (response) {
+    axios.get('/api/v1/pages/' + this.$route.params.code).then(function (response) {
       _this.resource = response.data;
     });
   },
@@ -144,7 +145,12 @@ var render = function() {
                   _c(
                     "v-card",
                     [
-                      _c("v-img", { attrs: { src: _vm.resource.feature } }),
+                      _c("v-img", {
+                        attrs: {
+                          "aspect-ratio": "2",
+                          src: _vm.resource.feature
+                        }
+                      }),
                       _vm._v(" "),
                       _c(
                         "v-card-text",
