@@ -214,7 +214,7 @@ trait PageResourceApiTrait
             }
         }
 
-        return response()->json($success);
+        return response()->json($page);
     }
 
     /**
@@ -226,8 +226,8 @@ trait PageResourceApiTrait
      */
     public function deleteDelete(Request $request, $id = null)
     {
-        $success = Page::forceDelete($id ? $id : $request->input('id'));
+        $page = Page::forceDelete($id ? $id : $request->input('id'));
 
-        return response()->json($success);
+        return response()->json($page);
     }
 }

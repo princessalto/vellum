@@ -13,6 +13,7 @@
           </v-card>
           <v-card>
             <v-img
+              aspect-ratio="2"
               :src="resource.feature"
               >
             </v-img>

@@ -5,7 +5,7 @@
         <v-layout row wrap>
           <v-flex xs12>
             <toolbar-trashed :items="toolbar"></toolbar-trashed>
-            <!-- <v-toolbar>
+            <v-toolbar>
               <v-spacer></v-spacer>
               <v-btn
                 v-model="resources.showBulk"
@@ -14,7 +14,7 @@
                 >
                 <v-icon>mdi-checkbox-multiple-marked-circle-outline</v-icon>
               </v-btn>
-            </v-toolbar> -->
+            </v-toolbar>
 
             <v-card class="sticky">
               <v-data-table
@@ -98,6 +98,7 @@
                       <v-tooltip bottom>
                         <v-btn slot="activator" icon>
                           <v-icon
+                            @click.prevent="deleteData(props.item.id)"
                             small
                             class="mx-3"
                             >
@@ -210,8 +211,16 @@ export default {
       return axios
         .get(`/api/v1/pages/restore/${id}`)
         .then((response) => {
-          return response.data
-          console.log('restoreData test');
+          this.resources.items = response.data
+        })
+    },
+
+    deleteData(id) {
+      axios
+        .delete(`/api/v1/pages/delete/${id}`)
+        .then((response) => {
+          this.resources.items.splice(this.resources.items.indexOf(id), 1);
+          console.log('deleted')
         })
     },
   }

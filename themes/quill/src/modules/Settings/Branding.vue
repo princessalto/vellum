@@ -102,6 +102,9 @@
                   {{ __('Site Logo') }}
                 </h1>
               </v-card-text>
+              <v-card-text>
+                {{ __('Upload Logo') }}
+              </v-card-text>
             </v-card>
           </v-flex>
         </v-layout>

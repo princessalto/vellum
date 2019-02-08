@@ -14,24 +14,14 @@
         <v-container fluid fill-height>
           <v-layout row wrap justify-center align-start>
             <v-card-text class="white--text">
-              <h3 class="mb-2" v-html="resource.name"></h3>
+              <h3 class="mb-2">Quill</h3>
               <p class="caption font-weight-bold">
-                <span>{{ __('Theme by') }}:  {{ resource.author.name }}</span>
+                <span>{{ __('Theme by: ') }} Princess Ellen</span>
               </p>
               <p v-html="resource.description"></p>
             </v-card-text>
           </v-layout>
         </v-container>
-      </v-img>
-    </v-card>
-
-    <v-card>
-      <v-img
-        class=""
-        height="300"
-        gradient=""
-        >
-
       </v-img>
     </v-card>
   </section>
@@ -53,7 +43,7 @@ export default {
   created() {
     axios
       .get('/api/v1/themes/all')
-      .then((response) => {
+      .then(response => {
         this.resource = response.data
       })
   },

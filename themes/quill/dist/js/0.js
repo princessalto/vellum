@@ -169,7 +169,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     axios.get('/api/v1/settings/system').then(function (response) {
       _this.resource = response.data;
-      console.log(response);
     });
   }
 });
@@ -309,16 +308,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -374,7 +363,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { md10: "", xs12: "" } },
+                { attrs: { xs12: "" } },
                 [
                   _c(
                     "v-card",
@@ -710,17 +699,12 @@ var render = function() {
                     },
                     [
                       _c("v-card-text", { staticClass: "white--text" }, [
-                        _c("h3", {
-                          staticClass: "mb-2",
-                          domProps: { innerHTML: _vm._s(_vm.resource.name) }
-                        }),
+                        _c("h3", { staticClass: "mb-2" }, [_vm._v("Quill")]),
                         _vm._v(" "),
                         _c("p", { staticClass: "caption font-weight-bold" }, [
                           _c("span", [
                             _vm._v(
-                              _vm._s(_vm.__("Theme by")) +
-                                ":  " +
-                                _vm._s(_vm.resource.author.name)
+                              _vm._s(_vm.__("Theme by: ")) + " Princess Ellen"
                             )
                           ])
                         ]),
@@ -742,9 +726,7 @@ var render = function() {
           )
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("v-card", [_c("v-img", { attrs: { height: "300", gradient: "" } })], 1)
+      )
     ],
     1
   )
