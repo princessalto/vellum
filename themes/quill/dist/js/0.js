@@ -308,36 +308,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -701,7 +671,6 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-card",
-        { attrs: { id: _vm.resource.code } },
         [
           _c(
             "v-img",
@@ -730,17 +699,12 @@ var render = function() {
                     },
                     [
                       _c("v-card-text", { staticClass: "white--text" }, [
-                        _c("h3", {
-                          staticClass: "mb-2",
-                          domProps: { innerHTML: _vm._s(_vm.resource.name) }
-                        }),
+                        _c("h3", { staticClass: "mb-2" }, [_vm._v("Quill")]),
                         _vm._v(" "),
                         _c("p", { staticClass: "caption font-weight-bold" }, [
                           _c("span", [
                             _vm._v(
-                              _vm._s(_vm.__("Theme by: ")) +
-                                " " +
-                                _vm._s(_vm.resource.author.name)
+                              _vm._s(_vm.__("Theme by: ")) + " Princess Ellen"
                             )
                           ])
                         ]),
@@ -759,93 +723,6 @@ var render = function() {
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-card-actions",
-            { staticClass: "pa-3" },
-            [
-              _vm.resource.active
-                ? [
-                    _c(
-                      "v-btn",
-                      { attrs: { flat: "", disabled: "", color: "secondary" } },
-                      [
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(_vm.__("Currently Active")) +
-                            "\n        "
-                        )
-                      ]
-                    )
-                  ]
-                : [
-                    _c(
-                      "v-form",
-                      {
-                        attrs: { method: "POST" },
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            _vm.saveTheme({ active_theme: _vm.resource.code })
-                          }
-                        }
-                      },
-                      [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.resource.code,
-                              expression: "resource.code"
-                            }
-                          ],
-                          attrs: { type: "hidden", name: "active_theme" },
-                          domProps: { value: _vm.resource.code },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.resource,
-                                "code",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "v-btn",
-                          {
-                            attrs: {
-                              color: "secondary",
-                              flat: "",
-                              type: "submit"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(_vm.__("Activate")) +
-                                "\n          "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ],
-              _vm._v(" "),
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c("v-btn", { attrs: { flat: "" } }, [
-                _vm._v("\n        " + _vm._s(_vm.__("Details")) + "\n      ")
-              ])
-            ],
-            2
           )
         ],
         1

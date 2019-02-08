@@ -4,7 +4,7 @@
       {{ __('Theme') }}
     </h1>
 
-    <v-card :id="resource.code">
+    <v-card>
       <v-img
         class=""
         height="300"
@@ -14,45 +14,15 @@
         <v-container fluid fill-height>
           <v-layout row wrap justify-center align-start>
             <v-card-text class="white--text">
-              <h3 class="mb-2" v-html="resource.name"></h3>
+              <h3 class="mb-2">Quill</h3>
               <p class="caption font-weight-bold">
-                <span>{{ __('Theme by: ') }} {{ resource.author.name }}</span>
+                <span>{{ __('Theme by: ') }} Princess Ellen</span>
               </p>
               <p v-html="resource.description"></p>
             </v-card-text>
           </v-layout>
         </v-container>
       </v-img>
-      <v-card-actions class="pa-3">
-        <template v-if="resource.active">
-          <v-btn flat disabled color="secondary">
-            {{ __('Currently Active') }}
-          </v-btn>
-        </template>
-        <template v-else>
-          <v-form
-            @submit.prevent="saveTheme({active_theme: resource.code})"
-            method="POST"
-            >
-            <input
-              type="hidden"
-              name="active_theme"
-              v-model="resource.code"
-              >
-            <v-btn
-              color="secondary"
-              flat
-              type="submit"
-              >
-              {{ __('Activate') }}
-            </v-btn>
-          </v-form>
-        </template>
-        <v-spacer></v-spacer>
-        <v-btn flat>
-          {{ __('Details') }}
-        </v-btn>
-      </v-card-actions>
     </v-card>
   </section>
 </template>
