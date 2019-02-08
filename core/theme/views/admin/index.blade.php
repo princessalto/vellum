@@ -5,7 +5,7 @@
   @if (isset($buttons['primary']))
     <a role="button" href="{{ $buttons['primary']['url'] }}" class="{{ $buttons['primary']['class'] ?? 'btn btn-primary' }}">
       @isset ($buttons['primary']['icon'])
-        <i class="{{ $buttons['primary']['icon'] }}"></i>&nbsp;
+        {{-- <i class="{{ $buttons['primary']['icon'] }}"></i>&nbsp; --}}
       @endisset
       {{ @$buttons['primary']['text'] }}
     </a>
