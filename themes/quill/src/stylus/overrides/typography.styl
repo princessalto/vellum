@@ -11,11 +11,15 @@
 }
 
 .text--ellipsis {
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  box-pack: center;
+    -webkit-box-pack: center;
   box-orient: vertical;
+    -webkit-box-orient: vertical;
   display: -webkit-box;
+  flex-direction: column;
+  justify-content: space-around;
+  line-clamp: 3;
+    -webkit-line-clamp: 3;
   line-height: 1.4;
   max-width: 100%;
   overflow: hidden;
