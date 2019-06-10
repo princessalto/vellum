@@ -5,18 +5,18 @@
       <v-layout row wrap>
         <v-flex xs12>
           <!-- iconmenu -->
-          <!-- <v-card class="mb-3">
+          <v-card class="mb-3">
             <v-card-title class="emphasis--medium">
               {{ trans('Icon Menu') }}
             </v-card-title>
             <v-card-text>
               <icon-menu :items="iconmenu"></icon-menu>
             </v-card-text>
-          </v-card> -->
+          </v-card>
           <!-- iconmenu -->
 
           <!-- dialogbox -->
-         <!--  <v-card flat class="mb-3 text-xs-center">
+          <v-card flat class="mb-3 text-xs-center">
             <v-card-title
               class="emphasis--medium"
               >
@@ -31,8 +31,26 @@
                 {{ trans('Open Dialog Test') }}
               </v-btn>
             </v-card-text>
-          </v-card> -->
+          </v-card>
           <!-- dialogbox -->
+
+          <!-- modal -->
+          <v-card flat class="mb-3 text-xs-center">
+            <v-card-title
+              class="emphasis--medium"
+              >
+              {{ trans('Modal') }}
+            </v-card-title>
+            <v-card-text>
+              <modal></modal>
+              <v-btn
+                @click="openModal"
+                >
+                {{ trans('Open Modal') }}
+              </v-btn>
+            </v-card-text>
+          </v-card>
+          <!-- modal -->
 
           <!-- grid / list view -->
           <template v-if="toggletoolbar.toggleview">
@@ -47,14 +65,14 @@
 
         <v-flex sm4 xs12>
           <!-- tag -->
-          <!-- <v-card class="mb-3">
+          <v-card class="mb-3">
             <v-card-title class="emphasis--medium">
               {{ trans('Tags Card') }}
             </v-card-title>
             <v-card-text>
               <tag :items="tag"></tag>
             </v-card-text>
-          </v-card> -->
+          </v-card>
           <!-- tag -->
 
           <!-- category -->
@@ -200,6 +218,7 @@ export default {
   computed: {
     ...mapGetters({
       dialogbox: 'dialogbox/dialogbox',
+      modal: 'modal/modal',
       toggletoolbar: 'toolbar/toolbar',
     }),
 
@@ -213,6 +232,29 @@ export default {
   },
 
   methods: {
+    openModal () {
+      this.$store.dispatch(
+        'modal/PROMPT_DIALOG',
+        Object.assign(
+          this.modal,
+          {
+            model: true,
+            title: 'Delete Resources',
+            text: 'Are you sure you want to permanently delete those resources?',
+            persistent: true,
+            width: '100%',
+            alignedCenter: true,
+            actionText: 'Delete',
+            actionColor: 'error',
+            actionCallback () {
+              this.model = false
+            },
+            discard: false
+          }
+        )
+      )
+    },
+
     openDialogbox () {
       this.$store.dispatch(
         'dialogbox/PROMPT_DIALOG',

@@ -88,6 +88,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -208,6 +226,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
     dialogbox: 'dialogbox/dialogbox',
+    modal: 'modal/modal',
     toggletoolbar: 'toolbar/toolbar'
   }), {
     empty: function empty() {
@@ -218,6 +237,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   methods: {
+    openModal: function openModal() {
+      this.$store.dispatch('modal/PROMPT_DIALOG', Object.assign(this.modal, {
+        model: true,
+        title: 'Delete Resources',
+        text: 'Are you sure you want to permanently delete those resources?',
+        persistent: true,
+        width: '100%',
+        alignedCenter: true,
+        actionText: 'Delete',
+        actionColor: 'error',
+        actionCallback: function actionCallback() {
+          this.model = false;
+        },
+        discard: false
+      }));
+    },
     openDialogbox: function openDialogbox() {
       this.$store.dispatch('dialogbox/PROMPT_DIALOG', Object.assign(this.dialogbox, {
         model: true,
@@ -278,6 +313,96 @@ var render = function() {
                 "v-flex",
                 { attrs: { xs12: "" } },
                 [
+                  _c(
+                    "v-card",
+                    { staticClass: "mb-3" },
+                    [
+                      _c("v-card-title", { staticClass: "emphasis--medium" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.trans("Icon Menu")) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [_c("icon-menu", { attrs: { items: _vm.iconmenu } })],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card",
+                    { staticClass: "mb-3 text-xs-center", attrs: { flat: "" } },
+                    [
+                      _c("v-card-title", { staticClass: "emphasis--medium" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.trans("Dialogbox")) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [
+                          _c("dialogbox"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "v-btn--gradient",
+                              on: { click: _vm.openDialogbox }
+                            },
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.trans("Open Dialog Test")) +
+                                  "\n            "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card",
+                    { staticClass: "mb-3 text-xs-center", attrs: { flat: "" } },
+                    [
+                      _c("v-card-title", { staticClass: "emphasis--medium" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.trans("Modal")) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [
+                          _c("modal"),
+                          _vm._v(" "),
+                          _c("v-btn", { on: { click: _vm.openModal } }, [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(_vm.trans("Open Modal")) +
+                                "\n            "
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
                   _vm.toggletoolbar.toggleview
                     ? [_c("data-table", { attrs: { items: _vm.courses } })]
                     : [_c("data-iterator", { attrs: { items: _vm.courses } })]
@@ -289,6 +414,27 @@ var render = function() {
                 "v-flex",
                 { attrs: { sm4: "", xs12: "" } },
                 [
+                  _c(
+                    "v-card",
+                    { staticClass: "mb-3" },
+                    [
+                      _c("v-card-title", { staticClass: "emphasis--medium" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.trans("Tags Card")) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [_c("tag", { attrs: { items: _vm.tag } })],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
                   _c(
                     "v-card",
                     { staticClass: "mb-3 emphasis--medium" },
