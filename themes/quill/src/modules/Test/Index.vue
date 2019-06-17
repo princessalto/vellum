@@ -3,18 +3,21 @@
     <toolbar-menu :items="toolbar" class="mb-3"></toolbar-menu>
     <v-container fluid grid-list-lg>
       <v-layout row wrap>
-        <v-flex xs12>
+        <v-flex sm6 xs12>
           <!-- iconmenu -->
           <v-card class="mb-3">
             <v-card-title class="emphasis--medium">
               {{ trans('Icon Menu') }}
             </v-card-title>
             <v-card-text>
-              <icon-menu :items="iconmenu"></icon-menu>
+              <!-- <icon-menu :items="iconmenu"></icon-menu> -->
+              <cta :items="cta"></cta>
             </v-card-text>
           </v-card>
           <!-- iconmenu -->
+        </v-flex>
 
+        <v-flex sm6 xs12>
           <!-- dialogbox -->
           <v-card flat class="mb-3 text-xs-center">
             <v-card-title
@@ -25,7 +28,6 @@
             <v-card-text>
               <dialogbox></dialogbox>
               <v-btn
-                class="v-btn--gradient"
                 @click="openDialogbox"
                 >
                 {{ trans('Open Dialog Test') }}
@@ -33,25 +35,9 @@
             </v-card-text>
           </v-card>
           <!-- dialogbox -->
+        </v-flex>
 
-          <!-- modal -->
-          <v-card flat class="mb-3 text-xs-center">
-            <v-card-title
-              class="emphasis--medium"
-              >
-              {{ trans('Modal') }}
-            </v-card-title>
-            <v-card-text>
-              <modal></modal>
-              <v-btn
-                @click="openModal"
-                >
-                {{ trans('Open Modal') }}
-              </v-btn>
-            </v-card-text>
-          </v-card>
-          <!-- modal -->
-
+        <v-flex xs12>
           <!-- grid / list view -->
           <template v-if="toggletoolbar.toggleview">
             <data-table :items="courses"></data-table>
@@ -61,28 +47,6 @@
             <data-iterator :items="courses"></data-iterator>
           </template>
           <!-- grid / list view -->
-        </v-flex>
-
-        <v-flex sm4 xs12>
-          <!-- tag -->
-          <v-card class="mb-3">
-            <v-card-title class="emphasis--medium">
-              {{ trans('Tags Card') }}
-            </v-card-title>
-            <v-card-text>
-              <tag :items="tag"></tag>
-            </v-card-text>
-          </v-card>
-          <!-- tag -->
-
-          <!-- category -->
-          <v-card class="mb-3 emphasis--medium">
-            <v-card-title>
-              {{ trans('Category Card') }}
-            </v-card-title>
-            <category :items="category"></category>
-          </v-card>
-          <!-- category -->
         </v-flex>
       </v-layout>
     </v-container>
@@ -104,42 +68,13 @@ export default {
         title: 'All Courses',
       },
 
-      timeline: {
-        items: [
-          {
-            title: 'A Series of UnforssfasdfEvef',
-            category: 'video'
-          }
-        ]
-      },
-
       iconmenu: {
         model: '',
         label: 'Choose Icon Menu'
       },
 
-      tag: {
-        model: [],
-        clearable: false,
-        items: [
-          'Programming',
-          'Reading',
-          'Eating'
-        ],
-      },
-
-      category: {
-        hasSaved: false,
-        isEditing: true,
-        categoryList: false,
-        categoryCreate: true,
-        label: 'Choose Category',
-        items: [
-          { name: 'Video', icon: 'videocam' },
-          { name: 'Image', icon: 'photo' },
-        ],
-        chipColor: 'secondary',
-        iconColor: 'white--text',
+      cta: {
+        label: 'Test Submit'
       },
 
       courses: {
@@ -175,39 +110,39 @@ export default {
         items: [
           {
             id: '1',
-            title: 'Develop Personal Effectiveness at Operations Level',
+            title: 'Vue',
             thumbnail: '//preview.ibb.co/cMCYYz/card_Media.png',
-            category: 'DPE OPS',
+            category: 'javascript',
             timestamp: '2 hours ago',
-            description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+            description: 'Popular Javascript Framework',
             part: '6',
             status: 'enrolled'
           },
           {
             id: '2',
-            title: 'Solve Problems and Make Decisions at Supervisory Level',
+            title: 'React',
             thumbnail: '//cdn.dribbble.com/users/904433/screenshots/2994633/animation_fin.gif',
-            category: 'DPE OPS',
+            category: 'javascript',
             timestamp: '2 hours ago',
-            description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+            description: 'Popular Javascript Framework',
             part: '6',
           },
           {
             id: '3',
-            title: 'Communicate and Relate Effectively at the Workplace at Operations Level',
+            title: 'Angular',
             thumbnail: '//i.pinimg.com/564x/74/2b/8e/742b8e6e87ef56e698b9c8bc4e930dae.jpg',
-            category: 'DPE OPS',
+            category: 'javascript',
             timestamp: '2 hours ago',
-            description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+            description: 'Popular Javascript Framework',
             part: '6',
           },
           {
             id: '4',
-            title: 'Develop Personal Effectiveness at Supervisory Level',
+            title: 'Meteor',
             thumbnail: '//cdn.dribbble.com/users/2559/screenshots/3145041/illushome_1x.png',
-            category: 'DPE OPS',
+            category: 'javascript',
             timestamp: '2 hours ago',
-            description: 'Apply knowledge and skills such as establishing personal goals and relating them to workplace goals. Far far away, behind the word',
+            description: 'Popular Javascript Framework',
             part: '6',
           },
         ]
@@ -232,29 +167,6 @@ export default {
   },
 
   methods: {
-    openModal () {
-      this.$store.dispatch(
-        'modal/PROMPT_DIALOG',
-        Object.assign(
-          this.modal,
-          {
-            model: true,
-            title: 'Delete Resources',
-            text: 'Are you sure you want to permanently delete those resources?',
-            persistent: true,
-            width: '100%',
-            alignedCenter: true,
-            actionText: 'Delete',
-            actionColor: 'error',
-            actionCallback () {
-              this.model = false
-            },
-            discard: false
-          }
-        )
-      )
-    },
-
     openDialogbox () {
       this.$store.dispatch(
         'dialogbox/PROMPT_DIALOG',

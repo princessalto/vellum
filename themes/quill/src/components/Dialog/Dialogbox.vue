@@ -5,7 +5,6 @@
       max-width="450px"
       lazy
       v-model="dialogbox.model"
-      v-shortkey="['esc']" @shortkey.native="dialogbox.cancelCallback() || hide()"
       >
       <v-card :class="{ 'text-xs-center': dialogbox.alignedCenter }">
         <v-card-text>

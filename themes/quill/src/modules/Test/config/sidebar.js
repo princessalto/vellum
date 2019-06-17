@@ -20,28 +20,6 @@ export default [
           sort: 5,
         },
       },
-
-      // Create
-      {
-        code: 'tests.create',
-        name: 'tests.create',
-        meta: {
-          title: 'Create Test',
-          icon: 'mdi-book-plus',
-          authenticatable: true,
-          sort: 6,
-        },
-      },
-
-      // Divider
-      {
-        code: 'divider:tests/create.trashed',
-        name: 'divider:tests/create.trashed',
-        meta: {
-          divider: true,
-          sort: 7,
-        },
-      },
     ],
   }
 ]
