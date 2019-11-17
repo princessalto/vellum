@@ -20,28 +20,6 @@ export default [
           sort: 5,
         },
       },
-      // Add User
-      {
-        code: 'users.create',
-        name: 'users.create',
-        meta: {
-          title: 'Add Users',
-          icon: 'mdi-home',
-          authenticatable: true,
-          sort: 5,
-        },
-      },
-      // Archived
-      {
-        code: 'users.archived',
-        name: 'users.archived',
-        meta: {
-          title: 'Archived Users',
-          icon: 'mdi-book-plus',
-          authenticatable: true,
-          sort: 8,
-        },
-      },
     ],
   }
 ]

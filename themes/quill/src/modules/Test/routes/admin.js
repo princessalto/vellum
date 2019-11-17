@@ -20,16 +20,6 @@ export default [
           icon: 'mdi-book-multiple-variant',
         },
       },
-      {
-        path: 'create',
-        name: 'tests.create',
-        component: () => import('../Create.vue'),
-        meta: {
-          title: 'Create Test',
-          authenticatable: true,
-          icon: 'mdi-book-plus',
-        },
-      },
     ],
   }
 ]

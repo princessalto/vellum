@@ -240,7 +240,7 @@ export default {
         .post('/api/v1/pages/store', this.resource)
         .then((response) => {
           // console.log(this.resource, 'data')
-          this.$router.go({name: 'pages.create'})
+          this.$router.push({name: 'pages.index'})
           // push to Create.vue view
         })
     },
