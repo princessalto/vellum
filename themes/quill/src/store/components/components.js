@@ -9,6 +9,7 @@ import { dataiterator } from '@/components/DataIterator/store/modules/dataiterat
 import { datatable } from '@/components/DataTable/store/modules/datatable'
 import { dialogbox } from '@/components/Dialog/store/modules/dialogbox'
 import { iconmenu } from '@/components/IconMenu/store/modules/iconmenu'
+import { snackbar } from '@/components/Snackbar/store/modules/snackbar'
 import { sidebar } from '@/components/Sidebar/store/modules/sidebar'
 import { toolbar } from '@/components/Toolbar/store/modules/toolbar'
 import { utilitybar } from '@/components/Utilitybar/store/modules/utilitybar'
@@ -26,6 +27,7 @@ export const modules = {
   datatable,
   dialogbox,
   iconmenu,
+  snackbar,
   sidebar,
   toolbar,
   utilitybar,

@@ -3,7 +3,10 @@
   <!-- :dark="app.dark" -->
     <!-- Sidebar -->
     <sidebar></sidebar>
-    <!-- Sidebar -->
+
+    <!-- Snackbar -->
+    <snackbar></snackbar>
+    <!-- Snackbar -->
 
     <!-- Utilitybar -->
     <v-slide-y-transition>

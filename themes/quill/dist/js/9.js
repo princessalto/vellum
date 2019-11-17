@@ -11,6 +11,11 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./src/store/index.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
 //
 //
 //
@@ -172,12 +177,15 @@ __webpack_require__.r(__webpack_exports__);
   $_veeValidate: {
     validator: 'new'
   },
-  computed: {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
+    snackbar: 'snackbar/snackbar',
+    dialogbox: 'dialogbox/dialogbox'
+  }), {
     slug: function slug() {
       var slug = this.sanitizeTitle(this.resource.title);
       return slug;
     }
-  },
+  }),
   data: function data() {
     return {
       resource: {
@@ -211,14 +219,13 @@ __webpack_require__.r(__webpack_exports__);
       slug = slug.replace(/\s+/g, '-');
       return slug;
     },
-    slugify: function slugify($value) {
-      if (!this.resource.lockSlug) {
-        if (typeof $value === 'undefined') {
-          this.resource.slug = this.$options.filters.slugify(this.resource.title);
-        } else {
-          this.resource.slug = this.$options.filters.slugify($value);
-        }
-      }
+    slugify: function slugify($value) {// if (!this.resource.lockSlug) {
+      //   if (typeof $value === 'undefined') {
+      //     this.resource.slug = this.$options.filters.slugify(this.resource.title)
+      //   } else {
+      //     this.resource.slug = this.$options.filters.slugify($value)
+      //   }
+      // }
     },
     ckEditor: function ckEditor() {
       ClassicEditor.create(document.querySelector('#editor')).catch(function (error) {
@@ -240,9 +247,16 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/api/v1/pages/store', this.resource).then(function (response) {
         // console.log(this.resource, 'data')
-        _this2.$router.go({
-          name: 'pages.create'
-        }); // push to Create.vue view
+        _this2.$router.push({
+          name: 'pages.index'
+        });
+
+        _this2.$store.dispatch('snackbar/TOGGLE_TOAST', Object.assign(_this2.snackbar, {
+          model: true,
+          // icon: 'add',
+          // iconColor: 'success--text',
+          text: 'Delete Resources'
+        })); // push to Create.vue view
 
       });
     }
@@ -637,7 +651,9 @@ var render = function() {
           )
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("dialogbox")
     ],
     1
   )

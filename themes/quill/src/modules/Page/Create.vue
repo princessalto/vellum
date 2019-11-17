@@ -148,6 +148,7 @@
         </v-layout>
       </v-container>
     </v-form>
+    <dialogbox></dialogbox>
   </section>
 </template>
 
@@ -164,6 +165,10 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      snackbar: 'snackbar/snackbar',
+      dialogbox: 'dialogbox/dialogbox',
+    }),
     slug: function() {
       var slug = this.sanitizeTitle(this.resource.title);
       return slug;
@@ -208,13 +213,13 @@ export default {
     },
 
     slugify ($value) {
-      if (!this.resource.lockSlug) {
-        if (typeof $value === 'undefined') {
-          this.resource.slug = this.$options.filters.slugify(this.resource.title)
-        } else {
-          this.resource.slug = this.$options.filters.slugify($value)
-        }
-      }
+      // if (!this.resource.lockSlug) {
+      //   if (typeof $value === 'undefined') {
+      //     this.resource.slug = this.$options.filters.slugify(this.resource.title)
+      //   } else {
+      //     this.resource.slug = this.$options.filters.slugify($value)
+      //   }
+      // }
     },
 
     ckEditor () {
@@ -241,6 +246,18 @@ export default {
         .then((response) => {
           // console.log(this.resource, 'data')
           this.$router.push({name: 'pages.index'})
+          this.$store.dispatch(
+            'snackbar/TOGGLE_TOAST',
+            Object.assign(
+              this.snackbar,
+              {
+                model: true,
+                // icon: 'add',
+                // iconColor: 'success--text',
+                text: 'Delete Resources',
+              }
+            )
+          )
           // push to Create.vue view
         })
     },
